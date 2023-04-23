@@ -16,17 +16,17 @@ jobs:
 # Константы, используемые далее по тексту
     env:
       PROJ: ViceCityToolset
-      TAG: 4.0
+      TAG: '4.0'
 
     steps:
 # Проверка состава репозитория (без анализа, как может показаться)
       - name: Checkout code
-        uses: actions/checkout@main
+        uses: actions/checkout@v3
   
 # Формирование релиза
       - name: Create release
         id: create_release
-        uses: actions/create-release@main
+        uses: actions/release-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
