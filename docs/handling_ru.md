@@ -5,7 +5,7 @@
 
 - [Общая информация](#section)
 - [Ссылки для загрузки](https://adslbarxatov.github.io/DPArray/ru#vicecitytoolset)
-- [Основная страница](https://adslbarxatov.github.io/ViceCityToolset)
+- [Основная страница](https://adslbarxatov.github.io/ViceCityToolset/ru)
 - [English version](https://adslbarxatov.github.io/ViceCityToolset/handling)
 
 ---
