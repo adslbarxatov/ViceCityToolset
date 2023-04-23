@@ -1,0 +1,926 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AssetNumber" xml:space="preserve">
+    <value>Накопитель №</value>
+  </data>
+  <data name="Bombs_Acceleration" xml:space="preserve">
+    <value>разгонная (второй водитель)</value>
+  </data>
+  <data name="Bombs_AccelerationActive" xml:space="preserve">
+    <value>активная разгонная</value>
+  </data>
+  <data name="Bombs_No" xml:space="preserve">
+    <value>без бомбы</value>
+  </data>
+  <data name="Bombs_Timer" xml:space="preserve">
+    <value>с таймером на 10 секунд</value>
+  </data>
+  <data name="CameraPositions_Auto" xml:space="preserve">
+    <value>автосмена режимов</value>
+  </data>
+  <data name="CameraPositions_Front" xml:space="preserve">
+    <value>на бампере</value>
+  </data>
+  <data name="CameraPositions_MaxDistance" xml:space="preserve">
+    <value>на большом расстоянии</value>
+  </data>
+  <data name="CameraPositions_MidDistance" xml:space="preserve">
+    <value>на среднем расстоянии</value>
+  </data>
+  <data name="CameraPositions_MinDistance" xml:space="preserve">
+    <value>сразу сзади</value>
+  </data>
+  <data name="CameraPositions_Spectate" xml:space="preserve">
+    <value>неподвижна (зритель)</value>
+  </data>
+  <data name="CarColorsFileUnavailable" xml:space="preserve">
+    <value>Файл «{0:S}» не найден или недоступен</value>
+  </data>
+  <data name="CarColorsFilter" xml:space="preserve">
+    <value>Файл цветов транспорта ({0:S})|{0:S}</value>
+  </data>
+  <data name="CarColorsTitle" xml:space="preserve">
+    <value>Укажите файл цветов транспорта ({0:S}). Он должен находиться в папке "GTAViceCity\data"</value>
+  </data>
+  <data name="Cars_No" xml:space="preserve">
+    <value>(нет)</value>
+  </data>
+  <data name="Cars_Random" xml:space="preserve">
+    <value>(случайная)</value>
+  </data>
+  <data name="CGLoaded" xml:space="preserve">
+    <value>Считано: </value>
+  </data>
+  <data name="CGSaved" xml:space="preserve">
+    <value>Записано: </value>
+  </data>
+  <data name="ChangesSaved" xml:space="preserve">
+    <value>Вы уверены, что сохранили все необходимые изменения?</value>
+  </data>
+  <data name="ComponentMissing" xml:space="preserve">
+    <value>Отсутствует необходимый компонент программы: «{0:S}».
+
+Перейти на веб-страницу проекта, чтобы загрузить его вручную?</value>
+  </data>
+  <data name="CurrentSave" xml:space="preserve">
+    <value>Текущее сохранение: </value>
+  </data>
+  <data name="Gangs_1" xml:space="preserve">
+    <value>кубинцы</value>
+  </data>
+  <data name="Gangs_2" xml:space="preserve">
+    <value>гаитянцы</value>
+  </data>
+  <data name="Gangs_3" xml:space="preserve">
+    <value>наркоторговцы</value>
+  </data>
+  <data name="Gangs_4" xml:space="preserve">
+    <value>Диаза</value>
+  </data>
+  <data name="Gangs_5" xml:space="preserve">
+    <value>патрульные</value>
+  </data>
+  <data name="Gangs_6" xml:space="preserve">
+    <value>байкеры</value>
+  </data>
+  <data name="Gangs_7" xml:space="preserve">
+    <value>Версетти</value>
+  </data>
+  <data name="Gangs_8" xml:space="preserve">
+    <value>гольфисты</value>
+  </data>
+  <data name="Garages_1" xml:space="preserve">
+    <value>поместье El Swanko Casa</value>
+  </data>
+  <data name="Garages_10" xml:space="preserve">
+    <value>отель Ocean Heights</value>
+  </data>
+  <data name="Garages_11" xml:space="preserve">
+    <value>отель Links View</value>
+  </data>
+  <data name="Garages_12" xml:space="preserve">
+    <value>Sunshine auto, гараж 1, позиция 1</value>
+  </data>
+  <data name="Garages_13" xml:space="preserve">
+    <value>Sunshine auto, гараж 1, позиция 2</value>
+  </data>
+  <data name="Garages_14" xml:space="preserve">
+    <value>Sunshine auto, гараж 2, позиция 1</value>
+  </data>
+  <data name="Garages_15" xml:space="preserve">
+    <value>Sunshine auto, гараж 2, позиция 2</value>
+  </data>
+  <data name="Garages_16" xml:space="preserve">
+    <value>Sunshine auto, гараж 3, позиция 1</value>
+  </data>
+  <data name="Garages_17" xml:space="preserve">
+    <value>Sunshine auto, гараж 3, позиция 2</value>
+  </data>
+  <data name="Garages_18" xml:space="preserve">
+    <value>Sunshine auto, гараж 4, позиция 1</value>
+  </data>
+  <data name="Garages_19" xml:space="preserve">
+    <value>Sunshine auto, гараж 4, позиция 2</value>
+  </data>
+  <data name="Garages_2" xml:space="preserve">
+    <value>Human Condo, гараж 1, позиция 1</value>
+  </data>
+  <data name="Garages_20" xml:space="preserve">
+    <value>вилла Версетти, позиция 1</value>
+  </data>
+  <data name="Garages_21" xml:space="preserve">
+    <value>вилла Версетти, позиция 2</value>
+  </data>
+  <data name="Garages_3" xml:space="preserve">
+    <value>Human Condo, гараж 1, позиция 2</value>
+  </data>
+  <data name="Garages_4" xml:space="preserve">
+    <value>Human Condo, гараж 1, позиция 3</value>
+  </data>
+  <data name="Garages_5" xml:space="preserve">
+    <value>Human Condo, гараж 1, позиция 4</value>
+  </data>
+  <data name="Garages_6" xml:space="preserve">
+    <value>Human Condo, гараж 2, позиция 1</value>
+  </data>
+  <data name="Garages_7" xml:space="preserve">
+    <value>Human Condo, гараж 2, позиция 2</value>
+  </data>
+  <data name="Garages_8" xml:space="preserve">
+    <value>Human Condo, гараж 3, позиция 1</value>
+  </data>
+  <data name="Garages_9" xml:space="preserve">
+    <value>Human Condo, гараж 3, позиция 2</value>
+  </data>
+  <data name="IncorrectLibVersion" xml:space="preserve">
+    <value>Версия используемой библиотеки «{0:S}» не соответствует текущей версии приложения.
+
+Перейти на веб-страницу проекта для загрузки актуальной версии?</value>
+  </data>
+  <data name="OCGDialogFilter" xml:space="preserve">
+    <value>Файлы параметров парковок GTA VC (*.bcg)|*.bcg</value>
+  </data>
+  <data name="OFDialogFilter" xml:space="preserve">
+    <value>Файлы сохранения GTA VC (*{0:S})|*{0:S}</value>
+  </data>
+  <data name="OFDialogTitle" xml:space="preserve">
+    <value>Выберите файл</value>
+  </data>
+  <data name="OGDialogFilter" xml:space="preserve">
+    <value>Файлы параметров гаражей GTA VC (*.bgr)|*.bgr</value>
+  </data>
+  <data name="OStatsDialogFilter" xml:space="preserve">
+    <value>Файлы статистики GTA VC (*.bst)|*.bst</value>
+  </data>
+  <data name="SaveCompleted" xml:space="preserve">
+    <value>(игра пройдена полностью)</value>
+  </data>
+  <data name="SaveLoadingError" xml:space="preserve">
+    <value>Ошибка загрузки файла сохранения:
+</value>
+  </data>
+  <data name="SaveNotSpecified" xml:space="preserve">
+    <value>(сохранение не выбрано)</value>
+  </data>
+  <data name="SaveSavingError" xml:space="preserve">
+    <value>Ошибка сохранения файла:
+</value>
+  </data>
+  <data name="SFDialogTitle" xml:space="preserve">
+    <value>Укажите имя и расположение нового файла</value>
+  </data>
+  <data name="Suits_BlackSport" xml:space="preserve">
+    <value>чёрный спорткостюм</value>
+  </data>
+  <data name="Suits_Cam" xml:space="preserve">
+    <value>скин Кема Джонса</value>
+  </data>
+  <data name="Suits_Candy" xml:space="preserve">
+    <value>скин Кенди Сакс</value>
+  </data>
+  <data name="Suits_Coronel" xml:space="preserve">
+    <value>скин полковника Кортеса</value>
+  </data>
+  <data name="Suits_Cuban" xml:space="preserve">
+    <value>кубинец</value>
+  </data>
+  <data name="Suits_Default" xml:space="preserve">
+    <value>(стандартный)</value>
+  </data>
+  <data name="Suits_Diaz" xml:space="preserve">
+    <value>скин Рикардо Диаза</value>
+  </data>
+  <data name="Suits_Dick" xml:space="preserve">
+    <value>скин Дика (Love Fist)</value>
+  </data>
+  <data name="Suits_Frankie" xml:space="preserve">
+    <value>Фрэнки</value>
+  </data>
+  <data name="Suits_Golf" xml:space="preserve">
+    <value>гольфист</value>
+  </data>
+  <data name="Suits_Hilary" xml:space="preserve">
+    <value>скин Хилари Кинга</value>
+  </data>
+  <data name="Suits_Jeans" xml:space="preserve">
+    <value>джинсы и футболка</value>
+  </data>
+  <data name="Suits_Jezz" xml:space="preserve">
+    <value>скин Джезза (Love Fist)</value>
+  </data>
+  <data name="Suits_Job" xml:space="preserve">
+    <value>грабитель</value>
+  </data>
+  <data name="Suits_Ken" xml:space="preserve">
+    <value>скин Кена Розенберга</value>
+  </data>
+  <data name="Suits_Lance" xml:space="preserve">
+    <value>скин Лэнса Вэнса</value>
+  </data>
+  <data name="Suits_Mercedes" xml:space="preserve">
+    <value>скин Мерседес Кортес</value>
+  </data>
+  <data name="Suits_MrVercetti" xml:space="preserve">
+    <value>мистер Версетти</value>
+  </data>
+  <data name="Suits_Percy" xml:space="preserve">
+    <value>скин Перси (Love Fist)</value>
+  </data>
+  <data name="Suits_Phil" xml:space="preserve">
+    <value>скин Фила Кэссиди</value>
+  </data>
+  <data name="Suits_Police" xml:space="preserve">
+    <value>полицейский</value>
+  </data>
+  <data name="Suits_RedSport" xml:space="preserve">
+    <value>красный спорткостюм</value>
+  </data>
+  <data name="Suits_Shrub" xml:space="preserve">
+    <value>скин Алекса Шраба</value>
+  </data>
+  <data name="Suits_Soierie" xml:space="preserve">
+    <value>летний костюм</value>
+  </data>
+  <data name="Suits_Sonny" xml:space="preserve">
+    <value>скин Сонни Форелли</value>
+  </data>
+  <data name="Suits_Worker" xml:space="preserve">
+    <value>рабочий</value>
+  </data>
+  <data name="WeaponSlot" xml:space="preserve">
+    <value>Оружие №</value>
+  </data>
+  <data name="Weapons_Baseball" xml:space="preserve">
+    <value>Бейсбольная бита</value>
+  </data>
+  <data name="Weapons_BrassKnuckle" xml:space="preserve">
+    <value>Кастет</value>
+  </data>
+  <data name="Weapons_Camera" xml:space="preserve">
+    <value>Фотокамера</value>
+  </data>
+  <data name="Weapons_Chainsaw" xml:space="preserve">
+    <value>Бензопила</value>
+  </data>
+  <data name="Weapons_Cleaver" xml:space="preserve">
+    <value>Топор</value>
+  </data>
+  <data name="Weapons_Colt45" xml:space="preserve">
+    <value>Colt 45</value>
+  </data>
+  <data name="Weapons_Fist" xml:space="preserve">
+    <value>Кулак</value>
+  </data>
+  <data name="Weapons_Flamethrower" xml:space="preserve">
+    <value>Огнемёт</value>
+  </data>
+  <data name="Weapons_Golf" xml:space="preserve">
+    <value>Клюшка</value>
+  </data>
+  <data name="Weapons_Grenade" xml:space="preserve">
+    <value>Граната</value>
+  </data>
+  <data name="Weapons_Hammer" xml:space="preserve">
+    <value>Молоток</value>
+  </data>
+  <data name="Weapons_Katana" xml:space="preserve">
+    <value>Катана</value>
+  </data>
+  <data name="Weapons_Knife" xml:space="preserve">
+    <value>Нож</value>
+  </data>
+  <data name="Weapons_LaserScope" xml:space="preserve">
+    <value>Лазерная винтовка</value>
+  </data>
+  <data name="Weapons_M4" xml:space="preserve">
+    <value>M4 (автомат)</value>
+  </data>
+  <data name="Weapons_M60" xml:space="preserve">
+    <value>M60 (пулемёт)</value>
+  </data>
+  <data name="Weapons_MAC" xml:space="preserve">
+    <value>MAC (пистолет-пулемёт)</value>
+  </data>
+  <data name="Weapons_Machete" xml:space="preserve">
+    <value>Мачете</value>
+  </data>
+  <data name="Weapons_Minigun" xml:space="preserve">
+    <value>Миниган</value>
+  </data>
+  <data name="Weapons_Molotov" xml:space="preserve">
+    <value>Молотов</value>
+  </data>
+  <data name="Weapons_MP5" xml:space="preserve">
+    <value>MP5 (пистолет-пулемёт)</value>
+  </data>
+  <data name="Weapons_NightStick" xml:space="preserve">
+    <value>Дубинка</value>
+  </data>
+  <data name="Weapons_Python357" xml:space="preserve">
+    <value>Colt Python .357</value>
+  </data>
+  <data name="Weapons_RadioGrenade" xml:space="preserve">
+    <value>Управляемая граната</value>
+  </data>
+  <data name="Weapons_Rocket" xml:space="preserve">
+    <value>РПГ</value>
+  </data>
+  <data name="Weapons_Ruger" xml:space="preserve">
+    <value>Ruger AC (винтовка)</value>
+  </data>
+  <data name="Weapons_ScrewDriver" xml:space="preserve">
+    <value>Отвёртка</value>
+  </data>
+  <data name="Weapons_Shotgun" xml:space="preserve">
+    <value>Ружьё</value>
+  </data>
+  <data name="Weapons_Sniper" xml:space="preserve">
+    <value>Винтовка снайпера</value>
+  </data>
+  <data name="Weapons_SPAS12" xml:space="preserve">
+    <value>SPAS-12 (ружьё)</value>
+  </data>
+  <data name="Weapons_Stubby" xml:space="preserve">
+    <value>Обрез</value>
+  </data>
+  <data name="Weapons_TearGas" xml:space="preserve">
+    <value>Слезоточивый газ</value>
+  </data>
+  <data name="Weapons_TEC9" xml:space="preserve">
+    <value>TEC-9 (пистолет-пулемёт)</value>
+  </data>
+  <data name="Weapons_UZI" xml:space="preserve">
+    <value>Узи</value>
+  </data>
+  <data name="Weathers_Cloudy" xml:space="preserve">
+    <value>облачно</value>
+  </data>
+  <data name="Weathers_Foggy" xml:space="preserve">
+    <value>туман</value>
+  </data>
+  <data name="Weathers_Gray" xml:space="preserve">
+    <value>пасмурно</value>
+  </data>
+  <data name="Weathers_Rainy" xml:space="preserve">
+    <value>дождь</value>
+  </data>
+  <data name="Weathers_Random" xml:space="preserve">
+    <value>(случайная)</value>
+  </data>
+  <data name="Weathers_Sunny" xml:space="preserve">
+    <value>солнечно</value>
+  </data>
+  <data name="Weathers_Windy" xml:space="preserve">
+    <value>дождь с ветром</value>
+  </data>
+  <data name="CGLoadingError" xml:space="preserve">
+    <value>Ошибка загрузки файла параметров парковок:
+</value>
+  </data>
+  <data name="CGSavingError" xml:space="preserve">
+    <value>Ошибка сохранения файла параметров парковок:
+</value>
+  </data>
+  <data name="CGTab_AbortSorting" xml:space="preserve">
+    <value>Отменить сортировку по типам</value>
+  </data>
+  <data name="CGTab_CarGenGetCoords" xml:space="preserve">
+    <value>&amp;Указать координаты...</value>
+  </data>
+  <data name="CGTab_CG_AllowSpawn" xml:space="preserve">
+    <value>Авто доступно</value>
+  </data>
+  <data name="CGTab_CG_ForceSpawn" xml:space="preserve">
+    <value>Авто генерируется всегда</value>
+  </data>
+  <data name="CGTab_Label24" xml:space="preserve">
+    <value>Номер парковочного места:</value>
+  </data>
+  <data name="CGTab_Label25" xml:space="preserve">
+    <value>• модель авто:</value>
+  </data>
+  <data name="CGTab_Label26" xml:space="preserve">
+    <value>• координаты:</value>
+  </data>
+  <data name="CGTab_Label27" xml:space="preserve">
+    <value>• поворот:</value>
+  </data>
+  <data name="CGTab_Label28" xml:space="preserve">
+    <value>• цвета:</value>
+  </data>
+  <data name="CGTab_Label29" xml:space="preserve">
+    <value>• вероятность срабатывания сигнализации:</value>
+  </data>
+  <data name="CGTab_Label30" xml:space="preserve">
+    <value>• вероятность блокировки дверей:</value>
+  </data>
+  <data name="CoordsPicker_Label01" xml:space="preserve">
+    <value>Положение: x:</value>
+  </data>
+  <data name="CoordsPicker_Label04" xml:space="preserve">
+    <value>Поворот:</value>
+  </data>
+  <data name="CoordsPicker_Title" xml:space="preserve">
+    <value>Карта Vice City</value>
+  </data>
+  <data name="DangerousResetMessage" xml:space="preserve">
+    <value>Это действие удаляет из файла сохранения параметры, вызывающие сбои при изменении карты игры (подвижные краны, взорванные объекты). Для данного файла это действие необратимо. Продолжить?</value>
+  </data>
+  <data name="DPTab_Label01" xml:space="preserve">
+    <value>Дата и время сохранения:</value>
+  </data>
+  <data name="DPTab_Label02" xml:space="preserve">
+    <value>Длительность минуты в игре, мс:</value>
+  </data>
+  <data name="DPTab_Label03" xml:space="preserve">
+    <value>Время в игре:</value>
+  </data>
+  <data name="DPTab_Label04" xml:space="preserve">
+    <value>Скорость игры (множитель):</value>
+  </data>
+  <data name="DPTab_Label05" xml:space="preserve">
+    <value>Погода:</value>
+  </data>
+  <data name="DPTab_Label06" xml:space="preserve">
+    <value>Положение камеры относительно транспорта:</value>
+  </data>
+  <data name="DPTab_SBB_CabsRadio" xml:space="preserve">
+    <value>Разрешить радиоволну таксистов</value>
+  </data>
+  <data name="FileTab_DangerousReset" xml:space="preserve">
+    <value>С&amp;брос потенциально опасных параметров</value>
+  </data>
+  <data name="FileTab_DefaultFileButton" xml:space="preserve">
+    <value>Открыть с&amp;тандартный файл</value>
+  </data>
+  <data name="FileTab_Label32" xml:space="preserve">
+    <value>№</value>
+  </data>
+  <data name="FileTab_OpenFileButton" xml:space="preserve">
+    <value>&amp;Открыть файл...</value>
+  </data>
+  <data name="FileTab_RecommendedSettings" xml:space="preserve">
+    <value>&amp;Рекомендуемые параметры</value>
+  </data>
+  <data name="FileTab_SaveFileButton" xml:space="preserve">
+    <value>&amp;Сохранить файл...</value>
+  </data>
+  <data name="FileTab_UpdateDefaultFileButton" xml:space="preserve">
+    <value>Об&amp;новить стандартный файл</value>
+  </data>
+  <data name="GDTab_Label20" xml:space="preserve">
+    <value>Банда:</value>
+  </data>
+  <data name="GDTab_Label21" xml:space="preserve">
+    <value>• модель авто:</value>
+  </data>
+  <data name="GDTab_Label22" xml:space="preserve">
+    <value>• скины:</value>
+  </data>
+  <data name="GDTab_Label23" xml:space="preserve">
+    <value>• оружие:</value>
+  </data>
+  <data name="GRLoadingError" xml:space="preserve">
+    <value>Ошибка загрузки файла параметров гаражей:
+</value>
+  </data>
+  <data name="GRSavingError" xml:space="preserve">
+    <value>Ошибка сохранения файла параметров гаражей:
+</value>
+  </data>
+  <data name="GRTab_GR_BulletsProof" xml:space="preserve">
+    <value>Защита от пуль</value>
+  </data>
+  <data name="GRTab_GR_DamageProof" xml:space="preserve">
+    <value>Защита от повреждений</value>
+  </data>
+  <data name="GRTab_GR_ExplProof" xml:space="preserve">
+    <value>Защита от взрывов</value>
+  </data>
+  <data name="GRTab_GR_FireProof" xml:space="preserve">
+    <value>Защита от огня</value>
+  </data>
+  <data name="GRTab_Label14" xml:space="preserve">
+    <value>Гараж:</value>
+  </data>
+  <data name="GRTab_Label15" xml:space="preserve">
+    <value>• модель авто:</value>
+  </data>
+  <data name="GRTab_Label16" xml:space="preserve">
+    <value>• цвета:</value>
+  </data>
+  <data name="GRTab_Label17" xml:space="preserve">
+    <value>• радиостанция:</value>
+  </data>
+  <data name="GRTab_Label18" xml:space="preserve">
+    <value>• тип бомбы:</value>
+  </data>
+  <data name="LoadParameters" xml:space="preserve">
+    <value>&amp;Загрузить параметры...</value>
+  </data>
+  <data name="MainTab_CGTab" xml:space="preserve">
+    <value>Парковки</value>
+  </data>
+  <data name="MainTab_DPTab" xml:space="preserve">
+    <value>Основные параметры</value>
+  </data>
+  <data name="MainTab_FileTab" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="MainTab_GDTab" xml:space="preserve">
+    <value>Гангстеры</value>
+  </data>
+  <data name="MainTab_GRTab" xml:space="preserve">
+    <value>Гаражи</value>
+  </data>
+  <data name="MainTab_PLTab" xml:space="preserve">
+    <value>Параметры игрока</value>
+  </data>
+  <data name="MainTab_PUTab" xml:space="preserve">
+    <value>Накопители</value>
+  </data>
+  <data name="MainTab_STTab" xml:space="preserve">
+    <value>Статистика</value>
+  </data>
+  <data name="PLTab_Label07" xml:space="preserve">
+    <value>Максимальное здоровье:</value>
+  </data>
+  <data name="PLTab_Label08" xml:space="preserve">
+    <value>Максимум звёзд полиции:</value>
+  </data>
+  <data name="PLTab_Label09" xml:space="preserve">
+    <value>Максимальная броня:</value>
+  </data>
+  <data name="PLTab_Label10" xml:space="preserve">
+    <value>Наличные:</value>
+  </data>
+  <data name="PLTab_Label11" xml:space="preserve">
+    <value>Текущая броня:</value>
+  </data>
+  <data name="PLTab_Label12" xml:space="preserve">
+    <value>Костюм:</value>
+  </data>
+  <data name="PLTab_Label13" xml:space="preserve">
+    <value>, патронов:</value>
+  </data>
+  <data name="PLTab_PL_FastReload" xml:space="preserve">
+    <value>Быстрая перезарядка</value>
+  </data>
+  <data name="PLTab_PL_Fireproof" xml:space="preserve">
+    <value>Несгораемость</value>
+  </data>
+  <data name="PLTab_PL_InfRun" xml:space="preserve">
+    <value>Вечный бег</value>
+  </data>
+  <data name="PLTab_ST_InfBullets" xml:space="preserve">
+    <value>Бесконечные патроны</value>
+  </data>
+  <data name="PUTab_Label19" xml:space="preserve">
+    <value>максимум</value>
+  </data>
+  <data name="PUTab_PickupViewCoords" xml:space="preserve">
+    <value>&amp;Где это?</value>
+  </data>
+  <data name="SaveParameters" xml:space="preserve">
+    <value>&amp;Выгрузить параметры...</value>
+  </data>
+  <data name="StatsLoadingError" xml:space="preserve">
+    <value>Ошибка загрузки файла статистики:
+</value>
+  </data>
+  <data name="StatsSavingError" xml:space="preserve">
+    <value>Ошибка сохранения файла статистики:
+</value>
+  </data>
+  <data name="STTab_Label31" xml:space="preserve">
+    <value>Для прохождения этой сохранённой игры необходимо:</value>
+  </data>
+  <data name="STTab_LoadStats" xml:space="preserve">
+    <value>&amp;Загрузить статистику...</value>
+  </data>
+  <data name="STTab_SaveStats" xml:space="preserve">
+    <value>&amp;Выгрузить статистику...</value>
+  </data>
+  <data name="ToDoStatus01" xml:space="preserve">
+    <value>Выполнить все буйства (выполнено {0:S} из {1:S})</value>
+  </data>
+  <data name="ToDoStatus02" xml:space="preserve">
+    <value>Ограбить все магазины (ограблено {0:S} из {1:S})</value>
+  </data>
+  <data name="ToDoStatus03" xml:space="preserve">
+    <value>Выполнить все уникальные прыжки (выполнено {0:S} из {1:S})</value>
+  </data>
+  <data name="ToDoStatus04" xml:space="preserve">
+    <value>Найти все спрятанные пакеты (найдено {0:S} из {1:S})</value>
+  </data>
+  <data name="ToDoStatus05" xml:space="preserve">
+    <value>Пройти миссию «Trial by dirt» (трасса в северо-западной части города, внедорожник)</value>
+  </data>
+  <data name="ToDoStatus06" xml:space="preserve">
+    <value>Пройти миссию «Test track» (трасса в северо-западной части города, мотоцикл)</value>
+  </data>
+  <data name="ToDoStatus07" xml:space="preserve">
+    <value>Пройти миссию «Cone crazy» (верхний уровень парковки на Ocean beach, авто в углу)</value>
+  </data>
+  <data name="ToDoStatus08" xml:space="preserve">
+    <value>Пройти миссию «Hotring» (городской стадион, с 20:00 до 0:00)</value>
+  </data>
+  <data name="ToDoStatus09" xml:space="preserve">
+    <value>Пройти миссию «Bloodring» (городской стадион, с 20:00 до 0:00)</value>
+  </data>
+  <data name="ToDoStatus10" xml:space="preserve">
+    <value>Пройти миссию «Dirtring» (городской стадион, с 20:00 до 0:00)</value>
+  </data>
+  <data name="ToDoStatus11" xml:space="preserve">
+    <value>Пройти миссию «PCJ playground» (мотоцикл возле большого отеля на выезде из Ocean drive)</value>
+  </data>
+  <data name="ToDoStatus12" xml:space="preserve">
+    <value>Пройти миссию с радиоуправляемыми машинками (трасса на севере пляжа, фургон TopFun)</value>
+  </data>
+  <data name="ToDoStatus13" xml:space="preserve">
+    <value>Пройти миссию с радиоуправляемым вертолётом (въезд на ВПП со стороны доков, фургон TopFun)</value>
+  </data>
+  <data name="ToDoStatus14" xml:space="preserve">
+    <value>Пройти миссию с радиоуправляемыми самолётами (парковка North mall point, фургон TopFun)</value>
+  </data>
+  <data name="ToDoStatus15" xml:space="preserve">
+    <value>Пройти вертолётную миссию на северо-западе (вертолёт на входе в офис в небоскрёбе)</value>
+  </data>
+  <data name="ToDoStatus16" xml:space="preserve">
+    <value>Пройти вертолётную миссию в Малом Гаити (вертолёт на крыше при въезде)</value>
+  </data>
+  <data name="ToDoStatus17" xml:space="preserve">
+    <value>Пройти вертолётную миссию на юго-востоке (вертолёт на крыше розового хостела)</value>
+  </data>
+  <data name="ToDoStatus18" xml:space="preserve">
+    <value>Пройти вертолётную миссию на северо-востоке (вертолёт в большом дворе)</value>
+  </data>
+  <data name="ToDoStatus19" xml:space="preserve">
+    <value>Пройти миссию «Paramedic» (любой автомобиль скорой помощи)</value>
+  </data>
+  <data name="ToDoStatus20" xml:space="preserve">
+    <value>Пройти миссию «Firefighter» (любой автомобиль пожарной службы)</value>
+  </data>
+  <data name="ToDoStatus21" xml:space="preserve">
+    <value>Пройти миссию «Vigilante» до 13 уровня или дальше (любой полицейский транспорт, включая танк и вертолёты)</value>
+  </data>
+  <data name="ToDoStatus22" xml:space="preserve">
+    <value>Подвезти 100 (в сумме) пассажиров в миссии «Taxi driver»</value>
+  </data>
+  <data name="ToDoStatus23" xml:space="preserve">
+    <value>Пройти миссию доставщика пиццы (любой пицца-мопед)</value>
+  </data>
+  <data name="ToDoStatus24" xml:space="preserve">
+    <value>Пройти миссию «Checkpoint Charlie» (лодочная станция, любая лодка)</value>
+  </data>
+  <data name="ToDoStatus25" xml:space="preserve">
+    <value>Пройти миссию «Shooting range» (тир; доступна после миссии «Shootist» в клубе Малибу)</value>
+  </data>
+  <data name="ToDoStatus26" xml:space="preserve">
+    <value>Пройти миссию «Distribution» (Cherry popper; совершить не менее 50 сделок за один раз)</value>
+  </data>
+  <data name="ToDoStatus27" xml:space="preserve">
+    <value>Потратить 300 долларов в клубе Pole position</value>
+  </data>
+  <data name="ToDoStatus28" xml:space="preserve">
+    <value>Доставить в Sunshine auto все авто из 1-го списка</value>
+  </data>
+  <data name="ToDoStatus29" xml:space="preserve">
+    <value>Доставить в Sunshine auto все авто из 2-го списка</value>
+  </data>
+  <data name="ToDoStatus30" xml:space="preserve">
+    <value>Доставить в Sunshine auto все авто из 3-го списка</value>
+  </data>
+  <data name="ToDoStatus31" xml:space="preserve">
+    <value>Доставить в Sunshine auto все авто из 4-го списка</value>
+  </data>
+  <data name="ToDoStatus32" xml:space="preserve">
+    <value>Выиграть гонку №1 в Sunshine auto</value>
+  </data>
+  <data name="ToDoStatus33" xml:space="preserve">
+    <value>Выиграть гонку №2 в Sunshine auto</value>
+  </data>
+  <data name="ToDoStatus34" xml:space="preserve">
+    <value>Выиграть гонку №3 в Sunshine auto</value>
+  </data>
+  <data name="ToDoStatus35" xml:space="preserve">
+    <value>Выиграть гонку №4 в Sunshine auto</value>
+  </data>
+  <data name="ToDoStatus36" xml:space="preserve">
+    <value>Выиграть гонку №5 в Sunshine auto</value>
+  </data>
+  <data name="ToDoStatus37" xml:space="preserve">
+    <value>Выиграть гонку №6 в Sunshine auto</value>
+  </data>
+  <data name="ToDoStatus38" xml:space="preserve">
+    <value>Завершить телефонные миссии (выполнено {0:S} из {1:S})</value>
+  </data>
+  <data name="ToDoStatus39" xml:space="preserve">
+    <value>Скупить всю доступную собственность (куплено {0:S} из {1:S})</value>
+  </data>
+  <data name="ToDoStatus40" xml:space="preserve">
+    <value>Завершить основные сюжетные миссии</value>
+  </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>Инструмент редактирования файлов сохранений GTA Vice city
+
+Внимание! Инструмент ещё разрабатывается и может вызывать непредвиденные эффекты в файлах сохранений. Если Вы столкнулись с одним из них, пожалуйста, напишите нам об этом. И обязательно делайте резервные копии файлов перед использованием программы</value>
+  </data>
+  <data name="bcgfile" xml:space="preserve">
+    <value>Файл настроек парковок BExplorer</value>
+  </data>
+  <data name="bfile" xml:space="preserve">
+    <value>Файл сохранения GTA Vice city</value>
+  </data>
+  <data name="bgrfile" xml:space="preserve">
+    <value>Файл настроек гаражей BExplorer</value>
+  </data>
+  <data name="bstfile" xml:space="preserve">
+    <value>Файл статистики BExplorer</value>
+  </data>
+  <data name="FileTab_RegisterButton" xml:space="preserve">
+    <value>&amp;Зарегистрировать ассоц. файлов</value>
+  </data>
+  <data name="ViceCityToolsetForm_CollisionButton" xml:space="preserve">
+    <value>Преобразовать скрипт коллизий</value>
+  </data>
+  <data name="ViceCityToolsetForm_HandlingButton" xml:space="preserve">
+    <value>Редактировать параметры транспорта</value>
+  </data>
+  <data name="ViceCityToolsetForm_LanguageLabel" xml:space="preserve">
+    <value>Язык интерфейса:</value>
+  </data>
+  <data name="ViceCityToolsetForm_SavesButton" xml:space="preserve">
+    <value>Редактировать файл сохранения</value>
+  </data>
+  <data name="MakeCSTForm_OFLabel" xml:space="preserve">
+    <value>Входной файл модели:</value>
+  </data>
+  <data name="MakeCSTForm_SFLabel" xml:space="preserve">
+    <value>Выходной файл скрипта коллизий:</value>
+  </data>
+  <data name="BExplorerForm" xml:space="preserve">
+    <value>редактирование сохранений</value>
+  </data>
+  <data name="MakeCSTForm" xml:space="preserve">
+    <value>преобразование моделей в CST</value>
+  </data>
+  <data name="MakeCST_CannotCreateFile" xml:space="preserve">
+    <value>Не удалось записать файл «{0:S}»: расположение недоступно для записи</value>
+  </data>
+  <data name="MakeCST_FileNotFound" xml:space="preserve">
+    <value>Файл «{0:S}» не существует или недоступен</value>
+  </data>
+  <data name="MakeCST_Success" xml:space="preserve">
+    <value>Преобразование успешно завершено</value>
+  </data>
+  <data name="MakeCST_UnsupportedDFF" xml:space="preserve">
+    <value>Файл «{0:S}»: эта версия DFF не поддерживается, или модель пуста</value>
+  </data>
+  <data name="MakeCST_UnsupportedQHull" xml:space="preserve">
+    <value>Файл «{0:S}»: эта версия QHull не поддерживается, или модель повреждена</value>
+  </data>
+  <data name="ViceCityToolsetForm_FBDialog" xml:space="preserve">
+    <value>Укажите каталог с установленной GTA Vice city</value>
+  </data>
+  <data name="MakeCSTForm_ConvertButton" xml:space="preserve">
+    <value>&amp;Начать преобразование</value>
+  </data>
+</root>

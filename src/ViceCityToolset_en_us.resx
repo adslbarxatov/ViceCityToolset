@@ -1,0 +1,926 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AssetNumber" xml:space="preserve">
+    <value>Asset #</value>
+  </data>
+  <data name="Bombs_Acceleration" xml:space="preserve">
+    <value>acceleration (second driver)</value>
+  </data>
+  <data name="Bombs_AccelerationActive" xml:space="preserve">
+    <value>acceleration (active)</value>
+  </data>
+  <data name="Bombs_No" xml:space="preserve">
+    <value>no bomb</value>
+  </data>
+  <data name="Bombs_Timer" xml:space="preserve">
+    <value>with timer at 10 seconds</value>
+  </data>
+  <data name="CameraPositions_Auto" xml:space="preserve">
+    <value>autochange</value>
+  </data>
+  <data name="CameraPositions_Front" xml:space="preserve">
+    <value>on the bumper</value>
+  </data>
+  <data name="CameraPositions_MaxDistance" xml:space="preserve">
+    <value>long distance</value>
+  </data>
+  <data name="CameraPositions_MidDistance" xml:space="preserve">
+    <value>short distance</value>
+  </data>
+  <data name="CameraPositions_MinDistance" xml:space="preserve">
+    <value>right behind</value>
+  </data>
+  <data name="CameraPositions_Spectate" xml:space="preserve">
+    <value>spectate</value>
+  </data>
+  <data name="CarColorsFileUnavailable" xml:space="preserve">
+    <value>File “{0:S}” is unavailable</value>
+  </data>
+  <data name="CarColorsFilter" xml:space="preserve">
+    <value>Transport colors file ({0:S})|{0:S}</value>
+  </data>
+  <data name="CarColorsTitle" xml:space="preserve">
+    <value>Select transport colors file ({0:S}). It must be in “GTAViceCity\data” directory</value>
+  </data>
+  <data name="Cars_No" xml:space="preserve">
+    <value>(no)</value>
+  </data>
+  <data name="Cars_Random" xml:space="preserve">
+    <value>(random)</value>
+  </data>
+  <data name="CGLoaded" xml:space="preserve">
+    <value>Loaded: </value>
+  </data>
+  <data name="CGSaved" xml:space="preserve">
+    <value>Saved: </value>
+  </data>
+  <data name="ChangesSaved" xml:space="preserve">
+    <value>Are you sure that all needed changes have been saved?</value>
+  </data>
+  <data name="ComponentMissing" xml:space="preserve">
+    <value>A required app component is missing: “{0:S}”.
+
+Do you want to open project’s webpage to download it manually?</value>
+  </data>
+  <data name="CurrentSave" xml:space="preserve">
+    <value>Current save: </value>
+  </data>
+  <data name="Gangs_1" xml:space="preserve">
+    <value>cuban</value>
+  </data>
+  <data name="Gangs_2" xml:space="preserve">
+    <value>haitians</value>
+  </data>
+  <data name="Gangs_3" xml:space="preserve">
+    <value>drug dillers</value>
+  </data>
+  <data name="Gangs_4" xml:space="preserve">
+    <value>Diaz’s</value>
+  </data>
+  <data name="Gangs_5" xml:space="preserve">
+    <value>patrol</value>
+  </data>
+  <data name="Gangs_6" xml:space="preserve">
+    <value>bikers</value>
+  </data>
+  <data name="Gangs_7" xml:space="preserve">
+    <value>Vercetti’s</value>
+  </data>
+  <data name="Gangs_8" xml:space="preserve">
+    <value>golfers</value>
+  </data>
+  <data name="Garages_1" xml:space="preserve">
+    <value>El Swanko Casa estate</value>
+  </data>
+  <data name="Garages_10" xml:space="preserve">
+    <value>Ocean Heights hotel</value>
+  </data>
+  <data name="Garages_11" xml:space="preserve">
+    <value>Links View hotel</value>
+  </data>
+  <data name="Garages_12" xml:space="preserve">
+    <value>Sunshine auto, garage 1, item 1</value>
+  </data>
+  <data name="Garages_13" xml:space="preserve">
+    <value>Sunshine auto, garage 1, item 2</value>
+  </data>
+  <data name="Garages_14" xml:space="preserve">
+    <value>Sunshine auto, garage 2, item 1</value>
+  </data>
+  <data name="Garages_15" xml:space="preserve">
+    <value>Sunshine auto, garage 2, item 2</value>
+  </data>
+  <data name="Garages_16" xml:space="preserve">
+    <value>Sunshine auto, garage 3, item 1</value>
+  </data>
+  <data name="Garages_17" xml:space="preserve">
+    <value>Sunshine auto, garage 3, item 2</value>
+  </data>
+  <data name="Garages_18" xml:space="preserve">
+    <value>Sunshine auto, garage 4, item 1</value>
+  </data>
+  <data name="Garages_19" xml:space="preserve">
+    <value>Sunshine auto, garage 4, item 2</value>
+  </data>
+  <data name="Garages_2" xml:space="preserve">
+    <value>Human Condo, garage 1, item 1</value>
+  </data>
+  <data name="Garages_20" xml:space="preserve">
+    <value>Versetti estate, item 1</value>
+  </data>
+  <data name="Garages_21" xml:space="preserve">
+    <value>Versetti estate, item 2</value>
+  </data>
+  <data name="Garages_3" xml:space="preserve">
+    <value>Human Condo, garage 1, item 2</value>
+  </data>
+  <data name="Garages_4" xml:space="preserve">
+    <value>Human Condo, garage 1, item 3</value>
+  </data>
+  <data name="Garages_5" xml:space="preserve">
+    <value>Human Condo, garage 1, item 4</value>
+  </data>
+  <data name="Garages_6" xml:space="preserve">
+    <value>Human Condo, garage 2, item 1</value>
+  </data>
+  <data name="Garages_7" xml:space="preserve">
+    <value>Human Condo, garage 2, item 2</value>
+  </data>
+  <data name="Garages_8" xml:space="preserve">
+    <value>Human Condo, garage 3, item 1</value>
+  </data>
+  <data name="Garages_9" xml:space="preserve">
+    <value>Human Condo, garage 3, item 2</value>
+  </data>
+  <data name="IncorrectLibVersion" xml:space="preserve">
+    <value>Version of “{0:S}” is incompatible with the current version of application.
+
+Do you want to open project's webpage to download actual version?</value>
+  </data>
+  <data name="OCGDialogFilter" xml:space="preserve">
+    <value>GTA VC car parks parameters files (*.bcg)|*.bcg</value>
+  </data>
+  <data name="OFDialogFilter" xml:space="preserve">
+    <value>GTA VC save files (*{0:S})|*{0:S}</value>
+  </data>
+  <data name="OFDialogTitle" xml:space="preserve">
+    <value>Select file</value>
+  </data>
+  <data name="OGDialogFilter" xml:space="preserve">
+    <value>GTA VC garages parameters files (*.bgr)|*.bgr</value>
+  </data>
+  <data name="OStatsDialogFilter" xml:space="preserve">
+    <value>GTA VC stats files (*.bst)|*.bst</value>
+  </data>
+  <data name="SaveCompleted" xml:space="preserve">
+    <value>(game is fully completed)</value>
+  </data>
+  <data name="SaveLoadingError" xml:space="preserve">
+    <value>Save file loading error:
+</value>
+  </data>
+  <data name="SaveNotSpecified" xml:space="preserve">
+    <value>(save file not specified)</value>
+  </data>
+  <data name="SaveSavingError" xml:space="preserve">
+    <value>File saving error:
+</value>
+  </data>
+  <data name="SFDialogTitle" xml:space="preserve">
+    <value>Specify new file’s name and placement</value>
+  </data>
+  <data name="Suits_BlackSport" xml:space="preserve">
+    <value>black sport suit</value>
+  </data>
+  <data name="Suits_Cam" xml:space="preserve">
+    <value>skin of Cam Jones</value>
+  </data>
+  <data name="Suits_Candy" xml:space="preserve">
+    <value>skin of Candy Suxxx</value>
+  </data>
+  <data name="Suits_Coronel" xml:space="preserve">
+    <value>skin of coronel Cortez</value>
+  </data>
+  <data name="Suits_Cuban" xml:space="preserve">
+    <value>Cuban</value>
+  </data>
+  <data name="Suits_Default" xml:space="preserve">
+    <value>(default)</value>
+  </data>
+  <data name="Suits_Diaz" xml:space="preserve">
+    <value>skin of Ricardo Diaz</value>
+  </data>
+  <data name="Suits_Dick" xml:space="preserve">
+    <value>skin of Dick (Love Fist)</value>
+  </data>
+  <data name="Suits_Frankie" xml:space="preserve">
+    <value>Frankie tee-shirt</value>
+  </data>
+  <data name="Suits_Golf" xml:space="preserve">
+    <value>golf club</value>
+  </data>
+  <data name="Suits_Hilary" xml:space="preserve">
+    <value>skin of Hilary King</value>
+  </data>
+  <data name="Suits_Jeans" xml:space="preserve">
+    <value>jeans and tee-shirt</value>
+  </data>
+  <data name="Suits_Jezz" xml:space="preserve">
+    <value>skin of Jezz (Love Fist)</value>
+  </data>
+  <data name="Suits_Job" xml:space="preserve">
+    <value>robber</value>
+  </data>
+  <data name="Suits_Ken" xml:space="preserve">
+    <value>skin of Ken Rosenberg</value>
+  </data>
+  <data name="Suits_Lance" xml:space="preserve">
+    <value>skin of Lance Vance</value>
+  </data>
+  <data name="Suits_Mercedes" xml:space="preserve">
+    <value>skin of Mercedes Cortez</value>
+  </data>
+  <data name="Suits_MrVercetti" xml:space="preserve">
+    <value>Vercetti suit</value>
+  </data>
+  <data name="Suits_Percy" xml:space="preserve">
+    <value>skin of Percy (Love fist)</value>
+  </data>
+  <data name="Suits_Phil" xml:space="preserve">
+    <value>skin of Phil Cassidy</value>
+  </data>
+  <data name="Suits_Police" xml:space="preserve">
+    <value>policeman</value>
+  </data>
+  <data name="Suits_RedSport" xml:space="preserve">
+    <value>red sport suit</value>
+  </data>
+  <data name="Suits_Shrub" xml:space="preserve">
+    <value>skin of Alex Shrub</value>
+  </data>
+  <data name="Suits_Soierie" xml:space="preserve">
+    <value>summer suit</value>
+  </data>
+  <data name="Suits_Sonny" xml:space="preserve">
+    <value>skin of Sonny Forelli</value>
+  </data>
+  <data name="Suits_Worker" xml:space="preserve">
+    <value>worker</value>
+  </data>
+  <data name="WeaponSlot" xml:space="preserve">
+    <value>Weapon #</value>
+  </data>
+  <data name="Weapons_Baseball" xml:space="preserve">
+    <value>Baseball bat</value>
+  </data>
+  <data name="Weapons_BrassKnuckle" xml:space="preserve">
+    <value>Brass knuckle</value>
+  </data>
+  <data name="Weapons_Camera" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="Weapons_Chainsaw" xml:space="preserve">
+    <value>Chainsaw</value>
+  </data>
+  <data name="Weapons_Cleaver" xml:space="preserve">
+    <value>Cleaver</value>
+  </data>
+  <data name="Weapons_Colt45" xml:space="preserve">
+    <value>Colt 45</value>
+  </data>
+  <data name="Weapons_Fist" xml:space="preserve">
+    <value>Fist</value>
+  </data>
+  <data name="Weapons_Flamethrower" xml:space="preserve">
+    <value>Flamethrower</value>
+  </data>
+  <data name="Weapons_Golf" xml:space="preserve">
+    <value>Golf club</value>
+  </data>
+  <data name="Weapons_Grenade" xml:space="preserve">
+    <value>Grenade</value>
+  </data>
+  <data name="Weapons_Hammer" xml:space="preserve">
+    <value>Hammer</value>
+  </data>
+  <data name="Weapons_Katana" xml:space="preserve">
+    <value>Katana</value>
+  </data>
+  <data name="Weapons_Knife" xml:space="preserve">
+    <value>Knife</value>
+  </data>
+  <data name="Weapons_LaserScope" xml:space="preserve">
+    <value>Sniper with laser scope</value>
+  </data>
+  <data name="Weapons_M4" xml:space="preserve">
+    <value>M4 tommy-gun</value>
+  </data>
+  <data name="Weapons_M60" xml:space="preserve">
+    <value>M60 machine gun</value>
+  </data>
+  <data name="Weapons_MAC" xml:space="preserve">
+    <value>MAC tommy-gun</value>
+  </data>
+  <data name="Weapons_Machete" xml:space="preserve">
+    <value>Machete</value>
+  </data>
+  <data name="Weapons_Minigun" xml:space="preserve">
+    <value>Minigun</value>
+  </data>
+  <data name="Weapons_Molotov" xml:space="preserve">
+    <value>Molotov</value>
+  </data>
+  <data name="Weapons_MP5" xml:space="preserve">
+    <value>MP5 tommy-gun</value>
+  </data>
+  <data name="Weapons_NightStick" xml:space="preserve">
+    <value>Police bat</value>
+  </data>
+  <data name="Weapons_Python357" xml:space="preserve">
+    <value>Colt Python .357</value>
+  </data>
+  <data name="Weapons_RadioGrenade" xml:space="preserve">
+    <value>Radio grenade</value>
+  </data>
+  <data name="Weapons_Rocket" xml:space="preserve">
+    <value>Rocket launcher</value>
+  </data>
+  <data name="Weapons_Ruger" xml:space="preserve">
+    <value>Ruger AC tommy-gun</value>
+  </data>
+  <data name="Weapons_ScrewDriver" xml:space="preserve">
+    <value>Screwdriver</value>
+  </data>
+  <data name="Weapons_Shotgun" xml:space="preserve">
+    <value>Shotgun</value>
+  </data>
+  <data name="Weapons_Sniper" xml:space="preserve">
+    <value>Sniper rifle</value>
+  </data>
+  <data name="Weapons_SPAS12" xml:space="preserve">
+    <value>SPAS-12 shotgun</value>
+  </data>
+  <data name="Weapons_Stubby" xml:space="preserve">
+    <value>Stubby shotgun</value>
+  </data>
+  <data name="Weapons_TearGas" xml:space="preserve">
+    <value>Tear gas</value>
+  </data>
+  <data name="Weapons_TEC9" xml:space="preserve">
+    <value>TEC-9 tommy-gun</value>
+  </data>
+  <data name="Weapons_UZI" xml:space="preserve">
+    <value>UZI tommy-gun</value>
+  </data>
+  <data name="Weathers_Cloudy" xml:space="preserve">
+    <value>cloudy</value>
+  </data>
+  <data name="Weathers_Foggy" xml:space="preserve">
+    <value>foggy</value>
+  </data>
+  <data name="Weathers_Gray" xml:space="preserve">
+    <value>gray</value>
+  </data>
+  <data name="Weathers_Rainy" xml:space="preserve">
+    <value>rainy</value>
+  </data>
+  <data name="Weathers_Random" xml:space="preserve">
+    <value>(random)</value>
+  </data>
+  <data name="Weathers_Sunny" xml:space="preserve">
+    <value>sunny</value>
+  </data>
+  <data name="Weathers_Windy" xml:space="preserve">
+    <value>rainy and windy</value>
+  </data>
+  <data name="CGLoadingError" xml:space="preserve">
+    <value>Car parks parameters file loading error:
+</value>
+  </data>
+  <data name="CGSavingError" xml:space="preserve">
+    <value>Car parks parameters file saving error:
+</value>
+  </data>
+  <data name="CGTab_AbortSorting" xml:space="preserve">
+    <value>Abort sorting by type</value>
+  </data>
+  <data name="CGTab_CarGenGetCoords" xml:space="preserve">
+    <value>Specify &amp;coords...</value>
+  </data>
+  <data name="CGTab_CG_AllowSpawn" xml:space="preserve">
+    <value>Car available</value>
+  </data>
+  <data name="CGTab_CG_ForceSpawn" xml:space="preserve">
+    <value>Force car spawning</value>
+  </data>
+  <data name="CGTab_Label24" xml:space="preserve">
+    <value>Car park number:</value>
+  </data>
+  <data name="CGTab_Label25" xml:space="preserve">
+    <value>• car model:</value>
+  </data>
+  <data name="CGTab_Label26" xml:space="preserve">
+    <value>• coordinates:</value>
+  </data>
+  <data name="CGTab_Label27" xml:space="preserve">
+    <value>• angle:</value>
+  </data>
+  <data name="CGTab_Label28" xml:space="preserve">
+    <value>• colors:</value>
+  </data>
+  <data name="CGTab_Label29" xml:space="preserve">
+    <value>• alarm probability:</value>
+  </data>
+  <data name="CGTab_Label30" xml:space="preserve">
+    <value>• lock probability:</value>
+  </data>
+  <data name="CoordsPicker_Label01" xml:space="preserve">
+    <value>Placement: x:</value>
+  </data>
+  <data name="CoordsPicker_Label04" xml:space="preserve">
+    <value>Rotation:</value>
+  </data>
+  <data name="CoordsPicker_Title" xml:space="preserve">
+    <value>Vice City map</value>
+  </data>
+  <data name="DangerousResetMessage" xml:space="preserve">
+    <value>This action removes parameters that cause failures when changing the game map (moving cranes, exploded objects). For this file, this action is irreversible. Continue?</value>
+  </data>
+  <data name="DPTab_Label01" xml:space="preserve">
+    <value>Date and time of save:</value>
+  </data>
+  <data name="DPTab_Label02" xml:space="preserve">
+    <value>Ingame minute length, ms:</value>
+  </data>
+  <data name="DPTab_Label03" xml:space="preserve">
+    <value>Ingame time:</value>
+  </data>
+  <data name="DPTab_Label04" xml:space="preserve">
+    <value>Game speed (multiplier):</value>
+  </data>
+  <data name="DPTab_Label05" xml:space="preserve">
+    <value>Weather:</value>
+  </data>
+  <data name="DPTab_Label06" xml:space="preserve">
+    <value>Transport camera placement:</value>
+  </data>
+  <data name="DPTab_SBB_CabsRadio" xml:space="preserve">
+    <value>Allow taxi radiowave</value>
+  </data>
+  <data name="FileTab_DangerousReset" xml:space="preserve">
+    <value>Reset &amp;dangerous parameters</value>
+  </data>
+  <data name="FileTab_DefaultFileButton" xml:space="preserve">
+    <value>&amp;Load default file</value>
+  </data>
+  <data name="FileTab_Label32" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="FileTab_OpenFileButton" xml:space="preserve">
+    <value>&amp;Open file...</value>
+  </data>
+  <data name="FileTab_RecommendedSettings" xml:space="preserve">
+    <value>&amp;Recommended settings</value>
+  </data>
+  <data name="FileTab_SaveFileButton" xml:space="preserve">
+    <value>&amp;Save file...</value>
+  </data>
+  <data name="FileTab_UpdateDefaultFileButton" xml:space="preserve">
+    <value>&amp;Update default file</value>
+  </data>
+  <data name="GDTab_Label20" xml:space="preserve">
+    <value>Gang:</value>
+  </data>
+  <data name="GDTab_Label21" xml:space="preserve">
+    <value>• car model:</value>
+  </data>
+  <data name="GDTab_Label22" xml:space="preserve">
+    <value>• skins:</value>
+  </data>
+  <data name="GDTab_Label23" xml:space="preserve">
+    <value>• weapons:</value>
+  </data>
+  <data name="GRLoadingError" xml:space="preserve">
+    <value>Garages parameters file loading error:
+</value>
+  </data>
+  <data name="GRSavingError" xml:space="preserve">
+    <value>Garages parameters file saving error:
+</value>
+  </data>
+  <data name="GRTab_GR_BulletsProof" xml:space="preserve">
+    <value>Bulletproof</value>
+  </data>
+  <data name="GRTab_GR_DamageProof" xml:space="preserve">
+    <value>Damageproof</value>
+  </data>
+  <data name="GRTab_GR_ExplProof" xml:space="preserve">
+    <value>Explosion proof</value>
+  </data>
+  <data name="GRTab_GR_FireProof" xml:space="preserve">
+    <value>Fireproof</value>
+  </data>
+  <data name="GRTab_Label14" xml:space="preserve">
+    <value>Garage:</value>
+  </data>
+  <data name="GRTab_Label15" xml:space="preserve">
+    <value>• car model:</value>
+  </data>
+  <data name="GRTab_Label16" xml:space="preserve">
+    <value>• colors:</value>
+  </data>
+  <data name="GRTab_Label17" xml:space="preserve">
+    <value>• radio station:</value>
+  </data>
+  <data name="GRTab_Label18" xml:space="preserve">
+    <value>• bomb type:</value>
+  </data>
+  <data name="LoadParameters" xml:space="preserve">
+    <value>&amp;Load parameters...</value>
+  </data>
+  <data name="MainTab_CGTab" xml:space="preserve">
+    <value>Car parks</value>
+  </data>
+  <data name="MainTab_DPTab" xml:space="preserve">
+    <value>Default parameters</value>
+  </data>
+  <data name="MainTab_FileTab" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="MainTab_GDTab" xml:space="preserve">
+    <value>Gangsters</value>
+  </data>
+  <data name="MainTab_GRTab" xml:space="preserve">
+    <value>Garages</value>
+  </data>
+  <data name="MainTab_PLTab" xml:space="preserve">
+    <value>Player parameters</value>
+  </data>
+  <data name="MainTab_PUTab" xml:space="preserve">
+    <value>Pickups</value>
+  </data>
+  <data name="MainTab_STTab" xml:space="preserve">
+    <value>Stats</value>
+  </data>
+  <data name="PLTab_Label07" xml:space="preserve">
+    <value>Max health:</value>
+  </data>
+  <data name="PLTab_Label08" xml:space="preserve">
+    <value>Max police stars:</value>
+  </data>
+  <data name="PLTab_Label09" xml:space="preserve">
+    <value>Max armor:</value>
+  </data>
+  <data name="PLTab_Label10" xml:space="preserve">
+    <value>Cash:</value>
+  </data>
+  <data name="PLTab_Label11" xml:space="preserve">
+    <value>Current armor:</value>
+  </data>
+  <data name="PLTab_Label12" xml:space="preserve">
+    <value>Suit:</value>
+  </data>
+  <data name="PLTab_Label13" xml:space="preserve">
+    <value>, ammo:</value>
+  </data>
+  <data name="PLTab_PL_FastReload" xml:space="preserve">
+    <value>Fast reload</value>
+  </data>
+  <data name="PLTab_PL_Fireproof" xml:space="preserve">
+    <value>Fireproof</value>
+  </data>
+  <data name="PLTab_PL_InfRun" xml:space="preserve">
+    <value>Never get tired</value>
+  </data>
+  <data name="PLTab_ST_InfBullets" xml:space="preserve">
+    <value>Endless ammo</value>
+  </data>
+  <data name="PUTab_Label19" xml:space="preserve">
+    <value>maximum</value>
+  </data>
+  <data name="PUTab_PickupViewCoords" xml:space="preserve">
+    <value>&amp;Where is it?</value>
+  </data>
+  <data name="SaveParameters" xml:space="preserve">
+    <value>&amp;Save parameters...</value>
+  </data>
+  <data name="StatsLoadingError" xml:space="preserve">
+    <value>Stats file loading error:
+</value>
+  </data>
+  <data name="StatsSavingError" xml:space="preserve">
+    <value>Stats file saving error:
+</value>
+  </data>
+  <data name="STTab_Label31" xml:space="preserve">
+    <value>To complete this saved game you must:</value>
+  </data>
+  <data name="STTab_LoadStats" xml:space="preserve">
+    <value>&amp;Load stats...</value>
+  </data>
+  <data name="STTab_SaveStats" xml:space="preserve">
+    <value>&amp;Save stats...</value>
+  </data>
+  <data name="ToDoStatus01" xml:space="preserve">
+    <value>Complete all rampages (completed {0:S} from {1:S})</value>
+  </data>
+  <data name="ToDoStatus02" xml:space="preserve">
+    <value>Rob all stores (robbed {0:S} from {1:S})</value>
+  </data>
+  <data name="ToDoStatus03" xml:space="preserve">
+    <value>Complete all unique jumps (completed {0:S} from {1:S})</value>
+  </data>
+  <data name="ToDoStatus04" xml:space="preserve">
+    <value>Find all hidden packages (found {0:S} from {1:S})</value>
+  </data>
+  <data name="ToDoStatus05" xml:space="preserve">
+    <value>Complete “Trial by dirt” mission (track in the north-western part of the city, off-road)</value>
+  </data>
+  <data name="ToDoStatus06" xml:space="preserve">
+    <value>Complete “Test track” mission (track in the north-western part of the city, bike)</value>
+  </data>
+  <data name="ToDoStatus07" xml:space="preserve">
+    <value>Complete “Cone crazy” mission (top level of parking at Ocean beach, car in a corner)</value>
+  </data>
+  <data name="ToDoStatus08" xml:space="preserve">
+    <value>Complete “Hotring” mission (city stadium, from 8 pm to midnight)</value>
+  </data>
+  <data name="ToDoStatus09" xml:space="preserve">
+    <value>Complete “Bloodring” mission (city stadium, from 8 pm to midnight)</value>
+  </data>
+  <data name="ToDoStatus10" xml:space="preserve">
+    <value>Complete “Dirtring” mission (city stadium, from 8 pm to midnight)</value>
+  </data>
+  <data name="ToDoStatus11" xml:space="preserve">
+    <value>Complete “PCJ playground” mission (the bike near from large hotel at the north end of Ocean drive)</value>
+  </data>
+  <data name="ToDoStatus12" xml:space="preserve">
+    <value>Complete mission with radio-controlled cars (track in the north of the beach, TopFun van)</value>
+  </data>
+  <data name="ToDoStatus13" xml:space="preserve">
+    <value>Complete mission with radio-controlled helicopter (entrance to the runway from docks, TopFun van)</value>
+  </data>
+  <data name="ToDoStatus14" xml:space="preserve">
+    <value>Complete mission with radio-controlled planes (North mall point parking, TopFun van)</value>
+  </data>
+  <data name="ToDoStatus15" xml:space="preserve">
+    <value>Complete helicopter mission in the northwest (helicopter at the office entrance in the skyscraper)</value>
+  </data>
+  <data name="ToDoStatus16" xml:space="preserve">
+    <value>Complete helicopter mission in Little Haiti (helicopter on the roof at the entrance)</value>
+  </data>
+  <data name="ToDoStatus17" xml:space="preserve">
+    <value>Complete helicopter mission in the southeast (helicopter on the roof of the pink hostel)</value>
+  </data>
+  <data name="ToDoStatus18" xml:space="preserve">
+    <value>Complete helicopter mission in the northeast (helicopter in a large backyard)</value>
+  </data>
+  <data name="ToDoStatus19" xml:space="preserve">
+    <value>Complete “Paramedic” mission (any ambulance van)</value>
+  </data>
+  <data name="ToDoStatus20" xml:space="preserve">
+    <value>Complete “Firefighter” mission (any firetruck)</value>
+  </data>
+  <data name="ToDoStatus21" xml:space="preserve">
+    <value>Complete “Vigilante” mission to level 13 or higher (any police transport, including tank and helicopters)</value>
+  </data>
+  <data name="ToDoStatus22" xml:space="preserve">
+    <value>Bring 100 (in total) passengers in “Taxi driver” mission</value>
+  </data>
+  <data name="ToDoStatus23" xml:space="preserve">
+    <value>Complete “Pizza delivery” mission (any pizza bike)</value>
+  </data>
+  <data name="ToDoStatus24" xml:space="preserve">
+    <value>Complete “Checkpoint Charlie” mission (boat station, any boat)</value>
+  </data>
+  <data name="ToDoStatus25" xml:space="preserve">
+    <value>Complete “Shooting range” mission (shooting range; available after “Shootist” mission at Malibu club)</value>
+  </data>
+  <data name="ToDoStatus26" xml:space="preserve">
+    <value>Complete “Distribution” mission (Cherry popper; complete at least 50 transactions at a time)</value>
+  </data>
+  <data name="ToDoStatus27" xml:space="preserve">
+    <value>Spend $300 at the Pole position club</value>
+  </data>
+  <data name="ToDoStatus28" xml:space="preserve">
+    <value>Deliver all cars from the 1st list to Sunshine auto</value>
+  </data>
+  <data name="ToDoStatus29" xml:space="preserve">
+    <value>Deliver all cars from the 2nd list to Sunshine auto</value>
+  </data>
+  <data name="ToDoStatus30" xml:space="preserve">
+    <value>Deliver all cars from the 3rd list to Sunshine auto</value>
+  </data>
+  <data name="ToDoStatus31" xml:space="preserve">
+    <value>Deliver all cars from the 4th list to Sunshine auto</value>
+  </data>
+  <data name="ToDoStatus32" xml:space="preserve">
+    <value>Win race #1 at Sunshine Auto</value>
+  </data>
+  <data name="ToDoStatus33" xml:space="preserve">
+    <value>Win race #2 at Sunshine Auto</value>
+  </data>
+  <data name="ToDoStatus34" xml:space="preserve">
+    <value>Win race #3 at Sunshine Auto</value>
+  </data>
+  <data name="ToDoStatus35" xml:space="preserve">
+    <value>Win race #4 at Sunshine Auto</value>
+  </data>
+  <data name="ToDoStatus36" xml:space="preserve">
+    <value>Win race #5 at Sunshine Auto</value>
+  </data>
+  <data name="ToDoStatus37" xml:space="preserve">
+    <value>Win race #6 at Sunshine Auto</value>
+  </data>
+  <data name="ToDoStatus38" xml:space="preserve">
+    <value>Complete telephone missions (completed {0:S} from {1:S})</value>
+  </data>
+  <data name="ToDoStatus39" xml:space="preserve">
+    <value>Buy up all available property (purchased {0:S} from {1:S})</value>
+  </data>
+  <data name="ToDoStatus40" xml:space="preserve">
+    <value>Complete main plot missions</value>
+  </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>A tool for editing of GTA Vice city save files
+
+Warning! Tool is not completed yet and may cause unexpected effects in save files. If you got some, please, remind us about it. And backup your save files before using this tool</value>
+  </data>
+  <data name="bcgfile" xml:space="preserve">
+    <value>BExplorer car parks parameters file</value>
+  </data>
+  <data name="bfile" xml:space="preserve">
+    <value>GTA Vice city save file</value>
+  </data>
+  <data name="bgrfile" xml:space="preserve">
+    <value>BExplorer garages parameters file</value>
+  </data>
+  <data name="bstfile" xml:space="preserve">
+    <value>BExplorer stats file</value>
+  </data>
+  <data name="FileTab_RegisterButton" xml:space="preserve">
+    <value>Re&amp;gister file associations</value>
+  </data>
+  <data name="ViceCityToolsetForm_CollisionButton" xml:space="preserve">
+    <value>Convert model to collision script</value>
+  </data>
+  <data name="ViceCityToolsetForm_HandlingButton" xml:space="preserve">
+    <value>Edit transport parameters</value>
+  </data>
+  <data name="ViceCityToolsetForm_LanguageLabel" xml:space="preserve">
+    <value>Interface language:</value>
+  </data>
+  <data name="ViceCityToolsetForm_SavesButton" xml:space="preserve">
+    <value>Edit save file</value>
+  </data>
+  <data name="MakeCSTForm_OFLabel" xml:space="preserve">
+    <value>Input model file:</value>
+  </data>
+  <data name="MakeCSTForm_SFLabel" xml:space="preserve">
+    <value>Output collision script file:</value>
+  </data>
+  <data name="BExplorerForm" xml:space="preserve">
+    <value>editing save files</value>
+  </data>
+  <data name="MakeCSTForm" xml:space="preserve">
+    <value>converting models to CST</value>
+  </data>
+  <data name="MakeCST_CannotCreateFile" xml:space="preserve">
+    <value>Failed to write file “{0:S}”: location not writable</value>
+  </data>
+  <data name="MakeCST_FileNotFound" xml:space="preserve">
+    <value>File “{0:S}” doesn’t exist or unavailable</value>
+  </data>
+  <data name="MakeCST_Success" xml:space="preserve">
+    <value>Conversion completed successfully</value>
+  </data>
+  <data name="MakeCST_UnsupportedDFF" xml:space="preserve">
+    <value>File “{0:S}”: this DFF version is unsupported or model is empty</value>
+  </data>
+  <data name="MakeCST_UnsupportedQHull" xml:space="preserve">
+    <value>File “{0:S}”: this QHull version is unsupported or model is corrupted</value>
+  </data>
+  <data name="ViceCityToolsetForm_FBDialog" xml:space="preserve">
+    <value>Specify the directory with installed GTA Vice city</value>
+  </data>
+  <data name="MakeCSTForm_ConvertButton" xml:space="preserve">
+    <value>&amp;Begin conversion</value>
+  </data>
+</root>
