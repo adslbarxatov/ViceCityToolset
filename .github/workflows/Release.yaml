@@ -19,9 +19,9 @@ jobs:
       TAG: '4.0'
 
     steps:
-# Проверка состава репозитория (без анализа, как может показаться)
+# Проверка состава репозитория
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
   
 # Формирование релиза
       - name: Create release
@@ -30,9 +30,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag: v${{ env.TAG }}
-          name: ${{ env.PROJ }} v ${{ env.TAG }}
-          bodyFile: .release/Release.md
+          tag_name: v${{ env.TAG }}
+          release_name: ${{ env.PROJ }} v ${{ env.TAG }}
+          body_path: .release/Release.md
           draft: false
           prerelease: false
 
