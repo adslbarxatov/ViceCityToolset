@@ -16,7 +16,7 @@
 - [3. Resetting of potentially hazardous parameters](#resetting-of-potentially-hazardous-parameters)
 - [4. Editor library / API](#editor-library--api)
 
-- [Download links](https://adslbarxatov.github.io/DPArray#vicecitytoolset)
+- [Download links](https://adslbarxatov.github.io/DPArray#vice-city-toolset)
 - [Main page](https://adslbarxatov.github.io/ViceCityToolset)
 - [Русская версия](https://adslbarxatov.github.io/ViceCityToolset/saves_ru)
 

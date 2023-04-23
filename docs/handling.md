@@ -4,7 +4,7 @@
 ---
 
 - [General information](#general-information)
-- [Download links](https://adslbarxatov.github.io/DPArray#vicecitytoolset)
+- [Download links](https://adslbarxatov.github.io/DPArray#vice-city-toolset)
 - [Main page](https://adslbarxatov.github.io/ViceCityToolset)
 - [Русская версия](https://adslbarxatov.github.io/ViceCityToolset/handling_ru)
 

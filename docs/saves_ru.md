@@ -16,7 +16,7 @@
 - [3. Сброс потенциально опасных параметров](#section-11)
 - [4. Editor library / API](#editor-library--api)
 
-- [Ссылки для загрузки](https://adslbarxatov.github.io/DPArray/ru#vicecitytoolset)
+- [Ссылки для загрузки](https://adslbarxatov.github.io/DPArray/ru#vice-city-toolset)
 - [Основная страница](https://adslbarxatov.github.io/ViceCityToolset/ru)
 - [English version](https://adslbarxatov.github.io/ViceCityToolset)
 
