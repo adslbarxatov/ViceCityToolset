@@ -30,9 +30,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ env.TAG }}
-          release_name: ${{ env.PROJ }} v ${{ env.TAG }}
-          body_path: .release/Release.md
+          tag: v${{ env.TAG }}
+          name: ${{ env.PROJ }} v ${{ env.TAG }}
+          bodyFile: .release/Release.md
           draft: false
           prerelease: false
 
