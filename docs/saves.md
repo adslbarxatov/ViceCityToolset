@@ -1,9 +1,7 @@
 # Save files editor: user guide
 > **ƒ** &nbsp;RD AAOW FDL; 23.04.2023; 16:12
 
-
-
-## Page contents
+---
 
 - [General information](#general-information)
 - [1. Starting the app and loading files](#starting-the-app-and-loading-files)

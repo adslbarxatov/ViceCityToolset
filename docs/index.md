@@ -1,12 +1,9 @@
 # Vice city toolset: user guide
 > **ƒ** &nbsp;RD AAOW FDL; 23.04.2023; 16:39
 
-
-
-## Page contents
+---
 
 - [General information](#general-information)
-
 - [Download links](https://adslbarxatov.github.io/DPArray#vicecitytoolset)
 - [Русская версия](https://adslbarxatov.github.io/ViceCityToolset/ru)
 
