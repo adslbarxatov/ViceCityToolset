@@ -1,5 +1,10 @@
 Vice city toolset: changes log
 
+Version 4.1 (preparing):
+• App about form has been upgraded;
+• Links list for HypeHelp has been updated;
+• Fixed the updates downloader behavior in some rare conditions
+
 Version 4.0:
 • MakeCST and BExplorer projects have been merged into VCT app;
 • Added the ability to edit `handling.cfg` file (in progress now);
