@@ -923,4 +923,448 @@ Warning! Tool is not completed yet and may cause unexpected effects in save file
   <data name="MakeCSTForm_ConvertButton" xml:space="preserve">
     <value>&amp;Begin conversion</value>
   </data>
+  <data name="BikeTab" xml:space="preserve">
+    <value>Special for bikes</value>
+  </data>
+  <data name="Bike_bike_B_L" xml:space="preserve">
+    <value>Lean on forward movement:</value>
+  </data>
+  <data name="Bike_bike_C_L" xml:space="preserve">
+    <value>Force of forward lean:</value>
+  </data>
+  <data name="Bike_bike_D_L" xml:space="preserve">
+    <value>Lean on backward movement:</value>
+  </data>
+  <data name="Bike_bike_E_L" xml:space="preserve">
+    <value>Force of backward lean:</value>
+  </data>
+  <data name="Bike_bike_F_L" xml:space="preserve">
+    <value>Maximum lean:</value>
+  </data>
+  <data name="Bike_bike_G_L" xml:space="preserve">
+    <value>Lean of driver model:</value>
+  </data>
+  <data name="Bike_bike_H_L" xml:space="preserve">
+    <value>Deceleration lean:</value>
+  </data>
+  <data name="Bike_bike_I_L" xml:space="preserve">
+    <value>Speed steering:</value>
+  </data>
+  <data name="Bike_bike_J_L" xml:space="preserve">
+    <value>Slip steering:</value>
+  </data>
+  <data name="Bike_bike_K_L" xml:space="preserve">
+    <value>No player COM:</value>
+  </data>
+  <data name="Bike_bike_L_L" xml:space="preserve">
+    <value>Stoppie angle:</value>
+  </data>
+  <data name="Bike_bike_M_L" xml:space="preserve">
+    <value>Wheelie angle:</value>
+  </data>
+  <data name="Bike_bike_N_L" xml:space="preserve">
+    <value>Wheelie steering:</value>
+  </data>
+  <data name="Bike_bike_O_L" xml:space="preserve">
+    <value>Wheelie stabilization multiplier:</value>
+  </data>
+  <data name="Bike_bike_P_L" xml:space="preserve">
+    <value>Stoppie stabilization multiplier:</value>
+  </data>
+  <data name="BoatTab" xml:space="preserve">
+    <value>Special for boats</value>
+  </data>
+  <data name="Boat_boat_B_L" xml:space="preserve">
+    <value>Thrust (y):</value>
+  </data>
+  <data name="Boat_boat_C_L" xml:space="preserve">
+    <value>Thrust (z):</value>
+  </data>
+  <data name="Boat_boat_D_L" xml:space="preserve">
+    <value>Thrust app (z):</value>
+  </data>
+  <data name="Boat_boat_E_L" xml:space="preserve">
+    <value>Aqua plane force:</value>
+  </data>
+  <data name="Boat_boat_F_L" xml:space="preserve">
+    <value>Aqua plane limit:</value>
+  </data>
+  <data name="Boat_boat_G_L" xml:space="preserve">
+    <value>Aqua plane offset:</value>
+  </data>
+  <data name="Boat_boat_H_L" xml:space="preserve">
+    <value>Wave audio multiplier:</value>
+  </data>
+  <data name="Boat_boat_I_L" xml:space="preserve">
+    <value>Movement resistance (x):</value>
+  </data>
+  <data name="Boat_boat_J_L" xml:space="preserve">
+    <value>Movement resistance (y):</value>
+  </data>
+  <data name="Boat_boat_K_L" xml:space="preserve">
+    <value>Movement resistance (z):</value>
+  </data>
+  <data name="Boat_boat_L_L" xml:space="preserve">
+    <value>Turning resistance (x):</value>
+  </data>
+  <data name="Boat_boat_M_L" xml:space="preserve">
+    <value>Turning resistance (y):</value>
+  </data>
+  <data name="Boat_boat_N_L" xml:space="preserve">
+    <value>Turning resistance (z):</value>
+  </data>
+  <data name="Boat_boat_O_L" xml:space="preserve">
+    <value>Observation camera height:</value>
+  </data>
+  <data name="FlyingTab" xml:space="preserve">
+    <value>Special for helis and planes</value>
+  </data>
+  <data name="Flying_flying_B_L" xml:space="preserve">
+    <value>Thrust:</value>
+  </data>
+  <data name="Flying_flying_C_L" xml:space="preserve">
+    <value>Thrust fall off:</value>
+  </data>
+  <data name="Flying_flying_D_L" xml:space="preserve">
+    <value>Yaw value:</value>
+  </data>
+  <data name="Flying_flying_E_L" xml:space="preserve">
+    <value>Yaw stabilization:</value>
+  </data>
+  <data name="Flying_flying_F_L" xml:space="preserve">
+    <value>Side slip:</value>
+  </data>
+  <data name="Flying_flying_G_L" xml:space="preserve">
+    <value>Roll value:</value>
+  </data>
+  <data name="Flying_flying_H_L" xml:space="preserve">
+    <value>Roll stabilization:</value>
+  </data>
+  <data name="Flying_flying_I_L" xml:space="preserve">
+    <value>Pitch value:</value>
+  </data>
+  <data name="Flying_flying_J_L" xml:space="preserve">
+    <value>Pitch stabilization:</value>
+  </data>
+  <data name="Flying_flying_K_L" xml:space="preserve">
+    <value>Form lift:</value>
+  </data>
+  <data name="Flying_flying_L_L" xml:space="preserve">
+    <value>Attack lift:</value>
+  </data>
+  <data name="Flying_flying_M_L" xml:space="preserve">
+    <value>Move resistance:</value>
+  </data>
+  <data name="Flying_flying_N_L" xml:space="preserve">
+    <value>Turn resistance (x):</value>
+  </data>
+  <data name="Flying_flying_O_L" xml:space="preserve">
+    <value>Turn resistance (y):</value>
+  </data>
+  <data name="Flying_flying_P_L" xml:space="preserve">
+    <value>Turn resistance (z):</value>
+  </data>
+  <data name="Flying_flying_Q_L" xml:space="preserve">
+    <value>Speed resistance (x):</value>
+  </data>
+  <data name="Flying_flying_R_L" xml:space="preserve">
+    <value>Speed resistance (y):</value>
+  </data>
+  <data name="Flying_flying_S_L" xml:space="preserve">
+    <value>Speed resistance (z):</value>
+  </data>
+  <data name="Generic1Tab" xml:space="preserve">
+    <value>Generic parameters</value>
+  </data>
+  <data name="Generic1_AAAB_L" xml:space="preserve">
+    <value>Suspension limit:</value>
+  </data>
+  <data name="Generic1_AA_L" xml:space="preserve">
+    <value>maximum:</value>
+  </data>
+  <data name="Generic1_AB_L" xml:space="preserve">
+    <value>minimum:</value>
+  </data>
+  <data name="Generic1_AC_L" xml:space="preserve">
+    <value>Suspension bias between front and rear:</value>
+  </data>
+  <data name="Generic1_AD_L" xml:space="preserve">
+    <value>Suspension anti-dive multiplier:</value>
+  </data>
+  <data name="Generic1_AF_L" xml:space="preserve">
+    <value>Front lights:</value>
+  </data>
+  <data name="Generic1_AG_L" xml:space="preserve">
+    <value>Rear lights:</value>
+  </data>
+  <data name="Generic1_B_L" xml:space="preserve">
+    <value>Mass:</value>
+  </data>
+  <data name="Generic1_C_L" xml:space="preserve">
+    <value>Width:</value>
+  </data>
+  <data name="Generic1_D_L" xml:space="preserve">
+    <value>Length:</value>
+  </data>
+  <data name="Generic1_E_L" xml:space="preserve">
+    <value>Height:</value>
+  </data>
+  <data name="Generic1_FGH_L" xml:space="preserve">
+    <value>Centre of mass:</value>
+  </data>
+  <data name="Generic1_F_L" xml:space="preserve">
+    <value>x:</value>
+  </data>
+  <data name="Generic1_G_L" xml:space="preserve">
+    <value>y:</value>
+  </data>
+  <data name="Generic1_H_L" xml:space="preserve">
+    <value>z:</value>
+  </data>
+  <data name="Generic1_I_L" xml:space="preserve">
+    <value>Submerged, %:</value>
+  </data>
+  <data name="Generic1_J_L" xml:space="preserve">
+    <value>Traction multiplier:</value>
+  </data>
+  <data name="Generic1_K_L" xml:space="preserve">
+    <value>Traction loss:</value>
+  </data>
+  <data name="Generic1_L_L" xml:space="preserve">
+    <value>Traction bias:</value>
+  </data>
+  <data name="Generic1_M_L" xml:space="preserve">
+    <value>Number of gears:</value>
+  </data>
+  <data name="Generic1_N_L" xml:space="preserve">
+    <value>Max velocity:</value>
+  </data>
+  <data name="Generic1_O_L" xml:space="preserve">
+    <value>Engine acceleration:</value>
+  </data>
+  <data name="Generic1_P_L" xml:space="preserve">
+    <value>Drive type:</value>
+  </data>
+  <data name="Generic1_Q_L" xml:space="preserve">
+    <value>Engine type:</value>
+  </data>
+  <data name="Generic1_R_L" xml:space="preserve">
+    <value>Brake deceleration:</value>
+  </data>
+  <data name="Generic1_S_L" xml:space="preserve">
+    <value>Brake bias:</value>
+  </data>
+  <data name="Generic1_T_L" xml:space="preserve">
+    <value>ABS state:</value>
+  </data>
+  <data name="Generic1_U_L" xml:space="preserve">
+    <value>Steering lock:</value>
+  </data>
+  <data name="Generic1_V_L" xml:space="preserve">
+    <value>Suspension force level:</value>
+  </data>
+  <data name="Generic1_W_L" xml:space="preserve">
+    <value>Suspension damping level:</value>
+  </data>
+  <data name="Generic1_X_L" xml:space="preserve">
+    <value>Seat offset distance:</value>
+  </data>
+  <data name="Generic1_Y_L" xml:space="preserve">
+    <value>Collision damage multiplier:</value>
+  </data>
+  <data name="Generic1_Z_L" xml:space="preserve">
+    <value>Monetary value:</value>
+  </data>
+  <data name="Generic2Tab" xml:space="preserve">
+    <value>Flags</value>
+  </data>
+  <data name="Generic2_AE_1_1" xml:space="preserve">
+    <value>1G boost</value>
+  </data>
+  <data name="Generic2_AE_1_2" xml:space="preserve">
+    <value>2G boost</value>
+  </data>
+  <data name="Generic2_AE_1_3" xml:space="preserve">
+    <value>Reversed bonnet</value>
+  </data>
+  <data name="Generic2_AE_1_4_L" xml:space="preserve">
+    <value>Rear door type:</value>
+  </data>
+  <data name="Generic2_AE_2_L" xml:space="preserve">
+    <value>Doors type:</value>
+  </data>
+  <data name="Generic2_AE_3_1" xml:space="preserve">
+    <value>Double exhaust</value>
+  </data>
+  <data name="Generic2_AE_3_4" xml:space="preserve">
+    <value>Nonplayer stabilizer</value>
+  </data>
+  <data name="Generic2_AE_4_1" xml:space="preserve">
+    <value>Neutral handling</value>
+  </data>
+  <data name="Generic2_AE_4_2" xml:space="preserve">
+    <value>Has no roof</value>
+  </data>
+  <data name="Generic2_AE_4_3" xml:space="preserve">
+    <value>Big vehicle handling</value>
+  </data>
+  <data name="Generic2_AE_4_4" xml:space="preserve">
+    <value>Halogen lights</value>
+  </data>
+  <data name="Generic2_AE_5_L" xml:space="preserve">
+    <value>Transport type:</value>
+  </data>
+  <data name="Generic2_AE_6_1" xml:space="preserve">
+    <value>No exhaust</value>
+  </data>
+  <data name="Generic2_AE_6_2" xml:space="preserve">
+    <value>Rear wheels are first</value>
+  </data>
+  <data name="Generic2_AE_6_3" xml:space="preserve">
+    <value>Handbrake tyres</value>
+  </data>
+  <data name="Generic2_AE_6_4" xml:space="preserve">
+    <value>Sit in boats</value>
+  </data>
+  <data name="Generic2_AE_7_1" xml:space="preserve">
+    <value>Fat rear wheels</value>
+  </data>
+  <data name="Generic2_AE_7_2" xml:space="preserve">
+    <value>Narrow front wheels</value>
+  </data>
+  <data name="Generic2_AE_7_3" xml:space="preserve">
+    <value>Good in sand</value>
+  </data>
+  <data name="Generic2_AE_7_4" xml:space="preserve">
+    <value>Special for flyings</value>
+  </data>
+  <data name="HandlingForm_TransportID" xml:space="preserve">
+    <value>Transport ID:</value>
+  </data>
+  <data name="HandlingForm_TransportName" xml:space="preserve">
+    <value>Transport name:</value>
+  </data>
+  <data name="Generic1_AB_L_boat" xml:space="preserve">
+    <value>Handbrake drag multiplier:</value>
+  </data>
+  <data name="Generic1_AC_L_boat" xml:space="preserve">
+    <value>Sideslip force:</value>
+  </data>
+  <data name="Generic1_AF_V0" xml:space="preserve">
+    <value>long</value>
+  </data>
+  <data name="Generic1_AF_V1" xml:space="preserve">
+    <value>small</value>
+  </data>
+  <data name="Generic1_AF_V2" xml:space="preserve">
+    <value>big</value>
+  </data>
+  <data name="Generic1_AF_V3" xml:space="preserve">
+    <value>tall</value>
+  </data>
+  <data name="Generic1_J_L_boat" xml:space="preserve">
+    <value>Bank force multiplier:</value>
+  </data>
+  <data name="Generic1_K_L_boat" xml:space="preserve">
+    <value>Rudder turn force:</value>
+  </data>
+  <data name="Generic1_L_L_boat" xml:space="preserve">
+    <value>Speed steer falloff:</value>
+  </data>
+  <data name="Generic1_P_V0" xml:space="preserve">
+    <value>4 wheels drive</value>
+  </data>
+  <data name="Generic1_P_V1" xml:space="preserve">
+    <value>front wheels</value>
+  </data>
+  <data name="Generic1_P_V2" xml:space="preserve">
+    <value>rear wheels</value>
+  </data>
+  <data name="Generic1_Q_V0" xml:space="preserve">
+    <value>petrol</value>
+  </data>
+  <data name="Generic1_Q_V1" xml:space="preserve">
+    <value>diesel</value>
+  </data>
+  <data name="Generic1_Q_V2" xml:space="preserve">
+    <value>electric</value>
+  </data>
+  <data name="Generic1_R_L_boat" xml:space="preserve">
+    <value>Vertical wave hit limit:</value>
+  </data>
+  <data name="Generic1_S_L_boat" xml:space="preserve">
+    <value>Forward wave hit brake:</value>
+  </data>
+  <data name="Generic1_V_L_boat" xml:space="preserve">
+    <value>Water resistance volume:</value>
+  </data>
+  <data name="Generic1_W_L_boat" xml:space="preserve">
+    <value>Water damping multiplier:</value>
+  </data>
+  <data name="Generic2_AE14_V0" xml:space="preserve">
+    <value>default</value>
+  </data>
+  <data name="Generic2_AE14_V1" xml:space="preserve">
+    <value>hanging</value>
+  </data>
+  <data name="Generic2_AE14_V2" xml:space="preserve">
+    <value>tailgate</value>
+  </data>
+  <data name="Generic2_AE14_V3" xml:space="preserve">
+    <value>no swing</value>
+  </data>
+  <data name="Generic2_AE2_V0" xml:space="preserve">
+    <value>default</value>
+  </data>
+  <data name="Generic2_AE2_V1" xml:space="preserve">
+    <value>no doors</value>
+  </data>
+  <data name="Generic2_AE2_V2" xml:space="preserve">
+    <value>double rear doors</value>
+  </data>
+  <data name="Generic2_AE2_V3" xml:space="preserve">
+    <value>bus doors</value>
+  </data>
+  <data name="Generic2_AE2_V4" xml:space="preserve">
+    <value>sportcar doors</value>
+  </data>
+  <data name="Generic2_AE5_V0" xml:space="preserve">
+    <value>car</value>
+  </data>
+  <data name="Generic2_AE5_V1" xml:space="preserve">
+    <value>bike</value>
+  </data>
+  <data name="Generic2_AE5_V2" xml:space="preserve">
+    <value>heli</value>
+  </data>
+  <data name="Generic2_AE5_V3" xml:space="preserve">
+    <value>plane</value>
+  </data>
+  <data name="Generic2_AE5_V4" xml:space="preserve">
+    <value>boat</value>
+  </data>
+  <data name="HandlingForm_BrokenDescriptor" xml:space="preserve">
+    <value>One or more lines in the file “handling.cfg” have an invalid structure. Further work with the file is not possible</value>
+  </data>
+  <data name="HandlingForm_FileIsEmpty" xml:space="preserve">
+    <value>The “handling.cfg” file is missing basic vehicle descriptors. Further work with the file is not possible</value>
+  </data>
+  <data name="HandlingForm_FileUnavailable" xml:space="preserve">
+    <value>The file “handling.cfg” is not available for opening. Make sure the file is not in use by another application and try again</value>
+  </data>
+  <data name="HandlingForm_SaveFailure" xml:space="preserve">
+    <value>Failed to save file “handling.cfg”. Make sure the file is not in use by another application and try again</value>
+  </data>
+  <data name="HandlingForm_ExitMessage" xml:space="preserve">
+    <value>All unsaved changes will be lost! Exit the editor?</value>
+  </data>
+  <data name="HandlingForm_FailedToCreateBackup" xml:space="preserve">
+    <value>Failed to create backup for file “handling.cfg”. Make sure that game directory is writable and try again</value>
+  </data>
+  <data name="HandlingForm_SaveSuccess" xml:space="preserve">
+    <value>File “handling.cfg” was successfully updated</value>
+  </data>
+  <data name="HandlingForm" xml:space="preserve">
+    <value>editing vehicles handling</value>
+  </data>
 </root>

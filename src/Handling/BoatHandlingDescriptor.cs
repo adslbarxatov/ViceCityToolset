@@ -3,18 +3,34 @@
 	/// <summary>
 	/// Класс описывает специальный дескриптор моторной лодки
 	/// </summary>
-	public class BoatHandlingDescriptor:HandlingDescriptor
+	public class BoatHandlingDescriptor: HandlingDescriptor
 		{
+		// Переменные
+		private const uint expectedColumnsCount = 15;
+
+		/// <summary>
+		/// Строка заголовка таблицы данных дескриптора
+		/// </summary>
+		public static string TableHeader
+			{
+			get
+				{
+				return HandlingSupport.CreateHeader (expectedColumnsCount);
+				}
+			}
+
 		/// <summary>
 		/// Символ-признак дескриптора
 		/// </summary>
 		public const string IdentifyingSymbol = "%";
 
+		/*
 		/// <summary>
 		/// Строка заголовка таблицы данных дескриптора
 		/// </summary>
 		public const string TableHeader = "	A		B		C		D		E		F		G		H		I		J		" +
 			"K		L		M		N		O";
+		*/
 
 		/// <summary>
 		/// Конструктор. Загружает параметры транспортного средства из массива строк
@@ -23,7 +39,7 @@
 		public BoatHandlingDescriptor (string[] Values)
 			{
 			// Контроль массива
-			if ((Values.Length != 16) || (Values[0] != IdentifyingSymbol))
+			if ((Values.Length != expectedColumnsCount + 1) || (Values[0] != IdentifyingSymbol))
 				{
 				return;
 				}
@@ -33,20 +49,20 @@
 
 			try
 				{
-				ForwardThrust = float.Parse (Values[2], cie.NumberFormat);
-				UpwardThrust = float.Parse (Values[3], cie.NumberFormat);
-				d_ThrustAppZ = float.Parse (Values[4], cie.NumberFormat);
-				AquaPlaneForce = float.Parse (Values[5], cie.NumberFormat);
-				AquaPlaneLimit = float.Parse (Values[6], cie.NumberFormat);
-				AquaPlaneOffset = float.Parse (Values[7], cie.NumberFormat);
-				WavesLoudness = float.Parse (Values[8], cie.NumberFormat);
-				MoveXResistance = float.Parse (Values[9], cie.NumberFormat);
-				MoveYResistance = float.Parse (Values[10], cie.NumberFormat);
-				MoveZResistance = float.Parse (Values[11], cie.NumberFormat);
-				TurnXResistance = float.Parse (Values[12], cie.NumberFormat);
-				TurnYResistance = float.Parse (Values[13], cie.NumberFormat);
-				TurnZResistance = float.Parse (Values[14], cie.NumberFormat);
-				ViewCameraTopPosition = float.Parse (Values[15], cie.NumberFormat);
+				ForwardThrust = float.Parse (Values[2], nfi);
+				UpwardThrust = float.Parse (Values[3], nfi);
+				d_ThrustAppZ = float.Parse (Values[4], nfi);
+				AquaPlaneForce = float.Parse (Values[5], nfi);
+				AquaPlaneLimit = float.Parse (Values[6], nfi);
+				AquaPlaneOffset = float.Parse (Values[7], nfi);
+				WavesLoudness = float.Parse (Values[8], nfi);
+				MoveXResistance = float.Parse (Values[9], nfi);
+				MoveYResistance = float.Parse (Values[10], nfi);
+				MoveZResistance = float.Parse (Values[11], nfi);
+				TurnXResistance = float.Parse (Values[12], nfi);
+				TurnYResistance = float.Parse (Values[13], nfi);
+				TurnZResistance = float.Parse (Values[14], nfi);
+				ViewCameraTopPosition = float.Parse (Values[15], nfi);
 				}
 			catch
 				{
@@ -74,20 +90,20 @@
 
 			// Сборка
 			result = IdentifyingSymbol + " " + VehicleIdentifier.PadRight (8, ' ') + "\t";
-			result += (b_ForwardThrust.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (c_UpwardThrust.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (d_ThrustAppZ.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (e_AquaPlaneForce.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (f_AquaPlaneLimit.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (g_AquaPlaneOffset.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (h_WavesLoudness.ToString ("F1", cie.NumberFormat).PadLeft (4, ' ') + "\t");
-			result += (i_MoveXResistance.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (j_MoveYResistance.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (k_MoveZResistance.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (l_TurnXResistance.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (m_TurnYResistance.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (n_TurnZResistance.ToString ("F3", cie.NumberFormat) + "\t");
-			result += o_ViewCameraTopPosition.ToString ("F1", cie.NumberFormat);
+			result += (b_ForwardThrust.ToString ("F2", nfi) + "\t");
+			result += (c_UpwardThrust.ToString ("F2", nfi) + "\t");
+			result += (d_ThrustAppZ.ToString ("F2", nfi) + "\t");
+			result += (e_AquaPlaneForce.ToString ("F2", nfi) + "\t");
+			result += (f_AquaPlaneLimit.ToString ("F2", nfi) + "\t");
+			result += (g_AquaPlaneOffset.ToString ("F2", nfi) + "\t");
+			result += (h_WavesLoudness.ToString ("F1", nfi).PadLeft (4, ' ') + "\t");
+			result += (i_MoveXResistance.ToString ("F3", nfi) + "\t");
+			result += (j_MoveYResistance.ToString ("F3", nfi) + "\t");
+			result += (k_MoveZResistance.ToString ("F3", nfi) + "\t");
+			result += (l_TurnXResistance.ToString ("F3", nfi) + "\t");
+			result += (m_TurnYResistance.ToString ("F3", nfi) + "\t");
+			result += (n_TurnZResistance.ToString ("F3", nfi) + "\t");
+			result += o_ViewCameraTopPosition.ToString ("F1", nfi);
 
 			// Завершено
 			return result;
@@ -117,7 +133,7 @@
 				}
 			set
 				{
-				b_ForwardThrust = CheckRange (value, ForwardThrust_Min, ForwardThrust_Max);
+				b_ForwardThrust = HandlingSupport.CheckRange (value, ForwardThrust_Min, ForwardThrust_Max);
 				}
 			}
 		private float b_ForwardThrust = 0.7f;
@@ -145,7 +161,7 @@
 				}
 			set
 				{
-				c_UpwardThrust = CheckRange (value, UpwardThrust_Min, UpwardThrust_Max);
+				c_UpwardThrust = HandlingSupport.CheckRange (value, UpwardThrust_Min, UpwardThrust_Max);
 				}
 			}
 		private float c_UpwardThrust = 0.7f;
@@ -197,7 +213,7 @@
 				}
 			set
 				{
-				e_AquaPlaneForce = CheckRange (value, AquaPlaneForce_Min, AquaPlaneForce_Max);
+				e_AquaPlaneForce = HandlingSupport.CheckRange (value, AquaPlaneForce_Min, AquaPlaneForce_Max);
 				}
 			}
 		private float e_AquaPlaneForce = 7.0f;
@@ -225,7 +241,7 @@
 				}
 			set
 				{
-				f_AquaPlaneLimit = CheckRange (value, AquaPlaneLimit_Min, AquaPlaneLimit_Max);
+				f_AquaPlaneLimit = HandlingSupport.CheckRange (value, AquaPlaneLimit_Min, AquaPlaneLimit_Max);
 				}
 			}
 		private float f_AquaPlaneLimit = 0.7f;
@@ -253,7 +269,7 @@
 				}
 			set
 				{
-				g_AquaPlaneOffset = CheckRange (value, AquaPlaneOffset_Min, AquaPlaneOffset_Max);
+				g_AquaPlaneOffset = HandlingSupport.CheckRange (value, AquaPlaneOffset_Min, AquaPlaneOffset_Max);
 				}
 			}
 		private float g_AquaPlaneOffset = 0.0f;
@@ -281,7 +297,7 @@
 				}
 			set
 				{
-				h_WavesLoudness = CheckRange (value, WavesLoudness_Min, WavesLoudness_Max);
+				h_WavesLoudness = HandlingSupport.CheckRange (value, WavesLoudness_Min, WavesLoudness_Max);
 				}
 			}
 		private float h_WavesLoudness = 3.0f;
@@ -309,7 +325,7 @@
 				}
 			set
 				{
-				i_MoveXResistance = CheckRange (value, MoveXResistance_Min, MoveXResistance_Max);
+				i_MoveXResistance = HandlingSupport.CheckRange (value, MoveXResistance_Min, MoveXResistance_Max);
 				}
 			}
 		private float i_MoveXResistance = 0.8f;
@@ -337,7 +353,7 @@
 				}
 			set
 				{
-				j_MoveYResistance = CheckRange (value, MoveYResistance_Min, MoveYResistance_Max);
+				j_MoveYResistance = HandlingSupport.CheckRange (value, MoveYResistance_Min, MoveYResistance_Max);
 				}
 			}
 		private float j_MoveYResistance = 0.998f;
@@ -365,7 +381,7 @@
 				}
 			set
 				{
-				k_MoveZResistance = CheckRange (value, MoveZResistance_Min, MoveZResistance_Max);
+				k_MoveZResistance = HandlingSupport.CheckRange (value, MoveZResistance_Min, MoveZResistance_Max);
 				}
 			}
 		private float k_MoveZResistance = 0.995f;
@@ -393,7 +409,7 @@
 				}
 			set
 				{
-				l_TurnXResistance = CheckRange (value, TurnXResistance_Min, TurnXResistance_Max);
+				l_TurnXResistance = HandlingSupport.CheckRange (value, TurnXResistance_Min, TurnXResistance_Max);
 				}
 			}
 		private float l_TurnXResistance = 0.85f;
@@ -421,7 +437,7 @@
 				}
 			set
 				{
-				m_TurnYResistance = CheckRange (value, TurnYResistance_Min, TurnYResistance_Max);
+				m_TurnYResistance = HandlingSupport.CheckRange (value, TurnYResistance_Min, TurnYResistance_Max);
 				}
 			}
 		private float m_TurnYResistance = 0.96f;
@@ -449,7 +465,7 @@
 				}
 			set
 				{
-				n_TurnZResistance = CheckRange (value, TurnZResistance_Min, TurnZResistance_Max);
+				n_TurnZResistance = HandlingSupport.CheckRange (value, TurnZResistance_Min, TurnZResistance_Max);
 				}
 			}
 		private float n_TurnZResistance = 0.96f;
@@ -477,7 +493,8 @@
 				}
 			set
 				{
-				o_ViewCameraTopPosition = CheckRange (value, ViewCameraTopPosition_Min, ViewCameraTopPosition_Max);
+				o_ViewCameraTopPosition = HandlingSupport.CheckRange (value, ViewCameraTopPosition_Min,
+					ViewCameraTopPosition_Max);
 				}
 			}
 		private float o_ViewCameraTopPosition = 4.0f;

@@ -3,18 +3,34 @@
 	/// <summary>
 	/// Класс описывает специальный дескриптор мотоцикла
 	/// </summary>
-	public class BikeHandlingDescriptor:HandlingDescriptor
+	public class BikeHandlingDescriptor: HandlingDescriptor
 		{
+		// Переменные
+		private const uint expectedColumnsCount = 16;
+
+		/// <summary>
+		/// Строка заголовка таблицы данных дескриптора
+		/// </summary>
+		public static string TableHeader
+			{
+			get
+				{
+				return HandlingSupport.CreateHeader (expectedColumnsCount);
+				}
+			}
+
 		/// <summary>
 		/// Символ-признак дескриптора
 		/// </summary>
 		public const string IdentifyingSymbol = "!";
 
+		/*
 		/// <summary>
 		/// Строка заголовка таблицы данных дескриптора
 		/// </summary>
 		public const string TableHeader = "	A		B		C		D		E		F		G		H		I		J		" +
 			"K		L		M		N		O		P";
+		*/
 
 		/// <summary>
 		/// Конструктор. Загружает параметры транспортного средства из массива строк
@@ -23,31 +39,30 @@
 		public BikeHandlingDescriptor (string[] Values)
 			{
 			// Контроль массива
-			if ((Values.Length != 17) || (Values[0] != IdentifyingSymbol))
-				{
+			if ((Values.Length != expectedColumnsCount + 1) || (Values[0] != IdentifyingSymbol))
 				return;
-				}
 
 			// Загрузка параметров
 			a_VehicleIdentifier = Values[1];
+			/*NumberFormatInfo nfi = HandlingSupport.ValuesFormat;*/
 
 			try
 				{
-				ForwardLeaningCoM = float.Parse (Values[2], cie.NumberFormat);
-				ForwardLeaningForce = float.Parse (Values[3], cie.NumberFormat);
-				BackwardLeaningCoM = float.Parse (Values[4], cie.NumberFormat);
-				BackwardLeaningForce = float.Parse (Values[5], cie.NumberFormat);
-				MaxLeaningAngle = float.Parse (Values[6], cie.NumberFormat);
-				MaxDriverLeaningAngle = float.Parse (Values[7], cie.NumberFormat);
-				MaxDecelerationLeaningAngle = float.Parse (Values[8], cie.NumberFormat);
-				SteeringOnSpeed = float.Parse (Values[9], cie.NumberFormat);
-				CoMWithoutDriver = float.Parse (Values[10], cie.NumberFormat);
-				SteeringOnSlippery = float.Parse (Values[11], cie.NumberFormat);
-				StoppieAngle = float.Parse (Values[12], cie.NumberFormat);
-				WheelieAngle = float.Parse (Values[13], cie.NumberFormat);
-				WheelieStabilization = float.Parse (Values[14], cie.NumberFormat);
-				SteeringOnWheelie = float.Parse (Values[15], cie.NumberFormat);
-				StoppieStabilization = float.Parse (Values[16], cie.NumberFormat);
+				ForwardLeaningCoM = float.Parse (Values[2], nfi);
+				ForwardLeaningForce = float.Parse (Values[3], nfi);
+				BackwardLeaningCoM = float.Parse (Values[4], nfi);
+				BackwardLeaningForce = float.Parse (Values[5], nfi);
+				MaxLeaningAngle = float.Parse (Values[6], nfi);
+				MaxDriverLeaningAngle = float.Parse (Values[7], nfi);
+				MaxDecelerationLeaningAngle = float.Parse (Values[8], nfi);
+				SteeringOnSpeed = float.Parse (Values[9], nfi);
+				CoMWithoutDriver = float.Parse (Values[10], nfi);
+				SteeringOnSlippery = float.Parse (Values[11], nfi);
+				StoppieAngle = float.Parse (Values[12], nfi);
+				WheelieAngle = float.Parse (Values[13], nfi);
+				WheelieStabilization = float.Parse (Values[14], nfi);
+				SteeringOnWheelie = float.Parse (Values[15], nfi);
+				StoppieStabilization = float.Parse (Values[16], nfi);
 				}
 			catch
 				{
@@ -69,27 +84,26 @@
 
 			// Контроль инициализации
 			if (!isInited)
-				{
 				return result;
-				}
 
 			// Сборка
+			/*NumberFormatInfo nfi = HandlingSupport.ValuesFormat;*/
 			result = IdentifyingSymbol + " " + VehicleIdentifier.PadRight (8, ' ') + "\t";
-			result += (b_ForwardLeaningCoM.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (c_ForwardLeaningForce.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (d_BackwardLeaningCoM.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (e_BackwardLeaningForce.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (f_MaxLeaningAngle.ToString ("F1", cie.NumberFormat) + "\t");
-			result += (g_MaxDriverLeaningAngle.ToString ("F1", cie.NumberFormat) + "\t");
-			result += (h_MaxDecelerationLeaningAngle.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (i_SteeringOnSpeed.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (j_CoMWithoutDriver.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (k_SteeringOnSlippery.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (l_StoppieAngle.ToString ("F1", cie.NumberFormat) + "\t");
-			result += (m_WheelieAngle.ToString ("F1", cie.NumberFormat) + "\t");
-			result += (n_WheelieStabilization.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (o_SteeringOnWheelie.ToString ("F2", cie.NumberFormat) + "\t");
-			result += p_StoppieStabilization.ToString ("F2", cie.NumberFormat);
+			result += (b_ForwardLeaningCoM.ToString ("F2", nfi) + "\t");
+			result += (c_ForwardLeaningForce.ToString ("F3", nfi) + "\t");
+			result += (d_BackwardLeaningCoM.ToString ("F2", nfi) + "\t");
+			result += (e_BackwardLeaningForce.ToString ("F3", nfi) + "\t");
+			result += (f_MaxLeaningAngle.ToString ("F1", nfi) + "\t");
+			result += (g_MaxDriverLeaningAngle.ToString ("F1", nfi) + "\t");
+			result += (h_MaxDecelerationLeaningAngle.ToString ("F3", nfi) + "\t");
+			result += (i_SteeringOnSpeed.ToString ("F2", nfi) + "\t");
+			result += (j_CoMWithoutDriver.ToString ("F2", nfi) + "\t");
+			result += (k_SteeringOnSlippery.ToString ("F2", nfi) + "\t");
+			result += (l_StoppieAngle.ToString ("F1", nfi) + "\t");
+			result += (m_WheelieAngle.ToString ("F1", nfi) + "\t");
+			result += (n_WheelieStabilization.ToString ("F3", nfi) + "\t");
+			result += (o_SteeringOnWheelie.ToString ("F2", nfi) + "\t");
+			result += p_StoppieStabilization.ToString ("F2", nfi);
 
 			// Завершено
 			return result;
@@ -119,7 +133,7 @@
 				}
 			set
 				{
-				b_ForwardLeaningCoM = CheckRange (value, ForwardLeaningCoM_Min, ForwardLeaningCoM_Max);
+				b_ForwardLeaningCoM = HandlingSupport.CheckRange (value, ForwardLeaningCoM_Min, ForwardLeaningCoM_Max);
 				}
 			}
 		private float b_ForwardLeaningCoM = 0.3f;
@@ -147,7 +161,8 @@
 				}
 			set
 				{
-				c_ForwardLeaningForce = CheckRange (value, ForwardLeaningForce_Min, ForwardLeaningForce_Max);
+				c_ForwardLeaningForce = HandlingSupport.CheckRange (value, ForwardLeaningForce_Min,
+					ForwardLeaningForce_Max);
 				}
 			}
 		private float c_ForwardLeaningForce = 0.3f;
@@ -175,7 +190,8 @@
 				}
 			set
 				{
-				d_BackwardLeaningCoM = CheckRange (value, BackwardLeaningCoM_Min, BackwardLeaningCoM_Max);
+				d_BackwardLeaningCoM = HandlingSupport.CheckRange (value, BackwardLeaningCoM_Min,
+					BackwardLeaningCoM_Max);
 				}
 			}
 		private float d_BackwardLeaningCoM = 0.3f;
@@ -203,7 +219,8 @@
 				}
 			set
 				{
-				e_BackwardLeaningForce = CheckRange (value, BackwardLeaningForce_Min, BackwardLeaningForce_Max);
+				e_BackwardLeaningForce = HandlingSupport.CheckRange (value, BackwardLeaningForce_Min,
+					BackwardLeaningForce_Max);
 				}
 			}
 		private float e_BackwardLeaningForce = 0.3f;
@@ -231,7 +248,7 @@
 				}
 			set
 				{
-				f_MaxLeaningAngle = CheckRange (value, MaxLeaningAngle_Min, MaxLeaningAngle_Max);
+				f_MaxLeaningAngle = HandlingSupport.CheckRange (value, MaxLeaningAngle_Min, MaxLeaningAngle_Max);
 				}
 			}
 		private float f_MaxLeaningAngle = 40.0f;
@@ -259,7 +276,8 @@
 				}
 			set
 				{
-				g_MaxDriverLeaningAngle = CheckRange (value, MaxDriverLeaningAngle_Min, MaxDriverLeaningAngle_Max);
+				g_MaxDriverLeaningAngle = HandlingSupport.CheckRange (value, MaxDriverLeaningAngle_Min,
+					MaxDriverLeaningAngle_Max);
 				}
 			}
 		private float g_MaxDriverLeaningAngle = 35.0f;
@@ -287,7 +305,8 @@
 				}
 			set
 				{
-				h_MaxDecelerationLeaningAngle = CheckRange (value, MaxDecelerationLeaningAngle_Min, MaxDecelerationLeaningAngle_Max);
+				h_MaxDecelerationLeaningAngle = HandlingSupport.CheckRange (value, MaxDecelerationLeaningAngle_Min,
+					MaxDecelerationLeaningAngle_Max);
 				}
 			}
 		private float h_MaxDecelerationLeaningAngle = 0.9f;
@@ -315,7 +334,7 @@
 				}
 			set
 				{
-				i_SteeringOnSpeed = CheckRange (value, SteeringOnSpeed_Min, SteeringOnSpeed_Max);
+				i_SteeringOnSpeed = HandlingSupport.CheckRange (value, SteeringOnSpeed_Min, SteeringOnSpeed_Max);
 				}
 			}
 		private float i_SteeringOnSpeed = 0.7f;
@@ -343,7 +362,7 @@
 				}
 			set
 				{
-				j_CoMWithoutDriver = CheckRange (value, CoMWithoutDriver_Min, CoMWithoutDriver_Max);
+				j_CoMWithoutDriver = HandlingSupport.CheckRange (value, CoMWithoutDriver_Min, CoMWithoutDriver_Max);
 				}
 			}
 		private float j_CoMWithoutDriver = 0.7f;
@@ -371,7 +390,8 @@
 				}
 			set
 				{
-				k_SteeringOnSlippery = CheckRange (value, SteeringOnSlippery_Min, SteeringOnSlippery_Max);
+				k_SteeringOnSlippery = HandlingSupport.CheckRange (value, SteeringOnSlippery_Min,
+					SteeringOnSlippery_Max);
 				}
 			}
 		private float k_SteeringOnSlippery = 0.1f;
@@ -399,7 +419,7 @@
 				}
 			set
 				{
-				l_StoppieAngle = CheckRange (value, StoppieAngle_Min, StoppieAngle_Max);
+				l_StoppieAngle = HandlingSupport.CheckRange (value, StoppieAngle_Min, StoppieAngle_Max);
 				}
 			}
 		private float l_StoppieAngle = 35.0f;
@@ -427,7 +447,7 @@
 				}
 			set
 				{
-				m_WheelieAngle = CheckRange (value, WheelieAngle_Min, WheelieAngle_Max);
+				m_WheelieAngle = HandlingSupport.CheckRange (value, WheelieAngle_Min, WheelieAngle_Max);
 				}
 			}
 		private float m_WheelieAngle = -40.0f;
@@ -455,7 +475,8 @@
 				}
 			set
 				{
-				n_WheelieStabilization = CheckRange (value, WheelieStabilization_Min, WheelieStabilization_Max);
+				n_WheelieStabilization = HandlingSupport.CheckRange (value, WheelieStabilization_Min,
+					WheelieStabilization_Max);
 				}
 			}
 		private float n_WheelieStabilization = -0.007f;
@@ -483,7 +504,7 @@
 				}
 			set
 				{
-				o_SteeringOnWheelie = CheckRange (value, SteeringOnWheelie_Min, SteeringOnWheelie_Max);
+				o_SteeringOnWheelie = HandlingSupport.CheckRange (value, SteeringOnWheelie_Min, SteeringOnWheelie_Max);
 				}
 			}
 		private float o_SteeringOnWheelie = 0.7f;
@@ -511,7 +532,8 @@
 				}
 			set
 				{
-				p_StoppieStabilization = CheckRange (value, StoppieStabilization_Min, StoppieStabilization_Max);
+				p_StoppieStabilization = HandlingSupport.CheckRange (value, StoppieStabilization_Min,
+					StoppieStabilization_Max);
 				}
 			}
 		private float p_StoppieStabilization = 0.5f;

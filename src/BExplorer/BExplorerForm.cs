@@ -27,12 +27,11 @@ namespace RD_AAOW
 		/// <summary>
 		/// Метод инициализирует форму редактирования файлов сохранений
 		/// </summary>
-		public BExplorerForm (/*string SaveFile*/)
+		public BExplorerForm ()
 			{
 			// Инициализация формы
 			InitializeComponent ();
 
-			/*OFDialog.FileName = SaveFile;*/
 			Application.CurrentCulture = cie;
 			this.Text = ProgramDescription.AssemblyTitle + " – " + Localization.GetText (this.Name);
 
@@ -193,22 +192,9 @@ namespace RD_AAOW
 			SetState (false);   // Начальная блокировка
 
 			LocalizeForm ();
-			/*LanguageCombo.Items.AddRange (Localization.LanguagesNames);
-			try
-				{
-				LanguageCombo.SelectedIndex = (int)Localization.CurrentLanguage;
-				}
-			catch
-				{
-				LanguageCombo.SelectedIndex = 0;
-				}*/
 
 			loading = false;
 			RDGenerics.LoadWindowDimensions (this);
-
-			/* Загрузка файла, если он представлен
-			if (OFDialog.FileName != "")
-				OFDialog_FileOk (null, null);*/
 			}
 
 		// Выбор файла сохранения для загрузки
@@ -1306,15 +1292,9 @@ namespace RD_AAOW
 			PL_MWL.SelectedIndex = 0;
 			}
 
-		/*private void LanguageCombo_SelectedIndexChanged
-		(object sender, EventArgs e)*/
-
 		// Выбор языка интерфейса
 		private void LocalizeForm ()
 			{
-			/* Сохранение языка
-			Localization.CurrentLanguage = (SupportedLanguages)LanguageCombo.SelectedIndex;*/
-
 			// Настройка списков
 			string s;
 
@@ -1439,11 +1419,5 @@ namespace RD_AAOW
 			else
 				SaveInfoLabel.Text = Localization.GetText ("SaveNotSpecified");
 			}
-
-		/* Регистрация сопоставлений файлов
-		private void RegisterButton_Click (object sender, EventArgs e)
-			{
-			ProgramDescription.RegisterAppExtensions ();
-			}*/
 		}
 	}

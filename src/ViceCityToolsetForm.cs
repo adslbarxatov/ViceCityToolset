@@ -34,9 +34,6 @@ namespace RD_AAOW
 				{
 				LanguageCombo.SelectedIndex = 0;
 				}
-
-			/* ВРЕМЕННО */
-			HandlingButton.Enabled = false;
 			}
 
 		private void ViceCityToolsetForm_Load (object sender, EventArgs e)
@@ -98,11 +95,11 @@ namespace RD_AAOW
 
 		private void HandlingButton_Click (object sender, EventArgs e)
 			{
-			/*if (!CheckDirectories ())
+			if (!CheckDirectories ())
 				return;
 
 			HandlingForm hf = new HandlingForm ();
-			hf.Dispose ();*/
+			hf.Dispose ();
 			}
 
 		private void CollisionButton_Click (object sender, EventArgs e)

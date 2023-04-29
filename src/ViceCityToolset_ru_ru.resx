@@ -923,4 +923,448 @@
   <data name="MakeCSTForm_ConvertButton" xml:space="preserve">
     <value>&amp;Начать преобразование</value>
   </data>
+  <data name="BikeTab" xml:space="preserve">
+    <value>Спецификации для мотоциклов</value>
+  </data>
+  <data name="Bike_bike_B_L" xml:space="preserve">
+    <value>Смещение центра тяжести при наклоне вперёд:</value>
+  </data>
+  <data name="Bike_bike_C_L" xml:space="preserve">
+    <value>Сила наклона вперёд:</value>
+  </data>
+  <data name="Bike_bike_D_L" xml:space="preserve">
+    <value>Смещение центра тяжести при наклоне назад:</value>
+  </data>
+  <data name="Bike_bike_E_L" xml:space="preserve">
+    <value>Сила наклона назад:</value>
+  </data>
+  <data name="Bike_bike_F_L" xml:space="preserve">
+    <value>Максимальный угол наклона:</value>
+  </data>
+  <data name="Bike_bike_G_L" xml:space="preserve">
+    <value>Максимальный угол наклона водителя:</value>
+  </data>
+  <data name="Bike_bike_H_L" xml:space="preserve">
+    <value>Угол наклона при торможении:</value>
+  </data>
+  <data name="Bike_bike_I_L" xml:space="preserve">
+    <value>Показатель регулировки направления:</value>
+  </data>
+  <data name="Bike_bike_J_L" xml:space="preserve">
+    <value>Смещение центра тяжести без водителя:</value>
+  </data>
+  <data name="Bike_bike_K_L" xml:space="preserve">
+    <value>Показатель регулировки при скольжении:</value>
+  </data>
+  <data name="Bike_bike_L_L" xml:space="preserve">
+    <value>Угол наклона, необходимый для трюка stoppie:</value>
+  </data>
+  <data name="Bike_bike_M_L" xml:space="preserve">
+    <value>Угол наклона, необходимый для трюка wheelie:</value>
+  </data>
+  <data name="Bike_bike_N_L" xml:space="preserve">
+    <value>Показатель стабилизации при трюке wheelie:</value>
+  </data>
+  <data name="Bike_bike_O_L" xml:space="preserve">
+    <value>Показатель регулировки при трюке wheelie:</value>
+  </data>
+  <data name="Bike_bike_P_L" xml:space="preserve">
+    <value>Показатель стабилизации при трюке stoppie:</value>
+  </data>
+  <data name="BoatTab" xml:space="preserve">
+    <value>Спецификации для лодок</value>
+  </data>
+  <data name="Boat_boat_B_L" xml:space="preserve">
+    <value>Сила толчка при ускорении:</value>
+  </data>
+  <data name="Boat_boat_C_L" xml:space="preserve">
+    <value>Сила подпрыгивания над водой при ускорении:</value>
+  </data>
+  <data name="Boat_boat_D_L" xml:space="preserve">
+    <value>Параметр ThrustAppZ:</value>
+  </data>
+  <data name="Boat_boat_E_L" xml:space="preserve">
+    <value>Сила ускорения за счёт движения по волнам:</value>
+  </data>
+  <data name="Boat_boat_F_L" xml:space="preserve">
+    <value>Ограничение ускорения движения по волнам:</value>
+  </data>
+  <data name="Boat_boat_G_L" xml:space="preserve">
+    <value>Высота подъёма носа при движении по волнам:</value>
+  </data>
+  <data name="Boat_boat_H_L" xml:space="preserve">
+    <value>Громкость шума волн:</value>
+  </data>
+  <data name="Boat_boat_I_L" xml:space="preserve">
+    <value>Сопротивление боковому движению:</value>
+  </data>
+  <data name="Boat_boat_J_L" xml:space="preserve">
+    <value>Сопротивление движению вперёд и назад:</value>
+  </data>
+  <data name="Boat_boat_K_L" xml:space="preserve">
+    <value>Сопротивление вертикальному движению:</value>
+  </data>
+  <data name="Boat_boat_L_L" xml:space="preserve">
+    <value>Сопротивление перевороту вперёд и назад:</value>
+  </data>
+  <data name="Boat_boat_M_L" xml:space="preserve">
+    <value>Сопротивление перевороту влево и вправо:</value>
+  </data>
+  <data name="Boat_boat_N_L" xml:space="preserve">
+    <value>Сопротивление повороту налево и направо:</value>
+  </data>
+  <data name="Boat_boat_O_L" xml:space="preserve">
+    <value>Высота положения камеры обзора:</value>
+  </data>
+  <data name="FlyingTab" xml:space="preserve">
+    <value>Спецификации для летательных аппаратов</value>
+  </data>
+  <data name="Flying_flying_B_L" xml:space="preserve">
+    <value>Ускорение при инерционном полёте:</value>
+  </data>
+  <data name="Flying_flying_C_L" xml:space="preserve">
+    <value>Ускорение при контролируемом полёте:</value>
+  </data>
+  <data name="Flying_flying_D_L" xml:space="preserve">
+    <value>Сила поворота влево и вправо:</value>
+  </data>
+  <data name="Flying_flying_E_L" xml:space="preserve">
+    <value>Показатель стабилизации поворота влево и вправо:</value>
+  </data>
+  <data name="Flying_flying_F_L" xml:space="preserve">
+    <value>Потеря высоты при движении в одном направлении:</value>
+  </data>
+  <data name="Flying_flying_G_L" xml:space="preserve">
+    <value>Сила поворота вокруг оси:</value>
+  </data>
+  <data name="Flying_flying_H_L" xml:space="preserve">
+    <value>Показатель стабилизации поворота вокруг оси:</value>
+  </data>
+  <data name="Flying_flying_I_L" xml:space="preserve">
+    <value>Сила наклона носа вперёд и назад:</value>
+  </data>
+  <data name="Flying_flying_J_L" xml:space="preserve">
+    <value>Показатель стабилизации наклона носа:</value>
+  </data>
+  <data name="Flying_flying_K_L" xml:space="preserve">
+    <value>Множитель скорости, дающий набор высоты:</value>
+  </data>
+  <data name="Flying_flying_L_L" xml:space="preserve">
+    <value>Показатель влияния наклона носа на взлёт:</value>
+  </data>
+  <data name="Flying_flying_M_L" xml:space="preserve">
+    <value>Сопротивление движению:</value>
+  </data>
+  <data name="Flying_flying_N_L" xml:space="preserve">
+    <value>Сопротивление наклону вперёд и назад:</value>
+  </data>
+  <data name="Flying_flying_O_L" xml:space="preserve">
+    <value>Сопротивление наклону влево и вправо:</value>
+  </data>
+  <data name="Flying_flying_P_L" xml:space="preserve">
+    <value>Сопротивление повороту влево и вправо:</value>
+  </data>
+  <data name="Flying_flying_Q_L" xml:space="preserve">
+    <value>Сопротивление ускорению при движении влево и вправо:</value>
+  </data>
+  <data name="Flying_flying_R_L" xml:space="preserve">
+    <value>Сопротивление ускорению при движении вперёд и назад:</value>
+  </data>
+  <data name="Flying_flying_S_L" xml:space="preserve">
+    <value>Сопротивление ускорению при движении вверх и вниз:</value>
+  </data>
+  <data name="Generic1Tab" xml:space="preserve">
+    <value>Основные параметры</value>
+  </data>
+  <data name="Generic1_AAAB_L" xml:space="preserve">
+    <value>Высота подвески:</value>
+  </data>
+  <data name="Generic1_AA_L" xml:space="preserve">
+    <value>максимум:</value>
+  </data>
+  <data name="Generic1_AB_L" xml:space="preserve">
+    <value>минимум:</value>
+  </data>
+  <data name="Generic1_AC_L" xml:space="preserve">
+    <value>Распределение тормозного усилия между подвесками:</value>
+  </data>
+  <data name="Generic1_AD_L" xml:space="preserve">
+    <value>Сопротивление погружению:</value>
+  </data>
+  <data name="Generic1_AF_L" xml:space="preserve">
+    <value>Передние фары:</value>
+  </data>
+  <data name="Generic1_AG_L" xml:space="preserve">
+    <value>Задние фары:</value>
+  </data>
+  <data name="Generic1_B_L" xml:space="preserve">
+    <value>Масса:</value>
+  </data>
+  <data name="Generic1_C_L" xml:space="preserve">
+    <value>Ширина:</value>
+  </data>
+  <data name="Generic1_D_L" xml:space="preserve">
+    <value>Длина:</value>
+  </data>
+  <data name="Generic1_E_L" xml:space="preserve">
+    <value>Высота:</value>
+  </data>
+  <data name="Generic1_FGH_L" xml:space="preserve">
+    <value>Центр массы:</value>
+  </data>
+  <data name="Generic1_F_L" xml:space="preserve">
+    <value>по ширине:</value>
+  </data>
+  <data name="Generic1_G_L" xml:space="preserve">
+    <value>по длине:</value>
+  </data>
+  <data name="Generic1_H_L" xml:space="preserve">
+    <value>по высоте:</value>
+  </data>
+  <data name="Generic1_I_L" xml:space="preserve">
+    <value>Погружение в воду, %:</value>
+  </data>
+  <data name="Generic1_J_L" xml:space="preserve">
+    <value>Сцепление колёс с землёй:</value>
+  </data>
+  <data name="Generic1_K_L" xml:space="preserve">
+    <value>Сцепление при торможении:</value>
+  </data>
+  <data name="Generic1_L_L" xml:space="preserve">
+    <value>Потеря скорости на повороте:</value>
+  </data>
+  <data name="Generic1_M_L" xml:space="preserve">
+    <value>К-во передач:</value>
+  </data>
+  <data name="Generic1_N_L" xml:space="preserve">
+    <value>Максимальная скорость:</value>
+  </data>
+  <data name="Generic1_O_L" xml:space="preserve">
+    <value>Сила разгона двигателя:</value>
+  </data>
+  <data name="Generic1_P_L" xml:space="preserve">
+    <value>Тип привода:</value>
+  </data>
+  <data name="Generic1_Q_L" xml:space="preserve">
+    <value>Тип двигателя:</value>
+  </data>
+  <data name="Generic1_R_L" xml:space="preserve">
+    <value>Сила торможения:</value>
+  </data>
+  <data name="Generic1_S_L" xml:space="preserve">
+    <value>Смещение тормозного усилия:</value>
+  </data>
+  <data name="Generic1_T_L" xml:space="preserve">
+    <value>Состояние ABS:</value>
+  </data>
+  <data name="Generic1_U_L" xml:space="preserve">
+    <value>Поворот рулевого колеса:</value>
+  </data>
+  <data name="Generic1_V_L" xml:space="preserve">
+    <value>Сила прыжков на кочках:</value>
+  </data>
+  <data name="Generic1_W_L" xml:space="preserve">
+    <value>Стартовый/тормозной наклон:</value>
+  </data>
+  <data name="Generic1_X_L" xml:space="preserve">
+    <value>Дистанция от центра до двери:</value>
+  </data>
+  <data name="Generic1_Y_L" xml:space="preserve">
+    <value>Повреждения от ударов:</value>
+  </data>
+  <data name="Generic1_Z_L" xml:space="preserve">
+    <value>Стоимость:</value>
+  </data>
+  <data name="Generic2Tab" xml:space="preserve">
+    <value>Флаги</value>
+  </data>
+  <data name="Generic2_AE_1_1" xml:space="preserve">
+    <value>Ускорение вращения колёс на первой передаче</value>
+  </data>
+  <data name="Generic2_AE_1_2" xml:space="preserve">
+    <value>Ускорение вращения колёс на второй передаче</value>
+  </data>
+  <data name="Generic2_AE_1_3" xml:space="preserve">
+    <value>Капот открывается в противоположную сторону</value>
+  </data>
+  <data name="Generic2_AE_1_4_L" xml:space="preserve">
+    <value>Тип задних дверей:</value>
+  </data>
+  <data name="Generic2_AE_2_L" xml:space="preserve">
+    <value>Тип дверей:</value>
+  </data>
+  <data name="Generic2_AE_3_1" xml:space="preserve">
+    <value>Двойной выхлоп</value>
+  </data>
+  <data name="Generic2_AE_3_4" xml:space="preserve">
+    <value>NonPlayerStabilizer</value>
+  </data>
+  <data name="Generic2_AE_4_1" xml:space="preserve">
+    <value>Neutral handling</value>
+  </data>
+  <data name="Generic2_AE_4_2" xml:space="preserve">
+    <value>Нет крыши</value>
+  </data>
+  <data name="Generic2_AE_4_3" xml:space="preserve">
+    <value>Управление по типу грузовика</value>
+  </data>
+  <data name="Generic2_AE_4_4" xml:space="preserve">
+    <value>Галогеновые фары</value>
+  </data>
+  <data name="Generic2_AE_5_L" xml:space="preserve">
+    <value>Тип транспорта:</value>
+  </data>
+  <data name="Generic2_AE_6_1" xml:space="preserve">
+    <value>Нет выхлопа</value>
+  </data>
+  <data name="Generic2_AE_6_2" xml:space="preserve">
+    <value>Начальный разгон задних колёс</value>
+  </data>
+  <data name="Generic2_AE_6_3" xml:space="preserve">
+    <value>След от шин при ручном торможении</value>
+  </data>
+  <data name="Generic2_AE_6_4" xml:space="preserve">
+    <value>Сидячее место водителя в лодке</value>
+  </data>
+  <data name="Generic2_AE_7_1" xml:space="preserve">
+    <value>Утолщённые задние колёса</value>
+  </data>
+  <data name="Generic2_AE_7_2" xml:space="preserve">
+    <value>Более узкие передние колёса</value>
+  </data>
+  <data name="Generic2_AE_7_3" xml:space="preserve">
+    <value>Отсутствие пробуксовки на песке</value>
+  </data>
+  <data name="Generic2_AE_7_4" xml:space="preserve">
+    <value>Специальный флаг летательных аппаратов</value>
+  </data>
+  <data name="HandlingForm_TransportID" xml:space="preserve">
+    <value>ID транспорта:</value>
+  </data>
+  <data name="HandlingForm_TransportName" xml:space="preserve">
+    <value>Название транспорта:</value>
+  </data>
+  <data name="Generic1_AB_L_boat" xml:space="preserve">
+    <value>Сила торможения:</value>
+  </data>
+  <data name="Generic1_AC_L_boat" xml:space="preserve">
+    <value>Сила бокового смещения:</value>
+  </data>
+  <data name="Generic1_AF_V0" xml:space="preserve">
+    <value>длинные</value>
+  </data>
+  <data name="Generic1_AF_V1" xml:space="preserve">
+    <value>маленькие</value>
+  </data>
+  <data name="Generic1_AF_V2" xml:space="preserve">
+    <value>большие</value>
+  </data>
+  <data name="Generic1_AF_V3" xml:space="preserve">
+    <value>высокие</value>
+  </data>
+  <data name="Generic1_J_L_boat" xml:space="preserve">
+    <value>Наклон при повороте:</value>
+  </data>
+  <data name="Generic1_K_L_boat" xml:space="preserve">
+    <value>Сила поворота руля:</value>
+  </data>
+  <data name="Generic1_L_L_boat" xml:space="preserve">
+    <value>Потеря скорости на поворотах:</value>
+  </data>
+  <data name="Generic1_P_V0" xml:space="preserve">
+    <value>4 колеса</value>
+  </data>
+  <data name="Generic1_P_V1" xml:space="preserve">
+    <value>передние колёса</value>
+  </data>
+  <data name="Generic1_P_V2" xml:space="preserve">
+    <value>задние колёса</value>
+  </data>
+  <data name="Generic1_Q_V0" xml:space="preserve">
+    <value>бензиновый</value>
+  </data>
+  <data name="Generic1_Q_V1" xml:space="preserve">
+    <value>дизельный</value>
+  </data>
+  <data name="Generic1_Q_V2" xml:space="preserve">
+    <value>электрический</value>
+  </data>
+  <data name="Generic1_R_L_boat" xml:space="preserve">
+    <value>Сила удара волны:</value>
+  </data>
+  <data name="Generic1_S_L_boat" xml:space="preserve">
+    <value>Тормозящая сила волны:</value>
+  </data>
+  <data name="Generic1_V_L_boat" xml:space="preserve">
+    <value>Сопротивление воды:</value>
+  </data>
+  <data name="Generic1_W_L_boat" xml:space="preserve">
+    <value>Амортизация воды:</value>
+  </data>
+  <data name="Generic2_AE14_V0" xml:space="preserve">
+    <value>стандартный</value>
+  </data>
+  <data name="Generic2_AE14_V1" xml:space="preserve">
+    <value>дверь прикреплена к верху</value>
+  </data>
+  <data name="Generic2_AE14_V2" xml:space="preserve">
+    <value>дверь прикреплена к низу</value>
+  </data>
+  <data name="Generic2_AE14_V3" xml:space="preserve">
+    <value>дверь не открывается</value>
+  </data>
+  <data name="Generic2_AE2_V0" xml:space="preserve">
+    <value>стандартный</value>
+  </data>
+  <data name="Generic2_AE2_V1" xml:space="preserve">
+    <value>нет дверей</value>
+  </data>
+  <data name="Generic2_AE2_V2" xml:space="preserve">
+    <value>двойная дверь сзади</value>
+  </data>
+  <data name="Generic2_AE2_V3" xml:space="preserve">
+    <value>двери как у автобуса</value>
+  </data>
+  <data name="Generic2_AE2_V4" xml:space="preserve">
+    <value>двери как у спорткара</value>
+  </data>
+  <data name="Generic2_AE5_V0" xml:space="preserve">
+    <value>автомобиль</value>
+  </data>
+  <data name="Generic2_AE5_V1" xml:space="preserve">
+    <value>мотоцикл</value>
+  </data>
+  <data name="Generic2_AE5_V2" xml:space="preserve">
+    <value>вертолёт</value>
+  </data>
+  <data name="Generic2_AE5_V3" xml:space="preserve">
+    <value>самолёт</value>
+  </data>
+  <data name="Generic2_AE5_V4" xml:space="preserve">
+    <value>моторная лодка</value>
+  </data>
+  <data name="HandlingForm_BrokenDescriptor" xml:space="preserve">
+    <value>Одна или несколько строк в файле «handling.cfg» имеют некорректную структуру. Дальнейшая работа с файлом невозможна</value>
+  </data>
+  <data name="HandlingForm_FileIsEmpty" xml:space="preserve">
+    <value>В файле «handling.cfg» отсутствуют основные дескрипторы транспортных средств. Дальнейшая работа с файлом невозможна</value>
+  </data>
+  <data name="HandlingForm_FileUnavailable" xml:space="preserve">
+    <value>Файл «handling.cfg» недоступен для загрузки. Убедитесь, что файл не занят другой программой, и повторите попытку</value>
+  </data>
+  <data name="HandlingForm_SaveFailure" xml:space="preserve">
+    <value>Не удалось сохранить файл «handling.cfg». Убедитесь, что файл не занят другой программой и повторите попытку</value>
+  </data>
+  <data name="HandlingForm_ExitMessage" xml:space="preserve">
+    <value>Все несохранённые изменения будут утеряны! Завершить работу с редактором?</value>
+  </data>
+  <data name="HandlingForm_FailedToCreateBackup" xml:space="preserve">
+    <value>Не удалось создать резервную копию файла «handling.cfg». Убедитесь, что каталог игры доступен для записи, и повторите попытку</value>
+  </data>
+  <data name="HandlingForm_SaveSuccess" xml:space="preserve">
+    <value>Файл «handling.cfg» успешно обновлён</value>
+  </data>
+  <data name="HandlingForm" xml:space="preserve">
+    <value>редактирование управления транспортом</value>
+  </data>
 </root>

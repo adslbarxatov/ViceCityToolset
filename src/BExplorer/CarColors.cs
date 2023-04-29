@@ -10,6 +10,9 @@ namespace RD_AAOW
 	/// </summary>
 	public class CarColors
 		{
+		// Переменные
+		private string colorsFile = ViceCityToolsetProgram.GTAVCDirectory + "\\data\\carcols.dat";
+
 		/// <summary>
 		/// Возвращает список полученных цветов
 		/// </summary>
@@ -29,7 +32,6 @@ namespace RD_AAOW
 		public CarColors (out int Error)
 			{
 			// Попытка открытия файла
-			string colorsFile = ViceCityToolsetProgram.GTAVCDirectory + "\\data\\carcols.dat";
 			FileStream FS = null;
 			try
 				{
@@ -37,32 +39,11 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				/* Запрос имени файла
-				OpenFileDialog ofd = new OpenFileDialog ();
-				ofd.Filter = string.Format (Localization.GetText ("CarColorsFilter"), ColorsFile);
-				ofd.Title = string.Format (Localization.GetText ("CarColorsTitle"), ColorsFile);
-				if (ofd.ShowDialog () != DialogResult.OK)
-					{
-					Error = -1;
-					return;
-					}
-
-				CarColorsPath = ofd.FileName;
-				ofd.Dispose ();
-
-				// Повторная попытка
-				try
-					{
-					FS = new FileStream (CarColorsPath, FileMode.Open);
-					}
-				catch
-					{*/
 				RDGenerics.MessageBox (RDMessageTypes.Warning,
 					string.Format (Localization.GetText ("CarColorsFileUnavailable"), colorsFile));
 				Error = -1;
 				return;
 				}
-			/*}*/
 			StreamReader SR = new StreamReader (FS);
 
 			// Загрузка цветовой схемы
@@ -92,29 +73,5 @@ namespace RD_AAOW
 			FS.Close ();
 			Error = 0;
 			}
-
-		/*
-		/// <summary>
-		/// Возвращает или задаёт путь к файлу цветов авто
-		/// </summary>
-		private static string CarColorsPath
-			{
-			// Запрос
-			get
-				{
-				if (string.IsNullOrWhiteSpace (carColorsPath))
-					carColorsPath = RDGenerics.GetAppSettingsValue ("CarColorsPath");
-
-				return carColorsPath;
-				}
-
-			// Установка
-			set
-				{
-				carColorsPath = value;
-				RDGenerics.SetAppSettingsValue ("CarColorsPath", value);
-				}
-			}
-		private static string carColorsPath;*/
 		}
 	}

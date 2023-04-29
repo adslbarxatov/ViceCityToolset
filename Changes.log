@@ -1,6 +1,7 @@
 Vice city toolset: changes log
 
-Version 4.1 (preparing):
+Version 4.1:
+• Vehicles handling editor is now available;
 • App about form has been upgraded;
 • Links list for HypeHelp has been updated;
 • Fixed the updates downloader behavior in some rare conditions

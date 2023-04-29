@@ -1,16 +1,31 @@
-﻿namespace RD_AAOW
+﻿using System.Globalization;
+
+namespace RD_AAOW
 	{
 	/// <summary>
 	/// Класс описывает основной дескриптор транспортного средства
 	/// </summary>
-	public class GenericHandlingDescriptor:HandlingDescriptor
+	public class GenericHandlingDescriptor: HandlingDescriptor
 		{
+		// Переменные
+		private const uint expectedColumnsCount = 26 + 7;
+
 		/// <summary>
 		/// Строка заголовка таблицы данных дескриптора
 		/// </summary>
+		public static string TableHeader
+			{
+			get
+				{
+				return HandlingSupport.CreateHeader (expectedColumnsCount);
+				}
+			}
+
+		/*
 		public const string TableHeader = "	A			B		C		D		E		F		G		H		I	J		" +
 			"K		L		M	N		O		P	Q	R		S		T	U		V		W		" +
 			"X		Y			Z		AA		AB		AC		AD			AE		AF	AG";
+		*/
 
 		/// <summary>
 		/// Конструктор. Загружает параметры транспортного средства из массива строк
@@ -19,10 +34,8 @@
 		public GenericHandlingDescriptor (string[] Values)
 			{
 			// Контроль массива
-			if (Values.Length != 33)
-				{
+			if (Values.Length != expectedColumnsCount)
 				return;
-				}
 
 			// Загрузка параметров. Часть параметров записывается в поля напрямую.
 			// Другая часть намеренно проводится через обработки, установленные в
@@ -30,22 +43,23 @@
 
 			// Далее следуют параметры, не зависящие от типа транспортного средства
 			a_VehicleIdentifier = Values[0];
+			/*NumberFormatInfo nfi = HandlingSupport.ValuesFormat;*/
 
 			try
 				{
-				VehicleMass = float.Parse (Values[1], cie.NumberFormat);	// b_
-				XDimension = float.Parse (Values[2], cie.NumberFormat);		// c_
-				YDimension = float.Parse (Values[3], cie.NumberFormat);
-				ZDimension = float.Parse (Values[4], cie.NumberFormat);
-				XCentreOfMass = float.Parse (Values[5], cie.NumberFormat);	// f_
-				YCentreOfMass = float.Parse (Values[6], cie.NumberFormat);
-				ZCentreOfMass = float.Parse (Values[7], cie.NumberFormat);
-				PercentSubmerged = int.Parse (Values[8]);					// i_
-				NumberOfGears = uint.Parse (Values[12]);					// m_
-				MaxVelocity = float.Parse (Values[13], cie.NumberFormat);
-				EngineAcceleration = float.Parse (Values[14], cie.NumberFormat);
+				VehicleMass = float.Parse (Values[1], nfi);     // b_
+				XDimension = float.Parse (Values[2], nfi);      // c_
+				YDimension = float.Parse (Values[3], nfi);
+				ZDimension = float.Parse (Values[4], nfi);
+				XCentreOfMass = float.Parse (Values[5], nfi);   // f_
+				YCentreOfMass = float.Parse (Values[6], nfi);
+				ZCentreOfMass = float.Parse (Values[7], nfi);
+				PercentSubmerged = int.Parse (Values[8]);       // i_
+				NumberOfGears = uint.Parse (Values[12]);        // m_
+				MaxVelocity = float.Parse (Values[13], nfi);
+				EngineAcceleration = float.Parse (Values[14], nfi);
 
-				switch (Values[15])											// p_
+				switch (Values[15])                             // p_
 					{
 					case "R":
 					case "r":
@@ -65,7 +79,7 @@
 						return;
 					}
 
-				switch (Values[16])											// q_
+				switch (Values[16])                             // q_
 					{
 					case "P":
 					case "p":
@@ -86,25 +100,21 @@
 						return;
 					}
 
-				t_ABS = uint.Parse (Values[19]);							// t_
-				SteeringLock = float.Parse (Values[20], cie.NumberFormat);
-				SeatOffsetDistance = float.Parse (Values[23], cie.NumberFormat);	// x_
-				CollisionDamageMultiplier = float.Parse (Values[24], cie.NumberFormat);
+				t_ABS = uint.Parse (Values[19]);                        // t_
+				SteeringLock = float.Parse (Values[20], nfi);
+				SeatOffsetDistance = float.Parse (Values[23], nfi);     // x_
+				CollisionDamageMultiplier = float.Parse (Values[24], nfi);
 				MonetaryValue = uint.Parse (Values[25]);
-				SuspensionUpperLimit = float.Parse (Values[26], cie.NumberFormat);
-				SuspensionAntiDiveMultiplier = float.Parse (Values[29], cie.NumberFormat);	// ad_
+				SuspensionUpperLimit = float.Parse (Values[26], nfi);
+				SuspensionAntiDiveMultiplier = float.Parse (Values[29], nfi);   // ad_
 
 				af_FrontLights = (LightsTypes)int.Parse (Values[31]);
 				if (((int)af_FrontLights < 0) || ((int)af_FrontLights > 3))
-					{
 					return;
-					}
 
 				ag_RearLights = (LightsTypes)int.Parse (Values[32]);
 				if (((int)ag_RearLights < 0) || ((int)ag_RearLights > 3))
-					{
 					return;
-					}
 				}
 			catch
 				{
@@ -115,7 +125,7 @@
 			uint flags = 0;
 			try
 				{
-				flags = uint.Parse (Values[30], System.Globalization.NumberStyles.AllowHexSpecifier);
+				flags = uint.Parse (Values[30], NumberStyles.AllowHexSpecifier);
 				}
 			catch
 				{
@@ -178,27 +188,27 @@
 				{
 				if (VehicleType != VehicleTypes.Boat)
 					{
-					TractionMultiplier = float.Parse (Values[9], cie.NumberFormat);	// j_
-					TractionLoss = float.Parse (Values[10], cie.NumberFormat);
-					TractionBias = float.Parse (Values[11], cie.NumberFormat);
-					BrakeDeceleration = float.Parse (Values[17], cie.NumberFormat);	// r_
-					BrakeBias = float.Parse (Values[18], cie.NumberFormat);
-					SuspensionForceLevel = float.Parse (Values[21], cie.NumberFormat);	// v_
-					SuspensionDampingLevel = float.Parse (Values[22], cie.NumberFormat);
-					SuspensionLowerLimit = float.Parse (Values[27], cie.NumberFormat);	// ab_
-					SuspensionBias = float.Parse (Values[28], cie.NumberFormat);
+					TractionMultiplier = float.Parse (Values[9], nfi);          // j_
+					TractionLoss = float.Parse (Values[10], nfi);
+					TractionBias = float.Parse (Values[11], nfi);
+					BrakeDeceleration = float.Parse (Values[17], nfi);          // r_
+					BrakeBias = float.Parse (Values[18], nfi);
+					SuspensionForceLevel = float.Parse (Values[21], nfi);       // v_
+					SuspensionDampingLevel = float.Parse (Values[22], nfi);
+					SuspensionLowerLimit = float.Parse (Values[27], nfi);       // ab_
+					SuspensionBias = float.Parse (Values[28], nfi);
 					}
 				else
 					{
-					BankForceMultiplier = float.Parse (Values[9], cie.NumberFormat);	// j_
-					RudderTurnForce = float.Parse (Values[10], cie.NumberFormat);
-					SpeedSteerFalloff = float.Parse (Values[11], cie.NumberFormat);
-					VerticalWaveHitLimit = float.Parse (Values[17], cie.NumberFormat);	// r_
-					ForwardWaveHitBrake = float.Parse (Values[18], cie.NumberFormat);
-					WaterResistanceMultiplier = float.Parse (Values[21], cie.NumberFormat);	// v_
-					WaterDampingMultiplier = float.Parse (Values[22], cie.NumberFormat);
-					HandbrakeDragMultiplier = float.Parse (Values[27], cie.NumberFormat);	// ab_
-					SideslipForce = float.Parse (Values[28], cie.NumberFormat);
+					BankForceMultiplier = float.Parse (Values[9], nfi);         // j_
+					RudderTurnForce = float.Parse (Values[10], nfi);
+					SpeedSteerFalloff = float.Parse (Values[11], nfi);
+					VerticalWaveHitLimit = float.Parse (Values[17], nfi);       // r_
+					ForwardWaveHitBrake = float.Parse (Values[18], nfi);
+					WaterResistanceMultiplier = float.Parse (Values[21], nfi);  // v_
+					WaterDampingMultiplier = float.Parse (Values[22], nfi);
+					HandbrakeDragMultiplier = float.Parse (Values[27], nfi);    // ab_
+					SideslipForce = float.Parse (Values[28], nfi);
 					}
 				}
 			catch
@@ -221,26 +231,25 @@
 
 			// Контроль инициализации
 			if (!isInited)
-				{
 				return result;
-				}
 
 			// Сборка
+			/*NumberFormatInfo nfi = HandlingSupport.ValuesFormat;*/
 			result = VehicleIdentifier.PadRight (8, ' ') + "\t";
-			result += (b_VehicleMass.ToString ("F1", cie.NumberFormat).PadLeft (8, ' ') + "\t");
-			result += (c_XDimension.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (d_YDimension.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (e_ZDimension.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (f_XCentreOfMass.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (g_YCentreOfMass.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (h_ZCentreOfMass.ToString ("F2", cie.NumberFormat) + "\t");
+			result += (b_VehicleMass.ToString ("F1", nfi).PadLeft (8, ' ') + "\t");
+			result += (c_XDimension.ToString ("F2", nfi) + "\t");
+			result += (d_YDimension.ToString ("F2", nfi) + "\t");
+			result += (e_ZDimension.ToString ("F2", nfi) + "\t");
+			result += (f_XCentreOfMass.ToString ("F2", nfi) + "\t");
+			result += (g_YCentreOfMass.ToString ("F2", nfi) + "\t");
+			result += (h_ZCentreOfMass.ToString ("F2", nfi) + "\t");
 			result += (i_PercentSubmerged.ToString () + "\t");
-			result += (j_TractionMultiplier.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (k_TractionLoss.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (l_TractionBias.ToString ("F2", cie.NumberFormat) + "\t");
+			result += (j_TractionMultiplier.ToString ("F2", nfi) + "\t");
+			result += (k_TractionLoss.ToString ("F2", nfi) + "\t");
+			result += (l_TractionBias.ToString ("F2", nfi) + "\t");
 			result += (m_NumberOfGears.ToString () + "\t");
-			result += (n_MaxVelocity.ToString ("F1", cie.NumberFormat) + "\t");
-			result += (o_EngineAcceleration.ToString ("F1", cie.NumberFormat).PadLeft (4, ' ') + "\t");
+			result += (n_MaxVelocity.ToString ("F1", nfi) + "\t");
+			result += (o_EngineAcceleration.ToString ("F1", nfi).PadLeft (4, ' ') + "\t");
 
 			switch (p_DriveType)
 				{
@@ -272,19 +281,19 @@
 					break;
 				}
 
-			result += (r_BrakeDeceleration.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (s_BrakeBias.ToString ("F2", cie.NumberFormat) + "\t");
+			result += (r_BrakeDeceleration.ToString ("F2", nfi) + "\t");
+			result += (s_BrakeBias.ToString ("F2", nfi) + "\t");
 			result += (t_ABS.ToString () + "\t");
-			result += (u_SteeringLock.ToString ("F1", cie.NumberFormat) + "\t");
-			result += (v_SuspensionForceLevel.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (w_SuspensionDampingLevel.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (x_SeatOffsetDistance.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (y_CollisionDamageMultiplier.ToString ("F2", cie.NumberFormat) + "\t");
+			result += (u_SteeringLock.ToString ("F1", nfi) + "\t");
+			result += (v_SuspensionForceLevel.ToString ("F2", nfi) + "\t");
+			result += (w_SuspensionDampingLevel.ToString ("F2", nfi) + "\t");
+			result += (x_SeatOffsetDistance.ToString ("F2", nfi) + "\t");
+			result += (y_CollisionDamageMultiplier.ToString ("F2", nfi) + "\t");
 			result += (z_MonetaryValue.ToString ().PadLeft (8, ' ') + "\t");
-			result += (aa_SuspensionUpperLimit.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (ab_SuspensionLowerLimit.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (ac_SuspensionBias.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (ad_SuspensionAntiDiveMultiplier.ToString ("F2", cie.NumberFormat) + "\t");
+			result += (aa_SuspensionUpperLimit.ToString ("F2", nfi) + "\t");
+			result += (ab_SuspensionLowerLimit.ToString ("F2", nfi) + "\t");
+			result += (ac_SuspensionBias.ToString ("F2", nfi) + "\t");
+			result += (ad_SuspensionAntiDiveMultiplier.ToString ("F2", nfi) + "\t");
 
 			uint flags = (ae1_FirstGearBoost ? 0x1u : 0u) |
 				(ae1_SecondGearBoost ? 0x2u : 0u) |
@@ -341,7 +350,7 @@
 				}
 			set
 				{
-				b_VehicleMass = CheckRange (value, VehicleMass_Min, VehicleMass_Max);
+				b_VehicleMass = HandlingSupport.CheckRange (value, VehicleMass_Min, VehicleMass_Max);
 				}
 			}
 		private float b_VehicleMass = 1000.0f;
@@ -370,7 +379,7 @@
 				}
 			set
 				{
-				c_XDimension = CheckRange (value, XDimension_Min, XDimension_Max);
+				c_XDimension = HandlingSupport.CheckRange (value, XDimension_Min, XDimension_Max);
 				}
 			}
 		private float c_XDimension = 1.0f;
@@ -399,7 +408,7 @@
 				}
 			set
 				{
-				d_YDimension = CheckRange (value, YDimension_Min, YDimension_Max);
+				d_YDimension = HandlingSupport.CheckRange (value, YDimension_Min, YDimension_Max);
 				}
 			}
 		private float d_YDimension = 2.0f;
@@ -428,7 +437,7 @@
 				}
 			set
 				{
-				e_ZDimension = CheckRange (value, ZDimension_Min, ZDimension_Max);
+				e_ZDimension = HandlingSupport.CheckRange (value, ZDimension_Min, ZDimension_Max);
 				}
 			}
 		private float e_ZDimension = 1.0f;
@@ -457,7 +466,7 @@
 				}
 			set
 				{
-				f_XCentreOfMass = CheckRange (value, XCentreOfMass_Min, XCentreOfMass_Max);
+				f_XCentreOfMass = HandlingSupport.CheckRange (value, XCentreOfMass_Min, XCentreOfMass_Max);
 				}
 			}
 		private float f_XCentreOfMass = 0.0f;
@@ -486,7 +495,7 @@
 				}
 			set
 				{
-				g_YCentreOfMass = CheckRange (value, YCentreOfMass_Min, YCentreOfMass_Max);
+				g_YCentreOfMass = HandlingSupport.CheckRange (value, YCentreOfMass_Min, YCentreOfMass_Max);
 				}
 			}
 		private float g_YCentreOfMass = 0.0f;
@@ -515,7 +524,7 @@
 				}
 			set
 				{
-				h_ZCentreOfMass = CheckRange (value, ZCentreOfMass_Min, ZCentreOfMass_Max);
+				h_ZCentreOfMass = HandlingSupport.CheckRange (value, ZCentreOfMass_Min, ZCentreOfMass_Max);
 				}
 			}
 		private float h_ZCentreOfMass = 0.0f;
@@ -544,7 +553,7 @@
 				}
 			set
 				{
-				i_PercentSubmerged = CheckRange (value, PercentSubmerged_Min, PercentSubmerged_Max);
+				i_PercentSubmerged = HandlingSupport.CheckRange (value, PercentSubmerged_Min, PercentSubmerged_Max);
 				}
 			}
 		private int i_PercentSubmerged = 80;
@@ -583,7 +592,7 @@
 				}
 			set
 				{
-				j_TractionMultiplier = CheckRange (value, TractionMultiplier_Min, TractionMultiplier_Max);
+				j_TractionMultiplier = HandlingSupport.CheckRange (value, TractionMultiplier_Min, TractionMultiplier_Max);
 				}
 			}
 
@@ -598,7 +607,7 @@
 				}
 			set
 				{
-				j_TractionMultiplier = CheckRange (value, BankForceMultiplier_Min, BankForceMultiplier_Max);
+				j_TractionMultiplier = HandlingSupport.CheckRange (value, BankForceMultiplier_Min, BankForceMultiplier_Max);
 				}
 			}
 		private float j_TractionMultiplier = 1.0f;
@@ -636,7 +645,7 @@
 				}
 			set
 				{
-				k_TractionLoss = CheckRange (value, TractionLoss_Min, TractionLoss_Max);
+				k_TractionLoss = HandlingSupport.CheckRange (value, TractionLoss_Min, TractionLoss_Max);
 				}
 			}
 
@@ -651,7 +660,7 @@
 				}
 			set
 				{
-				k_TractionLoss = CheckRange (value, RudderTurnForce_Min, RudderTurnForce_Max);
+				k_TractionLoss = HandlingSupport.CheckRange (value, RudderTurnForce_Min, RudderTurnForce_Max);
 				}
 			}
 		private float k_TractionLoss = 0.8f;
@@ -690,7 +699,7 @@
 				}
 			set
 				{
-				l_TractionBias = CheckRange (value, TractionBias_Min, TractionBias_Max);
+				l_TractionBias = HandlingSupport.CheckRange (value, TractionBias_Min, TractionBias_Max);
 				}
 			}
 
@@ -705,7 +714,7 @@
 				}
 			set
 				{
-				l_TractionBias = CheckRange (value, SpeedSteerFalloff_Min, SpeedSteerFalloff_Max);
+				l_TractionBias = HandlingSupport.CheckRange (value, SpeedSteerFalloff_Min, SpeedSteerFalloff_Max);
 				}
 			}
 		private float l_TractionBias = 0.5f;
@@ -734,7 +743,7 @@
 				}
 			set
 				{
-				m_NumberOfGears = CheckRange (value, NumberOfGears_Min, NumberOfGears_Max);
+				m_NumberOfGears = HandlingSupport.CheckRange (value, NumberOfGears_Min, NumberOfGears_Max);
 				}
 			}
 		private uint m_NumberOfGears = 4;
@@ -762,7 +771,7 @@
 				}
 			set
 				{
-				n_MaxVelocity = CheckRange (value, MaxVelocity_Min, MaxVelocity_Max);
+				n_MaxVelocity = HandlingSupport.CheckRange (value, MaxVelocity_Min, MaxVelocity_Max);
 				}
 			}
 		private float n_MaxVelocity = 200.0f;
@@ -790,7 +799,7 @@
 				}
 			set
 				{
-				o_EngineAcceleration = CheckRange (value, EngineAcceleration_Min, EngineAcceleration_Max);
+				o_EngineAcceleration = HandlingSupport.CheckRange (value, EngineAcceleration_Min, EngineAcceleration_Max);
 				}
 			}
 		private float o_EngineAcceleration = 10.0f;
@@ -805,17 +814,17 @@
 			/// <summary>
 			/// 4 ведущих колеса
 			/// </summary>
-			FourWheelsDrive,
+			FourWheelsDrive = 0,
 
 			/// <summary>
 			/// Передние ведущие колёса
 			/// </summary>
-			ForwardWheelsDrive,
+			ForwardWheelsDrive = 1,
 
 			/// <summary>
 			/// Задние ведущие колёса
 			/// </summary>
-			RearWheelsDrive
+			RearWheelsDrive = 2
 			}
 
 		/// <summary>
@@ -844,17 +853,17 @@
 			/// <summary>
 			/// Бензиновый
 			/// </summary>
-			Petrol,
+			Petrol = 0,
 
 			/// <summary>
 			/// Дизельный
 			/// </summary>
-			Diesel,
+			Diesel = 1,
 
 			/// <summary>
 			/// Электрический
 			/// </summary>
-			Electric
+			Electric = 2
 			}
 
 		/// <summary>
@@ -908,7 +917,7 @@
 				}
 			set
 				{
-				r_BrakeDeceleration = CheckRange (value, BrakeDeceleration_Min, BrakeDeceleration_Max);
+				r_BrakeDeceleration = HandlingSupport.CheckRange (value, BrakeDeceleration_Min, BrakeDeceleration_Max);
 				}
 			}
 
@@ -923,7 +932,7 @@
 				}
 			set
 				{
-				r_BrakeDeceleration = CheckRange (value, VerticalWaveHitLimit_Min, VerticalWaveHitLimit_Max);
+				r_BrakeDeceleration = HandlingSupport.CheckRange (value, VerticalWaveHitLimit_Min, VerticalWaveHitLimit_Max);
 				}
 			}
 		private float r_BrakeDeceleration = 7.5f;
@@ -963,7 +972,7 @@
 				}
 			set
 				{
-				s_BrakeBias = CheckRange (value, BrakeBias_Min, BrakeBias_Max);
+				s_BrakeBias = HandlingSupport.CheckRange (value, BrakeBias_Min, BrakeBias_Max);
 				}
 			}
 
@@ -978,7 +987,7 @@
 				}
 			set
 				{
-				s_BrakeBias = CheckRange (value, ForwardWaveHitBrake_Min, ForwardWaveHitBrake_Max);
+				s_BrakeBias = HandlingSupport.CheckRange (value, ForwardWaveHitBrake_Min, ForwardWaveHitBrake_Max);
 				}
 			}
 		private float s_BrakeBias = 0.5f;
@@ -1031,7 +1040,7 @@
 				}
 			set
 				{
-				u_SteeringLock = CheckRange (value, SteeringLock_Min, SteeringLock_Max);
+				u_SteeringLock = HandlingSupport.CheckRange (value, SteeringLock_Min, SteeringLock_Max);
 				}
 			}
 		private float u_SteeringLock = 35.0f;
@@ -1070,7 +1079,8 @@
 				}
 			set
 				{
-				v_SuspensionForceLevel = CheckRange (value, SuspensionForceLevel_Min, SuspensionForceLevel_Max);
+				v_SuspensionForceLevel = HandlingSupport.CheckRange (value, SuspensionForceLevel_Min,
+					SuspensionForceLevel_Max);
 				}
 			}
 
@@ -1085,7 +1095,8 @@
 				}
 			set
 				{
-				v_SuspensionForceLevel = CheckRange (value, WaterResistanceMultiplier_Min, WaterResistanceMultiplier_Max);
+				v_SuspensionForceLevel = HandlingSupport.CheckRange (value, WaterResistanceMultiplier_Min,
+					WaterResistanceMultiplier_Max);
 				}
 			}
 		private float v_SuspensionForceLevel = 1.7f;
@@ -1123,7 +1134,8 @@
 				}
 			set
 				{
-				w_SuspensionDampingLevel = CheckRange (value, SuspensionDampingLevel_Min, SuspensionDampingLevel_Max);
+				w_SuspensionDampingLevel = HandlingSupport.CheckRange (value, SuspensionDampingLevel_Min,
+					SuspensionDampingLevel_Max);
 				}
 			}
 
@@ -1138,7 +1150,8 @@
 				}
 			set
 				{
-				w_SuspensionDampingLevel = CheckRange (value, WaterDampingMultiplier_Min, WaterDampingMultiplier_Max);
+				w_SuspensionDampingLevel = HandlingSupport.CheckRange (value, WaterDampingMultiplier_Min,
+					WaterDampingMultiplier_Max);
 				}
 			}
 		private float w_SuspensionDampingLevel = 0.1f;
@@ -1166,7 +1179,7 @@
 				}
 			set
 				{
-				x_SeatOffsetDistance = CheckRange (value, SeatOffsetDistance_Min, SeatOffsetDistance_Max);
+				x_SeatOffsetDistance = HandlingSupport.CheckRange (value, SeatOffsetDistance_Min, SeatOffsetDistance_Max);
 				}
 			}
 		private float x_SeatOffsetDistance = 2.0f;
@@ -1195,7 +1208,8 @@
 				}
 			set
 				{
-				y_CollisionDamageMultiplier = CheckRange (value, CollisionDamageMultiplier_Min, CollisionDamageMultiplier_Max);
+				y_CollisionDamageMultiplier = HandlingSupport.CheckRange (value, CollisionDamageMultiplier_Min,
+					CollisionDamageMultiplier_Max);
 				}
 			}
 		private float y_CollisionDamageMultiplier = 0.4f;
@@ -1223,7 +1237,7 @@
 				}
 			set
 				{
-				z_MonetaryValue = CheckRange (value, MonetaryValue_Min, MonetaryValue_Max);
+				z_MonetaryValue = HandlingSupport.CheckRange (value, MonetaryValue_Min, MonetaryValue_Max);
 				}
 			}
 		private uint z_MonetaryValue = 10000;
@@ -1251,7 +1265,8 @@
 				}
 			set
 				{
-				aa_SuspensionUpperLimit = CheckRange (value, SuspensionUpperLimit_Min, SuspensionUpperLimit_Max);
+				aa_SuspensionUpperLimit = HandlingSupport.CheckRange (value, SuspensionUpperLimit_Min,
+					SuspensionUpperLimit_Max);
 				}
 			}
 		private float aa_SuspensionUpperLimit = 0.4f;
@@ -1289,7 +1304,8 @@
 				}
 			set
 				{
-				ab_SuspensionLowerLimit = CheckRange (value, SuspensionLowerLimit_Min, SuspensionLowerLimit_Max);
+				ab_SuspensionLowerLimit = HandlingSupport.CheckRange (value, SuspensionLowerLimit_Min,
+					SuspensionLowerLimit_Max);
 				}
 			}
 
@@ -1304,7 +1320,8 @@
 				}
 			set
 				{
-				ab_SuspensionLowerLimit = CheckRange (value, HandbrakeDragMultiplier_Min, HandbrakeDragMultiplier_Max);
+				ab_SuspensionLowerLimit = HandlingSupport.CheckRange (value, HandbrakeDragMultiplier_Min,
+					HandbrakeDragMultiplier_Max);
 				}
 			}
 		private float ab_SuspensionLowerLimit = -0.2f;
@@ -1344,7 +1361,7 @@
 				}
 			set
 				{
-				ac_SuspensionBias = CheckRange (value, SuspensionBias_Min, SuspensionBias_Max);
+				ac_SuspensionBias = HandlingSupport.CheckRange (value, SuspensionBias_Min, SuspensionBias_Max);
 				}
 			}
 
@@ -1359,7 +1376,7 @@
 				}
 			set
 				{
-				ac_SuspensionBias = CheckRange (value, SideslipForce_Min, SideslipForce_Max);
+				ac_SuspensionBias = HandlingSupport.CheckRange (value, SideslipForce_Min, SideslipForce_Max);
 				}
 			}
 		private float ac_SuspensionBias = 0.5f;
@@ -1387,7 +1404,8 @@
 				}
 			set
 				{
-				ad_SuspensionAntiDiveMultiplier = CheckRange (value, SuspensionAntiDiveMultiplier_Min, SuspensionAntiDiveMultiplier_Max);
+				ad_SuspensionAntiDiveMultiplier = HandlingSupport.CheckRange (value, SuspensionAntiDiveMultiplier_Min,
+					SuspensionAntiDiveMultiplier_Max);
 				}
 			}
 		private float ad_SuspensionAntiDiveMultiplier = 0.0f;

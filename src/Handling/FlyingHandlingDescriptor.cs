@@ -3,18 +3,34 @@
 	/// <summary>
 	/// Класс описывает специальный дескриптор летательного аппарата
 	/// </summary>
-	public class FlyingHandlingDescriptor:HandlingDescriptor
+	public class FlyingHandlingDescriptor: HandlingDescriptor
 		{
+		// Переменные
+		private const uint expectedColumnsCount = 19;
+
+		/// <summary>
+		/// Строка заголовка таблицы данных дескриптора
+		/// </summary>
+		public static string TableHeader
+			{
+			get
+				{
+				return HandlingSupport.CreateHeader (expectedColumnsCount);
+				}
+			}
+
 		/// <summary>
 		/// Символ-признак дескриптора
 		/// </summary>
 		public const string IdentifyingSymbol = "$";
 
+		/*
 		/// <summary>
 		/// Строка заголовка таблицы данных дескриптора
 		/// </summary>
 		public const string TableHeader = "	A		B		C		D			E		F		G		H		I		J		" +
 			"K		L		M		N		O		P			Q			R			S";
+		*/
 
 		/// <summary>
 		/// Конструктор. Загружает параметры транспортного средства из массива строк
@@ -23,34 +39,32 @@
 		public FlyingHandlingDescriptor (string[] Values)
 			{
 			// Контроль массива
-			if ((Values.Length != 20) || (Values[0] != IdentifyingSymbol))
-				{
+			if ((Values.Length != expectedColumnsCount + 1) || (Values[0] != IdentifyingSymbol))
 				return;
-				}
 
 			// Загрузка параметров
 			a_VehicleIdentifier = Values[1];
 
 			try
 				{
-				NonControlledAcceleration = float.Parse (Values[2], cie.NumberFormat);
-				ControlledAcceleration = float.Parse (Values[3], cie.NumberFormat);
-				TurningLeftRightForce = float.Parse (Values[4], cie.NumberFormat);
-				TurningLeftRightStabilization = float.Parse (Values[5], cie.NumberFormat);
-				MovingAltitudeLoss = float.Parse (Values[6], cie.NumberFormat);
-				RotationForce = float.Parse (Values[7], cie.NumberFormat);
-				RotationStabilization = float.Parse (Values[8], cie.NumberFormat);
-				NoseDeflectionForce = float.Parse (Values[9], cie.NumberFormat);
-				NoseDeflectionStabilization = float.Parse (Values[10], cie.NumberFormat);
-				LiftingSpeedMultiplier = float.Parse (Values[11], cie.NumberFormat);
-				NoseAngleLiftingFactor = float.Parse (Values[12], cie.NumberFormat);
-				MovingResistance = float.Parse (Values[13], cie.NumberFormat);
-				TurningXResistance = float.Parse (Values[14], cie.NumberFormat);
-				TurningYResistance = float.Parse (Values[15], cie.NumberFormat);
-				TurningZResistance = float.Parse (Values[16], cie.NumberFormat);
-				AccelerationXResistance = float.Parse (Values[17], cie.NumberFormat);
-				AccelerationYResistance = float.Parse (Values[18], cie.NumberFormat);
-				AccelerationZResistance = float.Parse (Values[19], cie.NumberFormat);
+				NonControlledAcceleration = float.Parse (Values[2], nfi);
+				ControlledAcceleration = float.Parse (Values[3], nfi);
+				TurningLeftRightForce = float.Parse (Values[4], nfi);
+				TurningLeftRightStabilization = float.Parse (Values[5], nfi);
+				MovingAltitudeLoss = float.Parse (Values[6], nfi);
+				RotationForce = float.Parse (Values[7], nfi);
+				RotationStabilization = float.Parse (Values[8], nfi);
+				NoseDeflectionForce = float.Parse (Values[9], nfi);
+				NoseDeflectionStabilization = float.Parse (Values[10], nfi);
+				LiftingSpeedMultiplier = float.Parse (Values[11], nfi);
+				NoseAngleLiftingFactor = float.Parse (Values[12], nfi);
+				MovingResistance = float.Parse (Values[13], nfi);
+				TurningXResistance = float.Parse (Values[14], nfi);
+				TurningYResistance = float.Parse (Values[15], nfi);
+				TurningZResistance = float.Parse (Values[16], nfi);
+				AccelerationXResistance = float.Parse (Values[17], nfi);
+				AccelerationYResistance = float.Parse (Values[18], nfi);
+				AccelerationZResistance = float.Parse (Values[19], nfi);
 				}
 			catch
 				{
@@ -72,30 +86,28 @@
 
 			// Контроль инициализации
 			if (!isInited)
-				{
 				return result;
-				}
 
 			// Сборка
 			result = IdentifyingSymbol + " " + VehicleIdentifier.PadRight (8, ' ') + "\t";
-			result += (b_NonControlledAcceleration.ToString ("F4", cie.NumberFormat) + "\t");
-			result += (c_ControlledAcceleration.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (d_TurningLeftRightForce.ToString ("F5", cie.NumberFormat) + "\t");
-			result += (e_TurningLeftRightStabilization.ToString ("F4", cie.NumberFormat) + "\t");
-			result += (f_MovingAltitudeLoss.ToString ("F2", cie.NumberFormat) + "\t");
-			result += (g_RotationForce.ToString ("F5", cie.NumberFormat) + "\t");
-			result += (h_RotationStabilization.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (i_NoseDeflectionForce.ToString ("F4", cie.NumberFormat) + "\t");
-			result += (j_NoseDeflectionStabilization.ToString ("F4", cie.NumberFormat) + "\t");
-			result += (k_LiftingSpeedMultiplier.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (l_NoseAngleLiftingFactor.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (m_MovingResistance.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (n_TurningXResistance.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (o_TurningYResistance.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (p_TurningZResistance.ToString ("F3", cie.NumberFormat) + "\t");
-			result += (q_AccelerationXResistance.ToString ("F1", cie.NumberFormat).PadLeft (8, ' ') + "\t");
-			result += (r_AccelerationYResistance.ToString ("F1", cie.NumberFormat).PadLeft (8, ' ') + "\t");
-			result += s_AccelerationZResistance.ToString ("F1", cie.NumberFormat).PadLeft (8, ' ');
+			result += (b_NonControlledAcceleration.ToString ("F4", nfi) + "\t");
+			result += (c_ControlledAcceleration.ToString ("F2", nfi) + "\t");
+			result += (d_TurningLeftRightForce.ToString ("F5", nfi) + "\t");
+			result += (e_TurningLeftRightStabilization.ToString ("F4", nfi) + "\t");
+			result += (f_MovingAltitudeLoss.ToString ("F2", nfi) + "\t");
+			result += (g_RotationForce.ToString ("F5", nfi) + "\t");
+			result += (h_RotationStabilization.ToString ("F3", nfi) + "\t");
+			result += (i_NoseDeflectionForce.ToString ("F4", nfi) + "\t");
+			result += (j_NoseDeflectionStabilization.ToString ("F4", nfi) + "\t");
+			result += (k_LiftingSpeedMultiplier.ToString ("F3", nfi) + "\t");
+			result += (l_NoseAngleLiftingFactor.ToString ("F3", nfi) + "\t");
+			result += (m_MovingResistance.ToString ("F3", nfi) + "\t");
+			result += (n_TurningXResistance.ToString ("F3", nfi) + "\t");
+			result += (o_TurningYResistance.ToString ("F3", nfi) + "\t");
+			result += (p_TurningZResistance.ToString ("F3", nfi) + "\t");
+			result += (q_AccelerationXResistance.ToString ("F1", nfi).PadLeft (8, ' ') + "\t");
+			result += (r_AccelerationYResistance.ToString ("F1", nfi).PadLeft (8, ' ') + "\t");
+			result += s_AccelerationZResistance.ToString ("F1", nfi).PadLeft (8, ' ');
 
 			// Завершено
 			return result;
@@ -125,7 +137,8 @@
 				}
 			set
 				{
-				b_NonControlledAcceleration = CheckRange (value, NonControlledAcceleration_Min, NonControlledAcceleration_Max);
+				b_NonControlledAcceleration = HandlingSupport.CheckRange (value, NonControlledAcceleration_Min,
+					NonControlledAcceleration_Max);
 				}
 			}
 		private float b_NonControlledAcceleration = 0.3f;
@@ -153,7 +166,8 @@
 				}
 			set
 				{
-				c_ControlledAcceleration = CheckRange (value, ControlledAcceleration_Min, ControlledAcceleration_Max);
+				c_ControlledAcceleration = HandlingSupport.CheckRange (value, ControlledAcceleration_Min,
+					ControlledAcceleration_Max);
 				}
 			}
 		private float c_ControlledAcceleration = 0.75f;
@@ -181,7 +195,8 @@
 				}
 			set
 				{
-				d_TurningLeftRightForce = CheckRange (value, TurningLeftRightForce_Min, TurningLeftRightForce_Max);
+				d_TurningLeftRightForce = HandlingSupport.CheckRange (value, TurningLeftRightForce_Min,
+					TurningLeftRightForce_Max);
 				}
 			}
 		private float d_TurningLeftRightForce = -0.001f;
@@ -209,7 +224,8 @@
 				}
 			set
 				{
-				e_TurningLeftRightStabilization = CheckRange (value, TurningLeftRightStabilization_Min, TurningLeftRightStabilization_Max);
+				e_TurningLeftRightStabilization = HandlingSupport.CheckRange (value, TurningLeftRightStabilization_Min,
+					TurningLeftRightStabilization_Max);
 				}
 			}
 		private float e_TurningLeftRightStabilization = 0.02f;
@@ -237,7 +253,7 @@
 				}
 			set
 				{
-				f_MovingAltitudeLoss = CheckRange (value, MovingAltitudeLoss_Min, MovingAltitudeLoss_Max);
+				f_MovingAltitudeLoss = HandlingSupport.CheckRange (value, MovingAltitudeLoss_Min, MovingAltitudeLoss_Max);
 				}
 			}
 		private float f_MovingAltitudeLoss = 0.1f;
@@ -265,7 +281,7 @@
 				}
 			set
 				{
-				g_RotationForce = CheckRange (value, RotationForce_Min, RotationForce_Max);
+				g_RotationForce = HandlingSupport.CheckRange (value, RotationForce_Min, RotationForce_Max);
 				}
 			}
 		private float g_RotationForce = 0.0065f;
@@ -293,7 +309,8 @@
 				}
 			set
 				{
-				h_RotationStabilization = CheckRange (value, RotationStabilization_Min, RotationStabilization_Max);
+				h_RotationStabilization = HandlingSupport.CheckRange (value, RotationStabilization_Min,
+					RotationStabilization_Max);
 				}
 			}
 		private float h_RotationStabilization = 3.0f;
@@ -321,7 +338,8 @@
 				}
 			set
 				{
-				i_NoseDeflectionForce = CheckRange (value, NoseDeflectionForce_Min, NoseDeflectionForce_Max);
+				i_NoseDeflectionForce = HandlingSupport.CheckRange (value, NoseDeflectionForce_Min,
+					NoseDeflectionForce_Max);
 				}
 			}
 		private float i_NoseDeflectionForce = 0.0065f;
@@ -349,7 +367,8 @@
 				}
 			set
 				{
-				j_NoseDeflectionStabilization = CheckRange (value, NoseDeflectionStabilization_Min, NoseDeflectionStabilization_Max);
+				j_NoseDeflectionStabilization = HandlingSupport.CheckRange (value, NoseDeflectionStabilization_Min,
+					NoseDeflectionStabilization_Max);
 				}
 			}
 		private float j_NoseDeflectionStabilization = 3.0f;
@@ -377,7 +396,8 @@
 				}
 			set
 				{
-				k_LiftingSpeedMultiplier = CheckRange (value, LiftingSpeedMultiplier_Min, LiftingSpeedMultiplier_Max);
+				k_LiftingSpeedMultiplier = HandlingSupport.CheckRange (value, LiftingSpeedMultiplier_Min,
+					LiftingSpeedMultiplier_Max);
 				}
 			}
 		private float k_LiftingSpeedMultiplier = 0.7f;
@@ -405,7 +425,8 @@
 				}
 			set
 				{
-				l_NoseAngleLiftingFactor = CheckRange (value, NoseAngleLiftingFactor_Min, NoseAngleLiftingFactor_Max);
+				l_NoseAngleLiftingFactor = HandlingSupport.CheckRange (value, NoseAngleLiftingFactor_Min,
+					NoseAngleLiftingFactor_Max);
 				}
 			}
 		private float l_NoseAngleLiftingFactor = 0.1f;
@@ -433,7 +454,7 @@
 				}
 			set
 				{
-				m_MovingResistance = CheckRange (value, MovingResistance_Min, MovingResistance_Max);
+				m_MovingResistance = HandlingSupport.CheckRange (value, MovingResistance_Min, MovingResistance_Max);
 				}
 			}
 		private float m_MovingResistance = 0.996f;
@@ -461,7 +482,7 @@
 				}
 			set
 				{
-				n_TurningXResistance = CheckRange (value, TurningXResistance_Min, TurningXResistance_Max);
+				n_TurningXResistance = HandlingSupport.CheckRange (value, TurningXResistance_Min, TurningXResistance_Max);
 				}
 			}
 		private float n_TurningXResistance = 0.9f;
@@ -489,7 +510,7 @@
 				}
 			set
 				{
-				o_TurningYResistance = CheckRange (value, TurningYResistance_Min, TurningYResistance_Max);
+				o_TurningYResistance = HandlingSupport.CheckRange (value, TurningYResistance_Min, TurningYResistance_Max);
 				}
 			}
 		private float o_TurningYResistance = 0.9f;
@@ -517,7 +538,7 @@
 				}
 			set
 				{
-				p_TurningZResistance = CheckRange (value, TurningZResistance_Min, TurningZResistance_Max);
+				p_TurningZResistance = HandlingSupport.CheckRange (value, TurningZResistance_Min, TurningZResistance_Max);
 				}
 			}
 		private float p_TurningZResistance = 0.99f;
@@ -545,7 +566,8 @@
 				}
 			set
 				{
-				q_AccelerationXResistance = CheckRange (value, AccelerationXResistance_Min, AccelerationXResistance_Max);
+				q_AccelerationXResistance = HandlingSupport.CheckRange (value, AccelerationXResistance_Min,
+					AccelerationXResistance_Max);
 				}
 			}
 		private float q_AccelerationXResistance = 0.0f;
@@ -573,7 +595,8 @@
 				}
 			set
 				{
-				r_AccelerationYResistance = CheckRange (value, AccelerationYResistance_Min, AccelerationYResistance_Max);
+				r_AccelerationYResistance = HandlingSupport.CheckRange (value, AccelerationYResistance_Min,
+					AccelerationYResistance_Max);
 				}
 			}
 		private float r_AccelerationYResistance = 0.0f;
@@ -601,7 +624,8 @@
 				}
 			set
 				{
-				s_AccelerationZResistance = CheckRange (value, AccelerationZResistance_Min, AccelerationZResistance_Max);
+				s_AccelerationZResistance = HandlingSupport.CheckRange (value, AccelerationZResistance_Min,
+					AccelerationZResistance_Max);
 				}
 			}
 		private float s_AccelerationZResistance = 5.0f;

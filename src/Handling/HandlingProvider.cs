@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace RD_AAOW
 	{
@@ -19,6 +18,9 @@ namespace RD_AAOW
 		private List<int> boatIndexes = new List<int> ();
 		private List<int> bikeIndexes = new List<int> ();
 		private List<int> flyingIndexes = new List<int> ();
+
+		private string handlingFile = ViceCityToolsetProgram.GTAVCDirectory + "\\data\\handling.cfg";
+		private string handlingBackup = ViceCityToolsetProgram.GTAVCDirectory + "\\data\\handling.vctbak";
 
 		/// <summary>
 		/// Символ-признак комментария
@@ -40,7 +42,7 @@ namespace RD_AAOW
 				return initStatus;
 				}
 			}
-		private InitStatuses initStatus = InitStatuses.Ok;
+		private InitStatuses initStatus = InitStatuses.FailedToCreateBackup;
 
 		/// <summary>
 		/// Возможные статусы инициализации класса
@@ -65,27 +67,44 @@ namespace RD_AAOW
 			/// <summary>
 			/// В файле отсутствуют основные дескрипторы
 			/// </summary>
-			FileIsEmpty
+			FileIsEmpty,
+
+			/// <summary>
+			/// Не удаётся создать резервную копию
+			/// </summary>
+			FailedToCreateBackup,
 			}
 
 		/// <summary>
 		/// Конструктор. Загружает данные из файла handling.cfg и формирует соответствующие дескрипторы
 		/// </summary>
-		/// <param name="HandlingFileName">Имя файла handling.cfg</param>
-		public HandlingProvider (string HandlingFileName)
+		public HandlingProvider (/*string HandlingFileName*/)
 			{
+			// Резервное копирование
+			if (!File.Exists (handlingBackup))
+				{
+				try
+					{
+					File.Copy (handlingFile, handlingBackup, false);
+					}
+				catch
+					{
+					return;
+					}
+				}
+
 			// Попытка открытия файла
 			FileStream FS = null;
 			try
 				{
-				FS = new FileStream (HandlingFileName, FileMode.Open);
+				FS = new FileStream (handlingFile, FileMode.Open);
 				}
 			catch
 				{
 				initStatus = InitStatuses.FileNotAvailable;
 				return;
 				}
-			StreamReader SR = new StreamReader (FS, Encoding.GetEncoding (1251));
+			StreamReader SR = new StreamReader (FS/*, Encoding.GetEncoding (1251)*/);
 
 			// Чтение файла
 			while (!SR.EndOfStream)
@@ -100,54 +119,44 @@ namespace RD_AAOW
 
 					// Строки boat descriptor
 					case BoatHandlingDescriptor.IdentifyingSymbol:
-						BoatHandlingDescriptor boatHD = new BoatHandlingDescriptor (s.Split (splitters, StringSplitOptions.RemoveEmptyEntries));
+						BoatHandlingDescriptor boatHD = new BoatHandlingDescriptor (s.Split (splitters,
+							StringSplitOptions.RemoveEmptyEntries));
+
 						if (!boatHD.IsInited)
-							{
 							initStatus = InitStatuses.BrokenDescriptor;
-							}
 						else
-							{
 							boatHDs.Add (boatHD);
-							}
 						break;
 
 					// Строки bike descriptor
 					case BikeHandlingDescriptor.IdentifyingSymbol:
-						BikeHandlingDescriptor bikeHD = new BikeHandlingDescriptor (s.Split (splitters, StringSplitOptions.RemoveEmptyEntries));
+						BikeHandlingDescriptor bikeHD = new BikeHandlingDescriptor (s.Split (splitters,
+							StringSplitOptions.RemoveEmptyEntries));
+
 						if (!bikeHD.IsInited)
-							{
 							initStatus = InitStatuses.BrokenDescriptor;
-							}
 						else
-							{
 							bikeHDs.Add (bikeHD);
-							}
 						break;
 
 					// Строки flying descriptor
 					case FlyingHandlingDescriptor.IdentifyingSymbol:
-						FlyingHandlingDescriptor flyingHD = new FlyingHandlingDescriptor (s.Split (splitters, StringSplitOptions.RemoveEmptyEntries));
+						FlyingHandlingDescriptor flyingHD = new FlyingHandlingDescriptor (s.Split (splitters,
+							StringSplitOptions.RemoveEmptyEntries));
 						if (!flyingHD.IsInited)
-							{
 							initStatus = InitStatuses.BrokenDescriptor;
-							}
 						else
-							{
 							flyingHDs.Add (flyingHD);
-							}
 						break;
 
 					// Предположительно, строки общих дескрипторов
 					default:
-						GenericHandlingDescriptor genericHD = new GenericHandlingDescriptor (s.Split (splitters, StringSplitOptions.RemoveEmptyEntries));
+						GenericHandlingDescriptor genericHD = new GenericHandlingDescriptor (s.Split (splitters,
+							StringSplitOptions.RemoveEmptyEntries));
 						if (!genericHD.IsInited)
-							{
 							initStatus = InitStatuses.BrokenDescriptor;
-							}
 						else
-							{
 							genericHDs.Add (genericHD);
-							}
 						break;
 					}
 				}
@@ -201,6 +210,9 @@ namespace RD_AAOW
 					}
 				flyingIndexes.Add (v);
 				}
+
+			// Успешно
+			initStatus = InitStatuses.Ok;
 			}
 
 		/// <summary>
@@ -210,10 +222,8 @@ namespace RD_AAOW
 		/// <returns>Возвращает дескриптор или null, если номер превышает размер списка</returns>
 		public GenericHandlingDescriptor GetGenericHD (uint GenericHDNumber)
 			{
-			if ((int)GenericHDNumber < genericHDs.Count)
-				{
+			if (GenericHDNumber < genericHDs.Count)
 				return genericHDs[(int)GenericHDNumber];
-				}
 
 			return null;
 			}
@@ -239,24 +249,11 @@ namespace RD_AAOW
 			if ((int)GenericHDNumber < genericHDs.Count)
 				{
 				if (boatIndexes[(int)GenericHDNumber] != -1)
-					{
 					return boatHDs[boatIndexes[(int)GenericHDNumber]];
-					}
 				}
 
 			return null;
 			}
-
-		/*/// <summary>
-		/// Возвращает количество специальных дескрипторов лодок
-		/// </summary>
-		public uint BoatHDsCount
-			{
-			get
-				{
-				return (uint)boatHDs.Count;
-				}
-			}*/
 
 		/// <summary>
 		/// Метод возвращает специальный дескриптор мотоцикла по его номеру в списке
@@ -268,24 +265,11 @@ namespace RD_AAOW
 			if ((int)GenericHDNumber < genericHDs.Count)
 				{
 				if (bikeIndexes[(int)GenericHDNumber] != -1)
-					{
 					return bikeHDs[bikeIndexes[(int)GenericHDNumber]];
-					}
 				}
 
 			return null;
 			}
-
-		/*/// <summary>
-		/// Возвращает количество специальных дескрипторов мотоциклов
-		/// </summary>
-		public uint BikeHDsCount
-			{
-			get
-				{
-				return (uint)bikeHDs.Count;
-				}
-			}*/
 
 		/// <summary>
 		/// Метод возвращает специальный дескриптор летательного аппарата по его номеру в списке
@@ -297,122 +281,97 @@ namespace RD_AAOW
 			if ((int)GenericHDNumber < genericHDs.Count)
 				{
 				if (flyingIndexes[(int)GenericHDNumber] != -1)
-					{
 					return flyingHDs[flyingIndexes[(int)GenericHDNumber]];
-					}
 				}
 
 			return null;
 			}
 
-		/*/// <summary>
-		/// Возвращает количество специальных дескрипторов летательных аппаратов
-		/// </summary>
-		public uint FlyingHDsCount
-			{
-			get
-				{
-				return (uint)flyingHDs.Count;
-				}
-			}*/
-
 		/// <summary>
 		/// Метод сохраняет данные в файл handling.cfg
 		/// </summary>
-		/// <param name="HandlingFileName">Имя файла handling.cfg</param>
-		/// <param name="AddComments">Флаг, определяющий необходимость добавления стандартных комментариев в файл</param>
 		/// <returns>Возвращает true в случае успеха</returns>
-		public bool SaveHandlingData (string HandlingFileName, bool AddComments)
+		public bool SaveHandlingData (/*string HandlingFileName, bool AddComments*/)
 			{
 			// Контроль инициализации
 			if (initStatus != InitStatuses.Ok)
-				{
 				return false;
-				}
 
 			// Попытка открытия файла
 			FileStream FS = null;
 			try
 				{
-				FS = new FileStream (HandlingFileName, FileMode.Create);
+				FS = new FileStream (handlingFile, FileMode.Create);
 				}
 			catch
 				{
 				return false;
 				}
-			StreamWriter SW = new StreamWriter (FS, Encoding.GetEncoding (1251));
+			StreamWriter SW = new StreamWriter (FS/*, Encoding.GetEncoding (1251)*/);
 
 			// Запись
 			// Заголовок файла и основные дескрипторы
 			SW.WriteLine (CommentPrefix + "HANDLING.CFG for GTA Vice City");
-			SW.WriteLine (CommentPrefix + "Created by " + ProgramDescription.AssemblyTitle + ", " +
-				RDGenerics.AssemblyCopyright);
+			SW.WriteLine (CommentPrefix + "Updated by " + ProgramDescription.AssemblyTitle + ", " +
+				DateTime.Now.ToString ("dd.MM.yyyy; HH.mm"));
 			SW.WriteLine (CommentSymbol);
 
-			if (AddComments)
+			/*if (AddComments)
 				{
 				SW.WriteLine (CommentPrefix +
 					RD_AAOW.Properties.ViceCityToolset.GenericComment.Replace ("\n", "\n" + CommentPrefix));
 				SW.WriteLine (CommentSymbol);
-				}
+				}*/
 
 			SW.WriteLine (CommentPrefix + GenericHandlingDescriptor.TableHeader);
 
 			for (int g = 0; g < genericHDs.Count; g++)
-				{
 				SW.WriteLine (genericHDs[g].GetHDAsString ());
-				}
 
 			// Дескрипторы моторных лодок
 			SW.WriteLine (CommentSymbol);
 
-			if (AddComments)
+			/*if (AddComments)
 				{
 				SW.WriteLine (CommentPrefix +
 					RD_AAOW.Properties.ViceCityToolset.BoatComment.Replace ("\n", "\n" + CommentPrefix));
 				SW.WriteLine (CommentSymbol);
-				}
+				}*/
 
 			SW.WriteLine (CommentPrefix + BoatHandlingDescriptor.TableHeader);
 
 			for (int b = 0; b < boatHDs.Count; b++)
-				{
 				SW.WriteLine (boatHDs[b].GetHDAsString ());
-				}
 
 			// Дескрипторы мотоциклов
 			SW.WriteLine (CommentSymbol);
 
-			if (AddComments)
+			/*if (AddComments)
 				{
 				SW.WriteLine (CommentPrefix +
 					RD_AAOW.Properties.ViceCityToolset.BikeComment.Replace ("\n", "\n" + CommentPrefix));
 				SW.WriteLine (CommentSymbol);
-				}
+				}*/
 
 			SW.WriteLine (CommentPrefix + BikeHandlingDescriptor.TableHeader);
 
 			for (int b = 0; b < bikeHDs.Count; b++)
-				{
 				SW.WriteLine (bikeHDs[b].GetHDAsString ());
-				}
 
 			// Дескрипторы летательных аппаратов
 			SW.WriteLine (CommentSymbol);
 
-			if (AddComments)
+			/*if (AddComments)
 				{
 				SW.WriteLine (CommentPrefix +
 					RD_AAOW.Properties.ViceCityToolset.FlyingComment.Replace ("\n", "\n" + CommentPrefix));
 				SW.WriteLine (CommentSymbol);
-				}
+				}*/
 
 			SW.WriteLine (CommentPrefix + FlyingHandlingDescriptor.TableHeader);
 
 			for (int f = 0; f < flyingHDs.Count; f++)
-				{
 				SW.WriteLine (flyingHDs[f].GetHDAsString ());
-				}
 
 			// Как оказалось, следующая вставка обязательна. Причём, без исправлений
 			SW.WriteLine (CommentSymbol + "\n" + CommentSymbol + "\n" + CommentSymbol + "the end");
