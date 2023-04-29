@@ -1,5 +1,9 @@
 Vice city toolset: changes log
 
+ToDo:
+- Localize DLL;
+- Implement unified .vct format
+
 Version 4.1:
 • Vehicles handling editor is now available;
 • App about form has been upgraded;

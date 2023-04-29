@@ -1,5 +1,5 @@
 # Vice city toolset: руководство пользователя
-> **ƒ** &nbsp;RD AAOW FDL; 23.04.2023; 17:00
+> **ƒ** &nbsp;RD AAOW FDL; 30.04.2023; 1:14
 
 ---
 
@@ -15,7 +15,7 @@
 и операции. А именно:
 
 - [Редактирование файлов сохранений](https://adslbarxatov.github.io/ViceCityToolset/saves_ru)
-- [Редактирование параметров транспорта](https://adslbarxatov.github.io/ViceCityToolset/handling_ru)
+- [Редактирование управления транспортом](https://adslbarxatov.github.io/ViceCityToolset/handling_ru)
 - [Преобразование моделей в скрипты коллизий](https://adslbarxatov.github.io/ViceCityToolset/collision_ru)
 
 > Программа находится в разработке. Поэтому часть параметров при использовании данного приложения редактируется

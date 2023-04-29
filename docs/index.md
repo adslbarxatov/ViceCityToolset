@@ -1,5 +1,5 @@
 # Vice city toolset: user guide
-> **ƒ** &nbsp;RD AAOW FDL; 23.04.2023; 16:39
+> **ƒ** &nbsp;RD AAOW FDL; 30.04.2023; 1:14
 
 ---
 
@@ -15,7 +15,7 @@
 and operations. Namely:
 
 - [Editing game saves](https://adslbarxatov.github.io/ViceCityToolset/saves)
-- [Editing transport parameters](https://adslbarxatov.github.io/ViceCityToolset/handling)
+- [Editing vehicles handling](https://adslbarxatov.github.io/ViceCityToolset/handling)
 - [Converting models to collision scripts](https://adslbarxatov.github.io/ViceCityToolset/collision)
 
 > The application is under development now. Therefore, some parameters during usage of this application
