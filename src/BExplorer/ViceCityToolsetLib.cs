@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace RD_AAOW
 	{
@@ -388,12 +390,334 @@ namespace RD_AAOW
 		}
 
 	/// <summary>
+	/// Результаты работы интерпретаора команд
+	/// </summary>
+	public enum ResultCodes
+		{
+		/// <summary>
+		/// Корректировка выполнена успешно
+		/// </summary>
+		FileFixed = 0,
+
+		/// <summary>
+		/// Общий положительный результат выполнения
+		/// </summary>
+		OK = 0,
+
+		/// <summary>
+		/// Файл успешно загружен
+		/// </summary>
+		LoadSuccess = 1,
+
+		/// <summary>
+		/// Файл успешно сохранён
+		/// </summary>
+		SaveSuccess = 2,
+
+		/// <summary>
+		/// Указанное значение находится вне допустимого диапазона
+		/// </summary>
+		ValueOutOfRange = -1002,
+
+		/// <summary>
+		/// Недопустимый код режима
+		/// </summary>
+		ModeIsIncorrect = -1003,
+
+		/// <summary>
+		/// Недопустимый код операции для данного режима
+		/// </summary>
+		OpCodeIsIncorrect = -1004,
+
+		/// <summary>
+		/// Недопустимый код параметра для данных режима и операции
+		/// </summary>
+		ParCodeIsIncorrect = -1005,
+
+		/// <summary>
+		/// Указанный файл статистики недоступен
+		/// </summary>
+		StatsFileNotFound = -1101,
+
+		/// <summary>
+		/// Указанный файл повреждён или не является файлом статистики
+		/// </summary>
+		StatsFileIsIncorrect = -1102,
+
+		/// <summary>
+		/// Не удаётся записать файл статистики
+		/// </summary>
+		CannotCreateStatsFile = -1103,
+
+		/// <summary>
+		/// Указанный файл параметров парковок недоступен
+		/// </summary>
+		CGFileNotFound = -1104,
+
+		/// <summary>
+		/// Указанный файл повреждён или не является файлом параметров парковок
+		/// </summary>
+		CGFileIsIncorrect = -1105,
+
+		/// <summary>
+		/// Не удаётся записать файл параметров парковок
+		/// </summary>
+		CannotCreateCGFile = -1106,
+
+		/// <summary>
+		/// Указанный файл параметров гаражей недоступен
+		/// </summary>
+		GaragesFileNotFound = -1107,
+
+		/// <summary>
+		/// Указанный файл повреждён или не является файлом параметров гаражей
+		/// </summary>
+		GaragesFileIsIncorrect = -1108,
+
+		/// <summary>
+		/// Не удаётся записать файл параметров гаражей
+		/// </summary>
+		CannotCreateGaragesFile = -1109,
+
+		/// <summary>
+		/// Не удаётся создать указанный файл. Возможно, выбранное расположение недоступно для записи
+		/// </summary>
+		CannotCreateFile = -2001,
+
+		/// <summary>
+		/// Файл сохранения не был загружен (структура пуста)
+		/// </summary>
+		FileNotLoaded = -1001,
+
+		/// <summary>
+		/// Указанный файл отсутствует или недоступен
+		/// </summary>
+		FileNotFound = -1,
+
+		/// <summary>
+		/// Не удаётся выделить память для хранения данных программы
+		/// </summary>
+		MemoryAllocationFailure = -2,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// общих параметров сохранения
+		/// </summary>
+		ErrorLoadDP = -101,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока общих параметров массива переменных
+		/// </summary>
+		ErrorLoadSB = -102,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// массива переменных
+		/// </summary>
+		ErrorLoadSBA = -103,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// продолжения блока переменных
+		/// </summary>
+		ErrorLoadSBB = -104,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// общих параметров массива скриптов
+		/// </summary>
+		ErrorLoadSC = -105,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// массива скриптов
+		/// </summary>
+		ErrorLoadSS = -106,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// общих параметров массива игроков
+		/// </summary>
+		ErrorLoadPPL = -107,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// массива игроков
+		/// </summary>
+		ErrorLoadPPS = -135,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока описателей гаражей
+		/// </summary>
+		ErrorLoadGR = -108,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// общих параметров массива транспортных средств
+		/// </summary>
+		ErrorLoadVS = -110,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// массива транспортных средств
+		/// </summary>
+		ErrorLoadVH = -136,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока стримминга
+		/// </summary>
+		ErrorLoadSR = -132,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока описателей точек создания такси
+		/// </summary>
+		ErrorLoadTS = -109,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// общих параметров массива трасс
+		/// </summary>
+		ErrorLoadPH = -113,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// массива трасс
+		/// </summary>
+		ErrorLoadPHD = -114,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// общих параметров массива скрипт-контролируемых объектов
+		/// </summary>
+		ErrorLoadOP = -111,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// массива скрипт-контролируемых объектов
+		/// </summary>
+		ErrorLoadOS = -112,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока портовых кранов
+		/// </summary>
+		ErrorLoadCR = -115,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока собираемых объектов
+		/// </summary>
+		ErrorLoadPU = -116,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока телефонов-автоматов
+		/// </summary>
+		ErrorLoadPI = -117,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока зон респауна
+		/// </summary>
+		ErrorLoadRL = -118,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока радарных указателей
+		/// </summary>
+		ErrorLoadRB = -119,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока зон карты
+		/// </summary>
+		ErrorLoadZB = -120,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока банд
+		/// </summary>
+		ErrorLoadGD = -121,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока парковок
+		/// </summary>
+		ErrorLoadCG = -122,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// общих параметров массива эффектов анимации
+		/// </summary>
+		ErrorLoadPR = -123,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// массива эффектов анимации
+		/// </summary>
+		ErrorLoadPRD = -124,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// общих параметров массива аудиоскриптов
+		/// </summary>
+		ErrorLoadAU = -125,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// массива аудиоскриптов
+		/// </summary>
+		ErrorLoadAS = -126,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока параметров пути перемещения спецобъектов
+		/// </summary>
+		ErrorLoadSP = -127,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока информации о текущем игроке
+		/// </summary>
+		ErrorLoadPL = -129,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока статистики игры
+		/// </summary>
+		ErrorLoadST = -130,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока триггер-зон
+		/// </summary>
+		ErrorLoadTZ = -131,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока типов персонажей
+		/// </summary>
+		ErrorLoadPT = -133,
+
+		/// <summary>
+		/// Неопознанная ошибка в процессе обработки файла сохранения
+		/// блока контрольной суммы или её сравнении
+		/// </summary>
+		ErrorLoadCS = -134,
+		}
+
+	/// <summary>
 	/// Класс обеспечивает доступ к методам библиотеки BExplorerLib
 	/// </summary>
 	public static class BExplorerLib
 		{
 		#region Импортированные функции
 
+		/*
 		/// <summary>
 		/// Метод формирует сообщение ошибки по её коду
 		/// </summary>
@@ -401,7 +725,26 @@ namespace RD_AAOW
 		/// <returns>Возвращает сообщение об ошибке</returns>
 		[DllImport (ProgramDescription.AssemblyLibName)]
 		private static extern IntPtr SaveData_ErrorPromptEx (Int16 ErrorCode);
+		*/
 
+		/// <summary>
+		/// Метод получает последнее текстовое сообщение от интерпретатора
+		/// </summary>
+		[DllImport (ProgramDescription.AssemblyLibName)]
+		private static extern IntPtr SaveData_GetLastMessageEx ();
+
+		/// <summary>
+		/// Возвращает последнее сообщение от интерпретатора
+		/// </summary>
+		public static string SaveData_LastMessage
+			{
+			get
+				{
+				return Marshal.PtrToStringAnsi (SaveData_GetLastMessageEx ());
+				}
+			}
+
+		/*
 		/// <summary>
 		/// Метод формирует сообщение ошибки по её коду
 		/// </summary>
@@ -411,6 +754,7 @@ namespace RD_AAOW
 			{
 			return Marshal.PtrToStringAnsi (SaveData_ErrorPromptEx ((Int16)ErrorCode));
 			}
+		*/
 
 		/// <summary>
 		/// Метод получает краткую информацию о файле сохранения
@@ -468,16 +812,33 @@ namespace RD_AAOW
 		public static extern Int16 SaveData_LoadEx (string FilePath);
 
 		/// <summary>
+		/// Метод выполняет загрузку файла сохранения из указанного расположения и начинает
+		/// сеанс взаимодействия со структурой данных сохранения
+		/// </summary>
+		/// <param name="FilePath">Путь к загружаемому файлу</param>
+		/// <returns>Возвращает результат выполнения операции</returns>
+		public static ResultCodes SaveData_Load (string FilePath)
+			{
+			return (ResultCodes)SaveData_LoadEx (FilePath);
+			}
+
+		/// <summary>
 		/// Командный интерпретатор. Возвращает сообщение с результатом выполнения команды или сообщение об ошибке
 		/// </summary>
 		/// <param name="Mode">Режим интерпретации</param>
 		/// <param name="OpCode">Код операции</param>
 		/// <param name="ParCode">Код параметра</param>
 		/// <param name="Value">Новое значение параметра</param>
-		/// <returns>Возвращает сообщение с результатом выполнения команды или сообщение об ошибке</returns>
+		/// <returns>Возвращает код результата выполнения команды</returns>
 		[DllImport (ProgramDescription.AssemblyLibName)]
-		private static extern IntPtr SaveData_CommandInterpreterEx (UInt16 Mode, UInt16 OpCode, UInt16 ParCode,
+		private static extern Int16 SaveData_CommandInterpreterEx (UInt16 Mode, UInt16 OpCode, UInt16 ParCode,
 			string Value);
+
+		private static ResultCodes SaveData_CommandInterpreter (uint Mode, uint OpCode, uint ParCode,
+			string Value)
+			{
+			return (ResultCodes)SaveData_CommandInterpreterEx ((UInt16)Mode, (UInt16)OpCode, (UInt16)ParCode, Value);
+			}
 
 		#endregion
 
@@ -487,10 +848,13 @@ namespace RD_AAOW
 		/// Функция применяет рекомендуемые исправления в файле сохранения
 		/// </summary>
 		/// <returns>Возвращает сообщение о результате выполнения</returns>
-		public static string SaveData_FixFile ()
+		public static ResultCodes SaveData_FixFile4 ()
 			{
-			string res = Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (5, 0, 0, "0"));
-			res += ("\r\n" + Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (5, 1, 0, "0")));
+			ResultCodes res = SaveData_CommandInterpreter (5, 0, 0, "0");
+			if (res != ResultCodes.FileFixed)
+				return res;
+
+			res = SaveData_CommandInterpreter (5, 1, 0, "0");
 			return res;
 			}
 
@@ -524,10 +888,15 @@ namespace RD_AAOW
 		/// </summary>
 		/// <param name="OpCode">Код параметра</param>
 		/// <param name="ParCode">Код субпараметра</param>
-		/// <returns>Возвращает сообщение с результатом выполнения команды или сообщение об ошибке</returns>
-		public static string SaveData_GetParameterValue (UInt16 OpCode, UInt16 ParCode)
+		/// <returns>Возвращает результат выполнения команды или код ошибки с префиксом \x13</returns>
+		public static string SaveData_GetParameterValue4 (OpCodes OpCode, uint ParCode)
 			{
-			return Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (0, OpCode, ParCode, "0"));
+			/*return Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (0, OpCode, ParCode, "0"));*/
+			ResultCodes res = SaveData_CommandInterpreter (0, (UInt16)OpCode, (UInt16)ParCode, "0");
+			if (res != ResultCodes.OK)
+				return "\x13" + ((int)res).ToString ();
+
+			return SaveData_LastMessage;
 			}
 
 		/// <summary>
@@ -537,14 +906,14 @@ namespace RD_AAOW
 		/// <param name="ParCode">Код субпараметра</param>
 		/// <param name="NewValue">Новое значение параметра</param>
 		/// <returns>Возвращает сообщение с результатом выполнения команды или сообщение об ошибке</returns>
-		public static string SaveData_SetParameterValue (UInt16 OpCode, UInt16 ParCode, string NewValue)
+		public static ResultCodes SaveData_SetParameterValue4 (OpCodes OpCode, uint ParCode, string NewValue)
 			{
 			// Код ошибки "значение вне диапазона"
-			if (NewValue == null)
-				return Marshal.PtrToStringAnsi (SaveData_ErrorPromptEx (-1002));
+			if (string.IsNullOrWhiteSpace (NewValue))
+				return ResultCodes.ValueOutOfRange;
+			/*Marshal.PtrToStringAnsi (SaveData_ErrorPromptEx (-1002));*/
 
-			return Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (1, OpCode, ParCode,
-				NewValue.Replace (',', '.')));
+			return SaveData_CommandInterpreter (1, (UInt16)OpCode, (UInt16)ParCode, NewValue.Replace (',', '.'));
 			}
 
 		/// <summary>
@@ -554,15 +923,16 @@ namespace RD_AAOW
 		/// <param name="ParCode">Код субпараметра</param>
 		/// <param name="Max">Указывает, что следует вернуть максимум вместо минимума</param>
 		/// <returns>Возвращает запрошенное значение</returns>
-		public static float SaveData_GetParameterLimit (UInt16 OpCode, UInt16 ParCode, bool Max)
+		public static float SaveData_GetParameterLimit4 (OpCodes OpCode, UInt16 ParCode, bool Max)
 			{
 			// Извлечение значений границ
-			string v = Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (4, OpCode, ParCode, ""));
-			if (!IsResultSuccessful (v))
+			ResultCodes res = SaveData_CommandInterpreter (4, (UInt16)OpCode, ParCode, "");
+			if (res != ResultCodes.OK)
 				return 0.0f;
+			/*if (!IsResultSuccessful (v))
+				return 0.0f;*/
 
-			char[] splitters = new char[] { ';' };
-			string[] values = v.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
+			string[] values = SaveData_LastMessage.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
 			if (values.Length != 2)
 				return 0.0f;
 
@@ -572,9 +942,7 @@ namespace RD_AAOW
 				min = float.Parse (values[0]);
 				max = float.Parse (values[1]);
 				}
-			catch
-				{
-				}
+			catch { }
 
 			// Возврат
 			if (Max)
@@ -582,6 +950,7 @@ namespace RD_AAOW
 			else
 				return min;
 			}
+		private static char[] splitters = new char[] { ';' };
 
 		/// <summary>
 		/// Функция загружает указанный файл параметров в файл сохранения
@@ -589,12 +958,12 @@ namespace RD_AAOW
 		/// <param name="ParametersType">Тип файла параметров</param>
 		/// <param name="FileName">Имя файла параметров</param>
 		/// <returns>Возвращает сообщение с результатом выполнения команды или сообщение об ошибке</returns>
-		public static string SaveData_LoadParametersFile (LoadableParameters ParametersType, string FileName)
+		public static ResultCodes SaveData_LoadParametersFile4 (LoadableParameters ParametersType, string FileName)
 			{
-			if (FileName == null)
-				return Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (2, (UInt16)ParametersType, 0, "<"));
+			if (string.IsNullOrWhiteSpace (FileName))
+				SaveData_CommandInterpreter (2, (UInt16)ParametersType, 0, "<");
 
-			return Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (2, (UInt16)ParametersType, 0, FileName));
+			return SaveData_CommandInterpreter (2, (UInt16)ParametersType, 0, FileName);
 			}
 
 		/// <summary>
@@ -603,12 +972,81 @@ namespace RD_AAOW
 		/// <param name="ParametersType">Тип файла параметров</param>
 		/// <param name="FileName">Имя файла параметров</param>
 		/// <returns>Возвращает сообщение с результатом выполнения команды или сообщение об ошибке</returns>
-		public static string SaveData_SaveParametersFile (SaveableParameters ParametersType, string FileName)
+		public static ResultCodes SaveData_SaveParametersFile4 (SaveableParameters ParametersType, string FileName)
 			{
-			if (FileName == null)
-				return Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (3, (UInt16)ParametersType, 0, "<"));
+			if (string.IsNullOrWhiteSpace (FileName))
+				return SaveData_CommandInterpreter (3, (UInt16)ParametersType, 0, "<");
 
-			return Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (3, (UInt16)ParametersType, 0, FileName));
+			return SaveData_CommandInterpreter (3, (UInt16)ParametersType, 0, FileName);
+			}
+
+		/// <summary>
+		/// Метод выполняет сведение статистики с комментариями в конечном текстовом файле
+		/// </summary>
+		/// <param name="FileName">Имя исходного файла статистики</param>
+		public static ResultCodes SaveData_MergeStats (string FileName)
+			{
+			// Формирование путей
+			string tempFile = FileName + "tmp";
+			string textFile = FileName + ".txt";
+
+			// Попытка инициализации
+			FileStream FI = null;
+			try
+				{
+				FI = new FileStream (tempFile, FileMode.Open);
+				}
+			catch
+				{
+				return ResultCodes.CannotCreateStatsFile;
+				}
+			StreamReader SR = new StreamReader (FI, Encoding.UTF8);
+
+			FileStream FO = null;
+			try
+				{
+				FO = new FileStream (textFile, FileMode.Create);
+				}
+			catch
+				{
+				SR.Close ();
+				FI.Close ();
+
+				return ResultCodes.CannotCreateStatsFile;
+				}
+			StreamWriter SW = new StreamWriter (FO, Encoding.UTF8);
+
+			// Сборка комментариев
+			string comments;
+			if (Localization.IsCurrentLanguageRuRu)
+				comments = Encoding.UTF8.GetString (Properties.ViceCityToolset.StatsText_ru_ru);
+			else
+				comments = Encoding.UTF8.GetString (Properties.ViceCityToolset.StatsText_en_us);
+			StringReader LR = new StringReader (comments);
+
+			// Склеивание
+			while (!SR.EndOfStream)
+				{
+				string s = LR.ReadLine () + SR.ReadLine ();
+				SW.WriteLine (s);
+				}
+
+			// Завершено
+			SR.Close ();
+			FI.Close ();
+			SW.Close ();
+			FO.Close ();
+			LR.Close ();
+
+			// Удаление вспомогательных файлов
+			try
+				{
+				File.Delete (tempFile);
+				}
+			catch { }
+
+			// Успешно
+			return ResultCodes.SaveSuccess;
 			}
 
 		/// <summary>
@@ -631,6 +1069,7 @@ namespace RD_AAOW
 			return 0;
 			}
 
+		/*
 		/// <summary>
 		/// Метод проверяет успешность выполнения команды интерпретатором
 		/// </summary>
@@ -640,6 +1079,7 @@ namespace RD_AAOW
 			{
 			return (InterpreterReturnedResult.IndexOf ("\x13") == -1);
 			}
+		*/
 
 		#endregion
 		}

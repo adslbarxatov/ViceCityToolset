@@ -12,11 +12,19 @@ sint SaveData_LoadCG (struct SaveData *SD, schar *FilePath)
 	FILE *FI;
 	union SD_CarGenerators cg;
 	ulong i;
+	long l;
 
 	// Попытка открытия файла
 	if ((FI = fopen (FilePath, "rb")) == NULL)
-		{
 		return SD_INTRPR_ERR_CGFileNotFound;
+
+	// Контроль нового формата
+	l = strlen (FilePath);
+	if (!((FilePath[l - 3] == 'b') && (FilePath[l - 2] == 'c') && (FilePath[l - 1] == 'g')) &&
+		!FILE_SIGNATURE_VALID (CG_FILE_CODE))
+		{
+		fclose (FI);
+		return SD_INTRPR_ERR_CGFileIsIncorrect;
 		}
 
 	// Попытка считывания файла
@@ -47,15 +55,12 @@ sint SaveData_SaveCG (struct SaveData *SD, schar *FilePath)
 
 	// Попытка открытия файлов
 	if ((FO = fopen (FilePath, "wb")) == NULL)
-		{
 		return SD_INTRPR_ERR_CannotCreateCGFile;
-		}
+	PUT_FILE_SIGNATURE (CG_FILE_CODE);		// Только новый формат
 
 	// Перенос значений
 	for (i = 0; i < sizeof (union SD_CarGenerators); i++)
-		{
 		cg.CG_Raw[i] = SD->SD_CG.CG_Raw[i];
-		}
 
 	// Запись и завершение
 	fwrite (cg.CG_Raw, 1, sizeof (union SD_CarGenerators), FO);

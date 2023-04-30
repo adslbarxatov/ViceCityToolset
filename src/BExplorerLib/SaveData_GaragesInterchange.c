@@ -12,11 +12,19 @@ sint SaveData_LoadGarages (struct SaveData *SD, schar *FilePath)
 	FILE *FI;
 	struct GarageCars cg[SD_GR_GC_Count];
 	schar *cgp, *sdp;
+	long l;
 
 	// Попытка открытия файла
 	if ((FI = fopen (FilePath, "rb")) == NULL)
-		{
 		return SD_INTRPR_ERR_GaragesFileNotFound;
+
+	// Контроль нового формата
+	l = strlen (FilePath);
+	if (!((FilePath[l - 3] == 'b') && (FilePath[l - 2] == 'g') && (FilePath[l - 1] == 'r')) &&
+		!FILE_SIGNATURE_VALID (GARAGES_FILE_CODE))
+		{
+		fclose (FI);
+		return SD_INTRPR_ERR_GaragesFileIsIncorrect;
 		}
 
 	// Попытка считывания файла
@@ -47,9 +55,8 @@ sint SaveData_SaveGarages (struct SaveData *SD, schar *FilePath)
 
 	// Попытка открытия файлов
 	if ((FO = fopen (FilePath, "wb")) == NULL)
-		{
 		return SD_INTRPR_ERR_CannotCreateGaragesFile;
-		}
+	PUT_FILE_SIGNATURE (GARAGES_FILE_CODE);		// Только новый формат
 
 	// Перенос значений
 	cgp = (schar *)cg;

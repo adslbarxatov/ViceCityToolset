@@ -1,5 +1,4 @@
-﻿// Исправление для MSVC 2019
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 
 // Подключение заголовков
 #include <stdio.h>
@@ -11,8 +10,8 @@
 
 #define B_API(t)	extern __declspec(dllexport) t
 
-#define B_VERSION			3,8,0,0
-#define B_VERSION_S			"3.8.0.0"
+#define B_VERSION			4,2,0,0
+#define B_VERSION_S			"4.2.0.0"
 #define B_PRODUCT			"Save files API for Vice city toolset"
 #define B_COMPANY			FDL_COMPANY
 
@@ -197,6 +196,7 @@ struct SaveData
 sint SaveData_Load (schar *FilePath, struct SaveData *SD);
 //////////////////////////////////////////////////////////////////////
 
+/*
 //////////////////////////////////////////////////////////////////////
 // Функция, отвечающая за вывод сообщений об ошибках
 // Возвращает текст ошибки
@@ -204,6 +204,7 @@ sint SaveData_Load (schar *FilePath, struct SaveData *SD);
 // этом файле)
 schar *SaveData_ErrorPrompt (sint Error);
 //////////////////////////////////////////////////////////////////////
+*/
 
 //////////////////////////////////////////////////////////////////////
 // Следующая функция - командный интерпретатор. Возвращает сообщение с
@@ -211,6 +212,7 @@ schar *SaveData_ErrorPrompt (sint Error);
 // по одному из следующих кодов:
 //
 #define SD_FIXED								0		// Результат успешной работы режима fix
+#define SD_OK									0
 //
 #define SD_INTRPR_ERR_FileNotLoaded				-1001	// Файл не был загружен
 #define SD_INTRPR_ERR_ValueOutOfRange			-1002	// Значение параметра находится вне допустимых границ
@@ -299,7 +301,7 @@ schar *SaveData_ErrorPrompt (sint Error);
 //  OpCode для режима 5
 //   0 - обнуление структуры кранов
 //   1 - обнуление замен объектов
-schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, uint ParCode, schar *Value);
+sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, uint ParCode, schar *Value);
 //////////////////////////////////////////////////////////////////////
 
 // Ограничения значений параметров
@@ -412,11 +414,20 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 //
 // • FilePath - путь к файлу
 // • SD - структура сохранения
-sint SaveData_Save (schar *FilePath, struct SaveData *SD);
+sint SaveData_Save (struct SaveData *SD, schar *FilePath);
 //////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////
-// Обработчики дополнительных файлов (см. CommandInterpreter)
+// Вспомогательные функции (см. CommandInterpreter)
+#define GARAGES_FILE_CODE		0x01
+#define STATS_FILE_CODE			0x02
+#define CG_FILE_CODE			0x03
+
+#define FILE_SIGNATURE_VALID(code)	((fgetc (FI) == 'v') && (fgetc (FI) == 'c') && \
+									(fgetc (FI) == 't') && (fgetc (FI) == code))
+#define PUT_FILE_SIGNATURE(code)	fputc ('v', FO); fputc ('c', FO); fputc ('t', FO); fputc (code, FO);
+
+void SaveData_SetLastMessage (schar *Message);
 sint SaveData_LoadStats (struct SaveData *SD, schar *FilePath);
 sint SaveData_SaveStats (struct SaveData *SD, schar *FilePath);
 sint SaveData_LoadCG (struct SaveData *SD, schar *FilePath);

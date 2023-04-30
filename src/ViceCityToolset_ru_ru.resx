@@ -275,19 +275,19 @@
 Перейти на веб-страницу проекта для загрузки актуальной версии?</value>
   </data>
   <data name="OCGDialogFilter" xml:space="preserve">
-    <value>Файлы параметров парковок GTA VC (*.bcg)|*.bcg</value>
+    <value>Файлы параметров парковок GTA VC (*.bcg)|*.bcg|</value>
   </data>
   <data name="OFDialogFilter" xml:space="preserve">
-    <value>Файлы сохранения GTA VC (*{0:S})|*{0:S}</value>
+    <value>Файлы сохранений GTA VC (*{0:S})|*{0:S}</value>
   </data>
   <data name="OFDialogTitle" xml:space="preserve">
     <value>Выберите файл</value>
   </data>
   <data name="OGDialogFilter" xml:space="preserve">
-    <value>Файлы параметров гаражей GTA VC (*.bgr)|*.bgr</value>
+    <value>Файлы параметров гаражей GTA VC (*.bgr)|*.bgr|</value>
   </data>
   <data name="OStatsDialogFilter" xml:space="preserve">
-    <value>Файлы статистики GTA VC (*.bst)|*.bst</value>
+    <value>Файлы статистики GTA VC (*.bst)|*.bst|</value>
   </data>
   <data name="SaveCompleted" xml:space="preserve">
     <value>(игра пройдена полностью)</value>
@@ -514,10 +514,6 @@
     <value>Ошибка загрузки файла параметров парковок:
 </value>
   </data>
-  <data name="CGSavingError" xml:space="preserve">
-    <value>Ошибка сохранения файла параметров парковок:
-</value>
-  </data>
   <data name="CGTab_AbortSorting" xml:space="preserve">
     <value>Отменить сортировку по типам</value>
   </data>
@@ -621,10 +617,6 @@
     <value>Ошибка загрузки файла параметров гаражей:
 </value>
   </data>
-  <data name="GRSavingError" xml:space="preserve">
-    <value>Ошибка сохранения файла параметров гаражей:
-</value>
-  </data>
   <data name="GRTab_GR_BulletsProof" xml:space="preserve">
     <value>Защита от пуль</value>
   </data>
@@ -726,7 +718,7 @@
 </value>
   </data>
   <data name="StatsSavingError" xml:space="preserve">
-    <value>Ошибка сохранения файла статистики:
+    <value>Ошибка сохранения файла настроек:
 </value>
   </data>
   <data name="STTab_Label31" xml:space="preserve">
@@ -859,21 +851,19 @@
     <value>Завершить основные сюжетные миссии</value>
   </data>
   <data name="HelpText" xml:space="preserve">
-    <value>Инструмент редактирования файлов сохранений GTA Vice city
+    <value>Vice city toolset – набор инструментов моддера для GTA Vice city, поддерживающий некоторые полезные функции и операции. А именно:
 
-Внимание! Инструмент ещё разрабатывается и может вызывать непредвиденные эффекты в файлах сохранений. Если Вы столкнулись с одним из них, пожалуйста, напишите нам об этом. И обязательно делайте резервные копии файлов перед использованием программы</value>
+• Редактирование файлов сохранений
+• Редактирование управления транспортом
+• Преобразование моделей в скрипты коллизий
+
+Программа находится в разработке. Поэтому часть параметров при использовании данного приложения редактируется пользователем на свой страх и риск! Рекомендуется делать резервные копии файлов сохранений перед использованием данной программы</value>
   </data>
-  <data name="bcgfile" xml:space="preserve">
-    <value>Файл настроек парковок BExplorer</value>
+  <data name="vctfile" xml:space="preserve">
+    <value>Файл настроек Vice city toolset</value>
   </data>
   <data name="bfile" xml:space="preserve">
     <value>Файл сохранения GTA Vice city</value>
-  </data>
-  <data name="bgrfile" xml:space="preserve">
-    <value>Файл настроек гаражей BExplorer</value>
-  </data>
-  <data name="bstfile" xml:space="preserve">
-    <value>Файл статистики BExplorer</value>
   </data>
   <data name="FileTab_RegisterButton" xml:space="preserve">
     <value>&amp;Зарегистрировать ассоц. файлов</value>
@@ -1366,5 +1356,182 @@
   </data>
   <data name="HandlingForm" xml:space="preserve">
     <value>редактирование управления транспортом</value>
+  </data>
+  <data name="Result_CannotCreateCGFile" xml:space="preserve">
+    <value>Не удаётся записать файл параметров парковок</value>
+  </data>
+  <data name="Result_CannotCreateFile" xml:space="preserve">
+    <value>Не удаётся создать указанный файл. Возможно, выбранное расположение недоступно для записи</value>
+  </data>
+  <data name="Result_CannotCreateGaragesFile" xml:space="preserve">
+    <value>Не удаётся записать файл параметров гаражей</value>
+  </data>
+  <data name="Result_CannotCreateStatsFile" xml:space="preserve">
+    <value>Не удаётся записать файл статистики</value>
+  </data>
+  <data name="Result_CGFileIsIncorrect" xml:space="preserve">
+    <value>Указанный файл повреждён или не является файлом параметров парковок</value>
+  </data>
+  <data name="Result_CGFileNotFound" xml:space="preserve">
+    <value>Указанный файл параметров парковок не найден или недоступен</value>
+  </data>
+  <data name="Result_ErrorLoadAS" xml:space="preserve">
+    <value>массива аудиоскриптов</value>
+  </data>
+  <data name="Result_ErrorLoadAU" xml:space="preserve">
+    <value>общих параметров массива аудиоскриптов</value>
+  </data>
+  <data name="Result_ErrorLoadCG" xml:space="preserve">
+    <value>блока парковок</value>
+  </data>
+  <data name="Result_ErrorLoadCR" xml:space="preserve">
+    <value>блока портовых кранов</value>
+  </data>
+  <data name="Result_ErrorLoadCS" xml:space="preserve">
+    <value>контрольной суммы или её сравнении</value>
+  </data>
+  <data name="Result_ErrorLoadDP" xml:space="preserve">
+    <value>общих параметров сохранения</value>
+  </data>
+  <data name="Result_ErrorLoadGD" xml:space="preserve">
+    <value>блока банд</value>
+  </data>
+  <data name="Result_ErrorLoadGR" xml:space="preserve">
+    <value>блока описателей гаражей</value>
+  </data>
+  <data name="Result_ErrorLoadOP" xml:space="preserve">
+    <value>общих параметров массива скрипт-контролируемых объектов</value>
+  </data>
+  <data name="Result_ErrorLoadOS" xml:space="preserve">
+    <value>массива скрипт-контролируемых объектов</value>
+  </data>
+  <data name="Result_ErrorLoadPH" xml:space="preserve">
+    <value>общих параметров массива трасс</value>
+  </data>
+  <data name="Result_ErrorLoadPHD" xml:space="preserve">
+    <value>массива трасс</value>
+  </data>
+  <data name="Result_ErrorLoadPI" xml:space="preserve">
+    <value>блока телефонов-автоматов</value>
+  </data>
+  <data name="Result_ErrorLoadPL" xml:space="preserve">
+    <value>блока информации о текущем игроке</value>
+  </data>
+  <data name="Result_ErrorLoadPPL" xml:space="preserve">
+    <value>общих параметров массива игроков</value>
+  </data>
+  <data name="Result_ErrorLoadPPS" xml:space="preserve">
+    <value>массива игроков</value>
+  </data>
+  <data name="Result_ErrorLoadPR" xml:space="preserve">
+    <value>общих параметров массива эффектов анимации</value>
+  </data>
+  <data name="Result_ErrorLoadPRD" xml:space="preserve">
+    <value>массива эффектов анимации</value>
+  </data>
+  <data name="Result_ErrorLoadPT" xml:space="preserve">
+    <value>блока типов персонажей</value>
+  </data>
+  <data name="Result_ErrorLoadPU" xml:space="preserve">
+    <value>блока собираемых объектов</value>
+  </data>
+  <data name="Result_ErrorLoadRB" xml:space="preserve">
+    <value>блока радарных указателей</value>
+  </data>
+  <data name="Result_ErrorLoadRL" xml:space="preserve">
+    <value>блока зон респауна</value>
+  </data>
+  <data name="Result_ErrorLoadSB" xml:space="preserve">
+    <value>блока общих параметров массива переменных</value>
+  </data>
+  <data name="Result_ErrorLoadSBA" xml:space="preserve">
+    <value>массива переменных</value>
+  </data>
+  <data name="Result_ErrorLoadSBB" xml:space="preserve">
+    <value>продолжения блока переменных</value>
+  </data>
+  <data name="Result_ErrorLoadSC" xml:space="preserve">
+    <value>общих параметров массива скриптов</value>
+  </data>
+  <data name="Result_ErrorLoadSP" xml:space="preserve">
+    <value>блока параметров пути перемещения спецобъектов</value>
+  </data>
+  <data name="Result_ErrorLoadSR" xml:space="preserve">
+    <value>блока стримминга</value>
+  </data>
+  <data name="Result_ErrorLoadSS" xml:space="preserve">
+    <value>массива скриптов</value>
+  </data>
+  <data name="Result_ErrorLoadST" xml:space="preserve">
+    <value>блока статистики игры</value>
+  </data>
+  <data name="Result_ErrorLoadTS" xml:space="preserve">
+    <value>блока описателей точек создания такси</value>
+  </data>
+  <data name="Result_ErrorLoadTZ" xml:space="preserve">
+    <value>блока триггер-зон</value>
+  </data>
+  <data name="Result_ErrorLoadVH" xml:space="preserve">
+    <value>массива транспортных средств</value>
+  </data>
+  <data name="Result_ErrorLoadVS" xml:space="preserve">
+    <value>общих параметров массива транспортных средств</value>
+  </data>
+  <data name="Result_ErrorLoadZB" xml:space="preserve">
+    <value>блока зон карты</value>
+  </data>
+  <data name="Result_FileFixed" xml:space="preserve">
+    <value>Корректировка файла выполнена успешно</value>
+  </data>
+  <data name="Result_FileNotFound" xml:space="preserve">
+    <value>Указанный файл не найден или недоступен</value>
+  </data>
+  <data name="Result_FileNotLoaded" xml:space="preserve">
+    <value>Файл сохранения не был загружен (структура пуста)</value>
+  </data>
+  <data name="Result_GaragesFileIsIncorrect" xml:space="preserve">
+    <value>Указанный файл повреждён или не является файлом параметров гаражей</value>
+  </data>
+  <data name="Result_GaragesFileNotFound" xml:space="preserve">
+    <value>Указанный файл параметров гаражей не найден или недоступен</value>
+  </data>
+  <data name="Result_LoadingErrorPrefix" xml:space="preserve">
+    <value>Неожиданный конец файла или ошибка чтения при загрузке </value>
+  </data>
+  <data name="Result_LoadSuccess" xml:space="preserve">
+    <value>Файл успешно загружен</value>
+  </data>
+  <data name="Result_MemoryAllocationFailure" xml:space="preserve">
+    <value>Не удаётся выделить память для хранения данных программы</value>
+  </data>
+  <data name="Result_ModeIsIncorrect" xml:space="preserve">
+    <value>Недопустимый код режима (требуется отладка приложения)</value>
+  </data>
+  <data name="Result_OK" xml:space="preserve">
+    <value>Команда выполнена успешно</value>
+  </data>
+  <data name="Result_OpCodeIsIncorrect" xml:space="preserve">
+    <value>Недопустимый код операции для данного режима (требуется отладка приложения)</value>
+  </data>
+  <data name="Result_ParCodeIsIncorrect" xml:space="preserve">
+    <value>Недопустимый код параметра для данных режима и операции (требуется отладка приложения)</value>
+  </data>
+  <data name="Result_SaveSuccess" xml:space="preserve">
+    <value>Файл успешно сохранён</value>
+  </data>
+  <data name="Result_StatsFileIsIncorrect" xml:space="preserve">
+    <value>Указанный файл повреждён или не является файлом статистики</value>
+  </data>
+  <data name="Result_StatsFileNotFound" xml:space="preserve">
+    <value>Указанный файл статистики не найден или недоступен</value>
+  </data>
+  <data name="Result_UnknownError" xml:space="preserve">
+    <value>Неопознанная ошибка в процессе обработки файла сохранения (требуется отладка приложения)</value>
+  </data>
+  <data name="Result_ValueOutOfRange" xml:space="preserve">
+    <value>Указанное значение находится вне допустимого диапазона</value>
+  </data>
+  <data name="GenericSettingsDialogFilter" xml:space="preserve">
+    <value>Файлы настроек Vice city toolset (*.vct)|*.vct</value>
   </data>
 </root>

@@ -19,10 +19,24 @@ B_API (schar *) SaveData_CommandInterpreterEx (uint Mode, uint OpCode, uint ParC
 	return SaveData_CommandInterpreter (&SD, Mode, OpCode, ParCode, Value);
 	}
 
-// Оболочка функции сообщений об ошибках
+/* Оболочка функции сообщений об ошибках
 B_API (schar *) SaveData_ErrorPromptEx (sint ErrorCode)
 	{
 	return SaveData_ErrorPrompt (ErrorCode);
+	}
+*/
+
+// Оболочка для последнего сообщения функции-интерпретатора
+schar sdLastMessage[SD_MaxStrSize];
+B_API (schar *) SaveData_GetLastMessageEx ()
+	{
+	return sdLastMessage;
+	}
+
+void SaveData_SetLastMessage (schar *Message)
+	{
+	memcpy (sdLastMessage, Message, strlen (Message));
+	sdLastMessage[strlen (Message)] = '\0';
 	}
 
 // Метод запроса краткого описания сохранения

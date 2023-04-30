@@ -99,35 +99,32 @@ uint SD_PPS_CriminalPoints[] = {
 	if (Mode == 1)	\
 		{	\
 		if ((NewValue < MinValue) || (NewValue > MaxValue))	\
-			{	\
-			return SaveData_ErrorPrompt (SD_INTRPR_ERR_ValueOutOfRange);	\
-			}	\
+			return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ValueOutOfRange/*)*/;	\
 		SD_Variable = NewValue;	\
 		}	\
 	if (Mode == 4)	\
 		{	\
-		sprintf (msg, "%lf;%lf", (float)MinValue, (float)MaxValue);	\
-		return msg;	\
+		sprintf (res, "%lf;%lf", (float)MinValue, (float)MaxValue);	\
+		SaveData_SetLastMessage (res);	\
+		return SD_OK;	\
 		}	\
-	sprintf (msg, "%lf", (float)SD_Variable);	\
-	return msg;
+	sprintf (res, "%lf", (float)SD_Variable);	\
+	SaveData_SetLastMessage (res);	\
+	return SD_OK;
 
 //
 #define SD_PROC_STRING_VARIABLE(SD_Variable,StringLength,NewValue)	\
 	if (Mode == 1)	\
 		{	\
-			for (i = 0; i < StringLength; i++)	\
-				{	\
-				SD_Variable[i] = NewValue[i];	\
-				}	\
-			SD_Variable[StringLength] = '\x0';	\
+		for (i = 0; i < StringLength; i++)	\
+			SD_Variable[i] = NewValue[i];	\
+		SD_Variable[StringLength] = '\x0';	\
 		}	\
 	if (Mode == 4)	\
-		{	\
-		return SaveData_ErrorPrompt (SD_INTRPR_ERR_OpCodeIsIncorrect);	\
-		}	\
-	sprintf (msg, "%s", SD_Variable);	\
-	return msg;
+		return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_OpCodeIsIncorrect/*)*/;	\
+	sprintf (res, "%s", SD_Variable);	\
+	SaveData_SetLastMessage (res);	\
+	return SD_OK;
 
 // Командный интерпретатор. Возвращает сообщение с
 // результатом выполнения команды или сообщение об ошибке
@@ -136,19 +133,20 @@ uint SD_PPS_CriminalPoints[] = {
 // • OpCode - код операции
 // • ParCode - код параметра
 // • Value - новое значение
-schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, uint ParCode, schar *Value)
+sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, uint ParCode, schar *Value)
 	{
 	// Возвращаемое сообщение
-	static schar msg[SD_MaxStrSize];
+	schar res[SD_MaxStrSize];
+	res[0] = '\0';
 
 	// Вспомогательные переменные
 	slong i;
 
 	// Контроль параметров
 	if ((Mode != 4) && (SD->SD_DP.DP.DP_BlockSize == 0))
-		{
-		return SaveData_ErrorPrompt (SD_INTRPR_ERR_FileNotLoaded);
-		}
+		/*{
+		return SaveData_ErrorPrompt (*/SD_INTRPR_ERR_FileNotLoaded/*)*/;
+		/*}*/
 
 	// Обработка
 	switch (Mode)
@@ -165,13 +163,13 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 					{
 					case 0:
 						SD_PROC_VARIABLE (SD->SD_PPS[0].PPS.PPS_WD[OpCode - WeaponsBaseOpCode].PPS_WD_WeaponNumber,
-							SD_LIMIT_plwnu_B, SD_LIMIT_plwnu_T, atol (Value))
+							SD_LIMIT_plwnu_B, SD_LIMIT_plwnu_T, atol (Value));
 					case 1:
 						SD_PROC_VARIABLE (SD->SD_PPS[0].PPS.PPS_WD[OpCode - WeaponsBaseOpCode].PPS_WD_BulletsCount,
-							SD_LIMIT_plwbu_B, SD_LIMIT_plwbu_T, atol (Value))
+							SD_LIMIT_plwbu_B, SD_LIMIT_plwbu_T, atol (Value));
 
 					default:
-						return SaveData_ErrorPrompt (SD_INTRPR_ERR_ParCodeIsIncorrect);
+						return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
 					}
 				}
 
@@ -193,26 +191,32 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 				switch (ParCode)
 					{
 					case 0:
-						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode - GaragesBaseOpCode]].GR_GC_ModelID,
-							SD_LIMIT_grcmo_B, SD_LIMIT_grcmo_T, atol (Value))
+						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode -
+							GaragesBaseOpCode]].GR_GC_ModelID,
+							SD_LIMIT_grcmo_B, SD_LIMIT_grcmo_T, atol (Value));
 					case 1:
-						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode - GaragesBaseOpCode]].GR_GC_Immunity,
-							SD_LIMIT_grimm_B, SD_LIMIT_grimm_T, atol (Value))
+						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode -
+							GaragesBaseOpCode]].GR_GC_Immunity,
+							SD_LIMIT_grimm_B, SD_LIMIT_grimm_T, atol (Value));
 					case 2:
-						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode - GaragesBaseOpCode]].GR_GC_PrimaryColor,
-							SD_LIMIT_grcol_B, SD_LIMIT_grcol_T, atoi (Value))
+						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode -
+							GaragesBaseOpCode]].GR_GC_PrimaryColor,
+							SD_LIMIT_grcol_B, SD_LIMIT_grcol_T, atoi (Value));
 					case 3:
-						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode - GaragesBaseOpCode]].GR_GC_SecondaryColor,
-							SD_LIMIT_grcol_B, SD_LIMIT_grcol_T, atoi (Value))
+						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode -
+							GaragesBaseOpCode]].GR_GC_SecondaryColor,
+							SD_LIMIT_grcol_B, SD_LIMIT_grcol_T, atoi (Value));
 					case 4:
-						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode - GaragesBaseOpCode]].GR_GC_RadioStation,
-							SD_LIMIT_grrad_B, SD_LIMIT_grrad_T, atoi (Value))
+						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode -
+							GaragesBaseOpCode]].GR_GC_RadioStation,
+							SD_LIMIT_grrad_B, SD_LIMIT_grrad_T, atoi (Value));
 					case 5:
-						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode - GaragesBaseOpCode]].GR_GC_BombType,
-							SD_LIMIT_grbtp_B, SD_LIMIT_grbtp_T, atoi (Value))
+						SD_PROC_VARIABLE (SD->SD_GR.GR.GR_GC[GR_GC_GarageNumbers[OpCode -
+							GaragesBaseOpCode]].GR_GC_BombType,
+							SD_LIMIT_grbtp_B, SD_LIMIT_grbtp_T, atoi (Value));
 
 					default:
-						return SaveData_ErrorPrompt (SD_INTRPR_ERR_ParCodeIsIncorrect);
+						return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
 					}
 				}
 
@@ -233,44 +237,44 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 							if (ParCode == 0)
 								{
 								SD_PROC_VARIABLE (SD->SD_PU.PU.PU_S[OpCode - PickupsBaseOpCode].PU_S_ModelNumber,
-									SD_LIMIT_pumod_B, SD_LIMIT_pumod_T, atoi (Value))
+									SD_LIMIT_pumod_B, SD_LIMIT_pumod_T, atoi (Value));
 								}
 							if (ParCode == 1)
 								{
 								SD_PROC_VARIABLE (SD->SD_PU.PU.PU_S[OpCode - PickupsBaseOpCode].PU_S_X,
-									SD_LIMIT_cgx_B, SD_LIMIT_cgx_T, atof (Value))
+									SD_LIMIT_cgx_B, SD_LIMIT_cgx_T, atof (Value));
 								}
 							if (ParCode == 2)
 								{
 								SD_PROC_VARIABLE (SD->SD_PU.PU.PU_S[OpCode - PickupsBaseOpCode].PU_S_Y,
-									SD_LIMIT_cgy_B, SD_LIMIT_cgy_T, atof (Value))
+									SD_LIMIT_cgy_B, SD_LIMIT_cgy_T, atof (Value));
 								}
 							if (ParCode == 3)
 								{
 								SD_PROC_VARIABLE (SD->SD_PU.PU.PU_S[OpCode - PickupsBaseOpCode].PU_S_Z,
-									SD_LIMIT_cgz_B, SD_LIMIT_cgz_T, atof (Value))
+									SD_LIMIT_cgz_B, SD_LIMIT_cgz_T, atof (Value));
 								}
 							if (ParCode == 4)
 								{
 								SD_PROC_VARIABLE (SD->SD_PU.PU.PU_S[OpCode - PickupsBaseOpCode].PU_S_PickupType,
-									SD_LIMIT_putyp_B, SD_LIMIT_putyp_T, atoi (Value))
+									SD_LIMIT_putyp_B, SD_LIMIT_putyp_T, atoi (Value));
 								}
 							if (ParCode == 6)
 								{
 								SD_PROC_VARIABLE (SD->SD_PU.PU.PU_S[OpCode - PickupsBaseOpCode].PU_S_HasBeenPickedUp,
-									SD_LIMIT_pupic_B, SD_LIMIT_pupic_T, atoi (Value))
+									SD_LIMIT_pupic_B, SD_LIMIT_pupic_T, atoi (Value));
 								}
 							}
 						else
 							{
-							return SaveData_ErrorPrompt (SD_INTRPR_ERR_ParCodeIsIncorrect);
+							return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
 							}
 					case 5:
 						SD_PROC_VARIABLE (SD->SD_PU.PU.PU_S[OpCode - PickupsBaseOpCode].PU_S_MaxAsset,
-							SD_LIMIT_puass_B, SD_LIMIT_puass_T, atol (Value))
+							SD_LIMIT_puass_B, SD_LIMIT_puass_T, atol (Value));
 
 					default:
-						return SaveData_ErrorPrompt (SD_INTRPR_ERR_ParCodeIsIncorrect);
+						return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
 					}
 				}
 
@@ -281,22 +285,22 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 					{
 					case 0:
 						SD_PROC_VARIABLE (SD->SD_GD.GD.GD_S[OpCode - GangsBaseOpCode].GD_S_CarModel,
-							SD_LIMIT_gdcmo_B, SD_LIMIT_gdcmo_T, atol (Value))
+							SD_LIMIT_gdcmo_B, SD_LIMIT_gdcmo_T, atol (Value));
 					case 1:
 						SD_PROC_VARIABLE (SD->SD_GD.GD.GD_S[OpCode - GangsBaseOpCode].GD_S_PedModel1,
-							SD_LIMIT_gdpmo_B, SD_LIMIT_gdpmo_T, atol (Value))
+							SD_LIMIT_gdpmo_B, SD_LIMIT_gdpmo_T, atol (Value));
 					case 2:
 						SD_PROC_VARIABLE (SD->SD_GD.GD.GD_S[OpCode - GangsBaseOpCode].GD_S_PedModel2,
-							SD_LIMIT_gdpmo_B, SD_LIMIT_gdpmo_T, atol (Value))
+							SD_LIMIT_gdpmo_B, SD_LIMIT_gdpmo_T, atol (Value));
 					case 3:
 						SD_PROC_VARIABLE (SD->SD_GD.GD.GD_S[OpCode - GangsBaseOpCode].GD_S_WeaponNumber1,
-							SD_LIMIT_gdwnu_B, SD_LIMIT_gdwnu_T, atol (Value))
+							SD_LIMIT_gdwnu_B, SD_LIMIT_gdwnu_T, atol (Value));
 					case 4:
 						SD_PROC_VARIABLE (SD->SD_GD.GD.GD_S[OpCode - GangsBaseOpCode].GD_S_WeaponNumber2,
-							SD_LIMIT_gdwnu_B, SD_LIMIT_gdwnu_T, atol (Value))
+							SD_LIMIT_gdwnu_B, SD_LIMIT_gdwnu_T, atol (Value));
 
 					default:
-						return SaveData_ErrorPrompt (SD_INTRPR_ERR_ParCodeIsIncorrect);
+						return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
 					}
 				}
 
@@ -311,40 +315,40 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 					{
 					case 0:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_ModelID,
-							SD_LIMIT_cgcmo_B, SD_LIMIT_cgcmo_T, atol (Value))
+							SD_LIMIT_cgcmo_B, SD_LIMIT_cgcmo_T, atol (Value));
 					case 1:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_X,
-							SD_LIMIT_cgx_B, SD_LIMIT_cgx_T, atof (Value))
+							SD_LIMIT_cgx_B, SD_LIMIT_cgx_T, atof (Value));
 					case 2:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_Y,
-							SD_LIMIT_cgy_B, SD_LIMIT_cgy_T, atof (Value))
+							SD_LIMIT_cgy_B, SD_LIMIT_cgy_T, atof (Value));
 					case 3:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_Z,
-							SD_LIMIT_cgz_B, SD_LIMIT_cgz_T, atof (Value))
+							SD_LIMIT_cgz_B, SD_LIMIT_cgz_T, atof (Value));
 					case 4:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_Rotation,
-							SD_LIMIT_cgrot_B, SD_LIMIT_cgrot_T, atof (Value))
+							SD_LIMIT_cgrot_B, SD_LIMIT_cgrot_T, atof (Value));
 					case 5:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_AllowSpawn,
-							SD_LIMIT_cgasp_B, SD_LIMIT_cgasp_T, atoi (Value))
+							SD_LIMIT_cgasp_B, SD_LIMIT_cgasp_T, atoi (Value));
 					case 6:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_PrimaryColor,
-							SD_LIMIT_cgcol_B, SD_LIMIT_cgcol_T, atoi (Value))
+							SD_LIMIT_cgcol_B, SD_LIMIT_cgcol_T, atoi (Value));
 					case 7:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_SecondaryColor,
-							SD_LIMIT_cgcol_B, SD_LIMIT_cgcol_T, atoi (Value))
+							SD_LIMIT_cgcol_B, SD_LIMIT_cgcol_T, atoi (Value));
 					case 8:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_Alarm,
-							SD_LIMIT_cgala_B, SD_LIMIT_cgala_T, atoi (Value))
+							SD_LIMIT_cgala_B, SD_LIMIT_cgala_T, atoi (Value));
 					case 9:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_Lock,
-							SD_LIMIT_cgloc_B, SD_LIMIT_cgloc_T, atoi (Value))
+							SD_LIMIT_cgloc_B, SD_LIMIT_cgloc_T, atoi (Value));
 					case 10:
 						SD_PROC_VARIABLE (SD->SD_CG.CG.CG_S[OpCode - GeneratorsBaseOpCode].CG_S_ForceSpawn,
-							SD_LIMIT_cgfsp_B, SD_LIMIT_cgfsp_T, atoi (Value))
+							SD_LIMIT_cgfsp_B, SD_LIMIT_cgfsp_T, atoi (Value));
 
 					default:
-						return SaveData_ErrorPrompt (SD_INTRPR_ERR_ParCodeIsIncorrect);
+						return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
 					}
 				}
 
@@ -353,107 +357,109 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 				{
 				// Основные параметры
 				case 0:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Year, SD_LIMIT_dpyea_B, SD_LIMIT_dpyea_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Year, SD_LIMIT_dpyea_B, SD_LIMIT_dpyea_T, atoi (Value));
 				case 1:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Month, SD_LIMIT_dpmon_B, SD_LIMIT_dpmon_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Month, SD_LIMIT_dpmon_B, SD_LIMIT_dpmon_T, atoi (Value));
 				case 2:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Day, SD_LIMIT_dpday_B, SD_LIMIT_dpday_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Day, SD_LIMIT_dpday_B, SD_LIMIT_dpday_T, atoi (Value));
 				case 3:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Hour, SD_LIMIT_dphou_B, SD_LIMIT_dphou_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Hour, SD_LIMIT_dphou_B, SD_LIMIT_dphou_T, atoi (Value));
 				case 4:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Minute, SD_LIMIT_dpmin_B, SD_LIMIT_dpmin_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Minute, SD_LIMIT_dpmin_B, SD_LIMIT_dpmin_T, atoi (Value));
 				case 5:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Second, SD_LIMIT_dpsec_B, SD_LIMIT_dpsec_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_Second, SD_LIMIT_dpsec_B, SD_LIMIT_dpsec_T, atoi (Value));
 				case 6:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_IngameMinuteLengthMs, SD_LIMIT_dpiml_B, SD_LIMIT_dpiml_T, atol (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_IngameMinuteLengthMs, SD_LIMIT_dpiml_B, SD_LIMIT_dpiml_T,
+						atol (Value));
 				case 7:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_GameHour, SD_LIMIT_dpgho_B, SD_LIMIT_dpgho_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_GameHour, SD_LIMIT_dpgho_B, SD_LIMIT_dpgho_T, atoi (Value));
 				case 8:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_GameMinute, SD_LIMIT_dpgmi_B, SD_LIMIT_dpgmi_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_GameMinute, SD_LIMIT_dpgmi_B, SD_LIMIT_dpgmi_T, atoi (Value));
 				case 9:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_GameSpeed, SD_LIMIT_dpgsp_B, SD_LIMIT_dpgsp_T, atof (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_GameSpeed, SD_LIMIT_dpgsp_B, SD_LIMIT_dpgsp_T, atof (Value));
 				case 10:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_ForcedWeatherNumber, SD_LIMIT_dpswn_B, SD_LIMIT_dpswn_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_ForcedWeatherNumber, SD_LIMIT_dpswn_B, SD_LIMIT_dpswn_T,
+						atoi (Value));
 				case 11:
-					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_CarCameraView, SD_LIMIT_dpccv_B, SD_LIMIT_dpccv_T, atof (Value))
+					SD_PROC_VARIABLE (SD->SD_DP.DP.DP_CarCameraView, SD_LIMIT_dpccv_B, SD_LIMIT_dpccv_T, atof (Value));
 
-						// Параметры субблоков переменных
+					// Параметры субблоков переменных
 				case 100:
-					SD_PROC_VARIABLE (SD->SD_SBB.SBB.SBB_AllowCabsRadio, SD_LIMIT_sbcbr_B, SD_LIMIT_sbcbr_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_SBB.SBB.SBB_AllowCabsRadio, SD_LIMIT_sbcbr_B, SD_LIMIT_sbcbr_T,
+						atoi (Value));
 
-						// Параметры пула игроков
+					// Параметры пула игроков
 				case 210:
-					SD_PROC_VARIABLE (SD->SD_PPS[0].PPS.PPS_CurrentArmor, SD_LIMIT_plcua_B, SD_LIMIT_plcua_T, atof (Value))
+					SD_PROC_VARIABLE (SD->SD_PPS[0].PPS.PPS_CurrentArmor, SD_LIMIT_plcua_B, SD_LIMIT_plcua_T,
+						atof (Value));
 
 				case 211:
 					if (Mode == 1)
 						{
 						i = atol (Value);
 						if ((i < SD_LIMIT_plmwl_B) || (i > SD_LIMIT_plmwl_T))
-							{
-							return SaveData_ErrorPrompt (SD_INTRPR_ERR_ValueOutOfRange);
-							}
+							return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ValueOutOfRange/*)*/;
+
 						SD->SD_PPS[0].PPS.PPS_MaxWantedLevel = i;
 						SD->SD_PPS[0].PPS.PPS_MaxCriminalPoints = SD_PPS_CriminalPoints[i];
 						}
 					if (Mode == 4)
 						{
-						sprintf (msg, "%lf;%lf", (float)SD_LIMIT_plmwl_B, (float)SD_LIMIT_plmwl_T);
-						return msg;
+						sprintf (res, "%lf;%lf", (float)SD_LIMIT_plmwl_B, (float)SD_LIMIT_plmwl_T);
+						SaveData_SetLastMessage (res);
+						return SD_OK;
 						}
-					sprintf (msg, "%lf", (float)SD->SD_PPS[0].PPS.PPS_MaxWantedLevel);
-					return msg;
+
+					sprintf (res, "%lf", (float)SD->SD_PPS[0].PPS.PPS_MaxWantedLevel);
+					SaveData_SetLastMessage (res);
+					return SD_OK;
 
 				case 212:
 					SD_PROC_STRING_VARIABLE (SD->SD_PPS[0].PPS.PPS_SuitName,
-						((strlen (Value) > sizeof (SD->SD_PPS[0].PPS.PPS_SuitName)) ? sizeof (SD->SD_PPS[0].PPS.PPS_SuitName) : strlen (Value)),
-						Value)
+						((strlen (Value) > sizeof (SD->SD_PPS[0].PPS.PPS_SuitName)) ?
+							sizeof (SD->SD_PPS[0].PPS.PPS_SuitName) : strlen (Value)), Value);
 
-						// Параметры игрока
+					// Параметры игрока
 				case 500:
-					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_CurrentMoney, SD_LIMIT_plcum_B, SD_LIMIT_plcum_T, atol (Value))
+					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_CurrentMoney, SD_LIMIT_plcum_B, SD_LIMIT_plcum_T, atol (Value));
 				case 501:
-					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_InfiniteRun, SD_LIMIT_pliru_B, SD_LIMIT_pliru_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_InfiniteRun, SD_LIMIT_pliru_B, SD_LIMIT_pliru_T, atoi (Value));
 				case 502:
-					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_FastReload, SD_LIMIT_plfre_B, SD_LIMIT_plfre_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_FastReload, SD_LIMIT_plfre_B, SD_LIMIT_plfre_T, atoi (Value));
 				case 503:
-					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_Fireproof, SD_LIMIT_plfpr_B, SD_LIMIT_plfpr_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_Fireproof, SD_LIMIT_plfpr_B, SD_LIMIT_plfpr_T, atoi (Value));
 				case 504:
-					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_MaxHealth, SD_LIMIT_plmxh_B, SD_LIMIT_plmxh_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_MaxHealth, SD_LIMIT_plmxh_B, SD_LIMIT_plmxh_T, atoi (Value));
 				case 505:
-					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_MaxArmor, SD_LIMIT_plmxa_B, SD_LIMIT_plmxa_T, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_PL.PL.PL_MaxArmor, SD_LIMIT_plmxa_B, SD_LIMIT_plmxa_T, atoi (Value));
 				case 506:
 					i = atoi (Value);
 					if (Mode == 1)
 						{
 						if (i == 1)
-							{
 							SD->SD_ST.ST.ST_ProgressMade = SD->SD_ST.ST.ST_TotalProgress;
-							}
 						else if (i == 0)
-							{
 							SD->SD_ST.ST.ST_ProgressMade = SD->SD_ST.ST.ST_TotalProgress - 1.0f;
-							}
 						else
-							{
-							return SaveData_ErrorPrompt (SD_INTRPR_ERR_ValueOutOfRange);
-							}
+							return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ValueOutOfRange/*)*/;
 						}
 					if (Mode == 4)
 						{
-						sprintf (msg, "%lf;%lf", 0.0f, 1.0f);
-						return msg;
+						sprintf (res, "%lf;%lf", 0.0f, 1.0f);
+						SaveData_SetLastMessage (res);
+						return SD_OK;
 						}
 
-					sprintf (msg, "%lf", (float)(SD->SD_ST.ST.ST_ProgressMade == SD->SD_ST.ST.ST_TotalProgress));
-					return msg;
+					sprintf (res, "%lf", (float)(SD->SD_ST.ST.ST_ProgressMade == SD->SD_ST.ST.ST_TotalProgress));
+					SaveData_SetLastMessage (res);
+					return SD_OK;
 
 					// Параметры парковок
 				case 2000:
-					SD_PROC_VARIABLE (SD->SD_CG.CG.CG_CarsCount, 1, GeneratorsCount, atoi (Value))
+					SD_PROC_VARIABLE (SD->SD_CG.CG.CG_CarsCount, 1, GeneratorsCount, atoi (Value));
 
 				default:
-					return SaveData_ErrorPrompt (SD_INTRPR_ERR_OpCodeIsIncorrect);
+					return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_OpCodeIsIncorrect/*)*/;
 				}
 			break;
 
@@ -461,13 +467,13 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 		case 2:
 			switch (OpCode)
 				{
-				case 1:
+				case GARAGES_FILE_CODE:
 					i = SaveData_LoadGarages (SD, Value);
 					break;
-				case 2:
+				case STATS_FILE_CODE:
 					i = SaveData_LoadStats (SD, Value);
 					break;
-				case 3:
+				case CG_FILE_CODE:
 					i = SaveData_LoadCG (SD, Value);
 					break;
 
@@ -475,22 +481,22 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 					i = SD_INTRPR_ERR_OpCodeIsIncorrect;
 					break;
 				}
-			return SaveData_ErrorPrompt (i);
+			return /*SaveData_ErrorPrompt (*/i/*)*/;
 
 			// Save
 		case 3:
 			switch (OpCode)
 				{
 				case 0:
-					i = SaveData_Save (Value, SD);
+					i = SaveData_Save (SD, Value);
 					break;
-				case 1:
+				case GARAGES_FILE_CODE:
 					i = SaveData_SaveGarages (SD, Value);
 					break;
-				case 2:
+				case STATS_FILE_CODE:
 					i = SaveData_SaveStats (SD, Value);
 					break;
-				case 3:
+				case CG_FILE_CODE:
 					i = SaveData_SaveCG (SD, Value);
 					break;
 
@@ -498,7 +504,7 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 					i = SD_INTRPR_ERR_OpCodeIsIncorrect;
 					break;
 				}
-			return SaveData_ErrorPrompt (i);
+			return /*SaveData_ErrorPrompt (*/i/*)*/;
 
 			// Fix
 		case 5:
@@ -516,7 +522,7 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 						SD->SD_CR.CR.CR_S[i].CR_S_CraneHookCurrentY = 0.0f;
 						SD->SD_CR.CR.CR_S[i].CR_S_CraneHookCurrentZ = 0.0f;
 						}
-					return SaveData_ErrorPrompt (SD_FIXED);
+					return /*SaveData_ErrorPrompt (*/SD_FIXED/*)*/;
 
 					// Обнуление замен объектов (по той же причине)
 				case 1:
@@ -527,15 +533,15 @@ schar *SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode,
 						SD->SD_SBB.SBB.SBB_R[i].SBB_R_OldModelID = -1;
 						SD->SD_SBB.SBB.SBB_R[i].SBB_R_Type = 0;
 						}
-					return SaveData_ErrorPrompt (SD_FIXED);
+					return /*SaveData_ErrorPrompt (*/SD_FIXED/*)*/;
 
 				default:
-					return SaveData_ErrorPrompt (SD_INTRPR_ERR_OpCodeIsIncorrect);
+					return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_OpCodeIsIncorrect/*)*/;
 				}
 			break;
 
 			// Недопустимый режим
 		default:
-			return SaveData_ErrorPrompt (SD_INTRPR_ERR_ModeIsIncorrect);
+			return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ModeIsIncorrect/*)*/;
 		}
 	}

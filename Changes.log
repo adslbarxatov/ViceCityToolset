@@ -1,8 +1,10 @@
 Vice city toolset: changes log
 
-ToDo:
-- Localize DLL;
-- Implement unified .vct format
+Version 4.2:
+• DLL error codes now have English localization;
+• DLL protocol has been rerwitten;
+• Exportable settings (garages, car parks, stats) now have unified file format;
+  old formats (.bst, .bgr, .bcg) are still supported for loading
 
 Version 4.1:
 • Vehicles handling editor is now available;

@@ -275,7 +275,7 @@ Do you want to open project’s webpage to download it manually?</value>
 Do you want to open project's webpage to download actual version?</value>
   </data>
   <data name="OCGDialogFilter" xml:space="preserve">
-    <value>GTA VC car parks parameters files (*.bcg)|*.bcg</value>
+    <value>GTA VC car parks parameters files (*.bcg)|*.bcg|</value>
   </data>
   <data name="OFDialogFilter" xml:space="preserve">
     <value>GTA VC save files (*{0:S})|*{0:S}</value>
@@ -284,10 +284,10 @@ Do you want to open project's webpage to download actual version?</value>
     <value>Select file</value>
   </data>
   <data name="OGDialogFilter" xml:space="preserve">
-    <value>GTA VC garages parameters files (*.bgr)|*.bgr</value>
+    <value>GTA VC garages parameters files (*.bgr)|*.bgr|</value>
   </data>
   <data name="OStatsDialogFilter" xml:space="preserve">
-    <value>GTA VC stats files (*.bst)|*.bst</value>
+    <value>GTA VC stats files (*.bst)|*.bst|</value>
   </data>
   <data name="SaveCompleted" xml:space="preserve">
     <value>(game is fully completed)</value>
@@ -514,10 +514,6 @@ Do you want to open project's webpage to download actual version?</value>
     <value>Car parks parameters file loading error:
 </value>
   </data>
-  <data name="CGSavingError" xml:space="preserve">
-    <value>Car parks parameters file saving error:
-</value>
-  </data>
   <data name="CGTab_AbortSorting" xml:space="preserve">
     <value>Abort sorting by type</value>
   </data>
@@ -621,10 +617,6 @@ Do you want to open project's webpage to download actual version?</value>
     <value>Garages parameters file loading error:
 </value>
   </data>
-  <data name="GRSavingError" xml:space="preserve">
-    <value>Garages parameters file saving error:
-</value>
-  </data>
   <data name="GRTab_GR_BulletsProof" xml:space="preserve">
     <value>Bulletproof</value>
   </data>
@@ -726,7 +718,7 @@ Do you want to open project's webpage to download actual version?</value>
 </value>
   </data>
   <data name="StatsSavingError" xml:space="preserve">
-    <value>Stats file saving error:
+    <value>Settings file saving error:
 </value>
   </data>
   <data name="STTab_Label31" xml:space="preserve">
@@ -859,21 +851,19 @@ Do you want to open project's webpage to download actual version?</value>
     <value>Complete main plot missions</value>
   </data>
   <data name="HelpText" xml:space="preserve">
-    <value>A tool for editing of GTA Vice city save files
+    <value>Vice city toolset – a set of modder tools for GTA Vice city that supports some useful functions and operations. Namely:
 
-Warning! Tool is not completed yet and may cause unexpected effects in save files. If you got some, please, remind us about it. And backup your save files before using this tool</value>
+• Editing game saves
+• Editing vehicles handling
+• Converting models to collision scripts
+
+The application is under development now. Therefore, some parameters during usage of this application are edited by user at own risk! It is recommended that you back up your save files before using this tool</value>
   </data>
-  <data name="bcgfile" xml:space="preserve">
-    <value>BExplorer car parks parameters file</value>
+  <data name="vctfile" xml:space="preserve">
+    <value>Vice city toolset settings file</value>
   </data>
   <data name="bfile" xml:space="preserve">
     <value>GTA Vice city save file</value>
-  </data>
-  <data name="bgrfile" xml:space="preserve">
-    <value>BExplorer garages parameters file</value>
-  </data>
-  <data name="bstfile" xml:space="preserve">
-    <value>BExplorer stats file</value>
   </data>
   <data name="FileTab_RegisterButton" xml:space="preserve">
     <value>Re&amp;gister file associations</value>
@@ -1366,5 +1356,182 @@ Warning! Tool is not completed yet and may cause unexpected effects in save file
   </data>
   <data name="HandlingForm" xml:space="preserve">
     <value>editing vehicles handling</value>
+  </data>
+  <data name="GenericSettingsDialogFilter" xml:space="preserve">
+    <value>Vice city toolset settings file (*.vct)|*.vct</value>
+  </data>
+  <data name="Result_CannotCreateCGFile" xml:space="preserve">
+    <value>Unable to write parking parameters file</value>
+  </data>
+  <data name="Result_CannotCreateFile" xml:space="preserve">
+    <value>Cannot create the specified file. The selected location may be not writable</value>
+  </data>
+  <data name="Result_CannotCreateGaragesFile" xml:space="preserve">
+    <value>Unable to write garage settings file</value>
+  </data>
+  <data name="Result_CannotCreateStatsFile" xml:space="preserve">
+    <value>Unable to write statistics file</value>
+  </data>
+  <data name="Result_CGFileIsIncorrect" xml:space="preserve">
+    <value>The specified file is corrupted or isn’t a parking parameters file</value>
+  </data>
+  <data name="Result_CGFileNotFound" xml:space="preserve">
+    <value>The specified parking parameters file wasn’t found or isn’t available</value>
+  </data>
+  <data name="Result_ErrorLoadAS" xml:space="preserve">
+    <value>the array of audio scripts</value>
+  </data>
+  <data name="Result_ErrorLoadAU" xml:space="preserve">
+    <value>common parameters of an array of audio scripts</value>
+  </data>
+  <data name="Result_ErrorLoadCG" xml:space="preserve">
+    <value>the block of car parks</value>
+  </data>
+  <data name="Result_ErrorLoadCR" xml:space="preserve">
+    <value>the block of port cranes</value>
+  </data>
+  <data name="Result_ErrorLoadCS" xml:space="preserve">
+    <value>the checksum or its comparison</value>
+  </data>
+  <data name="Result_ErrorLoadDP" xml:space="preserve">
+    <value>general save options</value>
+  </data>
+  <data name="Result_ErrorLoadGD" xml:space="preserve">
+    <value>the block of gangs</value>
+  </data>
+  <data name="Result_ErrorLoadGR" xml:space="preserve">
+    <value>the block of garages descriptors</value>
+  </data>
+  <data name="Result_ErrorLoadOP" xml:space="preserve">
+    <value>common parameters of an array of script-controlled objects</value>
+  </data>
+  <data name="Result_ErrorLoadOS" xml:space="preserve">
+    <value>the array of script-controlled objects</value>
+  </data>
+  <data name="Result_ErrorLoadPH" xml:space="preserve">
+    <value>common parameters of the array of traces</value>
+  </data>
+  <data name="Result_ErrorLoadPHD" xml:space="preserve">
+    <value>the array of paths</value>
+  </data>
+  <data name="Result_ErrorLoadPI" xml:space="preserve">
+    <value>the block of pay phones</value>
+  </data>
+  <data name="Result_ErrorLoadPL" xml:space="preserve">
+    <value>the block of information about the current player</value>
+  </data>
+  <data name="Result_ErrorLoadPPL" xml:space="preserve">
+    <value>common parameters players array</value>
+  </data>
+  <data name="Result_ErrorLoadPPS" xml:space="preserve">
+    <value>the array of players</value>
+  </data>
+  <data name="Result_ErrorLoadPR" xml:space="preserve">
+    <value>general parameters of animation effects array</value>
+  </data>
+  <data name="Result_ErrorLoadPRD" xml:space="preserve">
+    <value>the array of animation effects</value>
+  </data>
+  <data name="Result_ErrorLoadPT" xml:space="preserve">
+    <value>the block of character types</value>
+  </data>
+  <data name="Result_ErrorLoadPU" xml:space="preserve">
+    <value>the block of collectable objects</value>
+  </data>
+  <data name="Result_ErrorLoadRB" xml:space="preserve">
+    <value>the block of radar indicators</value>
+  </data>
+  <data name="Result_ErrorLoadRL" xml:space="preserve">
+    <value>the block of respawn zones</value>
+  </data>
+  <data name="Result_ErrorLoadSB" xml:space="preserve">
+    <value>the block of general parameters of the variables array</value>
+  </data>
+  <data name="Result_ErrorLoadSBA" xml:space="preserve">
+    <value>the array of variables</value>
+  </data>
+  <data name="Result_ErrorLoadSBB" xml:space="preserve">
+    <value>the continuation of variables block</value>
+  </data>
+  <data name="Result_ErrorLoadSC" xml:space="preserve">
+    <value>common parameters of the script array</value>
+  </data>
+  <data name="Result_ErrorLoadSP" xml:space="preserve">
+    <value>the block of parameters of special objects movement path</value>
+  </data>
+  <data name="Result_ErrorLoadSR" xml:space="preserve">
+    <value>the streaming block</value>
+  </data>
+  <data name="Result_ErrorLoadSS" xml:space="preserve">
+    <value>the array of scripts</value>
+  </data>
+  <data name="Result_ErrorLoadST" xml:space="preserve">
+    <value>the game statistics block</value>
+  </data>
+  <data name="Result_ErrorLoadTS" xml:space="preserve">
+    <value>the block of descriptors for taxi creation points</value>
+  </data>
+  <data name="Result_ErrorLoadTZ" xml:space="preserve">
+    <value>the block of trigger zones</value>
+  </data>
+  <data name="Result_ErrorLoadVH" xml:space="preserve">
+    <value>the array of vehicles</value>
+  </data>
+  <data name="Result_ErrorLoadVS" xml:space="preserve">
+    <value>common parameters of the vehicles array</value>
+  </data>
+  <data name="Result_ErrorLoadZB" xml:space="preserve">
+    <value>the map zones block</value>
+  </data>
+  <data name="Result_FileFixed" xml:space="preserve">
+    <value>File correction completed successfully</value>
+  </data>
+  <data name="Result_FileNotFound" xml:space="preserve">
+    <value>The specified file wasn’t found or isn’t available</value>
+  </data>
+  <data name="Result_FileNotLoaded" xml:space="preserve">
+    <value>Save file wasn’t loaded (structure is empty)</value>
+  </data>
+  <data name="Result_GaragesFileIsIncorrect" xml:space="preserve">
+    <value>The specified file is corrupted or is not a garage settings file</value>
+  </data>
+  <data name="Result_GaragesFileNotFound" xml:space="preserve">
+    <value>The specified garage settings file wasn’t found or isn’t available</value>
+  </data>
+  <data name="Result_LoadingErrorPrefix" xml:space="preserve">
+    <value>Unexpected end of file or read error while loading </value>
+  </data>
+  <data name="Result_LoadSuccess" xml:space="preserve">
+    <value>File has been loaded successfully</value>
+  </data>
+  <data name="Result_MemoryAllocationFailure" xml:space="preserve">
+    <value>Unable to allocate memory to store application data</value>
+  </data>
+  <data name="Result_ModeIsIncorrect" xml:space="preserve">
+    <value>Invalid mode code (application debugging required)</value>
+  </data>
+  <data name="Result_OK" xml:space="preserve">
+    <value>Operation completed successfully</value>
+  </data>
+  <data name="Result_OpCodeIsIncorrect" xml:space="preserve">
+    <value>Invalid opcode for this mode (application debugging required)</value>
+  </data>
+  <data name="Result_ParCodeIsIncorrect" xml:space="preserve">
+    <value>Invalid parameter code for these mode and operation (application debugging required)</value>
+  </data>
+  <data name="Result_SaveSuccess" xml:space="preserve">
+    <value>File saved successfully</value>
+  </data>
+  <data name="Result_StatsFileIsIncorrect" xml:space="preserve">
+    <value>The specified file is corrupted or isn’t a statistics file</value>
+  </data>
+  <data name="Result_StatsFileNotFound" xml:space="preserve">
+    <value>The specified statistics file wasn’t found or isn’t available</value>
+  </data>
+  <data name="Result_UnknownError" xml:space="preserve">
+    <value>Unrecognized error while processing save file (application debugging required)</value>
+  </data>
+  <data name="Result_ValueOutOfRange" xml:space="preserve">
+    <value>Specified value is out of range</value>
   </data>
 </root>
