@@ -1,5 +1,8 @@
 Vice city toolset: changes log
 
+Version 4.2.5:
+• Cumulative updates have been applied
+
 Version 4.2:
 • DLL error codes now have English localization;
 • DLL protocol has been rerwitten;
