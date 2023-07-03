@@ -1,5 +1,5 @@
-# ViceCityToolset v 4.2.5
-> PCC: 0019F3E91F57A65B
+# ViceCityToolset v 4.2.7
+> PCC: 0019F9B1925A1FFF
 
 
 A modder toolset for GTA Vice city.

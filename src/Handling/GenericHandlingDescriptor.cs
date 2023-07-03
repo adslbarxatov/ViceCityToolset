@@ -21,12 +21,6 @@ namespace RD_AAOW
 				}
 			}
 
-		/*
-		public const string TableHeader = "	A			B		C		D		E		F		G		H		I	J		" +
-			"K		L		M	N		O		P	Q	R		S		T	U		V		W		" +
-			"X		Y			Z		AA		AB		AC		AD			AE		AF	AG";
-		*/
-
 		/// <summary>
 		/// Конструктор. Загружает параметры транспортного средства из массива строк
 		/// </summary>
@@ -43,7 +37,6 @@ namespace RD_AAOW
 
 			// Далее следуют параметры, не зависящие от типа транспортного средства
 			a_VehicleIdentifier = Values[0];
-			/*NumberFormatInfo nfi = HandlingSupport.ValuesFormat;*/
 
 			try
 				{
@@ -234,7 +227,6 @@ namespace RD_AAOW
 				return result;
 
 			// Сборка
-			/*NumberFormatInfo nfi = HandlingSupport.ValuesFormat;*/
 			result = VehicleIdentifier.PadRight (8, ' ') + "\t";
 			result += (b_VehicleMass.ToString ("F1", nfi).PadLeft (8, ' ') + "\t");
 			result += (c_XDimension.ToString ("F2", nfi) + "\t");

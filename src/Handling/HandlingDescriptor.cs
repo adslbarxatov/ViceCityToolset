@@ -48,10 +48,9 @@ namespace RD_AAOW
 			{
 			get
 				{
-				return cie.NumberFormat;
+				return Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
 				}
 			}
-		private static CultureInfo cie = new CultureInfo ("en-us");
 
 		/// <summary>
 		/// Метод контроля нового значения параметра на вхождение в допустимый диапазон
@@ -111,14 +110,16 @@ namespace RD_AAOW
 		public static string CreateHeader (uint LastLetterNumber)
 			{
 			string res = "  A";
+			Encoding enc = RDGenerics.GetEncoding (SupportedEncodings.UTF8);
+
 			for (int i = 2; (i <= 26) && (i <= LastLetterNumber); i++)
-				res += ("\t\t" + Encoding.UTF8.GetString (new byte[] { (byte)(0x40 + i) }));
+				res += ("\t\t" + enc.GetString (new byte[] { (byte)(0x40 + i) }));
 
 			if (LastLetterNumber <= 26)
 				return res;
 
 			for (int i = 1; (i <= 26) && (i <= LastLetterNumber - 26); i++)
-				res += ("\t\tA" + Encoding.UTF8.GetString (new byte[] { (byte)(0x40 + i) }));
+				res += ("\t\tA" + enc.GetString (new byte[] { (byte)(0x40 + i) }));
 
 			return res;
 			}

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Globalization;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -21,7 +20,6 @@ namespace RD_AAOW
 		private CoordsPicker cp;            // Форма выбора координат на карте
 		private ToDoStatus tds;             // Экземпляр-обработчик ToDo-статуса
 
-		private CultureInfo cie = new CultureInfo ("en-us");    // Дробные числа с использованием точки вместо запятой
 		private const string savesExtension = ".b";             // Расширение файлов сохранений
 
 		/// <summary>
@@ -32,7 +30,7 @@ namespace RD_AAOW
 			// Инициализация формы
 			InitializeComponent ();
 
-			Application.CurrentCulture = cie;
+			Application.CurrentCulture = Localization.GetCulture (SupportedLanguages.en_us);
 			this.Text = ProgramDescription.AssemblyTitle + " – " + Localization.GetText (this.Name);
 
 			// Запуск
@@ -801,16 +799,6 @@ namespace RD_AAOW
 			else
 				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("StatsLoadingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
-
-			/*
-			// В случае ошибки вывести сообщение
-			if (BExplorerLib.IsResultSuccessful (msg))
-				RDGenerics.MessageBox (RDMessageTypes.Success, msg);
-
-			// В противном случае
-			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("StatsLoadingError") + msg);
-			*/
 			}
 
 		// Выгрузка статистики
@@ -847,16 +835,6 @@ namespace RD_AAOW
 			else
 				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("StatsSavingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
-
-			/*
-			// В случае ошибки вывести сообщение
-			if (BExplorerLib.IsResultSuccessful (msg))
-				RDGenerics.MessageBox (RDMessageTypes.Success, msg);
-
-			// В противном случае
-			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("StatsSavingError") + msg);
-			*/
 			}
 
 		// Выбран слот гаража
@@ -1222,16 +1200,6 @@ namespace RD_AAOW
 				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("CGLoadingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
 
-			/*
-			// В случае ошибки вывести сообщение
-			if (BExplorerLib.IsResultSuccessful (msg))
-				RDGenerics.MessageBox (RDMessageTypes.Success, msg);
-
-			// В противном случае
-			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("CGLoadingError") + msg);
-			*/
-
 			// Обновление загруженных данных сохранения
 			LoadParameters ();
 			}
@@ -1249,30 +1217,6 @@ namespace RD_AAOW
 			SStatsDialog.FileName = saveMode.ToString ();
 			SStatsDialog.ShowDialog ();
 			}
-
-		/*
-		// Файл выбран
-		private void SCGDialog_FileOk (object sender, CancelEventArgs e)
-			{
-			// Загрузка файла статистики
-			ResultCodes res = BExplorerLib.SaveData_SaveParametersFile4 (SaveableParameters.Generators, SCGDialog.FileName);
-
-			if (res == ResultCodes.SaveSuccess)
-				RDGenerics.MessageBox (RDMessageTypes.Success,
-					Localization.GetText ("Result_" + res.ToString ()));
-			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("CGSavingError") +
-					Localization.GetText ("Result_" + res.ToString ()));
-
-			// В случае ошибки вывести сообщение
-			if (BExplorerLib.IsResultSuccessful (msg))
-				RDGenerics.MessageBox (RDMessageTypes.Success, msg);
-
-			// В противном случае
-			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("CGSavingError") + msg);
-			}
-		*/
 
 		// Установка флага бесконечных патронов
 		private void ST_InfBullets_CheckedChanged (object sender, EventArgs e)
@@ -1318,16 +1262,6 @@ namespace RD_AAOW
 				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("GRLoadingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
 
-			/*
-			// В случае ошибки вывести сообщение
-			if (BExplorerLib.IsResultSuccessful (msg))
-				RDGenerics.MessageBox (RDMessageTypes.Success, msg);
-
-			// В противном случае
-			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("GRLoadingError") + msg);
-			*/
-
 			// Обновление загруженных данных сохранения
 			LoadParameters ();
 			}
@@ -1341,30 +1275,6 @@ namespace RD_AAOW
 			SStatsDialog.FileName = saveMode.ToString ();
 			SStatsDialog.ShowDialog ();
 			}
-
-		/*
-		// Файл выбран
-		private void SGDialog_FileOk (object sender, CancelEventArgs e)
-			{
-			// Загрузка файла статистики
-			ResultCodes res = BExplorerLib.SaveData_SaveParametersFile4 (SaveableParameters.Garages, SGDialog.FileName);
-
-			if (res == ResultCodes.SaveSuccess)
-				RDGenerics.MessageBox (RDMessageTypes.Success,
-					Localization.GetText ("Result_" + res.ToString ()));
-			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("GRSavingError") +
-					Localization.GetText ("Result_" + res.ToString ()));
-
-			// В случае ошибки вывести сообщение
-			if (BExplorerLib.IsResultSuccessful (msg))
-				RDGenerics.MessageBox (RDMessageTypes.Success, msg);
-
-			// В противном случае
-			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("GRSavingError") + msg);
-			}
-		*/
 
 		// Применение рекомендуемых настроек
 		private void RecommendedSettings_Click (object sender, EventArgs e)
@@ -1467,17 +1377,16 @@ namespace RD_AAOW
 				savesExtension);
 
 			SStatsDialog.Filter = Localization.GetText ("GenericSettingsDialogFilter");
-			OStatsDialog.Filter = /*SStatsDialog.Filter =*/ Localization.GetText ("OStatsDialogFilter") +
+			OStatsDialog.Filter = Localization.GetText ("OStatsDialogFilter") +
 				SStatsDialog.Filter;
-			OCGDialog.Filter = /*SCGDialog.Filter =*/ Localization.GetText ("OCGDialogFilter") +
+			OCGDialog.Filter = Localization.GetText ("OCGDialogFilter") +
 				SStatsDialog.Filter;
-			OGDialog.Filter = /*SGDialog.Filter =*/ Localization.GetText ("OGDialogFilter") +
+			OGDialog.Filter = Localization.GetText ("OGDialogFilter") +
 				SStatsDialog.Filter;
 
 			OFDialog.Title = OStatsDialog.Title = OCGDialog.Title = OGDialog.Title =
 				Localization.GetText ("OFDialogTitle");
-			SFDialog.Title = SStatsDialog.Title = /*SCGDialog.Title = SGDialog.Title =*/
-				Localization.GetText ("SFDialogTitle");
+			SFDialog.Title = SStatsDialog.Title = Localization.GetText ("SFDialogTitle");
 
 			// Настройка контролов
 			Localization.SetControlsText (FileTab);

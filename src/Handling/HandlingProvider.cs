@@ -78,7 +78,7 @@ namespace RD_AAOW
 		/// <summary>
 		/// Конструктор. Загружает данные из файла handling.cfg и формирует соответствующие дескрипторы
 		/// </summary>
-		public HandlingProvider (/*string HandlingFileName*/)
+		public HandlingProvider ()
 			{
 			// Резервное копирование
 			if (!File.Exists (handlingBackup))
@@ -104,7 +104,7 @@ namespace RD_AAOW
 				initStatus = InitStatuses.FileNotAvailable;
 				return;
 				}
-			StreamReader SR = new StreamReader (FS/*, Encoding.GetEncoding (1251)*/);
+			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Чтение файла
 			while (!SR.EndOfStream)
@@ -291,7 +291,7 @@ namespace RD_AAOW
 		/// Метод сохраняет данные в файл handling.cfg
 		/// </summary>
 		/// <returns>Возвращает true в случае успеха</returns>
-		public bool SaveHandlingData (/*string HandlingFileName, bool AddComments*/)
+		public bool SaveHandlingData ()
 			{
 			// Контроль инициализации
 			if (initStatus != InitStatuses.Ok)
@@ -307,7 +307,7 @@ namespace RD_AAOW
 				{
 				return false;
 				}
-			StreamWriter SW = new StreamWriter (FS/*, Encoding.GetEncoding (1251)*/);
+			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Запись
 			// Заголовок файла и основные дескрипторы
@@ -315,14 +315,6 @@ namespace RD_AAOW
 			SW.WriteLine (CommentPrefix + "Updated by " + ProgramDescription.AssemblyTitle + ", " +
 				DateTime.Now.ToString ("dd.MM.yyyy; HH.mm"));
 			SW.WriteLine (CommentSymbol);
-
-			/*if (AddComments)
-				{
-				SW.WriteLine (CommentPrefix +
-					RD_AAOW.Properties.ViceCityToolset.GenericComment.Replace ("\n", "\n" + CommentPrefix));
-				SW.WriteLine (CommentSymbol);
-				}*/
-
 			SW.WriteLine (CommentPrefix + GenericHandlingDescriptor.TableHeader);
 
 			for (int g = 0; g < genericHDs.Count; g++)
@@ -330,14 +322,6 @@ namespace RD_AAOW
 
 			// Дескрипторы моторных лодок
 			SW.WriteLine (CommentSymbol);
-
-			/*if (AddComments)
-				{
-				SW.WriteLine (CommentPrefix +
-					RD_AAOW.Properties.ViceCityToolset.BoatComment.Replace ("\n", "\n" + CommentPrefix));
-				SW.WriteLine (CommentSymbol);
-				}*/
-
 			SW.WriteLine (CommentPrefix + BoatHandlingDescriptor.TableHeader);
 
 			for (int b = 0; b < boatHDs.Count; b++)
@@ -345,14 +329,6 @@ namespace RD_AAOW
 
 			// Дескрипторы мотоциклов
 			SW.WriteLine (CommentSymbol);
-
-			/*if (AddComments)
-				{
-				SW.WriteLine (CommentPrefix +
-					RD_AAOW.Properties.ViceCityToolset.BikeComment.Replace ("\n", "\n" + CommentPrefix));
-				SW.WriteLine (CommentSymbol);
-				}*/
-
 			SW.WriteLine (CommentPrefix + BikeHandlingDescriptor.TableHeader);
 
 			for (int b = 0; b < bikeHDs.Count; b++)
@@ -360,14 +336,6 @@ namespace RD_AAOW
 
 			// Дескрипторы летательных аппаратов
 			SW.WriteLine (CommentSymbol);
-
-			/*if (AddComments)
-				{
-				SW.WriteLine (CommentPrefix +
-					RD_AAOW.Properties.ViceCityToolset.FlyingComment.Replace ("\n", "\n" + CommentPrefix));
-				SW.WriteLine (CommentSymbol);
-				}*/
-
 			SW.WriteLine (CommentPrefix + FlyingHandlingDescriptor.TableHeader);
 
 			for (int f = 0; f < flyingHDs.Count; f++)

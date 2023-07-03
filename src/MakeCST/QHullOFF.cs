@@ -17,11 +17,6 @@ namespace RD_AAOW
 		/// </summary>
 		public const string MasterExtension = ".txt";
 
-		// Переменные
-
-		// Определитель формата чисел
-		private CultureInfo cie = new CultureInfo ("en-us");
-
 		/// <summary>
 		/// Вовращает треугольники, извлечённые из файла
 		/// </summary>
@@ -61,14 +56,15 @@ namespace RD_AAOW
 				}
 
 			// Чтение точек
+			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
 			for (uint p = 0; p < pointsCount; p++)
 				{
 				try
 					{
 					string s = SR.ReadLine ();
 					string[] s2 = s.Split (separators, StringSplitOptions.RemoveEmptyEntries);
-					points.Add (new Point3D (double.Parse (s2[0], cie.NumberFormat),
-						double.Parse (s2[1], cie.NumberFormat), double.Parse (s2[2], cie.NumberFormat)));
+					points.Add (new Point3D (double.Parse (s2[0], nfi),
+						double.Parse (s2[1], nfi), double.Parse (s2[2], nfi)));
 					}
 				catch
 					{

@@ -243,19 +243,8 @@ namespace RD_AAOW
 			ExitButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
 			SaveCfgFile.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Save);
 
-			// Настройка диалогов
-			/*OpenCfgDialog.Filter = SaveCfgDialog.Filter = "Файлы handling.cfg|handling.cfg";
-			OpenCfgDialog.Title = "Выберите файл handling.cfg";
-			SaveCfgDialog.Title = "Укажите новое место для файла handling.cfg";*/
-
-			// Отключение управления до начала редактирования
-			/*A_.Enabled = false;
-			SaveCfgFile.Enabled = false;
-			AddComments.Enabled = false;*/
-
 			#region Основные дескрипторы
 
-			/*SetGeneric1State (false);	// Начальная блокировка*/
 			B_.Minimum = (decimal)GenericHandlingDescriptor.VehicleMass_Min;
 			B_.Maximum = (decimal)GenericHandlingDescriptor.VehicleMass_Max;
 			C_.Minimum = (decimal)GenericHandlingDescriptor.XDimension_Min;
@@ -302,26 +291,12 @@ namespace RD_AAOW
 			Generic1.Text = Localization.GetText ("Generic1Tab");
 			Localization.SetControlsText (Generic1);
 
-			/*P_.Items.Add ("4 колеса");
-			P_.Items.Add ("передние колёса");
-			P_.Items.Add ("задние колёса");*/
 			for (int i = 0; i <= 2; i++)
 				P_.Items.Add (Localization.GetText ("Generic1_P_V" + i.ToString ()));
 
-			/*Q_.Items.Add ("бензиновый");
-			Q_.Items.Add ("дизельный");
-			Q_.Items.Add ("электрический");*/
 			for (int i = 0; i <= 2; i++)
 				Q_.Items.Add (Localization.GetText ("Generic1_Q_V" + i.ToString ()));
 
-			/*AF_.Items.Add ("длинные");
-			AF_.Items.Add ("маленькие");
-			AF_.Items.Add ("большие");
-			AF_.Items.Add ("высокие");
-			AG_.Items.Add ("длинные");
-			AG_.Items.Add ("маленькие");
-			AG_.Items.Add ("большие");
-			AG_.Items.Add ("высокие");*/
 			for (int i = 0; i <= 3; i++)
 				{
 				string s = Localization.GetText ("Generic1_AF_V" + i.ToString ());
@@ -329,36 +304,19 @@ namespace RD_AAOW
 				AG_.Items.Add (s);
 				}
 
-
 			#endregion
 
 			#region Флаги
 
-			/*SetGeneric2State (false);*/
-
 			Generic2.Text = Localization.GetText ("Generic2Tab");
 			Localization.SetControlsText (Generic2);
 
-			/*AE_1_4.Items.Add ("стандартный багажник");
-			AE_1_4.Items.Add ("дверь прикреплена к верху");
-			AE_1_4.Items.Add ("дверь прикреплена к низу");
-			AE_1_4.Items.Add ("дверь не открывается");*/
 			for (int i = 0; i <= 3; i++)
 				AE_1_4.Items.Add (Localization.GetText ("Generic2_AE14_V" + i.ToString ()));
 
-			/*AE_2.Items.Add ("стандартный");
-			AE_2.Items.Add ("нет дверей");
-			AE_2.Items.Add ("двойная дверь сзади");
-			AE_2.Items.Add ("двери как у автобуса");
-			AE_2.Items.Add ("двери как у спорткара");*/
 			for (int i = 0; i <= 4; i++)
 				AE_2.Items.Add (Localization.GetText ("Generic2_AE2_V" + i.ToString ()));
 
-			/*AE_5.Items.Add ("автомобиль");
-			AE_5.Items.Add ("мотоцикл");
-			AE_5.Items.Add ("вертолёт");
-			AE_5.Items.Add ("самолёт");
-			AE_5.Items.Add ("моторная лодка");*/
 			for (int i = 0; i <= 4; i++)
 				AE_5.Items.Add (Localization.GetText ("Generic2_AE5_V" + i.ToString ()));
 
@@ -489,69 +447,6 @@ namespace RD_AAOW
 			this.ShowDialog ();
 			}
 
-		/*
-		// Установка состояния элементов вкладки Основные параметры
-		private void SetGeneric1State (bool State)
-			{
-			B_.Enabled = State;
-			C_.Enabled = State;
-			D_.Enabled = State;
-			E_.Enabled = State;
-			F_.Enabled = State;
-			G_.Enabled = State;
-			H_.Enabled = State;
-			I_.Enabled = State;
-			J_.Enabled = State;
-			K_.Enabled = State;
-			L_.Enabled = State;
-			M_.Enabled = State;
-			N_.Enabled = State;
-			O_.Enabled = State;
-			P_.Enabled = State;
-			Q_.Enabled = State;
-			R_.Enabled = State;
-			S_.Enabled = State;
-			//T_.Enabled = State;	// Изменение не разрешено
-			U_.Enabled = State;
-			V_.Enabled = State;
-			W_.Enabled = State;
-			X_.Enabled = State;
-			Y_.Enabled = State;
-			Z_.Enabled = State;
-			AA_.Enabled = State;
-			AB_.Enabled = State;
-			AC_.Enabled = State;
-			AD_.Enabled = State;
-			AF_.Enabled = State;
-			AG_.Enabled = State;
-			}
-
-		// Установка состояния элементов вкладки Флаги
-		private void SetGeneric2State (bool State)
-			{
-			AE_1_1.Enabled = State;
-			AE_1_2.Enabled = State;
-			AE_1_3.Enabled = State;
-			AE_1_4.Enabled = State;
-			AE_2.Enabled = State;
-			AE_3_1.Enabled = State;
-			//AE_3_4.Enabled = State;	// Запрещено
-			//AE_4_1.Enabled = State;	// Запрещено
-			AE_4_2.Enabled = State;
-			AE_4_3.Enabled = State;
-			AE_4_4.Enabled = State;
-			//AE_5.Enabled = State;		// Запрещено
-			AE_6_1.Enabled = State;
-			AE_6_2.Enabled = State;
-			AE_6_3.Enabled = State;
-			AE_6_4.Enabled = State;
-			AE_7_1.Enabled = State;
-			AE_7_2.Enabled = State;
-			AE_7_3.Enabled = State;
-			//AE_7_4.Enabled = State;	// Запрещено
-			}
-		*/
-
 		// Установка состояния элементов вкладки Спецификации для лодок
 		private void SetBoatState (bool State)
 			{
@@ -614,39 +509,24 @@ namespace RD_AAOW
 			flying_S_.Enabled = State;
 			}
 
-		/* Открытие файла
-		private void OpenCfgFile_Click (object sender, EventArgs e)
-			{
-			OpenCfgDialog.ShowDialog ();
-			}
-		*/
-
 		// Запуск
 		private void HandlingForm_Load (object sender, EventArgs e)
 			{
 			// Попытка загрузки файла данных
-			hp /*HandlingProvider hpTMP*/ = new HandlingProvider (/*OpenCfgDialog.FileName*/);
+			hp = new HandlingProvider ();
 			string res = "";
 
 			switch (hp.InitStatus)
 				{
 				case HandlingProvider.InitStatuses.BrokenDescriptor:
 					res = "HandlingForm_BrokenDescriptor";
-					/*MessageBox.Show ("Одна или несколько строк в выбранном файле имеют некорректную структуру. " +
-						"Загрузка и работа с файлом невозможна", ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
-						MessageBoxIcon.Exclamation);*/
 					break;
 
 				case HandlingProvider.InitStatuses.FileIsEmpty:
-					/*MessageBox.Show ("В файле отсутствуют основные дескрипторы транспортных средств", ProgramDescription.AssemblyTitle,
-						MessageBoxButtons.OK, MessageBoxIcon.Exclamation);*/
 					res = "HandlingForm_FileIsEmpty";
 					break;
 
 				case HandlingProvider.InitStatuses.FileNotAvailable:
-					/*MessageBox.Show ("Выбранный файл недоступен для загрузки. Убедитесь, что файл не занят другой программой, " +
-						"и повторите попытку", ProgramDescription.AssemblyTitle, MessageBoxButtons.OK,
-						MessageBoxIcon.Exclamation);*/
 					res = "HandlingForm_FileUnavailable";
 					break;
 
@@ -662,18 +542,6 @@ namespace RD_AAOW
 				return;
 				}
 
-			// Загрузка
-			/*hp = new HandlingProvider (OpenCfgDialog.FileName);*/
-
-			// Запуск контролов
-			/*if (!B_.Enabled)
-				{
-				A_.Enabled = SaveCfgFile.Enabled = AddComments.Enabled = true;
-				SetGeneric1State (true);
-				SetGeneric2State (true);
-				// Остальные включаются при необходимости
-				}*/
-
 			// Инициализация списка транспортов
 			loading = true;     // Блокировка обработчика списка
 			for (uint i = 0; i < hp.GenericHDsCount; i++)
@@ -681,7 +549,6 @@ namespace RD_AAOW
 
 			lastSelectedIndex = 0;
 			A_.SelectedIndex = lastSelectedIndex;
-			/*A_.Text = A_.Items[lastSelectedIndex].ToString ();*/
 			loading = false;
 			}
 
@@ -707,36 +574,8 @@ namespace RD_AAOW
 				ghd.MaxVelocity = (float)N_.Value;
 				ghd.EngineAcceleration = (float)O_.Value;
 
-				/*switch (P_.SelectedIndex)
-					{
-					case 0:
-						ghd.DriveType = GenericHandlingDescriptor.DriveTypes.FourWheelsDrive;
-						break;
-
-					case 1:
-						ghd.DriveType = GenericHandlingDescriptor.DriveTypes.ForwardWheelsDrive;
-						break;
-
-					case 2:
-						ghd.DriveType = GenericHandlingDescriptor.DriveTypes.RearWheelsDrive;
-						break;
-					}*/
 				ghd.DriveType = (GenericHandlingDescriptor.DriveTypes)P_.SelectedIndex;
 
-				/*switch (Q_.SelectedIndex)
-					{
-					case 0:
-						ghd.EngineType = GenericHandlingDescriptor.EngineTypes.Petrol;
-						break;
-
-					case 1:
-						ghd.EngineType = GenericHandlingDescriptor.EngineTypes.Diesel;
-						break;
-
-					case 2:
-						ghd.EngineType = GenericHandlingDescriptor.EngineTypes.Electric;
-						break;
-					}*/
 				ghd.EngineType = (GenericHandlingDescriptor.EngineTypes)Q_.SelectedIndex;
 
 				//ghd.ABS = (uint)T_.Value;
@@ -747,44 +586,8 @@ namespace RD_AAOW
 				ghd.SuspensionUpperLimit = (float)AA_.Value;
 				ghd.SuspensionAntiDiveMultiplier = (float)AD_.Value;
 
-				/*switch (AF_.SelectedIndex)
-					{
-					case 0:
-						ghd.FrontLights = GenericHandlingDescriptor.LightsTypes.Long;
-						break;
-
-					case 1:
-						ghd.FrontLights = GenericHandlingDescriptor.LightsTypes.Small;
-						break;
-
-					case 2:
-						ghd.FrontLights = GenericHandlingDescriptor.LightsTypes.Big;
-						break;
-
-					case 3:
-						ghd.FrontLights = GenericHandlingDescriptor.LightsTypes.High;
-						break;
-					}*/
 				ghd.FrontLights = (GenericHandlingDescriptor.LightsTypes)AF_.SelectedIndex;
 
-				/*switch (AG_.SelectedIndex)
-					{
-					case 0:
-						ghd.RearLights = GenericHandlingDescriptor.LightsTypes.Long;
-						break;
-
-					case 1:
-						ghd.RearLights = GenericHandlingDescriptor.LightsTypes.Small;
-						break;
-
-					case 2:
-						ghd.RearLights = GenericHandlingDescriptor.LightsTypes.Big;
-						break;
-
-					case 3:
-						ghd.RearLights = GenericHandlingDescriptor.LightsTypes.High;
-						break;
-					}*/
 				ghd.RearLights = (GenericHandlingDescriptor.LightsTypes)AG_.SelectedIndex;
 
 				// Транспорт-зависимые параметры
@@ -868,29 +671,6 @@ namespace RD_AAOW
 				ghd.HasNoRoof = AE_4_2.Checked;
 				ghd.TransportIsBig = AE_4_3.Checked;
 				ghd.HalogenLights = AE_4_4.Checked;
-
-				/*switch (AE_5.SelectedIndex)
-					{
-					case 0:
-						ghd.VehicleType = GenericHandlingDescriptor.VehicleTypes.Car;
-						break;
-
-					case 1:
-						ghd.VehicleType = GenericHandlingDescriptor.VehicleTypes.Bike;
-						break;
-
-					case 2:
-						ghd.VehicleType = GenericHandlingDescriptor.VehicleTypes.Helicopter;
-						break;
-
-					case 3:
-						ghd.VehicleType = GenericHandlingDescriptor.VehicleTypes.Plane;
-						break;
-
-					case 4:
-						ghd.VehicleType = GenericHandlingDescriptor.VehicleTypes.Boat;
-						break;
-					}*/
 
 				ghd.NoExhaust = AE_6_1.Checked;
 				ghd.RearWheelFirst = AE_6_2.Checked;
@@ -1017,41 +797,32 @@ namespace RD_AAOW
 				J_.Minimum = (decimal)GenericHandlingDescriptor.BankForceMultiplier_Min;
 				J_.Maximum = (decimal)GenericHandlingDescriptor.BankForceMultiplier_Max;
 				J_L.Text = Localization.GetText ("Generic1_J_L_boat");
-				/*J_L.Text = "Наклон при повороте:";*/
 				K_.Minimum = (decimal)GenericHandlingDescriptor.RudderTurnForce_Min;
 				K_.Maximum = (decimal)GenericHandlingDescriptor.RudderTurnForce_Max;
 				K_L.Text = Localization.GetText ("Generic1_K_L_boat");
-				/*K_L.Text = "Сила поворота руля:";*/
 				L_.Minimum = (decimal)GenericHandlingDescriptor.SpeedSteerFalloff_Min;
 				L_.Maximum = (decimal)GenericHandlingDescriptor.SpeedSteerFalloff_Max;
 				L_L.Text = Localization.GetText ("Generic1_L_L_boat");
-				/*L_L.Text = "Потеря скорости на поворотах:";*/
 
 				R_.Minimum = (decimal)GenericHandlingDescriptor.VerticalWaveHitLimit_Min;
 				R_.Maximum = (decimal)GenericHandlingDescriptor.VerticalWaveHitLimit_Max;
 				R_L.Text = Localization.GetText ("Generic1_R_L_boat");
-				/*R_L.Text = "Сила удара волны:";*/
 				S_.Minimum = (decimal)GenericHandlingDescriptor.ForwardWaveHitBrake_Min;
 				S_.Maximum = (decimal)GenericHandlingDescriptor.ForwardWaveHitBrake_Max;
 				S_L.Text = Localization.GetText ("Generic1_S_L_boat");
-				/*S_L.Text = "Тормозящая сила волны:";*/
 				V_.Minimum = (decimal)GenericHandlingDescriptor.WaterResistanceMultiplier_Min;
 				V_.Maximum = (decimal)GenericHandlingDescriptor.WaterResistanceMultiplier_Max;
 				V_L.Text = Localization.GetText ("Generic1_V_L_boat");
-				/*V_L.Text = "Сопротивление воды:";*/
 
 				W_.Minimum = (decimal)GenericHandlingDescriptor.WaterDampingMultiplier_Min;
 				W_.Maximum = (decimal)GenericHandlingDescriptor.WaterDampingMultiplier_Max;
 				W_L.Text = Localization.GetText ("Generic1_W_L_boat");
-				/*W_L.Text = "Амортизация воды:";*/
 				AB_.Minimum = (decimal)GenericHandlingDescriptor.HandbrakeDragMultiplier_Min;
 				AB_.Maximum = (decimal)GenericHandlingDescriptor.HandbrakeDragMultiplier_Max;
 				AB_L.Text = Localization.GetText ("Generic1_AB_L_boat");
-				/*AB_L.Text = "Сила торможения:";*/
 				AC_.Minimum = (decimal)GenericHandlingDescriptor.SideslipForce_Min;
 				AC_.Maximum = (decimal)GenericHandlingDescriptor.SideslipForce_Max;
 				AC_L.Text = Localization.GetText ("Generic1_AC_L_boat");
-				/*AC_L.Text = "Сила бокового смещения:";*/
 				}
 
 			#endregion
@@ -1078,36 +849,7 @@ namespace RD_AAOW
 			N_.Value = (decimal)ghd2.MaxVelocity;
 			O_.Value = (decimal)ghd2.EngineAcceleration;
 
-			/*switch (ghd2.DriveType)
-				{
-				case GenericHandlingDescriptor.DriveTypes.FourWheelsDrive:
-					P_.SelectedIndex = 0;
-					break;
-
-				case GenericHandlingDescriptor.DriveTypes.ForwardWheelsDrive:
-					P_.SelectedIndex = 1;
-					break;
-
-				case GenericHandlingDescriptor.DriveTypes.RearWheelsDrive:
-					P_.SelectedIndex = 2;
-					break;
-				}*/
 			P_.SelectedIndex = (int)ghd2.DriveType;
-
-			/*switch (ghd2.EngineType)
-				{
-				case GenericHandlingDescriptor.EngineTypes.Petrol:
-					Q_.SelectedIndex = 0;
-					break;
-
-				case GenericHandlingDescriptor.EngineTypes.Diesel:
-					Q_.SelectedIndex = 1;
-					break;
-
-				case GenericHandlingDescriptor.EngineTypes.Electric:
-					Q_.SelectedIndex = 2;
-					break;
-				}*/
 			Q_.SelectedIndex = (int)ghd2.EngineType;
 
 			R_.Value = (decimal)ghd2.BrakeDeceleration;         // Одно и то же значение для лодок и не-лодок
@@ -1124,44 +866,8 @@ namespace RD_AAOW
 			AC_.Value = (decimal)ghd2.SuspensionBias;           // Одно и то же значение для лодок и не-лодок
 			AD_.Value = (decimal)ghd2.SuspensionAntiDiveMultiplier;
 
-			/*switch (ghd2.FrontLights)
-				{
-				case GenericHandlingDescriptor.LightsTypes.Long:
-					AF_.SelectedIndex = 0;
-					break;
-
-				case GenericHandlingDescriptor.LightsTypes.Small:
-					AF_.SelectedIndex = 1;
-					break;
-
-				case GenericHandlingDescriptor.LightsTypes.Big:
-					AF_.SelectedIndex = 2;
-					break;
-
-				case GenericHandlingDescriptor.LightsTypes.High:
-					AF_.SelectedIndex = 3;
-					break;
-				}*/
 			AF_.SelectedIndex = (int)ghd2.FrontLights;
 
-			/*switch (ghd2.RearLights)
-				{
-				case GenericHandlingDescriptor.LightsTypes.Long:
-					AG_.SelectedIndex = 0;
-					break;
-
-				case GenericHandlingDescriptor.LightsTypes.Small:
-					AG_.SelectedIndex = 1;
-					break;
-
-				case GenericHandlingDescriptor.LightsTypes.Big:
-					AG_.SelectedIndex = 2;
-					break;
-
-				case GenericHandlingDescriptor.LightsTypes.High:
-					AG_.SelectedIndex = 3;
-					break;
-				}*/
 			AG_.SelectedIndex = (int)ghd2.RearLights;
 
 			#endregion
@@ -1354,16 +1060,10 @@ namespace RD_AAOW
 			A__SelectedIndexChanged (null, null);
 
 			// Сохранение
-			if (!hp.SaveHandlingData (/*SaveCfgDialog.FileName, AddComments.Checked*/))
+			if (!hp.SaveHandlingData ())
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "HandlingForm_SaveFailure");
 			else
 				RDGenerics.LocalizedMessageBox (RDMessageTypes.Success, "HandlingForm_SaveSuccess");
-
-			/*{
-			MessageBox.Show ("Не удалось сохранить файл. Убедитесь, что файл не занят другой программой или " +
-				"попробуйте задать ему другое местоположение", ProgramDescription.AssemblyTitle,
-				 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-			}*/
 			}
 
 		// Выход из раздела

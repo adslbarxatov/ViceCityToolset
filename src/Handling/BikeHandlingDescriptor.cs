@@ -24,14 +24,6 @@
 		/// </summary>
 		public const string IdentifyingSymbol = "!";
 
-		/*
-		/// <summary>
-		/// Строка заголовка таблицы данных дескриптора
-		/// </summary>
-		public const string TableHeader = "	A		B		C		D		E		F		G		H		I		J		" +
-			"K		L		M		N		O		P";
-		*/
-
 		/// <summary>
 		/// Конструктор. Загружает параметры транспортного средства из массива строк
 		/// </summary>
@@ -44,7 +36,6 @@
 
 			// Загрузка параметров
 			a_VehicleIdentifier = Values[1];
-			/*NumberFormatInfo nfi = HandlingSupport.ValuesFormat;*/
 
 			try
 				{
@@ -87,7 +78,6 @@
 				return result;
 
 			// Сборка
-			/*NumberFormatInfo nfi = HandlingSupport.ValuesFormat;*/
 			result = IdentifyingSymbol + " " + VehicleIdentifier.PadRight (8, ' ') + "\t";
 			result += (b_ForwardLeaningCoM.ToString ("F2", nfi) + "\t");
 			result += (c_ForwardLeaningForce.ToString ("F3", nfi) + "\t");

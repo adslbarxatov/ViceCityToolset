@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace RD_AAOW
 	{
@@ -717,16 +716,6 @@ namespace RD_AAOW
 		{
 		#region Импортированные функции
 
-		/*
-		/// <summary>
-		/// Метод формирует сообщение ошибки по её коду
-		/// </summary>
-		/// <param name="ErrorCode">Код ошибки</param>
-		/// <returns>Возвращает сообщение об ошибке</returns>
-		[DllImport (ProgramDescription.AssemblyLibName)]
-		private static extern IntPtr SaveData_ErrorPromptEx (Int16 ErrorCode);
-		*/
-
 		/// <summary>
 		/// Метод получает последнее текстовое сообщение от интерпретатора
 		/// </summary>
@@ -743,18 +732,6 @@ namespace RD_AAOW
 				return Marshal.PtrToStringAnsi (SaveData_GetLastMessageEx ());
 				}
 			}
-
-		/*
-		/// <summary>
-		/// Метод формирует сообщение ошибки по её коду
-		/// </summary>
-		/// <param name="ErrorCode">Код ошибки</param>
-		/// <returns>Возвращает сообщение об ошибке</returns>
-		public static string SaveData_ErrorPrompt (Int16 ErrorCode)
-			{
-			return Marshal.PtrToStringAnsi (SaveData_ErrorPromptEx ((Int16)ErrorCode));
-			}
-		*/
 
 		/// <summary>
 		/// Метод получает краткую информацию о файле сохранения
@@ -891,7 +868,6 @@ namespace RD_AAOW
 		/// <returns>Возвращает результат выполнения команды или код ошибки с префиксом \x13</returns>
 		public static string SaveData_GetParameterValue4 (OpCodes OpCode, uint ParCode)
 			{
-			/*return Marshal.PtrToStringAnsi (SaveData_CommandInterpreterEx (0, OpCode, ParCode, "0"));*/
 			ResultCodes res = SaveData_CommandInterpreter (0, (UInt16)OpCode, (UInt16)ParCode, "0");
 			if (res != ResultCodes.OK)
 				return "\x13" + ((int)res).ToString ();
@@ -911,7 +887,6 @@ namespace RD_AAOW
 			// Код ошибки "значение вне диапазона"
 			if (string.IsNullOrWhiteSpace (NewValue))
 				return ResultCodes.ValueOutOfRange;
-			/*Marshal.PtrToStringAnsi (SaveData_ErrorPromptEx (-1002));*/
 
 			return SaveData_CommandInterpreter (1, (UInt16)OpCode, (UInt16)ParCode, NewValue.Replace (',', '.'));
 			}
@@ -929,8 +904,6 @@ namespace RD_AAOW
 			ResultCodes res = SaveData_CommandInterpreter (4, (UInt16)OpCode, ParCode, "");
 			if (res != ResultCodes.OK)
 				return 0.0f;
-			/*if (!IsResultSuccessful (v))
-				return 0.0f;*/
 
 			string[] values = SaveData_LastMessage.Split (splitters, StringSplitOptions.RemoveEmptyEntries);
 			if (values.Length != 2)
@@ -1000,7 +973,7 @@ namespace RD_AAOW
 				{
 				return ResultCodes.CannotCreateStatsFile;
 				}
-			StreamReader SR = new StreamReader (FI, Encoding.UTF8);
+			StreamReader SR = new StreamReader (FI, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			FileStream FO = null;
 			try
@@ -1014,14 +987,14 @@ namespace RD_AAOW
 
 				return ResultCodes.CannotCreateStatsFile;
 				}
-			StreamWriter SW = new StreamWriter (FO, Encoding.UTF8);
+			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
 
 			// Сборка комментариев
 			string comments;
 			if (Localization.IsCurrentLanguageRuRu)
-				comments = Encoding.UTF8.GetString (Properties.ViceCityToolset.StatsText_ru_ru);
+				comments = RDGenerics.GetEncoding (SupportedEncodings.UTF8).GetString (Properties.ViceCityToolset.StatsText_ru_ru);
 			else
-				comments = Encoding.UTF8.GetString (Properties.ViceCityToolset.StatsText_en_us);
+				comments = RDGenerics.GetEncoding (SupportedEncodings.UTF8).GetString (Properties.ViceCityToolset.StatsText_en_us);
 			StringReader LR = new StringReader (comments);
 
 			// Склеивание
@@ -1068,18 +1041,6 @@ namespace RD_AAOW
 
 			return 0;
 			}
-
-		/*
-		/// <summary>
-		/// Метод проверяет успешность выполнения команды интерпретатором
-		/// </summary>
-		/// <param name="InterpreterReturnedResult">Ответ командного интерпретатора</param>
-		/// <returns>Возвращает true, если команда выполнена успешно</returns>
-		public static bool IsResultSuccessful (string InterpreterReturnedResult)
-			{
-			return (InterpreterReturnedResult.IndexOf ("\x13") == -1);
-			}
-		*/
 
 		#endregion
 		}

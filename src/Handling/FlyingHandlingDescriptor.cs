@@ -24,14 +24,6 @@
 		/// </summary>
 		public const string IdentifyingSymbol = "$";
 
-		/*
-		/// <summary>
-		/// Строка заголовка таблицы данных дескриптора
-		/// </summary>
-		public const string TableHeader = "	A		B		C		D			E		F		G		H		I		J		" +
-			"K		L		M		N		O		P			Q			R			S";
-		*/
-
 		/// <summary>
 		/// Конструктор. Загружает параметры транспортного средства из массива строк
 		/// </summary>

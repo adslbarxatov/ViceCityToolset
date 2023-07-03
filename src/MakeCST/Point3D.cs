@@ -5,7 +5,7 @@ namespace RD_AAOW
 	/// <summary>
 	/// Класс описывает отдельную 3D-точку
 	/// </summary>
-	public class Point3D:IEquatable<Point3D>
+	public class Point3D: IEquatable<Point3D>
 		{
 		/// <summary>
 		/// Возвращает координату X точки

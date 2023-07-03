@@ -9,11 +9,6 @@ namespace RD_AAOW
 	/// </summary>
 	public class CSTWriter
 		{
-		// Переменные
-
-		// Определитель формата чисел
-		private static CultureInfo cie = new CultureInfo ("en-us");
-
 		/// <summary>
 		/// Расширение формата файла
 		/// </summary>
@@ -66,52 +61,45 @@ namespace RD_AAOW
 
 			// Запись точек
 			if (CST1)
-				{
 				SW.WriteLine ("=> Vertex count: " + Points.Count.ToString ());
-				}
 			else
-				{
 				SW.WriteLine (Points.Count.ToString () + ", Vertex");
-				}
 
+			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
 			for (int p = 0; p < Points.Count; p++)
 				{
 				if (CST1)
 					{
-					SW.WriteLine ("V " + p.ToString ("D03") + ": " + Points[p].X.ToString (cie.NumberFormat) + "; " +
-						Points[p].Y.ToString (cie.NumberFormat) + "; " + Points[p].Z.ToString (cie.NumberFormat));
+					SW.WriteLine ("V " + p.ToString ("D03") + ": " + Points[p].X.ToString (nfi) + "; " +
+						Points[p].Y.ToString (nfi) + "; " + Points[p].Z.ToString (nfi));
 					}
 				else
 					{
-					SW.WriteLine (Points[p].X.ToString (cie.NumberFormat) + ", " +
-						Points[p].Y.ToString (cie.NumberFormat) + ", " + Points[p].Z.ToString (cie.NumberFormat));
+					SW.WriteLine (Points[p].X.ToString (nfi) + ", " +
+						Points[p].Y.ToString (nfi) + ", " + Points[p].Z.ToString (nfi));
 					}
 				}
 
 			// Запись треугольников
 			if (CST1)
-				{
 				SW.WriteLine ("\n=> Face count: " + Triangles.Count.ToString ());
-				}
 			else
-				{
 				SW.WriteLine ("\n" + Triangles.Count.ToString () + ", Face");
-				}
 
 			for (int t = 0; t < Triangles.Count; t++)
 				{
 				// Непрямой порядок треугольников требуется для того, чтобы избежать "выворачивания" модели
 				if (CST1)
 					{
-					SW.WriteLine ("F " + t.ToString ("D03") + ": " + Triangles[t].Point2ArrayPosition.ToString () + "; " +
-						Triangles[t].Point1ArrayPosition.ToString () + "; " + Triangles[t].Point3ArrayPosition.ToString () +
-						"  |  [0]");
+					SW.WriteLine ("F " + t.ToString ("D03") + ": " + Triangles[t].Point2ArrayPosition.ToString () +
+						"; " + Triangles[t].Point1ArrayPosition.ToString () + "; " +
+						Triangles[t].Point3ArrayPosition.ToString () + "  |  [0]");
 					}
 				else
 					{
 					SW.WriteLine (Triangles[t].Point2ArrayPosition.ToString () + ", " +
-						Triangles[t].Point1ArrayPosition.ToString () + ", " + Triangles[t].Point3ArrayPosition.ToString () +
-						", 0, 0, 0, 0");
+						Triangles[t].Point1ArrayPosition.ToString () + ", " +
+						Triangles[t].Point3ArrayPosition.ToString () + ", 0, 0, 0, 0");
 					}
 				}
 
