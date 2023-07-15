@@ -10,17 +10,29 @@ namespace RD_AAOW
 	/// </summary>
 	public partial class BExplorerForm: Form
 		{
-		// Переменные
-		private bool loading = false;       // Флаг состояния загрузки данных; блокирует события обновления значений
-		private int error;                  // Код ошибки
+		// Флаг состояния загрузки данных; блокирует события обновления значений
+		private bool loading = false;
 
-		private CarColors cc;               // Экземпляр-загрузчик цветов авто
-		private CarGenerators cg;           // Экземпляр-обработчик списка парковок
-		private Pickups pu;                 // Экземпляр-обработчик списка денежных накопителей
-		private CoordsPicker cp;            // Форма выбора координат на карте
-		private ToDoStatus tds;             // Экземпляр-обработчик ToDo-статуса
+		// Код ошибки
+		private int error;
 
-		private const string savesExtension = ".b";             // Расширение файлов сохранений
+		// Экземпляр-загрузчик цветов авто
+		private CarColors cc;
+
+		// Экземпляр-обработчик списка парковок
+		private CarGenerators cg;
+
+		// Экземпляр-обработчик списка денежных накопителей
+		private Pickups pu;
+
+		// Форма выбора координат на карте
+		private CoordsPicker cp;
+
+		// Экземпляр-обработчик ToDo-статуса
+		private ToDoStatus tds;
+
+		// Расширение файлов сохранений
+		private const string savesExtension = ".b";
 
 		/// <summary>
 		/// Метод инициализирует форму редактирования файлов сохранений
@@ -43,7 +55,7 @@ namespace RD_AAOW
 			// Контроль корректности связи с библиотекой функций
 			if (BExplorerLib.Check () != 0)
 				{
-				if (RDGenerics.MessageBox (RDMessageTypes.Question,
+				if (RDGenerics.MessageBox (RDMessageTypes.Question_Left,
 					string.Format (Localization.GetText ("IncorrectLibVersion"),
 					ProgramDescription.AssemblyLibName),
 					Localization.GetDefaultText (LzDefaultTextValues.Button_Yes),
@@ -226,7 +238,7 @@ namespace RD_AAOW
 					errText += Localization.GetText ("Result_LoadingErrorPrefix");
 				errText += Localization.GetText ("Result_" + errCode.ToString ());
 
-				RDGenerics.MessageBox (RDMessageTypes.Warning, errText);
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, errText);
 				SaveInfoLabel.Text = Localization.GetText ("SaveNotSpecified");
 
 				return;
@@ -247,7 +259,8 @@ namespace RD_AAOW
 			if (Result.StartsWith ("\x13"))
 				{
 				ResultCodes errCode = (ResultCodes)int.Parse (Result.Substring (1));
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("Result_" + errCode.ToString ()));
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
+					Localization.GetText ("Result_" + errCode.ToString ()));
 				return false;
 				}
 
@@ -260,7 +273,7 @@ namespace RD_AAOW
 			ResultCodes result = BExplorerLib.SaveData_SetParameterValue4 (OpCode, ParCode, NewValue);
 
 			if (result != ResultCodes.OK)
-				RDGenerics.MessageBox (RDMessageTypes.Warning,
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					Localization.GetText ("Result_" + result.ToString ()));
 			}
 
@@ -526,13 +539,13 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.SaveSuccess)
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Success,
+				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
 					Localization.GetText ("Result_" + res.ToString ()));
 				LoadParameters ();
 				}
 			else
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("SaveSavingError") +
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("SaveSavingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
 				}
 			}
@@ -545,7 +558,7 @@ namespace RD_AAOW
 
 		private void MainForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
-			e.Cancel = (error == 0) && (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning,
+			e.Cancel = (error == 0) && (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
 				"ChangesSaved", LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) ==
 				RDMessageButtons.ButtonTwo);
 			RDGenerics.SaveWindowDimensions (this);
@@ -794,10 +807,10 @@ namespace RD_AAOW
 			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile4 (LoadableParameters.Stats, OStatsDialog.FileName);
 
 			if (res == ResultCodes.LoadSuccess)
-				RDGenerics.MessageBox (RDMessageTypes.Success,
+				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
 					Localization.GetText ("Result_" + res.ToString ()));
 			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("StatsLoadingError") +
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("StatsLoadingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
 			}
 
@@ -821,7 +834,7 @@ namespace RD_AAOW
 				{
 				if (res != ResultCodes.SaveSuccess)
 					{
-					RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("StatsSavingError") +
+					RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("StatsSavingError") +
 						Localization.GetText ("Result_" + res.ToString ()));
 					return;
 					}
@@ -830,10 +843,10 @@ namespace RD_AAOW
 				}
 
 			if (res == ResultCodes.SaveSuccess)
-				RDGenerics.MessageBox (RDMessageTypes.Success,
+				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
 					Localization.GetText ("Result_" + res.ToString ()));
 			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("StatsSavingError") +
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("StatsSavingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
 			}
 
@@ -1194,10 +1207,10 @@ namespace RD_AAOW
 			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile4 (LoadableParameters.Generators, OCGDialog.FileName);
 
 			if (res == ResultCodes.LoadSuccess)
-				RDGenerics.MessageBox (RDMessageTypes.Success,
+				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
 					Localization.GetText ("Result_" + res.ToString ()));
 			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("CGLoadingError") +
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("CGLoadingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
 
 			// Обновление загруженных данных сохранения
@@ -1231,14 +1244,15 @@ namespace RD_AAOW
 		private void DangerousReset_Click (object sender, EventArgs e)
 			{
 			// Контроль
-			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "DangerousResetMessage",
+			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "DangerousResetMessage",
 				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) ==
 				RDMessageButtons.ButtonTwo)
 				return;
 
 			// Выполнение
 			ResultCodes res = BExplorerLib.SaveData_FixFile4 ();
-			RDGenerics.MessageBox (res == ResultCodes.FileFixed ? RDMessageTypes.Success : RDMessageTypes.Warning,
+			RDGenerics.MessageBox (res == ResultCodes.FileFixed ?
+				RDMessageTypes.Success_Center : RDMessageTypes.Warning_Center,
 				Localization.GetText ("Result_" + res.ToString ()));
 			}
 
@@ -1256,10 +1270,10 @@ namespace RD_AAOW
 			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile4 (LoadableParameters.Garages, OGDialog.FileName);
 
 			if (res == ResultCodes.LoadSuccess)
-				RDGenerics.MessageBox (RDMessageTypes.Success,
+				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
 					Localization.GetText ("Result_" + res.ToString ()));
 			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning, Localization.GetText ("GRLoadingError") +
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("GRLoadingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
 
 			// Обновление загруженных данных сохранения

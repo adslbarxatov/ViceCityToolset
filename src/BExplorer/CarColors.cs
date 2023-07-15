@@ -39,7 +39,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning,
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 					string.Format (Localization.GetText ("CarColorsFileUnavailable"), colorsFile));
 				Error = -1;
 				return;

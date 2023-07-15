@@ -537,7 +537,7 @@ namespace RD_AAOW
 
 			if (!string.IsNullOrEmpty (res))
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, res);
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, res);
 				this.Close ();
 				return;
 				}
@@ -1061,16 +1061,17 @@ namespace RD_AAOW
 
 			// Сохранение
 			if (!hp.SaveHandlingData ())
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning, "HandlingForm_SaveFailure");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "HandlingForm_SaveFailure");
 			else
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Success, "HandlingForm_SaveSuccess");
+				RDGenerics.LocalizedMessageBox (RDMessageTypes.Success_Center, "HandlingForm_SaveSuccess");
 			}
 
 		// Выход из раздела
 		private void ExitButton_Click (object sender, EventArgs e)
 			{
-			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question, "HandlingForm_ExitMessage",
-				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonOne)
+			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center,
+				"HandlingForm_ExitMessage", LzDefaultTextValues.Button_YesNoFocus,
+				LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonOne)
 				this.Close ();
 			}
 
