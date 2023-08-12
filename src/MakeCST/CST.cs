@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 
 namespace RD_AAOW
@@ -65,7 +64,7 @@ namespace RD_AAOW
 			else
 				SW.WriteLine (Points.Count.ToString () + ", Vertex");
 
-			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			var nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
 			for (int p = 0; p < Points.Count; p++)
 				{
 				if (CST1)

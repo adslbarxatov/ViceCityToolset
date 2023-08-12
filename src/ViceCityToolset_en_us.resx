@@ -892,12 +892,6 @@ The application is under development now. Therefore, some parameters during usag
   <data name="MakeCSTForm" xml:space="preserve">
     <value>converting models to CST</value>
   </data>
-  <data name="MakeCST_CannotCreateFile" xml:space="preserve">
-    <value>Failed to write file “{0:S}”: location not writable</value>
-  </data>
-  <data name="MakeCST_FileNotFound" xml:space="preserve">
-    <value>File “{0:S}” doesn’t exist or unavailable</value>
-  </data>
   <data name="MakeCST_Success" xml:space="preserve">
     <value>Conversion completed successfully</value>
   </data>

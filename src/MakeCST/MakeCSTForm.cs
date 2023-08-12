@@ -67,7 +67,8 @@ namespace RD_AAOW
 			catch
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					string.Format (Localization.GetText ("MakeCST_FileNotFound"), OFName.Text));
+					Localization.GetFileProcessingMessage (OFName.Text,
+					LzFileProcessingMessageTypes.Load_Failure));
 				return;
 				}
 
@@ -159,7 +160,8 @@ namespace RD_AAOW
 			if (!CSTWriter.WriteCST (SFName.Text, points, triangles))
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					string.Format (Localization.GetText ("MakeCST_CannotCreateFile"), SFName.Text));
+					Localization.GetFileProcessingMessage (SFName.Text,
+					LzFileProcessingMessageTypes.Save_Failure));
 				return;
 				}
 

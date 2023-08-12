@@ -892,12 +892,6 @@
   <data name="MakeCSTForm" xml:space="preserve">
     <value>преобразование моделей в CST</value>
   </data>
-  <data name="MakeCST_CannotCreateFile" xml:space="preserve">
-    <value>Не удалось записать файл «{0:S}»: расположение недоступно для записи</value>
-  </data>
-  <data name="MakeCST_FileNotFound" xml:space="preserve">
-    <value>Файл «{0:S}» не существует или недоступен</value>
-  </data>
   <data name="MakeCST_Success" xml:space="preserve">
     <value>Преобразование успешно завершено</value>
   </data>
