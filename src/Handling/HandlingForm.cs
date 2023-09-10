@@ -1078,6 +1078,9 @@ namespace RD_AAOW
 		// Закрытие окна
 		private void HandlingForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
+			e.Cancel = (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
+				"ChangesSaved", LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) ==
+				RDMessageButtons.ButtonTwo);
 			RDGenerics.SaveWindowDimensions (this);
 			}
 		}

@@ -51,8 +51,12 @@ namespace RD_AAOW
 		// Выход
 		private void BExit_Click (object sender, EventArgs e)
 			{
-			RDGenerics.SaveWindowDimensions (this);
 			this.Close ();
+			}
+
+		private void MakeCSTForm_FormClosing (object sender, FormClosingEventArgs e)
+			{
+			RDGenerics.SaveWindowDimensions (this);
 			}
 
 		// Преобразование
