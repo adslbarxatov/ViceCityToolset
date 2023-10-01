@@ -1,5 +1,4 @@
-_Changes for v 4.3.9_:
+_Changes for v 4.3.11_:
+- Updates and fixes have been applied to the update polling mechanism, as well as to other auxiliary functions;
 - New identity has been applied;
-- Adjusted some interface elements;
-- Added the obvious URLs for videoguide and for text guide;
-- Implemented the access rights checker: it will test the availability of the Windows registry and the application placement for writing and notify user about possible problems
+- Adjusted some interface elements

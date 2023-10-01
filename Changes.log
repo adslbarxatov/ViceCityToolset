@@ -1,5 +1,8 @@
 Vice city toolset: changes log
 
+Version 4.3.11:
+• Updates and fixes have been applied to the update polling mechanism, as well as to other auxiliary functions
+
 Version 4.3.9:
 • New identity has been applied;
 • Adjusted some interface elements
