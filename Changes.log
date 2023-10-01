@@ -1,5 +1,9 @@
 Vice city toolset: changes log
 
+ToDo:
+- Successful loading/saving messages should have timeout;
+- Car generators and garages should have text reports
+
 Version 4.3.11:
 • Updates and fixes have been applied to the update polling mechanism, as well as to other auxiliary functions
 
