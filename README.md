@@ -1,14 +1,21 @@
-# ViceCityToolset v 4.3.11
-> PCC: 001A3AC39C2DC2B1
+# ViceCityToolset
 
+## Description
 
+A set of modder tools for GTA Vice city that support some useful functions and operations.
+Namely: editing game saves, editing transport parameters, converting models to collision scripts.
 
-A modder toolset for GTA Vice city.
 A detailed description of the app is available on [its own page](https://adslbarxatov.github.io/ViceCityToolset)
 
----
+&nbsp;
 
-Набор инструментов моддера для GTA Vice city.
+
+
+## Описание
+
+Набор инструментов моддера для GTA Vice city, поддерживающий некоторые полезные функции и операции.
+А именно: редактирование файлов сохранений, редактирование параметров транспорта, преобразование моделей в скрипты коллизий.
+
 Подробное описание приложения доступно на [отдельной странице](https://adslbarxatov.github.io/ViceCityToolset/ru)
 
 &nbsp;

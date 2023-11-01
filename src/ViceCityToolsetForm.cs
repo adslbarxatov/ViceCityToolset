@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
@@ -70,6 +69,7 @@ namespace RD_AAOW
 			Localization.SetControlsText (this);
 			ExitButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
 			FBDialog.Description = Localization.GetText ("ViceCityToolsetForm_FBDialog");
+			AboutTheAppButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Control_AppAbout);
 			}
 
 		// Закрытие окна
@@ -131,10 +131,8 @@ namespace RD_AAOW
 			}
 
 		// Отображение сведений о программе
-		private void BExplorerForm_HelpButtonClicked (object sender, CancelEventArgs e)
+		private void AppAboutButton (object sender, EventArgs e)
 			{
-			e.Cancel = true;
-
 			RDGenerics.ShowAbout (false);
 			}
 		}

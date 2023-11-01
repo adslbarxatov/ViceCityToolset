@@ -1,8 +1,12 @@
 Vice city toolset: changes log
 
 ToDo:
-- Successful loading/saving messages should have timeout;
 - Car generators and garages should have text reports
+
+Version 4.3.13:
+• Successful loading / saving messages now have timeouts;
+• The offline quick help has been discontinued;
+• Completed the process of version control unification
 
 Version 4.3.11:
 • Updates and fixes have been applied to the update polling mechanism, as well as to other auxiliary functions

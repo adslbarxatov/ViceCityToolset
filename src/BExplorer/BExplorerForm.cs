@@ -34,6 +34,9 @@ namespace RD_AAOW
 		// Расширение файлов сохранений
 		private const string savesExtension = ".b";
 
+		// Стандартный таймаут для сообщений
+		private const uint defaultTimeout = 1500;
+
 		/// <summary>
 		/// Метод инициализирует форму редактирования файлов сохранений
 		/// </summary>
@@ -63,6 +66,7 @@ namespace RD_AAOW
 					RDMessageButtons.ButtonOne)
 					{
 					AboutForm af = new AboutForm (null);
+					af.Dispose ();
 					}
 
 				error = -1;
@@ -540,7 +544,7 @@ namespace RD_AAOW
 			if (res == ResultCodes.SaveSuccess)
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()));
+					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
 				LoadParameters ();
 				}
 			else
@@ -808,7 +812,7 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.LoadSuccess)
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()));
+					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("StatsLoadingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
@@ -844,7 +848,7 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.SaveSuccess)
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()));
+					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("StatsSavingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
@@ -1208,7 +1212,7 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.LoadSuccess)
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()));
+					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("CGLoadingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
@@ -1251,8 +1255,12 @@ namespace RD_AAOW
 
 			// Выполнение
 			ResultCodes res = BExplorerLib.SaveData_FixFile4 ();
-			RDGenerics.MessageBox (res == ResultCodes.FileFixed ?
-				RDMessageTypes.Success_Center : RDMessageTypes.Warning_Center,
+
+			if (res == ResultCodes.FileFixed)
+				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
+					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
+			else
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
 				Localization.GetText ("Result_" + res.ToString ()));
 			}
 
@@ -1271,7 +1279,7 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.LoadSuccess)
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()));
+					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("GRLoadingError") +
 					Localization.GetText ("Result_" + res.ToString ()));
