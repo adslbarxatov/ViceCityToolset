@@ -1,5 +1,5 @@
 # Vice city toolset: руководство пользователя
-> **ƒ** &nbsp;RD AAOW FDL; 30.04.2023; 1:14
+> **ƒ** &nbsp;RD AAOW FDL; 1.12.2023; 2:54
 
 ---
 
@@ -11,7 +11,7 @@
 
 ## Общие сведения
 
-**Vice city toolset** — набор инструментов моддера для GTA Vice city, поддерживающий некоторые полезные функции
+***Vice city toolset*** – набор инструментов моддера для GTA Vice city, поддерживающий некоторые полезные функции
 и операции. А именно:
 
 - [Редактирование файлов сохранений](https://adslbarxatov.github.io/ViceCityToolset/saves_ru)

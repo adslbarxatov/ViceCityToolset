@@ -3,6 +3,9 @@ Vice city toolset: changes log
 ToDo:
 - Car generators and garages should have text reports
 
+Version 4.3.14:
+• Added a new version of offline help
+
 Version 4.3.13:
 • Successful loading / saving messages now have timeouts;
 • The offline quick help has been discontinued;

@@ -1,5 +1,4 @@
-_Changes for v 4.3.13_:
+_Changes for v 4.3.14_:
+- Added a new version of offline help;
 - Successful loading / saving messages now have timeouts;
-- The offline quick help has been discontinued;
-- Completed the process of version control unification;
-- Adjusted some interface elements
+- Completed the process of version control unification
