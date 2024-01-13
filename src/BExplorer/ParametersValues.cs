@@ -90,6 +90,7 @@ namespace RD_AAOW
 	public static class ParametersValues
 		{
 		#region Виды погоды
+
 		private static ParameterValue[] weathers = {
 			new ParameterValue (4, "Sunny"),
 			new ParameterValue (0, "Cloudy"),
@@ -109,9 +110,11 @@ namespace RD_AAOW
 				return weathers;
 				}
 			}
+
 		#endregion
 
 		#region Позиции камеры обзора в транспорте
+
 		private static ParameterValue[] cameraPositions = {
 			new ParameterValue (0, "Front"),
 			new ParameterValue (1, "MinDistance"),
@@ -131,9 +134,13 @@ namespace RD_AAOW
 				return cameraPositions;
 				}
 			}
+
 		#endregion
 
 		#region Интерьеры
+
+#if DEF_INTERIORS
+
 		private static ParameterValue[] interiors = {
 			new ParameterValue (4, "north mall point"),
 			new ParameterValue (13, "printworks exterior"),
@@ -167,9 +174,13 @@ namespace RD_AAOW
 				return interiors;
 				}
 			}
+
+#endif
+
 		#endregion
 
 		#region Костюмы
+
 		private static ParameterStringValue[] suits = {
 			new ParameterStringValue ("player", "Default"),
 			new ParameterStringValue ("player4", "Golf"),
@@ -208,9 +219,11 @@ namespace RD_AAOW
 				return suits;
 				}
 			}
+
 		#endregion
 
 		#region Виды оружия
+
 		private static ParameterValue[] weapons = {
 			new ParameterValue (26, "M4"),
 			new ParameterValue (32, "M60"),
@@ -257,9 +270,11 @@ namespace RD_AAOW
 				return weapons;
 				}
 			}
+
 		#endregion
 
 		#region Виды транспорта
+
 		private static ParameterValue[] cars = {
 			new ParameterValue (175, "Admiral"),
 			new ParameterValue (146, "Ambulance"),
@@ -360,7 +375,8 @@ namespace RD_AAOW
 			new ParameterValue (208, "Walton"),
 			new ParameterValue (151, "Washington"),
 			new ParameterValue (186, "Yankee"),
-			new ParameterValue (188, "Zebra")};
+			new ParameterValue (188, "Zebra")
+			};
 
 		/// <summary>
 		/// Возвращает список видов транспорта для гаражей
@@ -369,11 +385,16 @@ namespace RD_AAOW
 			{
 			get
 				{
-				List<ParameterValue> cfg = new List<ParameterValue> (cars);
-				cfg.Insert (0, new ParameterValue (0, Localization.GetText ("Cars_No")));
-				return cfg.ToArray ();
+				if (carsForGarages.Count < 1)
+					{
+					carsForGarages = new List<ParameterValue> (cars);
+					carsForGarages.Insert (0, new ParameterValue (0, RDLocale.GetText ("Cars_No")));
+					}
+
+				return carsForGarages.ToArray ();
 				}
 			}
+		private static List<ParameterValue> carsForGarages = new List<ParameterValue> ();
 
 		/// <summary>
 		/// Возвращает список видов транспорта для банд
@@ -382,11 +403,16 @@ namespace RD_AAOW
 			{
 			get
 				{
-				List<ParameterValue> cfg = new List<ParameterValue> (cars);
-				cfg.Insert (0, new ParameterValue (-1, Localization.GetText ("Cars_No")));
-				return cfg.ToArray ();
+				if (carsForGangs.Count < 1)
+					{
+					carsForGangs = new List<ParameterValue> (cars);
+					carsForGangs.Insert (0, new ParameterValue (-1, RDLocale.GetText ("Cars_No")));
+					}
+
+				return carsForGangs.ToArray ();
 				}
 			}
+		private static List<ParameterValue> carsForGangs = new List<ParameterValue> ();
 
 		/// <summary>
 		/// Возвращает список видов транспорта для парковок
@@ -395,15 +421,91 @@ namespace RD_AAOW
 			{
 			get
 				{
-				List<ParameterValue> cfg = new List<ParameterValue> (cars);
-				cfg.Insert (0, new ParameterValue (-1, Localization.GetText ("Cars_Random")));
-				cfg.Insert (0, new ParameterValue (0, Localization.GetText ("Cars_No")));
-				return cfg.ToArray ();
+				if (carsForCG.Count < 1)
+					{
+					carsForCG = new List<ParameterValue> (cars);
+					carsForCG.Insert (0, new ParameterValue (-1, RDLocale.GetText ("Cars_Random")));
+					carsForCG.Insert (0, new ParameterValue (0, RDLocale.GetText ("Cars_No")));
+					}
+
+				return carsForCG.ToArray ();
 				}
 			}
+		private static List<ParameterValue> carsForCG = new List<ParameterValue> ();
+
+		/// <summary>
+		/// Метод находит дескриптор транспорта по ID
+		/// </summary>
+		/// <param name="Type">Тип списка транспорта</param>
+		/// <param name="ID">Критерий поиска</param>
+		public static ParameterValue FindCar (CarsListTypes Type, int ID)
+			{
+			switch (Type)
+				{
+				case CarsListTypes.ForCarGenerators:
+					return carsForCG.Find (x => x.ID == ID);
+
+				case CarsListTypes.ForGangs:
+					return carsForGangs.Find (x => x.ID == ID);
+
+				case CarsListTypes.ForGarages:
+					return carsForGarages.Find (x => x.ID == ID);
+
+				default:
+					return null;
+				}
+			}
+
+		/// <summary>
+		/// Метод находит индекс дескриптора транспорта по ID
+		/// </summary>
+		/// <param name="Type">Тип списка транспорта</param>
+		/// <param name="ID">Критерий поиска</param>
+		public static int FindCarIndex (CarsListTypes Type, int ID)
+			{
+			ParameterValue pv = FindCar (Type, ID);
+
+			switch (Type)
+				{
+				case CarsListTypes.ForCarGenerators:
+					return carsForCG.IndexOf (pv);
+
+				case CarsListTypes.ForGangs:
+					return carsForGangs.IndexOf (pv);
+
+				case CarsListTypes.ForGarages:
+					return carsForGarages.IndexOf (pv);
+
+				default:
+					return -1;
+				}
+			}
+
+		/// <summary>
+		/// Доступные списки транспорта
+		/// </summary>
+		public enum CarsListTypes
+			{
+			/// <summary>
+			/// Для гаражей
+			/// </summary>
+			ForGarages,
+
+			/// <summary>
+			/// Для банд
+			/// </summary>
+			ForGangs,
+
+			/// <summary>
+			/// Для парковок
+			/// </summary>
+			ForCarGenerators
+			}
+
 		#endregion
 
 		#region Радиостанции
+
 		private static ParameterValue[] radios = {
 			new ParameterValue (0, "Wild"),
 			new ParameterValue (1, "Flash FM"),
@@ -425,12 +527,37 @@ namespace RD_AAOW
 			{
 			get
 				{
+				if (radiosList.Count < 1)
+					radiosList = new List<ParameterValue> (radios);
+
 				return radios;
 				}
 			}
+		private static List<ParameterValue> radiosList = new List<ParameterValue> ();
+
+		/// <summary>
+		/// Метод находит дескриптор радио по ID
+		/// </summary>
+		/// <param name="ID">Критерий поиска</param>
+		public static ParameterValue FindRadio (int ID)
+			{
+			return radiosList.Find (x => x.ID == ID);
+			}
+
+		/// <summary>
+		/// Метод находит индекс дескриптора радио по ID
+		/// </summary>
+		/// <param name="ID">Критерий поиска</param>
+		public static int FindRadioIndex (int ID)
+			{
+			ParameterValue pv = FindRadio (ID);
+			return radiosList.IndexOf (pv);
+			}
+
 		#endregion
 
 		#region Бомбы
+
 		private static ParameterValue[] bombs = {
 			new ParameterValue (0, "No"),
 			new ParameterValue (1, "Timer"),
@@ -446,9 +573,46 @@ namespace RD_AAOW
 			{
 			get
 				{
+				if (bombsList.Count < 1)
+					bombsList = new List<ParameterValue> (bombs);
+
 				return bombs;
 				}
 			}
+		private static List<ParameterValue> bombsList = new List<ParameterValue> ();
+
+		/// <summary>
+		/// Метод находит дескриптор бомбы по ID
+		/// </summary>
+		/// <param name="ID">Критерий поиска</param>
+		public static ParameterValue FindBomb (int ID)
+			{
+			return bombsList.Find (x => x.ID == ID);
+			}
+
+		/// <summary>
+		/// Метод находит индекс дескриптора бомбы по ID
+		/// </summary>
+		/// <param name="ID">Критерий поиска</param>
+		public static int FindBombIndex (int ID)
+			{
+			ParameterValue pv = FindBomb (ID);
+			return bombsList.IndexOf (pv);
+			}
+
 		#endregion
+
+		/// <summary>
+		/// Метод сбрасывает списки для корректной обработки изменения языка
+		/// </summary>
+		public static void ResetCache ()
+			{
+			bombsList.Clear ();
+			radiosList.Clear ();
+
+			carsForCG.Clear ();
+			carsForGangs.Clear ();
+			carsForGarages.Clear ();
+			}
 		}
 	}

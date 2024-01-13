@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 
 namespace RD_AAOW
@@ -56,7 +55,7 @@ namespace RD_AAOW
 				}
 
 			// Чтение точек
-			NumberFormatInfo nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			var nfi = RDLocale.GetCulture (RDLanguages.en_us).NumberFormat;
 			for (uint p = 0; p < pointsCount; p++)
 				{
 				try

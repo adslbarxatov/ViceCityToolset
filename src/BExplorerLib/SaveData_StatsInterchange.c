@@ -6,11 +6,6 @@
 
 // Макросы
 #define SD_StatsUnitLoad(Unit)	SD->SD_ST.ST.Unit = stats.ST.Unit;
-/*
-#define SD_StatsUnitSave(Unit,Format,Name)	stats.ST.Unit = SD->SD_ST.ST.Unit;	\
-	sprintf (tmp, "   %%s: %s\n", Format);	\
-	fprintf (FTO, tmp, Name, stats.ST.Unit);
-*/
 #define SD_StatsUnitSave(Unit,Format,Name)	stats.ST.Unit = SD->SD_ST.ST.Unit;	\
 	sprintf (tmp, "%s\n", Format);	\
 	fprintf (FTO, tmp, stats.ST.Unit);
@@ -161,8 +156,6 @@ sint SaveData_SaveStats (struct SaveData *SD, schar *FilePath)
 		return SD_INTRPR_ERR_CannotCreateStatsFile;
 
 	// Перенос значений
-	/*fprintf (FTO, "Содержимое файла статистики GTA VC «%s»:\n", FilePath);
-	fprintf (FTO, "\n Общие сведения:\n");*/
 	fprintf (FTO, "\n\n\n");
 
 	SD_StatsUnitSave (ST_AutoRepairBudget, "%0.0f", "Бюджет ремонта авто, $");
@@ -204,7 +197,6 @@ sint SaveData_SaveStats (struct SaveData *SD, schar *FilePath)
 	SD_StatsUnitSave (ST_RadioListetingTimeMs[8], "%0.0f", "Время прослушивания радиостанции Wave 103 FM, мс");
 	SD_StatsUnitSave (ST_RadioListetingTimeMs[9], "%0.0f", "Время прослушивания MP3-плеера, мс");
 
-	/*fprintf (FTO, "\n Информация о перемещениях:\n");*/
 	fprintf (FTO, "\n\n");
 	SD_StatsUnitSave (ST_DistanceOnBikeM, "%0.2f", "Преодолено на мотоцикле, метров");
 	SD_StatsUnitSave (ST_DistanceOnBoatM, "%0.2f", "Преодолено на лодке, метров");
@@ -215,7 +207,6 @@ sint SaveData_SaveStats (struct SaveData *SD, schar *FilePath)
 	SD_StatsUnitSave (ST_DistanceOnPlaneM, "%0.2f", "Преодолено на самолёте, метров");
 	SD_StatsUnitSave (ST_FlightMs, "%u", "Время полёта, мс");
 
-	/*fprintf (FTO, "\n Информация о трюках:\n");*/
 	fprintf (FTO, "\n\n");
 	SD_StatsUnitSave (ST_Longest2WheelsDistance, "%0.0f", "Максимальная дистанция на двух колёсах, метров");
 	SD_StatsUnitSave (ST_Longest2WheelsTime, "%u", "Максимальное время на двух колёсах, секунд");
@@ -229,7 +220,6 @@ sint SaveData_SaveStats (struct SaveData *SD, schar *FilePath)
 	SD_StatsUnitSave (ST_MaxInsaneJumpRating, "%u", "Рейтинг сумасшедшего прыжка");
 	SD_StatsUnitSave (ST_MaxInsaneJumpRotation, "%u", "Максимальный разворот в сумасшедшем прыжке, градусов");
 
-	/*fprintf (FTO, "\n Убийства:\n");*/
 	fprintf (FTO, "\n\n");
 	SD_StatsUnitSave (ST_PeopleWastedByOthers, "%u", "Убито другими людьми");
 	SD_StatsUnitSave (ST_MalesWasted, "%u", "Убито мужчин");
@@ -252,7 +242,6 @@ sint SaveData_SaveStats (struct SaveData *SD, schar *FilePath)
 	SD_StatsUnitSave (ST_TotalPedsKilled, "%u", "Всего убито людей");
 	SD_StatsUnitSave (ST_TotalPeopleWasted, "%u", "Всего убито людей");
 
-	/*fprintf (FTO, "\n Рекорды некоторых миссий:\n");*/
 	fprintf (FTO, "\n\n");
 	SD_StatsUnitSave (ST_BestPercentageInShootist, "%u", "Максимальная точность в миссии Shootist");
 	SD_StatsUnitSave (ST_BloodringKills, "%u", "Убито противников в Blood ring");

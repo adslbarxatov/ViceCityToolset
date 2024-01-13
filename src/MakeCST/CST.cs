@@ -64,7 +64,7 @@ namespace RD_AAOW
 			else
 				SW.WriteLine (Points.Count.ToString () + ", Vertex");
 
-			var nfi = Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+			var nfi = RDLocale.GetCulture (RDLanguages.en_us).NumberFormat;
 			for (int p = 0; p < Points.Count; p++)
 				{
 				if (CST1)

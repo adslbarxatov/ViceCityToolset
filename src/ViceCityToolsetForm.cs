@@ -24,10 +24,10 @@ namespace RD_AAOW
 			RDGenerics.LoadWindowDimensions (this);
 			mode = Mode;
 
-			LanguageCombo.Items.AddRange (Localization.LanguagesNames);
+			LanguageCombo.Items.AddRange (RDLocale.LanguagesNames);
 			try
 				{
-				LanguageCombo.SelectedIndex = (int)Localization.CurrentLanguage;
+				LanguageCombo.SelectedIndex = (int)RDLocale.CurrentLanguage;
 				}
 			catch
 				{
@@ -63,13 +63,13 @@ namespace RD_AAOW
 		private void LanguageCombo_SelectedIndexChanged (object sender, EventArgs e)
 			{
 			// Сохранение языка
-			Localization.CurrentLanguage = (SupportedLanguages)LanguageCombo.SelectedIndex;
+			RDLocale.CurrentLanguage = (RDLanguages)LanguageCombo.SelectedIndex;
 
 			// Локализация
-			Localization.SetControlsText (this);
-			ExitButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
-			FBDialog.Description = Localization.GetText ("ViceCityToolsetForm_FBDialog");
-			AboutTheAppButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Control_AppAbout);
+			RDLocale.SetControlsText (this);
+			ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
+			FBDialog.Description = RDLocale.GetText ("ViceCityToolsetForm_FBDialog");
+			AboutTheAppButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
 			}
 
 		// Закрытие окна

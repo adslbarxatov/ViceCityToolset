@@ -174,11 +174,6 @@
   <data name="ChangesSaved" xml:space="preserve">
     <value>Вы уверены, что сохранили все необходимые изменения?</value>
   </data>
-  <data name="ComponentMissing" xml:space="preserve">
-    <value>Отсутствует необходимый компонент программы: «{0:S}».
-
-Перейти на веб-страницу проекта, чтобы загрузить его вручную?</value>
-  </data>
   <data name="CurrentSave" xml:space="preserve">
     <value>Текущее сохранение: </value>
   </data>
@@ -268,11 +263,6 @@
   </data>
   <data name="Garages_9" xml:space="preserve">
     <value>Human Condo, гараж 3, позиция 2</value>
-  </data>
-  <data name="IncorrectLibVersion" xml:space="preserve">
-    <value>Версия используемой библиотеки «{0:S}» не соответствует текущей версии приложения.
-
-Перейти на веб-страницу проекта для загрузки актуальной версии?</value>
   </data>
   <data name="OCGDialogFilter" xml:space="preserve">
     <value>Файлы параметров парковок GTA VC (*.bcg)|*.bcg|</value>

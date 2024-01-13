@@ -104,7 +104,7 @@ namespace RD_AAOW
 				initStatus = InitStatuses.FileNotAvailable;
 				return;
 				}
-			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			// Чтение файла
 			while (!SR.EndOfStream)
@@ -307,7 +307,7 @@ namespace RD_AAOW
 				{
 				return false;
 				}
-			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			// Запись
 			// Заголовок файла и основные дескрипторы

@@ -866,7 +866,7 @@ namespace RD_AAOW
 		/// <param name="OpCode">Код параметра</param>
 		/// <param name="ParCode">Код субпараметра</param>
 		/// <returns>Возвращает результат выполнения команды или код ошибки с префиксом \x13</returns>
-		public static string SaveData_GetParameterValue4 (OpCodes OpCode, uint ParCode)
+		public static string SaveData_GetParameterValue (OpCodes OpCode, uint ParCode)
 			{
 			ResultCodes res = SaveData_CommandInterpreter (0, (UInt16)OpCode, (UInt16)ParCode, "0");
 			if (res != ResultCodes.OK)
@@ -882,7 +882,7 @@ namespace RD_AAOW
 		/// <param name="ParCode">Код субпараметра</param>
 		/// <param name="NewValue">Новое значение параметра</param>
 		/// <returns>Возвращает сообщение с результатом выполнения команды или сообщение об ошибке</returns>
-		public static ResultCodes SaveData_SetParameterValue4 (OpCodes OpCode, uint ParCode, string NewValue)
+		public static ResultCodes SaveData_SetParameterValue (OpCodes OpCode, uint ParCode, string NewValue)
 			{
 			// Код ошибки "значение вне диапазона"
 			if (string.IsNullOrWhiteSpace (NewValue))
@@ -898,7 +898,7 @@ namespace RD_AAOW
 		/// <param name="ParCode">Код субпараметра</param>
 		/// <param name="Max">Указывает, что следует вернуть максимум вместо минимума</param>
 		/// <returns>Возвращает запрошенное значение</returns>
-		public static float SaveData_GetParameterLimit4 (OpCodes OpCode, UInt16 ParCode, bool Max)
+		public static float SaveData_GetParameterLimit (OpCodes OpCode, UInt16 ParCode, bool Max)
 			{
 			// Извлечение значений границ
 			ResultCodes res = SaveData_CommandInterpreter (4, (UInt16)OpCode, ParCode, "");
@@ -931,7 +931,7 @@ namespace RD_AAOW
 		/// <param name="ParametersType">Тип файла параметров</param>
 		/// <param name="FileName">Имя файла параметров</param>
 		/// <returns>Возвращает сообщение с результатом выполнения команды или сообщение об ошибке</returns>
-		public static ResultCodes SaveData_LoadParametersFile4 (LoadableParameters ParametersType, string FileName)
+		public static ResultCodes SaveData_LoadParametersFile (LoadableParameters ParametersType, string FileName)
 			{
 			if (string.IsNullOrWhiteSpace (FileName))
 				SaveData_CommandInterpreter (2, (UInt16)ParametersType, 0, "<");
@@ -945,7 +945,7 @@ namespace RD_AAOW
 		/// <param name="ParametersType">Тип файла параметров</param>
 		/// <param name="FileName">Имя файла параметров</param>
 		/// <returns>Возвращает сообщение с результатом выполнения команды или сообщение об ошибке</returns>
-		public static ResultCodes SaveData_SaveParametersFile4 (SaveableParameters ParametersType, string FileName)
+		public static ResultCodes SaveData_SaveParametersFile (SaveableParameters ParametersType, string FileName)
 			{
 			if (string.IsNullOrWhiteSpace (FileName))
 				return SaveData_CommandInterpreter (3, (UInt16)ParametersType, 0, "<");
@@ -973,7 +973,7 @@ namespace RD_AAOW
 				{
 				return ResultCodes.CannotCreateStatsFile;
 				}
-			StreamReader SR = new StreamReader (FI, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			StreamReader SR = new StreamReader (FI, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			FileStream FO = null;
 			try
@@ -987,14 +987,14 @@ namespace RD_AAOW
 
 				return ResultCodes.CannotCreateStatsFile;
 				}
-			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (SupportedEncodings.UTF8));
+			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
 			// Сборка комментариев
 			string comments;
-			if (Localization.IsCurrentLanguageRuRu)
-				comments = RDGenerics.GetEncoding (SupportedEncodings.UTF8).GetString (Properties.ViceCityToolset.StatsText_ru_ru);
+			if (RDLocale.IsCurrentLanguageRuRu)
+				comments = RDGenerics.GetEncoding (RDEncodings.UTF8).GetString (Properties.ViceCityToolset.StatsText_ru_ru);
 			else
-				comments = RDGenerics.GetEncoding (SupportedEncodings.UTF8).GetString (Properties.ViceCityToolset.StatsText_en_us);
+				comments = RDGenerics.GetEncoding (RDEncodings.UTF8).GetString (Properties.ViceCityToolset.StatsText_en_us);
 			StringReader LR = new StringReader (comments);
 
 			// Склеивание

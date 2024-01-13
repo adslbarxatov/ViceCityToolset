@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -20,7 +19,7 @@ namespace RD_AAOW
 			Application.SetCompatibleTextRenderingDefault (false);
 
 			// Язык интерфейса и контроль XPUN
-			if (!Localization.IsXPUNClassAcceptable)
+			if (!RDLocale.IsXPUNClassAcceptable)
 				return;
 
 			// Проверка запуска единственной копии
@@ -28,12 +27,15 @@ namespace RD_AAOW
 				return;
 
 			// Проверка наличия компонентов программы
+			if (!RDGenerics.CheckLibraries (new string[] { ProgramDescription.AssemblyLibName }, true))
+				return;
+			/*
 			if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.AssemblyLibName))
 				{
 				if (RDGenerics.MessageBox (RDMessageTypes.Question_Left,
-					string.Format (Localization.GetText ("ComponentMissing"), ProgramDescription.AssemblyLibName),
-					Localization.GetDefaultText (LzDefaultTextValues.Button_Yes),
-					Localization.GetDefaultText (LzDefaultTextValues.Button_No)) ==
+					string.Format (RDLocale.GetText ("ComponentMissing"), ProgramDescription.AssemblyLibName),
+					RDLocale.GetDefaultText (LzDefaultTextValues.Button_Yes),
+					RDLocale.GetDefaultText (LzDefaultTextValues.Button_No)) ==
 					RDMessageButtons.ButtonOne)
 					{
 					AboutForm af = new AboutForm (null);
@@ -41,6 +43,7 @@ namespace RD_AAOW
 
 				return;
 				}
+			*/
 
 			// Отображение справки и запроса на принятие Политики
 			if (!RDGenerics.AcceptEULA ())

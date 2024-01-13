@@ -154,23 +154,23 @@ namespace RD_AAOW
 			// Загрузка только денежных накопителей
 			for (int i = 0; i < PickupsCount; i++)
 				{
-				if (decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Pickups_Base + i),
+				if (decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Pickups_Base + i),
 						(uint)PickupsParCodes.ObjectType)) == 16)
 					{
 					pickups.Add (new Pickup ((uint)i,
-						(UInt16)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Pickups_Base + i),
+						(UInt16)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Pickups_Base + i),
 						(uint)PickupsParCodes.ObjectModel)),
-						float.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Pickups_Base + i),
+						float.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Pickups_Base + i),
 						(uint)PickupsParCodes.ObjectX)),
-						float.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Pickups_Base + i),
+						float.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Pickups_Base + i),
 						(uint)PickupsParCodes.ObjectY)),
-						float.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Pickups_Base + i),
+						float.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Pickups_Base + i),
 						(uint)PickupsParCodes.ObjectZ)),
-						(UInt16)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Pickups_Base + i),
+						(UInt16)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Pickups_Base + i),
 						(uint)PickupsParCodes.ObjectType)),
-						(UInt32)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Pickups_Base + i),
+						(UInt32)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Pickups_Base + i),
 						(uint)PickupsParCodes.ObjectAsset)),
-						(UInt16)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Pickups_Base + i),
+						(UInt16)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Pickups_Base + i),
 						(uint)PickupsParCodes.HasBeenPickedUp))));
 					}
 				}
@@ -238,7 +238,7 @@ namespace RD_AAOW
 			if (Index < pickups.Count)
 				{
 				pickups[Index].ObjectAsset = NewValue;
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Pickups_Base +
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Pickups_Base +
 					pickups[Index].PickupNumber),
 					(uint)PickupsParCodes.ObjectAsset, NewValue.ToString ());
 				}

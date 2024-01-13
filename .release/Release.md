@@ -1,4 +1,5 @@
-_Changes for v 4.3.14_:
+_Changes for v 4.4_:
+- Car generators and garages now have tabular presentations;
+- Core updates have been applied;
 - Added a new version of offline help;
-- Successful loading / saving messages now have timeouts;
-- Completed the process of version control unification
+- Successful loading / saving messages now have timeouts

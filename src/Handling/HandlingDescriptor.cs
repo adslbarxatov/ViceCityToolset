@@ -48,7 +48,7 @@ namespace RD_AAOW
 			{
 			get
 				{
-				return Localization.GetCulture (SupportedLanguages.en_us).NumberFormat;
+				return RDLocale.GetCulture (RDLanguages.en_us).NumberFormat;
 				}
 			}
 
@@ -110,7 +110,7 @@ namespace RD_AAOW
 		public static string CreateHeader (uint LastLetterNumber)
 			{
 			string res = "  A";
-			Encoding enc = RDGenerics.GetEncoding (SupportedEncodings.UTF8);
+			Encoding enc = RDGenerics.GetEncoding (RDEncodings.UTF8);
 
 			for (int i = 2; (i <= 26) && (i <= LastLetterNumber); i++)
 				res += ("\t\t" + enc.GetString (new byte[] { (byte)(0x40 + i) }));

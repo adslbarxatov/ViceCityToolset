@@ -208,29 +208,29 @@ namespace RD_AAOW
 			// Загрузка с помощью номеров команд
 			for (int i = 0; i < BExplorerLib.GeneratorsCount; i++)
 				{
-				Int32 cm = (int)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				Int32 cm = (int)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(UInt16)GeneratorsParCodes.CarModel));
 				cm = (cm < 0) ? -1 : cm;
 				generators.Add (new CGData (cm,
-					float.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+					float.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 						(uint)GeneratorsParCodes.CarX)),
-					float.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+					float.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 						(uint)GeneratorsParCodes.CarY)),
-					float.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+					float.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 						(uint)GeneratorsParCodes.CarZ)),
-					float.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+					float.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 						(uint)GeneratorsParCodes.CarAngle)),
-					(Int16)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+					(Int16)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 						(uint)GeneratorsParCodes.AllowSpawn)),
-					(short)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+					(short)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 						(uint)GeneratorsParCodes.PrimaryColor)),
-					(short)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+					(short)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 						(uint)GeneratorsParCodes.SecondaryColor)),
-					(uint)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+					(uint)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 						(uint)GeneratorsParCodes.AlarmProbability)),
-					(uint)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+					(uint)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 						(uint)GeneratorsParCodes.LockProbability)),
-					(uint)decimal.Parse (BExplorerLib.SaveData_GetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+					(uint)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 						(uint)GeneratorsParCodes.ForceSpawn))));
 				}
 
@@ -238,9 +238,7 @@ namespace RD_AAOW
 			for (int i = 0; i < generators.Count; i++)
 				{
 				if (generators[i].CarModel != 0)
-					{
 					notNull++;
-					}
 				}
 			}
 
@@ -313,31 +311,31 @@ namespace RD_AAOW
 			// Запись
 			for (int i = 0; i < BExplorerLib.GeneratorsCount; i++)
 				{
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.CarModel, generators[i].CarModel.ToString ());
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.CarX, generators[i].X.ToString ());
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.CarY, generators[i].Y.ToString ());
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.CarZ, generators[i].Z.ToString ());
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.CarAngle, generators[i].Rotation.ToString ());
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.AllowSpawn, generators[i].AllowSpawn.ToString ());
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.PrimaryColor, generators[i].Color1.ToString ());
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.SecondaryColor, generators[i].Color2.ToString ());
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.AlarmProbability, generators[i].AlarmProbability.ToString ());
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.LockProbability, generators[i].LockProbability.ToString ());
-				BExplorerLib.SaveData_SetParameterValue4 ((OpCodes)((int)OpCodes.Generators_Base + i),
+				BExplorerLib.SaveData_SetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
 					(uint)GeneratorsParCodes.ForceSpawn, generators[i].ForceSpawn.ToString ());
 				}
 
-			BExplorerLib.SaveData_SetParameterValue4 (OpCodes.ActiveGenerators, 0, notNull.ToString ());
+			BExplorerLib.SaveData_SetParameterValue (OpCodes.ActiveGenerators, 0, notNull.ToString ());
 			}
 		}
 	}

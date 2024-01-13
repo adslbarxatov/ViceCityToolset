@@ -237,11 +237,11 @@ namespace RD_AAOW
 			InitializeComponent ();
 
 			// Настройка контролов
-			this.Text = ProgramDescription.AssemblyTitle + " – " + Localization.GetText (this.Name);
+			this.Text = ProgramDescription.AssemblyTitle + " – " + RDLocale.GetText (this.Name);
 
-			Localization.SetControlsText (this);
-			ExitButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
-			SaveCfgFile.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Save);
+			RDLocale.SetControlsText (this);
+			ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
+			SaveCfgFile.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save);
 
 			#region Основные дескрипторы
 
@@ -288,18 +288,18 @@ namespace RD_AAOW
 			AD_.Maximum = (decimal)GenericHandlingDescriptor.SuspensionAntiDiveMultiplier_Max;
 
 			// Локализация
-			Generic1.Text = Localization.GetText ("Generic1Tab");
-			Localization.SetControlsText (Generic1);
+			Generic1.Text = RDLocale.GetText ("Generic1Tab");
+			RDLocale.SetControlsText (Generic1);
 
 			for (int i = 0; i <= 2; i++)
-				P_.Items.Add (Localization.GetText ("Generic1_P_V" + i.ToString ()));
+				P_.Items.Add (RDLocale.GetText ("Generic1_P_V" + i.ToString ()));
 
 			for (int i = 0; i <= 2; i++)
-				Q_.Items.Add (Localization.GetText ("Generic1_Q_V" + i.ToString ()));
+				Q_.Items.Add (RDLocale.GetText ("Generic1_Q_V" + i.ToString ()));
 
 			for (int i = 0; i <= 3; i++)
 				{
-				string s = Localization.GetText ("Generic1_AF_V" + i.ToString ());
+				string s = RDLocale.GetText ("Generic1_AF_V" + i.ToString ());
 				AF_.Items.Add (s);
 				AG_.Items.Add (s);
 				}
@@ -308,24 +308,24 @@ namespace RD_AAOW
 
 			#region Флаги
 
-			Generic2.Text = Localization.GetText ("Generic2Tab");
-			Localization.SetControlsText (Generic2);
+			Generic2.Text = RDLocale.GetText ("Generic2Tab");
+			RDLocale.SetControlsText (Generic2);
 
 			for (int i = 0; i <= 3; i++)
-				AE_1_4.Items.Add (Localization.GetText ("Generic2_AE14_V" + i.ToString ()));
+				AE_1_4.Items.Add (RDLocale.GetText ("Generic2_AE14_V" + i.ToString ()));
 
 			for (int i = 0; i <= 4; i++)
-				AE_2.Items.Add (Localization.GetText ("Generic2_AE2_V" + i.ToString ()));
+				AE_2.Items.Add (RDLocale.GetText ("Generic2_AE2_V" + i.ToString ()));
 
 			for (int i = 0; i <= 4; i++)
-				AE_5.Items.Add (Localization.GetText ("Generic2_AE5_V" + i.ToString ()));
+				AE_5.Items.Add (RDLocale.GetText ("Generic2_AE5_V" + i.ToString ()));
 
 			#endregion
 
 			#region Моторные лодки
 
-			Boat.Text = Localization.GetText ("BoatTab");
-			Localization.SetControlsText (Boat);
+			Boat.Text = RDLocale.GetText ("BoatTab");
+			RDLocale.SetControlsText (Boat);
 
 			boat_B_.Minimum = (decimal)BoatHandlingDescriptor.ForwardThrust_Min;
 			boat_C_.Minimum = (decimal)BoatHandlingDescriptor.UpwardThrust_Min;
@@ -361,8 +361,8 @@ namespace RD_AAOW
 
 			#region Мотоциклы
 
-			Bike.Text = Localization.GetText ("BikeTab");
-			Localization.SetControlsText (Bike);
+			Bike.Text = RDLocale.GetText ("BikeTab");
+			RDLocale.SetControlsText (Bike);
 
 			bike_B_.Minimum = (decimal)BikeHandlingDescriptor.ForwardLeaningCoM_Min;
 			bike_C_.Minimum = (decimal)BikeHandlingDescriptor.ForwardLeaningForce_Min;
@@ -400,8 +400,8 @@ namespace RD_AAOW
 
 			#region Летательные аппараты
 
-			Flying.Text = Localization.GetText ("FlyingTab");
-			Localization.SetControlsText (Flying);
+			Flying.Text = RDLocale.GetText ("FlyingTab");
+			RDLocale.SetControlsText (Flying);
 
 			flying_B_.Minimum = (decimal)FlyingHandlingDescriptor.NonControlledAcceleration_Min;
 			flying_C_.Minimum = (decimal)FlyingHandlingDescriptor.ControlledAcceleration_Min;
@@ -764,65 +764,65 @@ namespace RD_AAOW
 				{
 				J_.Minimum = (decimal)GenericHandlingDescriptor.TractionMultiplier_Min;
 				J_.Maximum = (decimal)GenericHandlingDescriptor.TractionMultiplier_Max;
-				J_L.Text = Localization.GetText ("Generic1_J_L");
+				J_L.Text = RDLocale.GetText ("Generic1_J_L");
 				K_.Minimum = (decimal)GenericHandlingDescriptor.TractionLoss_Min;
 				K_.Maximum = (decimal)GenericHandlingDescriptor.TractionLoss_Max;
-				K_L.Text = Localization.GetText ("Generic1_K_L");
+				K_L.Text = RDLocale.GetText ("Generic1_K_L");
 				L_.Minimum = (decimal)GenericHandlingDescriptor.TractionBias_Min;
 				L_.Maximum = (decimal)GenericHandlingDescriptor.TractionBias_Max;
-				L_L.Text = Localization.GetText ("Generic1_L_L");
+				L_L.Text = RDLocale.GetText ("Generic1_L_L");
 
 				R_.Minimum = (decimal)GenericHandlingDescriptor.BrakeDeceleration_Min;
 				R_.Maximum = (decimal)GenericHandlingDescriptor.BrakeDeceleration_Max;
-				R_L.Text = Localization.GetText ("Generic1_R_L");
+				R_L.Text = RDLocale.GetText ("Generic1_R_L");
 				S_.Minimum = (decimal)GenericHandlingDescriptor.BrakeBias_Min;
 				S_.Maximum = (decimal)GenericHandlingDescriptor.BrakeBias_Max;
-				S_L.Text = Localization.GetText ("Generic1_S_L");
+				S_L.Text = RDLocale.GetText ("Generic1_S_L");
 				V_.Minimum = (decimal)GenericHandlingDescriptor.SuspensionForceLevel_Min;
 				V_.Maximum = (decimal)GenericHandlingDescriptor.SuspensionForceLevel_Max;
-				V_L.Text = Localization.GetText ("Generic1_V_L");
+				V_L.Text = RDLocale.GetText ("Generic1_V_L");
 
 				W_.Minimum = (decimal)GenericHandlingDescriptor.SuspensionDampingLevel_Min;
 				W_.Maximum = (decimal)GenericHandlingDescriptor.SuspensionDampingLevel_Max;
-				W_L.Text = Localization.GetText ("Generic1_W_L");
+				W_L.Text = RDLocale.GetText ("Generic1_W_L");
 				AB_.Minimum = (decimal)GenericHandlingDescriptor.SuspensionLowerLimit_Min;
 				AB_.Maximum = (decimal)GenericHandlingDescriptor.SuspensionLowerLimit_Max;
-				AB_L.Text = Localization.GetText ("Generic1_AB_L");
+				AB_L.Text = RDLocale.GetText ("Generic1_AB_L");
 				AC_.Minimum = (decimal)GenericHandlingDescriptor.SuspensionBias_Min;
 				AC_.Maximum = (decimal)GenericHandlingDescriptor.SuspensionBias_Max;
-				AC_L.Text = Localization.GetText ("Generic1_AC_L");
+				AC_L.Text = RDLocale.GetText ("Generic1_AC_L");
 				}
 			else
 				{
 				J_.Minimum = (decimal)GenericHandlingDescriptor.BankForceMultiplier_Min;
 				J_.Maximum = (decimal)GenericHandlingDescriptor.BankForceMultiplier_Max;
-				J_L.Text = Localization.GetText ("Generic1_J_L_boat");
+				J_L.Text = RDLocale.GetText ("Generic1_J_L_boat");
 				K_.Minimum = (decimal)GenericHandlingDescriptor.RudderTurnForce_Min;
 				K_.Maximum = (decimal)GenericHandlingDescriptor.RudderTurnForce_Max;
-				K_L.Text = Localization.GetText ("Generic1_K_L_boat");
+				K_L.Text = RDLocale.GetText ("Generic1_K_L_boat");
 				L_.Minimum = (decimal)GenericHandlingDescriptor.SpeedSteerFalloff_Min;
 				L_.Maximum = (decimal)GenericHandlingDescriptor.SpeedSteerFalloff_Max;
-				L_L.Text = Localization.GetText ("Generic1_L_L_boat");
+				L_L.Text = RDLocale.GetText ("Generic1_L_L_boat");
 
 				R_.Minimum = (decimal)GenericHandlingDescriptor.VerticalWaveHitLimit_Min;
 				R_.Maximum = (decimal)GenericHandlingDescriptor.VerticalWaveHitLimit_Max;
-				R_L.Text = Localization.GetText ("Generic1_R_L_boat");
+				R_L.Text = RDLocale.GetText ("Generic1_R_L_boat");
 				S_.Minimum = (decimal)GenericHandlingDescriptor.ForwardWaveHitBrake_Min;
 				S_.Maximum = (decimal)GenericHandlingDescriptor.ForwardWaveHitBrake_Max;
-				S_L.Text = Localization.GetText ("Generic1_S_L_boat");
+				S_L.Text = RDLocale.GetText ("Generic1_S_L_boat");
 				V_.Minimum = (decimal)GenericHandlingDescriptor.WaterResistanceMultiplier_Min;
 				V_.Maximum = (decimal)GenericHandlingDescriptor.WaterResistanceMultiplier_Max;
-				V_L.Text = Localization.GetText ("Generic1_V_L_boat");
+				V_L.Text = RDLocale.GetText ("Generic1_V_L_boat");
 
 				W_.Minimum = (decimal)GenericHandlingDescriptor.WaterDampingMultiplier_Min;
 				W_.Maximum = (decimal)GenericHandlingDescriptor.WaterDampingMultiplier_Max;
-				W_L.Text = Localization.GetText ("Generic1_W_L_boat");
+				W_L.Text = RDLocale.GetText ("Generic1_W_L_boat");
 				AB_.Minimum = (decimal)GenericHandlingDescriptor.HandbrakeDragMultiplier_Min;
 				AB_.Maximum = (decimal)GenericHandlingDescriptor.HandbrakeDragMultiplier_Max;
-				AB_L.Text = Localization.GetText ("Generic1_AB_L_boat");
+				AB_L.Text = RDLocale.GetText ("Generic1_AB_L_boat");
 				AC_.Minimum = (decimal)GenericHandlingDescriptor.SideslipForce_Min;
 				AC_.Maximum = (decimal)GenericHandlingDescriptor.SideslipForce_Max;
-				AC_L.Text = Localization.GetText ("Generic1_AC_L_boat");
+				AC_L.Text = RDLocale.GetText ("Generic1_AC_L_boat");
 				}
 
 			#endregion
@@ -1070,8 +1070,8 @@ namespace RD_AAOW
 		private void ExitButton_Click (object sender, EventArgs e)
 			{
 			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center,
-				"HandlingForm_ExitMessage", LzDefaultTextValues.Button_YesNoFocus,
-				LzDefaultTextValues.Button_No) == RDMessageButtons.ButtonOne)
+				"HandlingForm_ExitMessage", RDLDefaultTexts.Button_YesNoFocus,
+				RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonOne)
 				this.Close ();
 			}
 
@@ -1079,7 +1079,7 @@ namespace RD_AAOW
 		private void HandlingForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
 			e.Cancel = (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
-				"ChangesSaved", LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) ==
+				"ChangesSaved", RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) ==
 				RDMessageButtons.ButtonTwo);
 			RDGenerics.SaveWindowDimensions (this);
 			}

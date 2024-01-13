@@ -174,11 +174,6 @@
   <data name="ChangesSaved" xml:space="preserve">
     <value>Are you sure that all needed changes have been saved?</value>
   </data>
-  <data name="ComponentMissing" xml:space="preserve">
-    <value>A required app component is missing: “{0:S}”.
-
-Do you want to open project’s webpage to download it manually?</value>
-  </data>
   <data name="CurrentSave" xml:space="preserve">
     <value>Current save: </value>
   </data>
@@ -268,11 +263,6 @@ Do you want to open project’s webpage to download it manually?</value>
   </data>
   <data name="Garages_9" xml:space="preserve">
     <value>Human Condo, garage 3, item 2</value>
-  </data>
-  <data name="IncorrectLibVersion" xml:space="preserve">
-    <value>Version of “{0:S}” is incompatible with the current version of application.
-
-Do you want to open project's webpage to download actual version?</value>
   </data>
   <data name="OCGDialogFilter" xml:space="preserve">
     <value>GTA VC car parks parameters files (*.bcg)|*.bcg|</value>

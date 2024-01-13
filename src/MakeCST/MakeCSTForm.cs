@@ -19,13 +19,13 @@ namespace RD_AAOW
 			InitializeComponent ();
 
 			// Настройка контролов
-			this.Text = ProgramDescription.AssemblyTitle + " – " + Localization.GetText (this.Name);
+			this.Text = ProgramDescription.AssemblyTitle + " – " + RDLocale.GetText (this.Name);
 			RDGenerics.LoadWindowDimensions (this);
 
-			OFLabel.Text = OFDialog.Title = Localization.GetText ("MakeCSTForm_OFLabel");
-			SFLabel.Text = Localization.GetText ("MakeCSTForm_SFLabel");
-			ConvertButton.Text = Localization.GetText ("MakeCSTForm_ConvertButton");
-			ExitButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
+			OFLabel.Text = OFDialog.Title = RDLocale.GetText ("MakeCSTForm_OFLabel");
+			SFLabel.Text = RDLocale.GetText ("MakeCSTForm_SFLabel");
+			ConvertButton.Text = RDLocale.GetText ("MakeCSTForm_ConvertButton");
+			ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
 
 			OFDialog.Filter = "DFF model|*" + DFFReader.MasterExtension +
 				"|QHullOFF script|*" + QHullOFFReader.MasterExtension;
@@ -71,8 +71,8 @@ namespace RD_AAOW
 			catch
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					Localization.GetFileProcessingMessage (OFName.Text,
-					LzFileProcessingMessageTypes.Load_Failure));
+					RDLocale.GetFileProcessingMessage (OFName.Text,
+					RDL_FP_Messages.Load_Failure));
 				return;
 				}
 
@@ -90,7 +90,7 @@ namespace RD_AAOW
 				if (dffr.ExtractedPoints.Count == 0)
 					{
 					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-						string.Format (Localization.GetText ("MakeCST_UnsupportedDFF"), OFName.Text));
+						string.Format (RDLocale.GetText ("MakeCST_UnsupportedDFF"), OFName.Text));
 					return;
 					}
 
@@ -112,7 +112,7 @@ namespace RD_AAOW
 				if (qhoffr.ExtractedTriangles.Count == 0)
 					{
 					RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-						string.Format (Localization.GetText ("MakeCST_UnsupportedQHull"), OFName.Text));
+						string.Format (RDLocale.GetText ("MakeCST_UnsupportedQHull"), OFName.Text));
 					return;
 					}
 
@@ -164,8 +164,8 @@ namespace RD_AAOW
 			if (!CSTWriter.WriteCST (SFName.Text, points, triangles))
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					Localization.GetFileProcessingMessage (SFName.Text,
-					LzFileProcessingMessageTypes.Save_Failure));
+					RDLocale.GetFileProcessingMessage (SFName.Text,
+					RDL_FP_Messages.Save_Failure));
 				return;
 				}
 

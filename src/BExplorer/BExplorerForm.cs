@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -45,8 +46,8 @@ namespace RD_AAOW
 			// Инициализация формы
 			InitializeComponent ();
 
-			Application.CurrentCulture = Localization.GetCulture (SupportedLanguages.en_us);
-			this.Text = ProgramDescription.AssemblyTitle + " – " + Localization.GetText (this.Name);
+			Application.CurrentCulture = RDLocale.GetCulture (RDLanguages.en_us);
+			this.Text = ProgramDescription.AssemblyTitle + " – " + RDLocale.GetText (this.Name);
 
 			// Запуск
 			this.ShowDialog ();
@@ -58,16 +59,18 @@ namespace RD_AAOW
 			// Контроль корректности связи с библиотекой функций
 			if (BExplorerLib.Check () != 0)
 				{
-				if (RDGenerics.MessageBox (RDMessageTypes.Question_Left,
-					string.Format (Localization.GetText ("IncorrectLibVersion"),
+				/*if (RDGenerics.MessageBox (RDMessageTypes.Question_Left,
+					string.Format (RDLocale.GetText ("IncorrectLibVersion"),
 					ProgramDescription.AssemblyLibName),
-					Localization.GetDefaultText (LzDefaultTextValues.Button_Yes),
-					Localization.GetDefaultText (LzDefaultTextValues.Button_No)) ==
+					RDLocale.GetDefaultText (RDLDefaultTexts.Button_Yes),
+					RDLocale.GetDefaultText (RDLDefaultTexts.Button_No)) ==
 					RDMessageButtons.ButtonOne)
 					{
 					AboutForm af = new AboutForm (null);
 					af.Dispose ();
-					}
+					}*/
+				RDGenerics.MessageBox (RDMessageTypes.Error_Center,
+					RDLocale.GetIncompatibleVersionsMessage (ProgramDescription.AssemblyLibName));
 
 				error = -1;
 				this.Close ();
@@ -85,51 +88,51 @@ namespace RD_AAOW
 			// Загрузка ограничений и списков
 			loading = true;
 
-			DP_Date.MaxDate = new DateTime ((int)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.SaveYear,
+			DP_Date.MaxDate = new DateTime ((int)BExplorerLib.SaveData_GetParameterLimit (OpCodes.SaveYear,
 				0, true),
-				(int)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.SaveMonth, 0, true),
-				(int)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.SaveDay, 0, true));
-			DP_Date.MinDate = new DateTime ((int)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.SaveYear,
+				(int)BExplorerLib.SaveData_GetParameterLimit (OpCodes.SaveMonth, 0, true),
+				(int)BExplorerLib.SaveData_GetParameterLimit (OpCodes.SaveDay, 0, true));
+			DP_Date.MinDate = new DateTime ((int)BExplorerLib.SaveData_GetParameterLimit (OpCodes.SaveYear,
 				0, false),
-				(int)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.SaveMonth, 0, false),
-				(int)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.SaveDay, 0, false));
+				(int)BExplorerLib.SaveData_GetParameterLimit (OpCodes.SaveMonth, 0, false),
+				(int)BExplorerLib.SaveData_GetParameterLimit (OpCodes.SaveDay, 0, false));
 
-			DP_IML.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.InGameMinuteLength,
+			DP_IML.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.InGameMinuteLength,
 				0, true);
-			DP_IML.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.InGameMinuteLength,
+			DP_IML.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.InGameMinuteLength,
 				0, false);
 
-			DP_GameSpeed.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.GameSpeed,
+			DP_GameSpeed.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.GameSpeed,
 				0, true);
-			DP_GameSpeed.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.GameSpeed,
+			DP_GameSpeed.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.GameSpeed,
 				0, false);
 
-			PL_MaxHealth.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.MaxHealth,
+			PL_MaxHealth.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.MaxHealth,
 				0, true);
-			PL_MaxHealth.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.MaxHealth,
+			PL_MaxHealth.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.MaxHealth,
 				0, false);
 
-			PL_MaxArmor.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.MaxArmor,
+			PL_MaxArmor.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.MaxArmor,
 				0, true);
-			PL_MaxArmor.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.MaxArmor,
+			PL_MaxArmor.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.MaxArmor,
 				0, false);
 
-			PL_CurArmor.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.CurrentArmor,
+			PL_CurArmor.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.CurrentArmor,
 				0, true);
-			PL_CurArmor.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.CurrentArmor,
+			PL_CurArmor.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.CurrentArmor,
 				0, false);
 
 			for (int i = 0; i <= 6; i++)
 				PL_MWL.Items.Add (i.ToString ());
 
-			PL_CurMoney.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.CurrentMoney,
+			PL_CurMoney.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.CurrentMoney,
 				0, true);
-			PL_CurMoney.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.CurrentMoney,
+			PL_CurMoney.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.CurrentMoney,
 				0, false);
 
-			PL_Bullets.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.PlayerWeapons_Base,
+			PL_Bullets.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.PlayerWeapons_Base,
 				(UInt16)WeaponsParCodes.WeaponAmmo, true);
-			PL_Bullets.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.PlayerWeapons_Base,
+			PL_Bullets.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.PlayerWeapons_Base,
 				(UInt16)WeaponsParCodes.WeaponAmmo, false);
 
 			GR_CarModel.DataSource = ParametersValues.CarsForGarages;
@@ -141,47 +144,47 @@ namespace RD_AAOW
 			GR_Radio.DataSource = ParametersValues.Radios;
 			GR_Radio.DisplayMember = GR_Radio.ValueMember = "Name";
 
-			PU_AssetValue.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Pickups_Base,
+			PU_AssetValue.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Pickups_Base,
 				(UInt16)PickupsParCodes.ObjectAsset, true);
-			PU_AssetValue.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Pickups_Base,
+			PU_AssetValue.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Pickups_Base,
 				(UInt16)PickupsParCodes.ObjectAsset, false);
 
 			GD_CarModel.DataSource = ParametersValues.CarsForGangs;
 			GD_CarModel.DisplayMember = GD_CarModel.ValueMember = "Name";
 
 			GD_PedModel1.Maximum = GD_PedModel2.Maximum =
-				(decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Gangs_Base,
+				(decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Gangs_Base,
 				(UInt16)GangsParCodes.PrimaryPedModel, true);
 			GD_PedModel1.Minimum = GD_PedModel2.Minimum =
-				(decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Gangs_Base,
+				(decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Gangs_Base,
 				(UInt16)GangsParCodes.PrimaryPedModel, false);
 
-			CarGenList.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.ActiveGenerators,
+			CarGenList.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.ActiveGenerators,
 				0, true);
-			CarGenList.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.ActiveGenerators,
+			CarGenList.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.ActiveGenerators,
 				0, false);
 
 			CG_CarModel.DataSource = ParametersValues.CarsForCG;
 			CG_CarModel.DisplayMember = CG_CarModel.ValueMember = "Name";
 
-			CG_X.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_X.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.CarX, true);
-			CG_X.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_X.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.CarX, false);
 
-			CG_Y.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_Y.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.CarY, true);
-			CG_Y.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_Y.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.CarY, false);
 
-			CG_Z.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_Z.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.CarZ, true);
-			CG_Z.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_Z.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.CarZ, false);
 
-			CG_Rotation.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_Rotation.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.CarAngle, true);
-			CG_Rotation.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_Rotation.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.CarAngle, false);
 
 			CG_CarColor1.Maximum = cc.Colors.Count - 1;
@@ -189,14 +192,14 @@ namespace RD_AAOW
 			CG_CarColor2.Maximum = cc.Colors.Count - 1;
 			CG_CarColor2.Minimum = -1;
 
-			CG_AlarmProb.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_AlarmProb.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.AlarmProbability, true);
-			CG_AlarmProb.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_AlarmProb.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.AlarmProbability, false);
 
-			CG_LockProb.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_LockProb.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.LockProbability, true);
-			CG_LockProb.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit4 (OpCodes.Generators_Base,
+			CG_LockProb.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.LockProbability, false);
 
 			cp = new CoordsPicker (CG_X.Minimum, CG_X.Maximum, CG_Y.Minimum, CG_Y.Maximum, CG_Z.Minimum, CG_Z.Maximum,
@@ -237,19 +240,19 @@ namespace RD_AAOW
 			SetState (false);   // Блокировать заранее
 			if ((errCode = BExplorerLib.SaveData_Load (OFDialog.FileName)) != ResultCodes.LoadSuccess)
 				{
-				string errText = Localization.GetText ("SaveLoadingError");
+				string errText = RDLocale.GetText ("SaveLoadingError");
 				if ((errCode >= ResultCodes.ErrorLoadDP) && (errCode <= ResultCodes.ErrorLoadCS))
-					errText += Localization.GetText ("Result_LoadingErrorPrefix");
-				errText += Localization.GetText ("Result_" + errCode.ToString ());
+					errText += RDLocale.GetText ("Result_LoadingErrorPrefix");
+				errText += RDLocale.GetText ("Result_" + errCode.ToString ());
 
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, errText);
-				SaveInfoLabel.Text = Localization.GetText ("SaveNotSpecified");
+				SaveInfoLabel.Text = RDLocale.GetText ("SaveNotSpecified");
 
 				return;
 				}
 
 			// В случае успеха
-			SaveInfoLabel.Text = Localization.GetText ("CurrentSave") + BExplorerLib.SaveData_SaveInfo;
+			SaveInfoLabel.Text = RDLocale.GetText ("CurrentSave") + BExplorerLib.SaveData_SaveInfo;
 			SetState (true);
 
 			// Загрузка начальных параметров в поля формы
@@ -259,12 +262,12 @@ namespace RD_AAOW
 		// Метод отвечает за получение одного параметра из структуры
 		private bool GetParameterValue (OpCodes OpCode, uint ParCode, out string Result)
 			{
-			Result = BExplorerLib.SaveData_GetParameterValue4 (OpCode, ParCode);
+			Result = BExplorerLib.SaveData_GetParameterValue (OpCode, ParCode);
 			if (Result.StartsWith ("\x13"))
 				{
 				ResultCodes errCode = (ResultCodes)int.Parse (Result.Substring (1));
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					Localization.GetText ("Result_" + errCode.ToString ()));
+					RDLocale.GetText ("Result_" + errCode.ToString ()));
 				return false;
 				}
 
@@ -274,11 +277,11 @@ namespace RD_AAOW
 		// Метод отвечает за установку нового значения параметра
 		private void SetParameterValue (OpCodes OpCode, uint ParCode, string NewValue)
 			{
-			ResultCodes result = BExplorerLib.SaveData_SetParameterValue4 (OpCode, ParCode, NewValue);
+			ResultCodes result = BExplorerLib.SaveData_SetParameterValue (OpCode, ParCode, NewValue);
 
 			if (result != ResultCodes.OK)
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					Localization.GetText ("Result_" + result.ToString ()));
+					RDLocale.GetText ("Result_" + result.ToString ()));
 			}
 
 		// Загрузчик параметров
@@ -470,7 +473,7 @@ namespace RD_AAOW
 			pu = new Pickups ();
 			AssetList.Items.Clear ();
 			for (int i = 0; i < pu.ActiveAssetsCount; i++)
-				AssetList.Items.Add (Localization.GetText ("AssetNumber") + (i + 1).ToString ());
+				AssetList.Items.Add (RDLocale.GetText ("AssetNumber") + (i + 1).ToString ());
 
 			if (pu.ActiveAssetsCount > 0)
 				{
@@ -489,7 +492,7 @@ namespace RD_AAOW
 
 			// Загрузка списка парковок и выбор слота
 			cg = new CarGenerators ();
-			CGCountLabel.Text = Localization.GetText ("CGLoaded") + cg.ActiveGeneratorsCount.ToString ();
+			CGCountLabel.Text = RDLocale.GetText ("CGLoaded") + cg.ActiveGeneratorsCount.ToString ();
 			CarGenList.Value = 1;
 			CarGenList_ValueChanged (null, null);
 
@@ -505,7 +508,7 @@ namespace RD_AAOW
 
 			if (ToDoStatusView.Items.Count == 0)
 				{
-				ToDoStatusView.Items.Add (Localization.GetText ("SaveCompleted"));
+				ToDoStatusView.Items.Add (RDLocale.GetText ("SaveCompleted"));
 				DangerousReset.Enabled = AbortSorting.Enabled = ST_InfBullets.Enabled = true;
 				// Только при полном прохождении
 				}
@@ -516,7 +519,7 @@ namespace RD_AAOW
 			{
 			// Запись данных генераторов авто
 			cg.SaveGenerators (!AbortSorting.Checked);
-			CGCountLabel.Text = Localization.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
+			CGCountLabel.Text = RDLocale.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
 
 			// Отображение диалога
 			SFDialog.FileName = "";
@@ -527,7 +530,7 @@ namespace RD_AAOW
 			{
 			// Запись данных генераторов авто
 			cg.SaveGenerators (!AbortSorting.Checked);
-			CGCountLabel.Text = Localization.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
+			CGCountLabel.Text = RDLocale.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
 
 			// Пробуем сохранить файл в стандартном расположении
 			SFDialog.FileName = ViceCityToolsetProgram.GTAVCSavesDirectory + "\\GTAVCsf" +
@@ -539,18 +542,18 @@ namespace RD_AAOW
 		// Место выбрано
 		private void SFDialog_FileOk (object sender, CancelEventArgs e)
 			{
-			ResultCodes res = BExplorerLib.SaveData_SaveParametersFile4 (SaveableParameters.SaveFile, SFDialog.FileName);
+			ResultCodes res = BExplorerLib.SaveData_SaveParametersFile (SaveableParameters.SaveFile, SFDialog.FileName);
 
 			if (res == ResultCodes.SaveSuccess)
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 				LoadParameters ();
 				}
 			else
 				{
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("SaveSavingError") +
-					Localization.GetText ("Result_" + res.ToString ()));
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("SaveSavingError") +
+					RDLocale.GetText ("Result_" + res.ToString ()));
 				}
 			}
 
@@ -563,9 +566,11 @@ namespace RD_AAOW
 		private void MainForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
 			e.Cancel = (error == 0) && (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
-				"ChangesSaved", LzDefaultTextValues.Button_Yes, LzDefaultTextValues.Button_No) ==
+				"ChangesSaved", RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) ==
 				RDMessageButtons.ButtonTwo);
+
 			RDGenerics.SaveWindowDimensions (this);
+			ParametersValues.ResetCache ();
 			}
 
 		// Установка всех настроечных контролов в состояние доступен/недоступен
@@ -808,14 +813,14 @@ namespace RD_AAOW
 		private void OStatsDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Загрузка файла статистики
-			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile4 (LoadableParameters.Stats, OStatsDialog.FileName);
+			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile (LoadableParameters.Stats, OStatsDialog.FileName);
 
 			if (res == ResultCodes.LoadSuccess)
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("StatsLoadingError") +
-					Localization.GetText ("Result_" + res.ToString ()));
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("StatsLoadingError") +
+					RDLocale.GetText ("Result_" + res.ToString ()));
 			}
 
 		// Выгрузка статистики
@@ -832,26 +837,39 @@ namespace RD_AAOW
 		private void SStatsDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Сохранение файла статистики
-			ResultCodes res = BExplorerLib.SaveData_SaveParametersFile4 (saveMode, SStatsDialog.FileName);
+			ResultCodes res = BExplorerLib.SaveData_SaveParametersFile (saveMode, SStatsDialog.FileName);
 
-			if (saveMode == SaveableParameters.Stats)
+			if (saveMode != SaveableParameters.SaveFile)
 				{
 				if (res != ResultCodes.SaveSuccess)
 					{
-					RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("StatsSavingError") +
-						Localization.GetText ("Result_" + res.ToString ()));
+					RDGenerics.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("StatsSavingError") +
+						RDLocale.GetText ("Result_" + res.ToString ()));
 					return;
 					}
 
-				res = BExplorerLib.SaveData_MergeStats (SStatsDialog.FileName);
+				switch (saveMode)
+					{
+					case SaveableParameters.Stats:
+						res = BExplorerLib.SaveData_MergeStats (SStatsDialog.FileName);
+						break;
+
+					case SaveableParameters.Garages:
+						res = SaveData_DescriptGarages (SStatsDialog.FileName);
+						break;
+
+					case SaveableParameters.Generators:
+						res = SaveData_DescriptGenerators (SStatsDialog.FileName);
+						break;
+					}
 				}
 
 			if (res == ResultCodes.SaveSuccess)
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("StatsSavingError") +
-					Localization.GetText ("Result_" + res.ToString ()));
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("StatsSavingError") +
+					RDLocale.GetText ("Result_" + res.ToString ()));
 			}
 
 		// Выбран слот гаража
@@ -877,7 +895,7 @@ namespace RD_AAOW
 				return;
 				}
 
-			decimal d = decimal.Parse (model);
+			/*decimal d = decimal.Parse (model);
 			for (int i = 0; i < ParametersValues.CarsForGarages.Length; i++)
 				{
 				if (d == ParametersValues.CarsForGarages[i].ID)
@@ -885,12 +903,16 @@ namespace RD_AAOW
 					GR_CarModel.SelectedIndex = i;
 					break;
 					}
-				}
+				}*/
+			GR_CarModel.SelectedIndex = ParametersValues.FindCarIndex (ParametersValues.CarsListTypes.ForGarages,
+				(int)decimal.Parse (model));
 
-			GR_CarColor1.Value = (decimal.Parse (c1) > GR_CarColor1.Maximum) ? GR_CarColor1.Maximum : decimal.Parse (c1);
-			GR_CarColor2.Value = (decimal.Parse (c2) > GR_CarColor1.Maximum) ? GR_CarColor2.Maximum : decimal.Parse (c2);
+			GR_CarColor1.Value = (decimal.Parse (c1) > GR_CarColor1.Maximum) ?
+				GR_CarColor1.Maximum : decimal.Parse (c1);
+			GR_CarColor2.Value = (decimal.Parse (c2) > GR_CarColor1.Maximum) ?
+				GR_CarColor2.Maximum : decimal.Parse (c2);
 
-			d = decimal.Parse (radio);
+			/*d = decimal.Parse (radio);
 			for (int i = 0; i < ParametersValues.Radios.Length; i++)
 				{
 				if (d == ParametersValues.Radios[i].ID)
@@ -898,9 +920,10 @@ namespace RD_AAOW
 					GR_Radio.SelectedIndex = i;
 					break;
 					}
-				}
+				}*/
+			GR_Radio.SelectedIndex = ParametersValues.FindRadioIndex ((int)decimal.Parse (radio));
 
-			d = decimal.Parse (bomb);
+			/*d = decimal.Parse (bomb);
 			for (int i = 0; i < ParametersValues.Bombs.Length; i++)
 				{
 				if (d == ParametersValues.Bombs[i].ID)
@@ -908,15 +931,101 @@ namespace RD_AAOW
 					GR_Bomb.SelectedIndex = i;
 					break;
 					}
-				}
+				}*/
+			GR_Bomb.SelectedIndex = ParametersValues.FindBombIndex ((int)decimal.Parse (bomb));
 
-			d = decimal.Parse (imm);
-			GR_BulletsProof.Checked = (((int)d & 0x1) != 0);
-			GR_FireProof.Checked = (((int)d & 0x2) != 0);
-			GR_ExplProof.Checked = (((int)d & 0x4) != 0);
-			GR_DamageProof.Checked = (((int)d & 0x8) != 0);
+			int d = (int)decimal.Parse (imm);
+			GR_BulletsProof.Checked = ((d & 0x1) != 0);
+			GR_FireProof.Checked = ((d & 0x2) != 0);
+			GR_ExplProof.Checked = ((d & 0x4) != 0);
+			GR_DamageProof.Checked = ((d & 0x8) != 0);
 
 			loading = false;
+			}
+
+		// Метод разворачивает описание гаражей в табличный файл
+		private ResultCodes SaveData_DescriptGarages (string Path)
+			{
+			// Создание файла
+			FileStream FO;
+			try
+				{
+				FO = new FileStream (Path + ".csv", FileMode.Create);
+				}
+			catch
+				{
+				return ResultCodes.CannotCreateGaragesFile;
+				}
+			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (RDEncodings.UTF8));
+
+			// Запись заголовка
+			const string sp = ";";
+			SW.WriteLine (Label14.Text.Replace (":", "") + sp +
+				Label15.Text.Replace (":", "").Replace ("•", "").Trim () + sp +
+				Label16.Text.Replace (":", "").Replace ("•", "").Trim () + " (1)" + sp +
+				Label16.Text.Replace (":", "").Replace ("•", "").Trim () + " (2)" + sp +
+				Label17.Text.Replace (":", "").Replace ("•", "").Trim () + sp +
+				Label18.Text.Replace (":", "").Replace ("•", "").Trim () + sp +
+				GR_BulletsProof.Text + sp + GR_FireProof.Text + sp +
+				GR_ExplProof.Text + sp + GR_DamageProof.Text);
+
+			// Запись таблицы
+			string model, imm, c1, c2, radio, bomb;
+			/*List<ParameterValue> rd = new List<ParameterValue> (ParametersValues.Radios4);
+			List<ParameterValue> bm = new List<ParameterValue> (ParametersValues.Bombs4);*/
+
+			for (int i = 0; i < GaragesList.Items.Count; i++)
+				{
+				// Запрос
+				if (!GetParameterValue ((OpCodes)((int)OpCodes.Garages_Base + i),
+						(UInt16)GaragesParCodes.CarModel, out model) ||
+					!GetParameterValue ((OpCodes)((int)OpCodes.Garages_Base + i),
+						(UInt16)GaragesParCodes.Immunity, out imm) ||
+					!GetParameterValue ((OpCodes)((int)OpCodes.Garages_Base + i),
+						(UInt16)GaragesParCodes.PrimaryColor, out c1) ||
+					!GetParameterValue ((OpCodes)((int)OpCodes.Garages_Base + i),
+						(UInt16)GaragesParCodes.SecondaryColor, out c2) ||
+					!GetParameterValue ((OpCodes)((int)OpCodes.Garages_Base + i),
+						(UInt16)GaragesParCodes.RadioStation, out radio) ||
+					!GetParameterValue ((OpCodes)((int)OpCodes.Garages_Base + i),
+						(UInt16)GaragesParCodes.BombType, out bomb))
+					{
+					SW.Close ();
+					FO.Close ();
+
+					return ResultCodes.ErrorLoadGR;
+					}
+
+				// Гараж и модель
+				SW.Write (GaragesList.Items[i].ToString () + sp);
+
+				SW.Write (ParametersValues.FindCar (ParametersValues.CarsListTypes.ForGarages,
+					(int)decimal.Parse (model)).Name + sp);
+
+				// Цвета
+				Color color1 = cc.Colors[(int)decimal.Parse (c1)];
+				Color color2 = cc.Colors[(int)decimal.Parse (c2)];
+				SW.Write (color1.R + " " + color1.G + " " + color1.B + sp +
+					color2.R + " " + color2.G + " " + color2.B + sp);
+
+				// Радио
+				SW.Write (ParametersValues.FindRadio ((int)decimal.Parse (radio)).Name + sp);
+
+				// Бомба
+				SW.Write (ParametersValues.FindBomb ((int)decimal.Parse (bomb)).Name + sp);
+
+				// Флаги
+				int d = (int)decimal.Parse (imm);
+				SW.Write (((d & 0x1) != 0 ? "V" : " ") + sp);
+				SW.Write (((d & 0x2) != 0 ? "V" : " ") + sp);
+				SW.Write (((d & 0x4) != 0 ? "V" : " ") + sp);
+				SW.WriteLine ((d & 0x8) != 0 ? "V" : " ");
+				}
+
+			// Завершено
+			SW.Close ();
+			FO.Close ();
+			return ResultCodes.SaveSuccess;
 			}
 
 		// Изменена модель авто
@@ -1048,14 +1157,15 @@ namespace RD_AAOW
 				}
 
 			decimal d1 = decimal.Parse (car);
-			for (int i = 0; i < ParametersValues.CarsForGangs.Length; i++)
+			/*for (int i = 0; i < ParametersValues.CarsForGangs.Length; i++)
 				{
 				if (d1 == ParametersValues.CarsForGangs[i].ID)
 					{
 					GD_CarModel.SelectedIndex = i;
 					break;
 					}
-				}
+				}*/
+			GD_CarModel.SelectedIndex = ParametersValues.FindCarIndex (ParametersValues.CarsListTypes.ForGangs, (int)d1);
 
 			GD_PedModel1.Value = (decimal.Parse (p1) > GD_PedModel1.Maximum) ? GD_PedModel1.Maximum : decimal.Parse (p1);
 			GD_PedModel2.Value = (decimal.Parse (p2) > GD_PedModel2.Maximum) ? GD_PedModel2.Maximum : decimal.Parse (p2);
@@ -1130,30 +1240,34 @@ namespace RD_AAOW
 			{
 			loading = true;
 
-			for (int i = 0; i < ParametersValues.CarsForCG.Length; i++)
+			/*for (int i = 0; i < ParametersValues.CarsForCG.Length; i++)
 				{
 				if (cg.GetGeneratorData ((int)CarGenList.Value).CarModel == ParametersValues.CarsForCG[i].ID)
 					{
 					CG_CarModel.Text = ParametersValues.CarsForCG[i].Name;
 					break;
 					}
-				}
+				}*/
+			CarGenerators.CGData cgd = cg.GetGeneratorData ((int)CarGenList.Value);
 
-			CG_X.Value = (decimal)cg.GetGeneratorData ((int)CarGenList.Value).X;
-			CG_Y.Value = (decimal)cg.GetGeneratorData ((int)CarGenList.Value).Y;
-			CG_Z.Value = (decimal)cg.GetGeneratorData ((int)CarGenList.Value).Z;
-			CG_Rotation.Value = (decimal)cg.GetGeneratorData ((int)CarGenList.Value).Rotation;
+			CG_CarModel.Text = ParametersValues.FindCar (ParametersValues.CarsListTypes.ForCarGenerators,
+				cgd.CarModel).Name;
 
-			CG_AllowSpawn.Checked = (cg.GetGeneratorData ((int)CarGenList.Value).AllowSpawn < 0);
-			CG_ForceSpawn.Checked = (cg.GetGeneratorData ((int)CarGenList.Value).ForceSpawn > 0);
+			CG_X.Value = (decimal)cgd.X;
+			CG_Y.Value = (decimal)cgd.Y;
+			CG_Z.Value = (decimal)cgd.Z;
+			CG_Rotation.Value = (decimal)cgd.Rotation;
 
-			CG_CarColor1.Value = (cg.GetGeneratorData ((int)CarGenList.Value).Color1 > CG_CarColor1.Maximum) ?
-				CG_CarColor1.Maximum : cg.GetGeneratorData ((int)CarGenList.Value).Color1;
-			CG_CarColor2.Value = (cg.GetGeneratorData ((int)CarGenList.Value).Color2 > CG_CarColor2.Maximum) ?
-				CG_CarColor2.Maximum : cg.GetGeneratorData ((int)CarGenList.Value).Color2;
+			CG_AllowSpawn.Checked = (cgd.AllowSpawn < 0);
+			CG_ForceSpawn.Checked = (cgd.ForceSpawn > 0);
 
-			CG_AlarmProb.Value = cg.GetGeneratorData ((int)CarGenList.Value).AlarmProbability;
-			CG_LockProb.Value = cg.GetGeneratorData ((int)CarGenList.Value).LockProbability;
+			CG_CarColor1.Value = (cgd.Color1 > CG_CarColor1.Maximum) ?
+				CG_CarColor1.Maximum : cgd.Color1;
+			CG_CarColor2.Value = (cgd.Color2 > CG_CarColor2.Maximum) ?
+				CG_CarColor2.Maximum : cgd.Color2;
+
+			CG_AlarmProb.Value = cgd.AlarmProbability;
+			CG_LockProb.Value = cgd.LockProbability;
 
 			loading = false;
 
@@ -1161,6 +1275,70 @@ namespace RD_AAOW
 				Color.FromName ("ControlDark");
 			CGColorLabel2.ForeColor = (CG_CarColor2.Value >= 0) ? cc.Colors[(int)CG_CarColor2.Value] :
 				Color.FromName ("ControlDark");
+			}
+
+		// Метод разворачивает описание парковок в табличный файл
+		private ResultCodes SaveData_DescriptGenerators (string Path)
+			{
+			// Создание файла
+			FileStream FO;
+			try
+				{
+				FO = new FileStream (Path + ".csv", FileMode.Create);
+				}
+			catch
+				{
+				return ResultCodes.CannotCreateCGFile;
+				}
+			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (RDEncodings.UTF8));
+
+			// Запись заголовка
+			const string sp = ";";
+			SW.WriteLine ("#" + sp + Label25.Text.Replace (":", "").Replace ("•", "").Trim () + sp +
+				Label26.Text.Replace (":", "").Replace ("•", "").Trim () + sp +
+				Label27.Text.Replace (":", "").Replace ("•", "").Trim () + ", °" + sp +
+				Label28.Text.Replace (":", "").Replace ("•", "").Trim () + " (1)" + sp +
+				Label28.Text.Replace (":", "").Replace ("•", "").Trim () + " (2)" + sp +
+				Label29.Text.Replace (":", "").Replace ("•", "").Trim () + ", %" + sp +
+				Label30.Text.Replace (":", "").Replace ("•", "").Trim () + ", %" + sp +
+				CG_AllowSpawn.Text + sp + CG_ForceSpawn.Text);
+
+			for (int i = (int)CarGenList.Minimum; i <= CarGenList.Maximum; i++)
+				{
+				CarGenerators.CGData cgd = cg.GetGeneratorData (i);
+
+				// Модель
+				SW.Write (i.ToString () + sp);
+				SW.Write (ParametersValues.FindCar (ParametersValues.CarsListTypes.ForCarGenerators,
+					cgd.CarModel).Name + sp);
+
+				// Координаты и угол
+				SW.Write (cgd.X.ToString (RDLocale.GetCulture ()) + " " +
+					cgd.Y.ToString (RDLocale.GetCulture ()) + " " +
+					cgd.Z.ToString (RDLocale.GetCulture ()) + sp);
+				SW.Write (cgd.Rotation.ToString (RDLocale.GetCulture ()) + sp);
+
+				// Цвета
+				bool color1b = cgd.Color1 >= 0;
+				Color color1 = color1b ? cc.Colors[cgd.Color1] : Color.Black;
+				bool color2b = cgd.Color2 >= 0;
+				Color color2 = color2b ? cc.Colors[cgd.Color2] : Color.Black;
+
+				SW.Write (color1.R + " " + color1.G + " " + color1.B + sp +
+					color2.R + " " + color2.G + " " + color2.B + sp);
+
+				// Сигнализация и блокировка
+				SW.Write (cgd.AlarmProbability.ToString (RDLocale.GetCulture ()) + sp);
+				SW.Write (cgd.LockProbability.ToString (RDLocale.GetCulture ()) + sp);
+
+				SW.Write (((cgd.AllowSpawn < 0) ? "V" : " ") + sp);
+				SW.WriteLine ((cgd.ForceSpawn > 0) ? "V" : " ");
+				}
+
+			// Завершено
+			SW.Close ();
+			FO.Close ();
+			return ResultCodes.SaveSuccess;
 			}
 
 		// Изменены настройки авто
@@ -1208,14 +1386,15 @@ namespace RD_AAOW
 		private void OCGDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Загрузка файла статистики
-			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile4 (LoadableParameters.Generators, OCGDialog.FileName);
+			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile (LoadableParameters.Generators,
+				OCGDialog.FileName);
 
 			if (res == ResultCodes.LoadSuccess)
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("CGLoadingError") +
-					Localization.GetText ("Result_" + res.ToString ()));
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("CGLoadingError") +
+					RDLocale.GetText ("Result_" + res.ToString ()));
 
 			// Обновление загруженных данных сохранения
 			LoadParameters ();
@@ -1226,7 +1405,7 @@ namespace RD_AAOW
 			{
 			// Запись параметров
 			cg.SaveGenerators (!AbortSorting.Checked);
-			CGCountLabel.Text = Localization.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
+			CGCountLabel.Text = RDLocale.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
 
 			// Вызов окна
 			saveMode = SaveableParameters.Generators;
@@ -1249,7 +1428,7 @@ namespace RD_AAOW
 			{
 			// Контроль
 			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "DangerousResetMessage",
-				LzDefaultTextValues.Button_YesNoFocus, LzDefaultTextValues.Button_No) ==
+				RDLDefaultTexts.Button_YesNoFocus, RDLDefaultTexts.Button_No) ==
 				RDMessageButtons.ButtonTwo)
 				return;
 
@@ -1258,10 +1437,10 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.FileFixed)
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-				Localization.GetText ("Result_" + res.ToString ()));
+				RDLocale.GetText ("Result_" + res.ToString ()));
 			}
 
 		// Загрузка параметров гаражей
@@ -1275,14 +1454,14 @@ namespace RD_AAOW
 		private void OGDialog_FileOk (object sender, CancelEventArgs e)
 			{
 			// Загрузка файла статистики
-			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile4 (LoadableParameters.Garages, OGDialog.FileName);
+			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile (LoadableParameters.Garages, OGDialog.FileName);
 
 			if (res == ResultCodes.LoadSuccess)
 				RDGenerics.MessageBox (RDMessageTypes.Success_Center,
-					Localization.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
-				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, Localization.GetText ("GRLoadingError") +
-					Localization.GetText ("Result_" + res.ToString ()));
+				RDGenerics.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("GRLoadingError") +
+					RDLocale.GetText ("Result_" + res.ToString ()));
 
 			// Обновление загруженных данных сохранения
 			LoadParameters ();
@@ -1316,7 +1495,7 @@ namespace RD_AAOW
 
 			for (int i = 0; i < ParametersValues.Weathers.Length; i++)
 				{
-				s = Localization.GetText ("Weathers_" + ParametersValues.Weathers[i].Name);
+				s = RDLocale.GetText ("Weathers_" + ParametersValues.Weathers[i].Name);
 				if (DP_Weather.Items.Count < ParametersValues.Weathers.Length)
 					DP_Weather.Items.Add (s);
 				else
@@ -1325,7 +1504,7 @@ namespace RD_AAOW
 
 			for (int i = 0; i < ParametersValues.CameraPositions.Length; i++)
 				{
-				s = Localization.GetText ("CameraPositions_" + ParametersValues.CameraPositions[i].Name);
+				s = RDLocale.GetText ("CameraPositions_" + ParametersValues.CameraPositions[i].Name);
 				if (DP_CameraPos.Items.Count < ParametersValues.CameraPositions.Length)
 					DP_CameraPos.Items.Add (s);
 				else
@@ -1334,7 +1513,7 @@ namespace RD_AAOW
 
 			for (int i = 0; i < ParametersValues.Suits.Length; i++)
 				{
-				s = Localization.GetText ("Suits_" + ParametersValues.Suits[i].Name);
+				s = RDLocale.GetText ("Suits_" + ParametersValues.Suits[i].Name);
 				if (PL_Suit.Items.Count < ParametersValues.Suits.Length)
 					PL_Suit.Items.Add (s);
 				else
@@ -1343,7 +1522,7 @@ namespace RD_AAOW
 
 			for (int i = 0; i < BExplorerLib.WeaponsCount; i++)
 				{
-				s = Localization.GetText ("WeaponSlot") + (i + 1).ToString ();
+				s = RDLocale.GetText ("WeaponSlot") + (i + 1).ToString ();
 				if (WeaponsList.Items.Count < BExplorerLib.WeaponsCount)
 					WeaponsList.Items.Add (s);
 				else
@@ -1352,7 +1531,7 @@ namespace RD_AAOW
 
 			for (int i = 0; i < ParametersValues.Weapons.Length; i++)
 				{
-				s = Localization.GetText ("Weapons_" + ParametersValues.Weapons[i].Name);
+				s = RDLocale.GetText ("Weapons_" + ParametersValues.Weapons[i].Name);
 				if (PL_Weapon.Items.Count < ParametersValues.Weapons.Length)
 					{
 					PL_Weapon.Items.Add (s);
@@ -1369,7 +1548,7 @@ namespace RD_AAOW
 
 			for (int i = 0; i < BExplorerLib.GaragesCount; i++)
 				{
-				s = Localization.GetText ("Garages_" + (i + 1).ToString ());
+				s = RDLocale.GetText ("Garages_" + (i + 1).ToString ());
 				if (GaragesList.Items.Count < BExplorerLib.GaragesCount)
 					GaragesList.Items.Add (s);
 				else
@@ -1378,7 +1557,7 @@ namespace RD_AAOW
 
 			for (int i = 0; i < ParametersValues.Bombs.Length; i++)
 				{
-				s = Localization.GetText ("Bombs_" + ParametersValues.Bombs[i].Name);
+				s = RDLocale.GetText ("Bombs_" + ParametersValues.Bombs[i].Name);
 				if (GR_Bomb.Items.Count < ParametersValues.Bombs.Length)
 					GR_Bomb.Items.Add (s);
 				else
@@ -1387,7 +1566,7 @@ namespace RD_AAOW
 
 			for (int i = 0; i < BExplorerLib.GangsCount; i++)
 				{
-				s = Localization.GetText ("Gangs_" + (i + 1).ToString ());
+				s = RDLocale.GetText ("Gangs_" + (i + 1).ToString ());
 				if (GangsList.Items.Count < BExplorerLib.GangsCount)
 					GangsList.Items.Add (s);
 				else
@@ -1395,49 +1574,49 @@ namespace RD_AAOW
 				}
 
 			// Настройка диалогов
-			OFDialog.Filter = SFDialog.Filter = string.Format (Localization.GetText ("OFDialogFilter"),
+			OFDialog.Filter = SFDialog.Filter = string.Format (RDLocale.GetText ("OFDialogFilter"),
 				savesExtension);
 
-			SStatsDialog.Filter = Localization.GetText ("GenericSettingsDialogFilter");
-			OStatsDialog.Filter = Localization.GetText ("OStatsDialogFilter") +
+			SStatsDialog.Filter = RDLocale.GetText ("GenericSettingsDialogFilter");
+			OStatsDialog.Filter = RDLocale.GetText ("OStatsDialogFilter") +
 				SStatsDialog.Filter;
-			OCGDialog.Filter = Localization.GetText ("OCGDialogFilter") +
+			OCGDialog.Filter = RDLocale.GetText ("OCGDialogFilter") +
 				SStatsDialog.Filter;
-			OGDialog.Filter = Localization.GetText ("OGDialogFilter") +
+			OGDialog.Filter = RDLocale.GetText ("OGDialogFilter") +
 				SStatsDialog.Filter;
 
 			OFDialog.Title = OStatsDialog.Title = OCGDialog.Title = OGDialog.Title =
-				Localization.GetText ("OFDialogTitle");
-			SFDialog.Title = SStatsDialog.Title = Localization.GetText ("SFDialogTitle");
+				RDLocale.GetText ("OFDialogTitle");
+			SFDialog.Title = SStatsDialog.Title = RDLocale.GetText ("SFDialogTitle");
 
 			// Настройка контролов
-			Localization.SetControlsText (FileTab);
-			ExitButton.Text = Localization.GetDefaultText (LzDefaultTextValues.Button_Exit);
-			Localization.SetControlsText (DPTab);
-			Localization.SetControlsText (PLTab);
-			Localization.SetControlsText (GRTab);
-			LoadGarages.Text = Localization.GetText ("LoadParameters");
-			SaveGarages.Text = Localization.GetText ("SaveParameters");
-			Localization.SetControlsText (PUTab);
-			Localization.SetControlsText (GDTab);
-			Localization.SetControlsText (CGTab);
-			LoadCG.Text = Localization.GetText ("LoadParameters");
-			SaveCG.Text = Localization.GetText ("SaveParameters");
-			Localization.SetControlsText (STTab);
+			RDLocale.SetControlsText (FileTab);
+			ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
+			RDLocale.SetControlsText (DPTab);
+			RDLocale.SetControlsText (PLTab);
+			RDLocale.SetControlsText (GRTab);
+			LoadGarages.Text = RDLocale.GetText ("LoadParameters");
+			SaveGarages.Text = RDLocale.GetText ("SaveParameters");
+			RDLocale.SetControlsText (PUTab);
+			RDLocale.SetControlsText (GDTab);
+			RDLocale.SetControlsText (CGTab);
+			LoadCG.Text = RDLocale.GetText ("LoadParameters");
+			SaveCG.Text = RDLocale.GetText ("SaveParameters");
+			RDLocale.SetControlsText (STTab);
 
-			FileTab.Text = Localization.GetText ("MainTab_FileTab");
-			DPTab.Text = Localization.GetText ("MainTab_DPTab");
-			PLTab.Text = Localization.GetText ("MainTab_PLTab");
-			GRTab.Text = Localization.GetText ("MainTab_GRTab");
-			PUTab.Text = Localization.GetText ("MainTab_PUTab");
-			GDTab.Text = Localization.GetText ("MainTab_GDTab");
-			CGTab.Text = Localization.GetText ("MainTab_CGTab");
-			STTab.Text = Localization.GetText ("MainTab_STTab");
+			FileTab.Text = RDLocale.GetText ("MainTab_FileTab");
+			DPTab.Text = RDLocale.GetText ("MainTab_DPTab");
+			PLTab.Text = RDLocale.GetText ("MainTab_PLTab");
+			GRTab.Text = RDLocale.GetText ("MainTab_GRTab");
+			PUTab.Text = RDLocale.GetText ("MainTab_PUTab");
+			GDTab.Text = RDLocale.GetText ("MainTab_GDTab");
+			CGTab.Text = RDLocale.GetText ("MainTab_CGTab");
+			STTab.Text = RDLocale.GetText ("MainTab_STTab");
 
 			if (DPTab.Enabled)
-				SaveInfoLabel.Text = Localization.GetText ("CurrentSave") + BExplorerLib.SaveData_SaveInfo;
+				SaveInfoLabel.Text = RDLocale.GetText ("CurrentSave") + BExplorerLib.SaveData_SaveInfo;
 			else
-				SaveInfoLabel.Text = Localization.GetText ("SaveNotSpecified");
+				SaveInfoLabel.Text = RDLocale.GetText ("SaveNotSpecified");
 			}
 		}
 	}
