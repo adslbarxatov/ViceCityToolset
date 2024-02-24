@@ -71,8 +71,8 @@ namespace RD_AAOW
 			catch
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					RDLocale.GetFileProcessingMessage (OFName.Text,
-					RDL_FP_Messages.Load_Failure));
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
+					OFName.Text));
 				return;
 				}
 
@@ -164,8 +164,8 @@ namespace RD_AAOW
 			if (!CSTWriter.WriteCST (SFName.Text, points, triangles))
 				{
 				RDGenerics.MessageBox (RDMessageTypes.Warning_Center,
-					RDLocale.GetFileProcessingMessage (SFName.Text,
-					RDL_FP_Messages.Save_Failure));
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
+					SFName.Text));
 				return;
 				}
 

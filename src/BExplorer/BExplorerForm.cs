@@ -59,18 +59,9 @@ namespace RD_AAOW
 			// Контроль корректности связи с библиотекой функций
 			if (BExplorerLib.Check () != 0)
 				{
-				/*if (RDGenerics.MessageBox (RDMessageTypes.Question_Left,
-					string.Format (RDLocale.GetText ("IncorrectLibVersion"),
-					ProgramDescription.AssemblyLibName),
-					RDLocale.GetDefaultText (RDLDefaultTexts.Button_Yes),
-					RDLocale.GetDefaultText (RDLDefaultTexts.Button_No)) ==
-					RDMessageButtons.ButtonOne)
-					{
-					AboutForm af = new AboutForm (null);
-					af.Dispose ();
-					}*/
 				RDGenerics.MessageBox (RDMessageTypes.Error_Center,
-					RDLocale.GetIncompatibleVersionsMessage (ProgramDescription.AssemblyLibName));
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.MessageFormat_WrongVersion_Fmt),
+					ProgramDescription.AssemblyLibName));
 
 				error = -1;
 				this.Close ();
@@ -895,15 +886,6 @@ namespace RD_AAOW
 				return;
 				}
 
-			/*decimal d = decimal.Parse (model);
-			for (int i = 0; i < ParametersValues.CarsForGarages.Length; i++)
-				{
-				if (d == ParametersValues.CarsForGarages[i].ID)
-					{
-					GR_CarModel.SelectedIndex = i;
-					break;
-					}
-				}*/
 			GR_CarModel.SelectedIndex = ParametersValues.FindCarIndex (ParametersValues.CarsListTypes.ForGarages,
 				(int)decimal.Parse (model));
 
@@ -912,26 +894,7 @@ namespace RD_AAOW
 			GR_CarColor2.Value = (decimal.Parse (c2) > GR_CarColor1.Maximum) ?
 				GR_CarColor2.Maximum : decimal.Parse (c2);
 
-			/*d = decimal.Parse (radio);
-			for (int i = 0; i < ParametersValues.Radios.Length; i++)
-				{
-				if (d == ParametersValues.Radios[i].ID)
-					{
-					GR_Radio.SelectedIndex = i;
-					break;
-					}
-				}*/
 			GR_Radio.SelectedIndex = ParametersValues.FindRadioIndex ((int)decimal.Parse (radio));
-
-			/*d = decimal.Parse (bomb);
-			for (int i = 0; i < ParametersValues.Bombs.Length; i++)
-				{
-				if (d == ParametersValues.Bombs[i].ID)
-					{
-					GR_Bomb.SelectedIndex = i;
-					break;
-					}
-				}*/
 			GR_Bomb.SelectedIndex = ParametersValues.FindBombIndex ((int)decimal.Parse (bomb));
 
 			int d = (int)decimal.Parse (imm);
@@ -971,8 +934,6 @@ namespace RD_AAOW
 
 			// Запись таблицы
 			string model, imm, c1, c2, radio, bomb;
-			/*List<ParameterValue> rd = new List<ParameterValue> (ParametersValues.Radios4);
-			List<ParameterValue> bm = new List<ParameterValue> (ParametersValues.Bombs4);*/
 
 			for (int i = 0; i < GaragesList.Items.Count; i++)
 				{
@@ -1157,14 +1118,6 @@ namespace RD_AAOW
 				}
 
 			decimal d1 = decimal.Parse (car);
-			/*for (int i = 0; i < ParametersValues.CarsForGangs.Length; i++)
-				{
-				if (d1 == ParametersValues.CarsForGangs[i].ID)
-					{
-					GD_CarModel.SelectedIndex = i;
-					break;
-					}
-				}*/
 			GD_CarModel.SelectedIndex = ParametersValues.FindCarIndex (ParametersValues.CarsListTypes.ForGangs, (int)d1);
 
 			GD_PedModel1.Value = (decimal.Parse (p1) > GD_PedModel1.Maximum) ? GD_PedModel1.Maximum : decimal.Parse (p1);
@@ -1239,15 +1192,6 @@ namespace RD_AAOW
 		private void CarGenList_ValueChanged (object sender, EventArgs e)
 			{
 			loading = true;
-
-			/*for (int i = 0; i < ParametersValues.CarsForCG.Length; i++)
-				{
-				if (cg.GetGeneratorData ((int)CarGenList.Value).CarModel == ParametersValues.CarsForCG[i].ID)
-					{
-					CG_CarModel.Text = ParametersValues.CarsForCG[i].Name;
-					break;
-					}
-				}*/
 			CarGenerators.CGData cgd = cg.GetGeneratorData ((int)CarGenList.Value);
 
 			CG_CarModel.Text = ParametersValues.FindCar (ParametersValues.CarsListTypes.ForCarGenerators,

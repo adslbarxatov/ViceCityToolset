@@ -27,23 +27,8 @@ namespace RD_AAOW
 				return;
 
 			// Проверка наличия компонентов программы
-			if (!RDGenerics.CheckLibraries (new string[] { ProgramDescription.AssemblyLibName }, true))
+			if (!RDGenerics.CheckLibraries (ProgramDescription.AssemblyLibName, true))
 				return;
-			/*
-			if (!File.Exists (RDGenerics.AppStartupPath + ProgramDescription.AssemblyLibName))
-				{
-				if (RDGenerics.MessageBox (RDMessageTypes.Question_Left,
-					string.Format (RDLocale.GetText ("ComponentMissing"), ProgramDescription.AssemblyLibName),
-					RDLocale.GetDefaultText (LzDefaultTextValues.Button_Yes),
-					RDLocale.GetDefaultText (LzDefaultTextValues.Button_No)) ==
-					RDMessageButtons.ButtonOne)
-					{
-					AboutForm af = new AboutForm (null);
-					}
-
-				return;
-				}
-			*/
 
 			// Отображение справки и запроса на принятие Политики
 			if (!RDGenerics.AcceptEULA ())
