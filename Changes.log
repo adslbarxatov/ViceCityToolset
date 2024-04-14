@@ -1,5 +1,10 @@
 Vice city toolset: changes log
 
+Version 4.4.5:
+• Updated HypeHelp and Updates checker mechanics: this should fix apps freezing immediately
+  after launch (on some PCs);
+• Updated the HypeHelp links list
+
 Version 4.4.2:
 • Update for XPUN has been applied
 
