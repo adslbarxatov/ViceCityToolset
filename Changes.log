@@ -1,5 +1,11 @@
 Vice city toolset: changes log
 
+Version 4.5:
+• The application has been retargeted to .NET Framework 4.8.1;
+• Access checking method has been completely rewritten: now it will properly detect problems
+  with file / registry input / output and help user with fixing them;
+• Added the special section in the user guide for access troubleshooting
+
 Version 4.4.5:
 • Updated HypeHelp and Updates checker mechanics: this should fix apps freezing immediately
   after launch (on some PCs);
