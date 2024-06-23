@@ -67,18 +67,20 @@ namespace RD_AAOW
 			{
 			get
 				{
-				if (string.IsNullOrWhiteSpace (gtavcDirectory))
+				/*if (string.IsNullOrWhiteSpace (gtavcDirectory))
 					gtavcDirectory = RDGenerics.GetAppSettingsValue ("GTAVCDirectory");
 
-				return gtavcDirectory;
+				return gtavcDirectory;*/
+				return RDGenerics.GetSettings (gtavcDirectoryPar, "");
 				}
 			set
 				{
-				gtavcDirectory = value;
-				RDGenerics.SetAppSettingsValue ("GTAVCDirectory", gtavcDirectory);
+				/*gtavcDirectory = value;
+				RDGenerics.SetAppSettingsValue ("GTAVCDirectory", gtavcDirectory);*/
+				RDGenerics.SetSettings (gtavcDirectoryPar, value);
 				}
 			}
-		private static string gtavcDirectory = "";
+		private const string gtavcDirectoryPar = "GTAVCDirectory";
 
 		/// <summary>
 		/// Возвращает путь к файлам сохранений

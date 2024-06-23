@@ -1,5 +1,8 @@
 Vice city toolset: changes log
 
+Version 4.5.2:
+• XPUN update has been applied
+
 Version 4.5:
 • The application has been retargeted to .NET Framework 4.8.1;
 • Access checking method has been completely rewritten: now it will properly detect problems
