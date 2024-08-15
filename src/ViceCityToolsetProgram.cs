@@ -67,16 +67,10 @@ namespace RD_AAOW
 			{
 			get
 				{
-				/*if (string.IsNullOrWhiteSpace (gtavcDirectory))
-					gtavcDirectory = RDGenerics.GetAppSettingsValue ("GTAVCDirectory");
-
-				return gtavcDirectory;*/
 				return RDGenerics.GetSettings (gtavcDirectoryPar, "");
 				}
 			set
 				{
-				/*gtavcDirectory = value;
-				RDGenerics.SetAppSettingsValue ("GTAVCDirectory", gtavcDirectory);*/
 				RDGenerics.SetSettings (gtavcDirectoryPar, value);
 				}
 			}
