@@ -1,3 +1,4 @@
-_Changes for v 4.5.3_:
-- The “App about” interface has been updated;
-- XPUN update has been applied
+_Changes for v 4.6_:
+- The new identity has been applied;
+- The interface appearance has been updated;
+- The “App about” interface has been updated
