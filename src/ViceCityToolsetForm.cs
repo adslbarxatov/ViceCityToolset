@@ -70,6 +70,7 @@ namespace RD_AAOW
 			ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
 			FBDialog.Description = RDLocale.GetText ("ViceCityToolsetForm_FBDialog");
 			AboutTheAppButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
+			RegisterAssociations.Text = RDLocale.GetText ("RegisterAssociations");
 			}
 
 		// Закрытие окна
@@ -134,6 +135,12 @@ namespace RD_AAOW
 		private void AppAboutButton (object sender, EventArgs e)
 			{
 			RDGenerics.ShowAbout (false);
+			}
+
+		// Регистрация сопоставлений файлов
+		private void RegisterAssociations_Click (object sender, EventArgs e)
+			{
+			RDGenerics.RegisterFileAssociations (false);
 			}
 		}
 	}

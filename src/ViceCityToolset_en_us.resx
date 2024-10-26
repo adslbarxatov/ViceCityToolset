@@ -1509,4 +1509,40 @@
   <data name="Result_ValueOutOfRange" xml:space="preserve">
     <value>Specified value is out of range</value>
   </data>
+  <data name="adffile" xml:space="preserve">
+    <value>GTA Vice city background audio file</value>
+  </data>
+  <data name="colfile" xml:space="preserve">
+    <value>GTA Vice city collision mesh file</value>
+  </data>
+  <data name="dfffile" xml:space="preserve">
+    <value>GTA Vice city 3D-model file</value>
+  </data>
+  <data name="gxtfile" xml:space="preserve">
+    <value>GTA Vice city in-game text lines file</value>
+  </data>
+  <data name="idefile" xml:space="preserve">
+    <value>GTA Vice city item definitions file</value>
+  </data>
+  <data name="ifpfile" xml:space="preserve">
+    <value>GTA Vice city model animations file</value>
+  </data>
+  <data name="iplfile" xml:space="preserve">
+    <value>GTA Vice city item placements file</value>
+  </data>
+  <data name="m3dfile" xml:space="preserve">
+    <value>GTA Vice city executable filter file</value>
+  </data>
+  <data name="scmfile" xml:space="preserve">
+    <value>GTA Vice city missions script file</value>
+  </data>
+  <data name="sdtfile" xml:space="preserve">
+    <value>GTA Vice city SFX index file</value>
+  </data>
+  <data name="txdfile" xml:space="preserve">
+    <value>GTA Vice city textures dictionary file</value>
+  </data>
+  <data name="RegisterAssociations" xml:space="preserve">
+    <value>Apply icons for game files</value>
+  </data>
 </root>

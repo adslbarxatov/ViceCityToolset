@@ -1,5 +1,9 @@
 Vice city toolset: changes log
 
+Version 4.6.2:
+• The file association method has been upgraded; automated trigger has been replaced
+  with button
+
 Version 4.6.1:
 • Added the automated icon association for the game files
 

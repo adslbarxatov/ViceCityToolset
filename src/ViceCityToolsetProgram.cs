@@ -33,8 +33,9 @@ namespace RD_AAOW
 			// Отображение справки и запроса на принятие Политики
 			if (!RDGenerics.AcceptEULA ())
 				return;
-			if (!RDGenerics.ShowAbout (true))
-				ProgramDescription.RegisterAppExtensions ();
+			/*if (!RDGenerics.ShowAbout (true))
+				ProgramDescription.RegisterAppExtensions ();*/
+			RDGenerics.ShowAbout (true);
 
 			// Запуск
 			StartupModes mode = StartupModes.None;
