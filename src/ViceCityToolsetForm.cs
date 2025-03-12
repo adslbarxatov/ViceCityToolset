@@ -134,7 +134,7 @@ namespace RD_AAOW
 		// Отображение сведений о программе
 		private void AppAboutButton (object sender, EventArgs e)
 			{
-			RDGenerics.ShowAbout (false);
+			RDInterface.ShowAbout (false);
 			}
 
 		// Регистрация сопоставлений файлов

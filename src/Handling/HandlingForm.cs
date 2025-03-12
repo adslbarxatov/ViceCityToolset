@@ -537,7 +537,7 @@ namespace RD_AAOW
 
 			if (!string.IsNullOrEmpty (res))
 				{
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, res);
+				RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, res);
 				this.Close ();
 				return;
 				}
@@ -1061,15 +1061,15 @@ namespace RD_AAOW
 
 			// Сохранение
 			if (!hp.SaveHandlingData ())
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center, "HandlingForm_SaveFailure");
+				RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "HandlingForm_SaveFailure");
 			else
-				RDGenerics.LocalizedMessageBox (RDMessageTypes.Success_Center, "HandlingForm_SaveSuccess");
+				RDInterface.LocalizedMessageBox (RDMessageTypes.Success_Center, "HandlingForm_SaveSuccess");
 			}
 
 		// Выход из раздела
 		private void ExitButton_Click (object sender, EventArgs e)
 			{
-			if (RDGenerics.LocalizedMessageBox (RDMessageTypes.Question_Center,
+			if (RDInterface.LocalizedMessageBox (RDMessageTypes.Question_Center,
 				"HandlingForm_ExitMessage", RDLDefaultTexts.Button_YesNoFocus,
 				RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonOne)
 				this.Close ();
@@ -1078,7 +1078,7 @@ namespace RD_AAOW
 		// Закрытие окна
 		private void HandlingForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
-			e.Cancel = (RDGenerics.LocalizedMessageBox (RDMessageTypes.Warning_Center,
+			e.Cancel = (RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center,
 				"ChangesSaved", RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) ==
 				RDMessageButtons.ButtonTwo);
 			RDGenerics.SaveWindowDimensions (this);
