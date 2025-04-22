@@ -113,13 +113,13 @@ namespace RD_AAOW
 			Encoding enc = RDGenerics.GetEncoding (RDEncodings.UTF8);
 
 			for (int i = 2; (i <= 26) && (i <= LastLetterNumber); i++)
-				res += ("\t\t" + enc.GetString (new byte[] { (byte)(0x40 + i) }));
+				res += ("\t\t" + enc.GetString ([(byte)(0x40 + i)]));
 
 			if (LastLetterNumber <= 26)
 				return res;
 
 			for (int i = 1; (i <= 26) && (i <= LastLetterNumber - 26); i++)
-				res += ("\t\tA" + enc.GetString (new byte[] { (byte)(0x40 + i) }));
+				res += ("\t\tA" + enc.GetString ([(byte)(0x40 + i)]));
 
 			return res;
 			}

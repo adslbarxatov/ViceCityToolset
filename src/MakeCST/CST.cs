@@ -35,7 +35,8 @@ namespace RD_AAOW
 		/// <returns>Возвращает true в случае успеха</returns>
 		public static bool WriteCST (string FileName, bool CST1, List<Point3D> Points, List<Triangle3D> Triangles)
 			{
-			FileStream FS = null;
+			/*FileStream FS = null;*/
+			FileStream FS;
 			try
 				{
 				FS = new FileStream (FileName, FileMode.Create);

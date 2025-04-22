@@ -10,8 +10,8 @@
 
 #define B_API(t)	extern __declspec(dllexport) t
 
-#define B_VERSION			4,6,6,0
-#define B_VERSION_S			"4.6.6.0"
+#define B_VERSION			4,7,0,0
+#define B_VERSION_S			"4.7.0.0"
 #define B_PRODUCT			"Save files API for Vice city toolset"
 #define B_COMPANY			FDL_COMPANY
 

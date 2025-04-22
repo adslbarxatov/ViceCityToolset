@@ -115,7 +115,8 @@ namespace RD_AAOW
 				}
 
 			// Следующие свойства требуют знания, относится ли транспортное средство к лодкам или нет
-			uint flags = 0;
+			/*uint flags = 0;*/
+			uint flags;
 			try
 				{
 				flags = uint.Parse (Values[30], NumberStyles.AllowHexSpecifier);

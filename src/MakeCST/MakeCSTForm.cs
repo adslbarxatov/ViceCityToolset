@@ -63,7 +63,8 @@ namespace RD_AAOW
 		private void ConvertButton_Click (object sender, EventArgs e)
 			{
 			// Попытка открытия файла
-			FileStream FS = null;
+			/*FileStream FS = null;*/
+			FileStream FS;
 			try
 				{
 				FS = new FileStream (OFName.Text, FileMode.Open);
@@ -78,7 +79,7 @@ namespace RD_AAOW
 
 			// Определение версии файла
 			bool dff = OFName.Text.ToLower ().EndsWith (DFFReader.MasterExtension);
-			List<Triangle3D> triangles = new List<Triangle3D> ();
+			List<Triangle3D> triangles = [];
 
 			// Загрузка DFF
 			if (dff)
@@ -123,7 +124,7 @@ namespace RD_AAOW
 			// Чтение завершено. Сброс массива точек, формирование массива уникальных точек и ссылок на них
 			FS.Close ();
 
-			List<Point3D> points = new List<Point3D> ();
+			List<Point3D> points = [];
 			for (int t = 0; t < triangles.Count; t++)
 				{
 				// Точка 1

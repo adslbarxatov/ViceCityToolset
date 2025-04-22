@@ -10,14 +10,14 @@ namespace RD_AAOW
 	public class HandlingProvider
 		{
 		// Переменные
-		private List<GenericHandlingDescriptor> genericHDs = new List<GenericHandlingDescriptor> ();
-		private List<BoatHandlingDescriptor> boatHDs = new List<BoatHandlingDescriptor> ();
-		private List<BikeHandlingDescriptor> bikeHDs = new List<BikeHandlingDescriptor> ();
-		private List<FlyingHandlingDescriptor> flyingHDs = new List<FlyingHandlingDescriptor> ();
-		private char[] splitters = new char[] { ' ', '\t' };
-		private List<int> boatIndexes = new List<int> ();
-		private List<int> bikeIndexes = new List<int> ();
-		private List<int> flyingIndexes = new List<int> ();
+		private List<GenericHandlingDescriptor> genericHDs = [];
+		private List<BoatHandlingDescriptor> boatHDs = [];
+		private List<BikeHandlingDescriptor> bikeHDs = [];
+		private List<FlyingHandlingDescriptor> flyingHDs = [];
+		private char[] splitters = [' ', '\t'];
+		private List<int> boatIndexes = [];
+		private List<int> bikeIndexes = [];
+		private List<int> flyingIndexes = [];
 
 		private string handlingFile = ViceCityToolsetProgram.GTAVCDirectory + "\\data\\handling.cfg";
 		private string handlingBackup = ViceCityToolsetProgram.GTAVCDirectory + "\\data\\handling.vctbak";
@@ -94,7 +94,8 @@ namespace RD_AAOW
 				}
 
 			// Попытка открытия файла
-			FileStream FS = null;
+			/*FileStream FS = null;*/
+			FileStream FS;
 			try
 				{
 				FS = new FileStream (handlingFile, FileMode.Open);
@@ -298,7 +299,8 @@ namespace RD_AAOW
 				return false;
 
 			// Попытка открытия файла
-			FileStream FS = null;
+			/*FileStream FS = null;*/
+			FileStream FS;
 			try
 				{
 				FS = new FileStream (handlingFile, FileMode.Create);

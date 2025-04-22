@@ -30,7 +30,7 @@ namespace RD_AAOW
 				return extractedPoints;
 				}
 			}
-		private List<Point3D> extractedPoints = new List<Point3D> ();
+		private List<Point3D> extractedPoints = [];
 
 		/// <summary>
 		/// Вовращает треугольники, извлечённые из файла DFF
@@ -42,7 +42,7 @@ namespace RD_AAOW
 				return extractedTriangles;
 				}
 			}
-		private List<Point3D> extractedTriangles = new List<Point3D> ();
+		private List<Point3D> extractedTriangles = [];
 
 		/// <summary>
 		/// Допустимые секции DFF
@@ -303,9 +303,10 @@ namespace RD_AAOW
 						return;
 
 					case Sections.FramesList:
-						section = (Sections)BR.ReadUInt32 ();
-						length = BR.ReadUInt32 ();
-						version = BR.ReadUInt32 ();
+						// section, length, version
+						_ = BR.ReadUInt32 ();
+						_ = BR.ReadUInt32 ();
+						_ = BR.ReadUInt32 ();
 
 						// Пропуск настроек фреймов
 						UInt32 frames = BR.ReadUInt32 ();
@@ -313,18 +314,20 @@ namespace RD_AAOW
 						break;
 
 					case Sections.GeometryList:
-						section = (Sections)BR.ReadUInt32 ();
-						length = BR.ReadUInt32 ();
-						version = BR.ReadUInt32 ();
+						// section, length, version
+						_ = BR.ReadUInt32 ();
+						_ = BR.ReadUInt32 ();
+						_ = BR.ReadUInt32 ();
 
-						// Получение количества геометрий объекта
-						UInt32 geometries = BR.ReadUInt32 ();
+						// geometries
+						_ = BR.ReadUInt32 ();
 						break;
 
 					case Sections.rwID_GEOMETRY:
-						section = (Sections)BR.ReadUInt32 ();
-						length = BR.ReadUInt32 ();
-						version = BR.ReadUInt32 ();
+						// section, length, version
+						_ = (Sections)BR.ReadUInt32 ();
+						_ = BR.ReadUInt32 ();
+						_ = BR.ReadUInt32 ();
 
 						// Получение параметров геометрии объекта
 						UInt32 format = BR.ReadUInt32 ();
@@ -348,7 +351,10 @@ namespace RD_AAOW
 							{
 							UInt16 v2 = BR.ReadUInt16 ();
 							UInt16 v1 = BR.ReadUInt16 ();
-							UInt16 material = BR.ReadUInt16 ();
+
+							// material
+							_ = BR.ReadUInt16 ();
+
 							UInt16 v3 = BR.ReadUInt16 ();
 							extractedTriangles.Add (new Point3D (v1, v2, v3));
 							}
@@ -360,7 +366,9 @@ namespace RD_AAOW
 						UInt32 hasVertices = BR.ReadUInt32 ();
 						if (hasVertices == 0)
 							return;
-						UInt32 hasNormals = BR.ReadUInt32 ();
+
+						// hasNormals
+						_ = BR.ReadUInt32 ();
 
 						// Чтение вершин
 						for (int i = 0; i < vertices; i++)

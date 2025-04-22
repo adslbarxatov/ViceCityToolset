@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -13,220 +14,230 @@ namespace RD_AAOW
 		private bool loading = false;
 		private int lastSelectedIndex = 0;
 
+		private static List<string> transportIDs = [
+			"ADMIRAL",
+			"AIRTRAIN",
+			"AMBULAN",
+			"ANGEL",
+			"BAGGAGE",
+			"BANSHEE",
+			"BARRACKS",
+			"BENSON",
+			"BFINJECT",
+			"BIKE",
+			"BLISTAC",
+			"BLOODRA",
+			"BLOODRB",
+			"BOBCAT",
+			"BOXVILLE",
+			"BURRITO",
+			"BUS",
+			"CABBIE",
+			"CHEETAH",
+			"COACH",
+			"COASTGRD",
+			"COASTMAV",
+			"COMET",
+			"CUBAN",
+			"CUPBOAT",
+			"DEADDODO",
+			"DELUXO",
+			"DESPERAD",
+			"DINGHY",
+			"DIRTBIKE",
+			"ENFORCER",
+			"ESPERANT",
+			"FBICAR",
+			"FBIRANCH",
+			"FIRETRUK",
+			"FLATBED",
+			"FREEWAY",
+			"GANGBUR",
+			"GLENDALE",
+			"GOLFCART",
+			"GREENWOO",
+			"HELI",
+			"HERMES",
+			"HOTRING",
+			"HUNTER",
+			"IDAHO",
+			"INFERNUS",
+			"KAUFMAN",
+			"LANDSTAL",
+			"LINERUN",
+			"LOVEFIST",
+			"MAFIA",
+			"MANANA",
+			"MARQUIS",
+			"MAVERICK",
+			"MOONBEAM",
+			"MOPED",
+			"MRWHOOP",
+			"MULE",
+			"OCEANIC",
+			"PACKER",
+			"PATRIOT",
+			"PEREN",
+			"PHEONIX",
+			"POLICE",
+			"POLMAV",
+			"PONY",
+			"PREDATOR",
+			"RANCHER",
+			"RCBANDIT",
+			"RCBARON",
+			"RCCOPTER",
+			"RCGOBLIN",
+			"REEFER",
+			"REGINA",
+			"RHINO",
+			"RIO",
+			"ROMERO",
+			"RUMPO",
+			"SABRE1",
+			"SABRETUR",
+			"SANDKING",
+			"SEAPLANE",
+			"SEASPAR",
+			"SECURICA",
+			"SENTINEL",
+			"SPAND",
+			"SPARROW",
+			"SPEEDER",
+			"SQUALO",
+			"STALLION",
+			"STINGER",
+			"STRETCH",
+			"TAXI",
+			"TOPFUN",
+			"TRASH",
+			"TROPIC",
+			"VIRGO",
+			"VOODOO",
+			"WALTON",
+			"WASHING",
+			"YANKEE",
+			"ZEBRA",
+			];
+		private static string[] transportNames = [
+			"Admiral",
+			"Airbus",
+			"Ambulance",
+			"Angel",
+			"Baggage",
+			"Banshee",
+			"Barracks",
+			"Benson",
+			"BF injection",
+			"PCJ 600",
+			"Blista compact",
+			"Bloodring A",
+			"Bloodring B",
+			"Bobcat",
+			"Boxville",
+			"Burrito",
+			"Bus",
+			"Cabbie",
+			"Cheetah",
+			"Coach",
+			"Coast guard",
+			"VCN maverick",
+			"Comet",
+			"Cuban hermes",
+			"Jetmax",
+			"Plane",
+			"Deluxo",
+			"Mesa grande",
+			"Dinghy",
+			"Sanchez",
+			"Enforcer",
+			"Esperanto",
+			"FBI washington",
+			"FBI rancher",
+			"Firetruck",
+			"Flatbed",
+			"Freeway",
+			"Gang burrito",
+			"Glendale",
+			"Caddy",
+			"Greenwood",
+			"Patrol helicopter",
+			"Hermes",
+			"Hotring",
+			"Hunter",
+			"Idaho",
+			"Infernus",
+			"Kauffman cab",
+			"Landstalker",
+			"Line runner",
+			"Lovefist",
+			"Sentinel XS",
+			"Manana",
+			"Marquis",
+			"Maverick",
+			"Moonbeam",
+			"Faggio/Pizzaboy",
+			"Mr Whoopie",
+			"Mule",
+			"Oceanic",
+			"Packer",
+			"Patriot",
+			"Perennial",
+			"Pheonix",
+			"Police",
+			"Police maverick",
+			"Pony",
+			"Predator",
+			"Rancher",
+			"RC car",
+			"RC plane",
+			"RC helicopter",
+			"RC demolition",
+			"Reefer",
+			"Regina",
+			"Rhino",
+			"Rio",
+			"Romero",
+			"Rumpo",
+			"Sabre",
+			"Sabre turbo",
+			"Sandking",
+			"Skimmer",
+			"Sea sparrow",
+			"Securicar",
+			"Sentinel",
+			"Spand express",
+			"Sparrow",
+			"Speeder",
+			"Squalo",
+			"Stallion",
+			"Stinger",
+			"Stretch",
+			"Taxi",
+			"Topfun",
+			"Trash master",
+			"Tropic",
+			"Virgo",
+			"Voodoo",
+			"Walton",
+			"Washington",
+			"Yankee",
+			"Zebra",
+			];
+
 		// Метод возвращает название транспорта по его идентификатору в файле handling.cfg
-		private string GetVehicheNameByID (string ID)
+		private static string GetVehicheNameByID (string ID)
 			{
-			switch (ID)
+			/*switch (ID)
 				{
-				case "ADMIRAL":
-					return "Admiral";
-				case "AIRTRAIN":
-					return "Airbus";
-				case "AMBULAN":
-					return "Ambulance";
-				case "ANGEL":
-					return "Angel";
-				case "BAGGAGE":
-					return "Baggage";
-				case "BANSHEE":
-					return "Banshee";
-				case "BARRACKS":
-					return "Barracks";
-				case "BENSON":
-					return "Benson";
-				case "BFINJECT":
-					return "BF injection";
-				case "BIKE":
-					return "PCJ 600";
-				case "BLISTAC":
-					return "Blista compact";
-				case "BLOODRA":
-					return "Bloodring A";
-				case "BLOODRB":
-					return "Bloodring B";
-				case "BOBCAT":
-					return "Bobcat";
-				case "BOXVILLE":
-					return "Boxville";
-				case "BURRITO":
-					return "Burrito";
-				case "BUS":
-					return "Bus";
-				case "CABBIE":
-					return "Cabbie";
-				case "CHEETAH":
-					return "Cheetah";
-				case "COACH":
-					return "Coach";
-				case "COASTGRD":
-					return "Coast guard";
-				case "COASTMAV":
-					return "VCN maverick";
-				case "COMET":
-					return "Comet";
-				case "CUBAN":
-					return "Cuban hermes";
-				case "CUPBOAT":
-					return "Jetmax";
-				case "DEADDODO":
-					return "Plane";
-				case "DELUXO":
-					return "Deluxo";
-				case "DESPERAD":
-					return "Mesa grande";
-				case "DINGHY":
-					return "Dinghy";
-				case "DIRTBIKE":
-					return "Sanchez";
-				case "ENFORCER":
-					return "Enforcer";
-				case "ESPERANT":
-					return "Esperanto";
-				case "FBICAR":
-					return "FBI washington";
-				case "FBIRANCH":
-					return "FBI rancher";
-				case "FIRETRUK":
-					return "Firetruck";
-				case "FLATBED":
-					return "Flatbed";
-				case "FREEWAY":
-					return "Freeway";
-				case "GANGBUR":
-					return "Gang burrito";
-				case "GLENDALE":
-					return "Glendale";
-				case "GOLFCART":
-					return "Caddy";
-				case "GREENWOO":
-					return "Greenwood";
-				case "HELI":
-					return "Patrol helicopter";
-				case "HERMES":
-					return "Hermes";
-				case "HOTRING":
-					return "Hotring";
-				case "HUNTER":
-					return "Hunter";
-				case "IDAHO":
-					return "Idaho";
-				case "INFERNUS":
-					return "Infernus";
-				case "KAUFMAN":
-					return "Kauffman cab";
-				case "LANDSTAL":
-					return "Landstalker";
-				case "LINERUN":
-					return "Line runner";
-				case "LOVEFIST":
-					return "Lovefist";
-				case "MAFIA":
-					return "Sentinel XS";
-				case "MANANA":
-					return "Manana";
-				case "MARQUIS":
-					return "Marquis";
-				case "MAVERICK":
-					return "Maverick";
-				case "MOONBEAM":
-					return "Moonbeam";
-				case "MOPED":
-					return "Faggio/Pizzaboy";
-				case "MRWHOOP":
-					return "Mr Whoopie";
-				case "MULE":
-					return "Mule";
-				case "OCEANIC":
-					return "Oceanic";
-				case "PACKER":
-					return "Packer";
-				case "PATRIOT":
-					return "Patriot";
-				case "PEREN":
-					return "Perennial";
-				case "PHEONIX":
-					return "Pheonix";
-				case "POLICE":
-					return "Police";
-				case "POLMAV":
-					return "Police maverick";
-				case "PONY":
-					return "Pony";
-				case "PREDATOR":
-					return "Predator";
-				case "RANCHER":
-					return "Rancher";
-				case "RCBANDIT":
-					return "RC car";
-				case "RCBARON":
-					return "RC plane";
-				case "RCCOPTER":
-					return "RC helicopter";
-				case "RCGOBLIN":
-					return "RC demolition";
-				case "REEFER":
-					return "Reefer";
-				case "REGINA":
-					return "Regina";
-				case "RHINO":
-					return "Rhino";
-				case "RIO":
-					return "Rio";
-				case "ROMERO":
-					return "Romero";
-				case "RUMPO":
-					return "Rumpo";
-				case "SABRE1":
-					return "Sabre";
-				case "SABRETUR":
-					return "Sabre turbo";
-				case "SANDKING":
-					return "Sandking";
-				case "SEAPLANE":
-					return "Skimmer";
-				case "SEASPAR":
-					return "Sea sparrow";
-				case "SECURICA":
-					return "Securicar";
-				case "SENTINEL":
-					return "Sentinel";
-				case "SPAND":
-					return "Spand express";
-				case "SPARROW":
-					return "Sparrow";
-				case "SPEEDER":
-					return "Speeder";
-				case "SQUALO":
-					return "Squalo";
-				case "STALLION":
-					return "Stallion";
-				case "STINGER":
-					return "Stinger";
-				case "STRETCH":
-					return "Stretch";
-				case "TAXI":
-					return "Taxi";
-				case "TOPFUN":
-					return "Topfun";
-				case "TRASH":
-					return "Trash master";
-				case "TROPIC":
-					return "Tropic";
-				case "VIRGO":
-					return "Virgo";
-				case "VOODOO":
-					return "Voodoo";
-				case "WALTON":
-					return "Walton";
-				case "WASHING":
-					return "Washington";
-				case "YANKEE":
-					return "Yankee";
-				case "ZEBRA":
-					return "Zebra";
 				default:
 					return "—";
-				}
+				}*/
+			int idx = transportIDs.IndexOf (ID);
+			if (idx < 0)
+				return "—";
+
+			return transportNames[idx];
 			}
 
 		/// <summary>

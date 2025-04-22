@@ -196,7 +196,7 @@ namespace RD_AAOW
 			}
 
 		// Массив экземпляров генераторов
-		private List<CGData> generators = new List<CGData> ();
+		private List<CGData> generators = [];
 
 		/// <summary>
 		/// Конструктор. Загружает массив генераторов
@@ -208,7 +208,8 @@ namespace RD_AAOW
 			// Загрузка с помощью номеров команд
 			for (int i = 0; i < BExplorerLib.GeneratorsCount; i++)
 				{
-				Int32 cm = (int)decimal.Parse (BExplorerLib.SaveData_GetParameterValue ((OpCodes)((int)OpCodes.Generators_Base + i),
+				Int32 cm = (int)decimal.Parse (BExplorerLib.SaveData_GetParameterValue
+					((OpCodes)((int)OpCodes.Generators_Base + i),
 					(UInt16)GeneratorsParCodes.CarModel));
 				cm = (cm < 0) ? -1 : cm;
 				generators.Add (new CGData (cm,

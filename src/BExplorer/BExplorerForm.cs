@@ -251,10 +251,10 @@ namespace RD_AAOW
 			}
 
 		// Метод отвечает за получение одного параметра из структуры
-		private bool GetParameterValue (OpCodes OpCode, uint ParCode, out string Result)
+		private static bool GetParameterValue (OpCodes OpCode, uint ParCode, out string Result)
 			{
 			Result = BExplorerLib.SaveData_GetParameterValue (OpCode, ParCode);
-			if (Result.StartsWith ("\x13"))
+			if (Result.StartsWith ('\x13'))
 				{
 				ResultCodes errCode = (ResultCodes)int.Parse (Result.Substring (1));
 				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
@@ -266,7 +266,7 @@ namespace RD_AAOW
 			}
 
 		// Метод отвечает за установку нового значения параметра
-		private void SetParameterValue (OpCodes OpCode, uint ParCode, string NewValue)
+		private static void SetParameterValue (OpCodes OpCode, uint ParCode, string NewValue)
 			{
 			ResultCodes result = BExplorerLib.SaveData_SetParameterValue (OpCode, ParCode, NewValue);
 

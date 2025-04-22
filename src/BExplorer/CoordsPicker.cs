@@ -84,8 +84,8 @@ namespace RD_AAOW
 			PickRot.Maximum = MaxRot;
 			PickRot.Minimum = MinRot;
 
-			VertPictScroll.Maximum = RD_AAOW.Properties.ViceCityToolset.DefaultMap.Height - PictMap.Height;
-			HorPictScroll.Maximum = RD_AAOW.Properties.ViceCityToolset.DefaultMap.Width - PictMap.Width;
+			VertPictScroll.Maximum = ViceCityToolsetResources.DefaultMap.Height - PictMap.Height;
+			HorPictScroll.Maximum = ViceCityToolsetResources.DefaultMap.Width - PictMap.Width;
 			}
 
 		/// <summary>
@@ -137,7 +137,7 @@ namespace RD_AAOW
 		// Изменение смещения изображения
 		private void VertPictScroll_ValueChanged (object sender, EventArgs e)
 			{
-			g.DrawImage (RD_AAOW.Properties.ViceCityToolset.DefaultMap, new Point (-HorPictScroll.Value,
+			g.DrawImage (ViceCityToolsetResources.DefaultMap, new Point (-HorPictScroll.Value,
 				-VertPictScroll.Value));
 
 			DrawPoint ();
@@ -145,7 +145,7 @@ namespace RD_AAOW
 
 		private void HorPictScroll_ValueChanged (object sender, EventArgs e)
 			{
-			g.DrawImage (RD_AAOW.Properties.ViceCityToolset.DefaultMap, new Point (-HorPictScroll.Value,
+			g.DrawImage (ViceCityToolsetResources.DefaultMap, new Point (-HorPictScroll.Value,
 				-VertPictScroll.Value));
 
 			DrawPoint ();

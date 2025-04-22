@@ -143,7 +143,7 @@ namespace RD_AAOW
 			}
 
 		// Массив экземпляров накопителей
-		private List<Pickup> pickups = new List<Pickup> ();
+		private List<Pickup> pickups = [];
 		private const uint PickupsCount = 336;
 
 		/// <summary>

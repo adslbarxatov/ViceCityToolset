@@ -91,14 +91,15 @@ namespace RD_AAOW
 		{
 		#region Виды погоды
 
-		private static ParameterValue[] weathers = {
+		private static ParameterValue[] weathers = [
 			new ParameterValue (4, "Sunny"),
 			new ParameterValue (0, "Cloudy"),
 			new ParameterValue (1, "Gray"),
 			new ParameterValue (2, "Rainy"),
 			new ParameterValue (5, "Windy"),
 			new ParameterValue (3, "Foggy"),
-			new ParameterValue (-1, "Random")};
+			new ParameterValue (-1, "Random")
+			];
 
 		/// <summary>
 		/// Возвращает список видов погоды
@@ -115,13 +116,14 @@ namespace RD_AAOW
 
 		#region Позиции камеры обзора в транспорте
 
-		private static ParameterValue[] cameraPositions = {
+		private static ParameterValue[] cameraPositions = [
 			new ParameterValue (0, "Front"),
 			new ParameterValue (1, "MinDistance"),
 			new ParameterValue (2, "MidDistance"),
 			new ParameterValue (3, "MaxDistance"),
 			new ParameterValue (4, "Spectate"),
-			new ParameterValue (5, "Auto")};
+			new ParameterValue (5, "Auto")
+			];
 
 		/// <summary>
 		/// Возвращает список возможных положений камеры обзора относительно
@@ -141,7 +143,7 @@ namespace RD_AAOW
 
 #if DEF_INTERIORS
 
-		private static ParameterValue[] interiors = {
+		private static ParameterValue[] interiors = [
 			new ParameterValue (4, "north mall point"),
 			new ParameterValue (13, "printworks exterior"),
 			new ParameterValue (18, "printworks interior"),
@@ -162,7 +164,8 @@ namespace RD_AAOW
 			new ParameterValue (9, "студия звукозаписи"),
 			new ParameterValue (10, "тир"),
 			new ParameterValue (0, "улица (основной)"),
-			new ParameterValue (12, "штаб-квартира полиции")};
+			new ParameterValue (12, "штаб-квартира полиции")
+			];
 
 		/// <summary>
 		/// Возвращает список интерьеров
@@ -181,7 +184,7 @@ namespace RD_AAOW
 
 		#region Костюмы
 
-		private static ParameterStringValue[] suits = {
+		private static ParameterStringValue[] suits = [
 			new ParameterStringValue ("player", "Default"),
 			new ParameterStringValue ("player4", "Golf"),
 			new ParameterStringValue ("player7", "Job"),
@@ -207,7 +210,8 @@ namespace RD_AAOW
 			new ParameterStringValue ("igphil", "Phil"),
 			new ParameterStringValue ("ighlary", "Hilary"),
 			new ParameterStringValue ("play12", "Frankie"),
-			new ParameterStringValue ("play10", "BlackSport")};
+			new ParameterStringValue ("play10", "BlackSport")
+			];
 
 		/// <summary>
 		/// Возвращает список костюмов
@@ -224,7 +228,7 @@ namespace RD_AAOW
 
 		#region Виды оружия
 
-		private static ParameterValue[] weapons = {
+		private static ParameterValue[] weapons = [
 			new ParameterValue (26, "M4"),
 			new ParameterValue (32, "M60"),
 			new ParameterValue (24, "MAC"),
@@ -258,7 +262,8 @@ namespace RD_AAOW
 			new ParameterValue (8, "Cleaver"),
 			new ParameterValue (23, "UZI"),
 			new ParameterValue (13, "RadioGrenade"),
-			new ParameterValue (36, "Camera")};
+			new ParameterValue (36, "Camera")
+			];
 
 		/// <summary>
 		/// Возвращает список видов оружия
@@ -275,7 +280,7 @@ namespace RD_AAOW
 
 		#region Виды транспорта
 
-		private static ParameterValue[] cars = {
+		private static ParameterValue[] cars = [
 			new ParameterValue (175, "Admiral"),
 			new ParameterValue (146, "Ambulance"),
 			new ParameterValue (166, "Angel"),
@@ -375,8 +380,8 @@ namespace RD_AAOW
 			new ParameterValue (208, "Walton"),
 			new ParameterValue (151, "Washington"),
 			new ParameterValue (186, "Yankee"),
-			new ParameterValue (188, "Zebra")
-			};
+			new ParameterValue (188, "Zebra"),
+			];
 
 		/// <summary>
 		/// Возвращает список видов транспорта для гаражей
@@ -394,7 +399,7 @@ namespace RD_AAOW
 				return carsForGarages.ToArray ();
 				}
 			}
-		private static List<ParameterValue> carsForGarages = new List<ParameterValue> ();
+		private static List<ParameterValue> carsForGarages = [];
 
 		/// <summary>
 		/// Возвращает список видов транспорта для банд
@@ -412,7 +417,7 @@ namespace RD_AAOW
 				return carsForGangs.ToArray ();
 				}
 			}
-		private static List<ParameterValue> carsForGangs = new List<ParameterValue> ();
+		private static List<ParameterValue> carsForGangs = [];
 
 		/// <summary>
 		/// Возвращает список видов транспорта для парковок
@@ -431,7 +436,7 @@ namespace RD_AAOW
 				return carsForCG.ToArray ();
 				}
 			}
-		private static List<ParameterValue> carsForCG = new List<ParameterValue> ();
+		private static List<ParameterValue> carsForCG = [];
 
 		/// <summary>
 		/// Метод находит дескриптор транспорта по ID
@@ -506,7 +511,7 @@ namespace RD_AAOW
 
 		#region Радиостанции
 
-		private static ParameterValue[] radios = {
+		private static ParameterValue[] radios = [
 			new ParameterValue (0, "Wild"),
 			new ParameterValue (1, "Flash FM"),
 			new ParameterValue (2, "KChat"),
@@ -518,7 +523,8 @@ namespace RD_AAOW
 			new ParameterValue (8, "Wave 103 FM"),
 			new ParameterValue (9, "(MP3)"),
 			new ParameterValue (10, "(off)"),
-			new ParameterValue (23, "(police)")};
+			new ParameterValue (23, "(police)")
+			];
 
 		/// <summary>
 		/// Возвращает список радиостанций
@@ -533,7 +539,7 @@ namespace RD_AAOW
 				return radios;
 				}
 			}
-		private static List<ParameterValue> radiosList = new List<ParameterValue> ();
+		private static List<ParameterValue> radiosList = [];
 
 		/// <summary>
 		/// Метод находит дескриптор радио по ID
@@ -558,13 +564,14 @@ namespace RD_AAOW
 
 		#region Бомбы
 
-		private static ParameterValue[] bombs = {
+		private static ParameterValue[] bombs = [
 			new ParameterValue (0, "No"),
 			new ParameterValue (1, "Timer"),
 			new ParameterValue (2, "Acceleration"),
 			// new ParameterValue (3, "Радиобомба"),				// Работает только при минировании в доках
 			// new ParameterValue (4, "Активная часовая"),			// Не работает
-			new ParameterValue (5, "AccelerationActive") };
+			new ParameterValue (5, "AccelerationActive")
+			];
 
 		/// <summary>
 		/// Возвращает список вариантов минирования авто
@@ -579,7 +586,7 @@ namespace RD_AAOW
 				return bombs;
 				}
 			}
-		private static List<ParameterValue> bombsList = new List<ParameterValue> ();
+		private static List<ParameterValue> bombsList = [];
 
 		/// <summary>
 		/// Метод находит дескриптор бомбы по ID

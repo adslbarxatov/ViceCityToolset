@@ -59,7 +59,7 @@ namespace RD_AAOW
 				return elements;
 				}
 			}
-		private List<ToDoStatusElement> elements = new List<ToDoStatusElement> ();
+		private List<ToDoStatusElement> elements = [];
 
 		/// <summary>
 		/// Конструктор. Получает ToDo-статус сохранения

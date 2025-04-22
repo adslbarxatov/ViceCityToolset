@@ -26,7 +26,7 @@ namespace RD_AAOW
 				return extractedTriangles;
 				}
 			}
-		private List<Triangle3D> extractedTriangles = new List<Triangle3D> ();
+		private List<Triangle3D> extractedTriangles = [];
 
 		/// <summary>
 		/// Конструктор. Извлекает из файла QHullOFF информацию о вершинах и треугольниках модели
@@ -35,9 +35,10 @@ namespace RD_AAOW
 		public QHullOFFReader (StreamReader SR)
 			{
 			// Переменные
-			List<Point3D> points = new List<Point3D> ();
-			uint pointsCount = 0, trianglesCount = 0;
-			char[] separators = new char[] { ' ' };
+			List<Point3D> points = [];
+			/*uint pointsCount = 0, trianglesCount = 0;*/
+			uint pointsCount, trianglesCount;
+			char[] separators = [' '];
 
 			// Получение размеров модели
 			try

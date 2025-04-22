@@ -23,7 +23,7 @@ namespace RD_AAOW
 				return colors;
 				}
 			}
-		private List<Color> colors = new List<Color> ();
+		private List<Color> colors = [];
 
 		/// <summary>
 		/// Конструктор. Загружает список цветов из расположения приложения
@@ -32,7 +32,8 @@ namespace RD_AAOW
 		public CarColors (out int Error)
 			{
 			// Попытка открытия файла
-			FileStream FS = null;
+			/*FileStream FS = null;*/
+			FileStream FS;
 			try
 				{
 				FS = new FileStream (colorsFile, FileMode.Open);
@@ -48,7 +49,7 @@ namespace RD_AAOW
 
 			// Загрузка цветовой схемы
 			string line;
-			char[] splitters = { ',', '\t', ' ' };
+			char[] splitters = [',', '\t', ' '];
 
 			do
 				{

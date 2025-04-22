@@ -1,2 +1,2 @@
-_Changes for v 4.6.7_:
-- Current updates have been applied
+_Changes for v 4.7_:
+- The application has been migrated to `.NET 9.0` from `.NET Framework 4.8.1`

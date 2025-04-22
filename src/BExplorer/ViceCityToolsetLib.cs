@@ -786,7 +786,7 @@ namespace RD_AAOW
 		/// <param name="FilePath">Путь к загружаемому файлу</param>
 		/// <returns>Возвращает код ошибки или 0 в случае успеха</returns>
 		[DllImport (ProgramDescription.AssemblyLibName)]
-		public static extern Int16 SaveData_LoadEx (string FilePath);
+		private static extern Int16 SaveData_LoadEx (string FilePath);
 
 		/// <summary>
 		/// Метод выполняет загрузку файла сохранения из указанного расположения и начинает
@@ -923,7 +923,7 @@ namespace RD_AAOW
 			else
 				return min;
 			}
-		private static char[] splitters = new char[] { ';' };
+		private static char[] splitters = [';'];
 
 		/// <summary>
 		/// Функция загружает указанный файл параметров в файл сохранения
@@ -964,7 +964,8 @@ namespace RD_AAOW
 			string textFile = FileName + ".txt";
 
 			// Попытка инициализации
-			FileStream FI = null;
+			/*FileStream FI = null;*/
+			FileStream FI;
 			try
 				{
 				FI = new FileStream (tempFile, FileMode.Open);
@@ -975,7 +976,8 @@ namespace RD_AAOW
 				}
 			StreamReader SR = new StreamReader (FI, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
-			FileStream FO = null;
+			/*FileStream FO = null;*/
+			FileStream FO;
 			try
 				{
 				FO = new FileStream (textFile, FileMode.Create);
@@ -992,9 +994,9 @@ namespace RD_AAOW
 			// Сборка комментариев
 			string comments;
 			if (RDLocale.IsCurrentLanguageRuRu)
-				comments = RDGenerics.GetEncoding (RDEncodings.UTF8).GetString (Properties.ViceCityToolset.StatsText_ru_ru);
+				comments = RDGenerics.GetEncoding (RDEncodings.UTF8).GetString (ViceCityToolsetResources.StatsText_ru_ru);
 			else
-				comments = RDGenerics.GetEncoding (RDEncodings.UTF8).GetString (Properties.ViceCityToolset.StatsText_en_us);
+				comments = RDGenerics.GetEncoding (RDEncodings.UTF8).GetString (ViceCityToolsetResources.StatsText_en_us);
 			StringReader LR = new StringReader (comments);
 
 			// Склеивание
