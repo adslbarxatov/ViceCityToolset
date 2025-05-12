@@ -1,5 +1,8 @@
 Vice city toolset: changes log
 
+Version 4.7.1:
+• Added support for new offline help provider
+
 Version 4.7:
 • The application has been migrated to .NET 9.0 from .NET Framework 4.8.1
 

@@ -144,9 +144,7 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 
 	// Контроль параметров
 	if ((Mode != 4) && (SD->SD_DP.DP.DP_BlockSize == 0))
-		/*{
-		return SaveData_ErrorPrompt (*/SD_INTRPR_ERR_FileNotLoaded/*)*/;
-		/*}*/
+		return SD_INTRPR_ERR_FileNotLoaded;
 
 	// Обработка
 	switch (Mode)
@@ -169,7 +167,7 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 							SD_LIMIT_plwbu_B, SD_LIMIT_plwbu_T, atol (Value));
 
 					default:
-						return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
+						return SD_INTRPR_ERR_ParCodeIsIncorrect;
 					}
 				}
 
@@ -216,7 +214,7 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 							SD_LIMIT_grbtp_B, SD_LIMIT_grbtp_T, atoi (Value));
 
 					default:
-						return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
+						return SD_INTRPR_ERR_ParCodeIsIncorrect;
 					}
 				}
 
@@ -267,14 +265,14 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 							}
 						else
 							{
-							return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
+							return SD_INTRPR_ERR_ParCodeIsIncorrect;
 							}
 					case 5:
 						SD_PROC_VARIABLE (SD->SD_PU.PU.PU_S[OpCode - PickupsBaseOpCode].PU_S_MaxAsset,
 							SD_LIMIT_puass_B, SD_LIMIT_puass_T, atol (Value));
 
 					default:
-						return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
+						return SD_INTRPR_ERR_ParCodeIsIncorrect;
 					}
 				}
 
@@ -300,7 +298,7 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 							SD_LIMIT_gdwnu_B, SD_LIMIT_gdwnu_T, atol (Value));
 
 					default:
-						return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
+						return SD_INTRPR_ERR_ParCodeIsIncorrect;
 					}
 				}
 
@@ -348,7 +346,7 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 							SD_LIMIT_cgfsp_B, SD_LIMIT_cgfsp_T, atoi (Value));
 
 					default:
-						return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ParCodeIsIncorrect/*)*/;
+						return SD_INTRPR_ERR_ParCodeIsIncorrect;
 					}
 				}
 
@@ -398,7 +396,7 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 						{
 						i = atol (Value);
 						if ((i < SD_LIMIT_plmwl_B) || (i > SD_LIMIT_plmwl_T))
-							return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ValueOutOfRange/*)*/;
+							return SD_INTRPR_ERR_ValueOutOfRange;
 
 						SD->SD_PPS[0].PPS.PPS_MaxWantedLevel = i;
 						SD->SD_PPS[0].PPS.PPS_MaxCriminalPoints = SD_PPS_CriminalPoints[i];
@@ -441,7 +439,7 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 						else if (i == 0)
 							SD->SD_ST.ST.ST_ProgressMade = SD->SD_ST.ST.ST_TotalProgress - 1.0f;
 						else
-							return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ValueOutOfRange/*)*/;
+							return SD_INTRPR_ERR_ValueOutOfRange;
 						}
 					if (Mode == 4)
 						{
@@ -459,7 +457,7 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 					SD_PROC_VARIABLE (SD->SD_CG.CG.CG_CarsCount, 1, GeneratorsCount, atoi (Value));
 
 				default:
-					return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_OpCodeIsIncorrect/*)*/;
+					return SD_INTRPR_ERR_OpCodeIsIncorrect;
 				}
 			break;
 
@@ -481,7 +479,8 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 					i = SD_INTRPR_ERR_OpCodeIsIncorrect;
 					break;
 				}
-			return /*SaveData_ErrorPrompt (*/i/*)*/;
+
+			return i;
 
 			// Save
 		case 3:
@@ -504,7 +503,7 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 					i = SD_INTRPR_ERR_OpCodeIsIncorrect;
 					break;
 				}
-			return /*SaveData_ErrorPrompt (*/i/*)*/;
+			return i;
 
 			// Fix
 		case 5:
@@ -522,7 +521,7 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 						SD->SD_CR.CR.CR_S[i].CR_S_CraneHookCurrentY = 0.0f;
 						SD->SD_CR.CR.CR_S[i].CR_S_CraneHookCurrentZ = 0.0f;
 						}
-					return /*SaveData_ErrorPrompt (*/SD_FIXED/*)*/;
+					return SD_FIXED;
 
 					// Обнуление замен объектов (по той же причине)
 				case 1:
@@ -533,15 +532,15 @@ sint SaveData_CommandInterpreter (struct SaveData *SD, uint Mode, uint OpCode, u
 						SD->SD_SBB.SBB.SBB_R[i].SBB_R_OldModelID = -1;
 						SD->SD_SBB.SBB.SBB_R[i].SBB_R_Type = 0;
 						}
-					return /*SaveData_ErrorPrompt (*/SD_FIXED/*)*/;
+					return SD_FIXED;
 
 				default:
-					return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_OpCodeIsIncorrect/*)*/;
+					return SD_INTRPR_ERR_OpCodeIsIncorrect;
 				}
 			break;
 
 			// Недопустимый режим
 		default:
-			return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ModeIsIncorrect/*)*/;
+			return SD_INTRPR_ERR_ModeIsIncorrect;
 		}
 	}

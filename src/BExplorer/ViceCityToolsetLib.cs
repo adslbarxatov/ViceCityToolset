@@ -772,14 +772,6 @@ namespace RD_AAOW
 			}
 
 		/// <summary>
-		/// Метод возвращает версию библиотеки. Позволяет избегать рассогласования
-		/// протоколов взаимодействия библиотеки и приложения
-		/// </summary>
-		/// <returns>Версия библиотеки в строковом представлении</returns>
-		[DllImport (ProgramDescription.AssemblyLibName)]
-		private static extern IntPtr SaveData_GetLibVersionEx ();
-
-		/// <summary>
 		/// Метод выполняет загрузку файла сохранения из указанного расположения. Начинает
 		/// сеанс взаимодействия со структурой данных сохранения
 		/// </summary>
@@ -1024,7 +1016,7 @@ namespace RD_AAOW
 			return ResultCodes.SaveSuccess;
 			}
 
-		/// <summary>
+		/*/// <summary>
 		/// Метод выполняет проверку методов на доступность и корректность взаимодействия с программой
 		/// </summary>
 		/// <returns>Возвращает номер метода, в котором произошёл сбой, или 0 в случае успеха. 
@@ -1042,7 +1034,7 @@ namespace RD_AAOW
 				}
 
 			return 0;
-			}
+			}*/
 
 		#endregion
 		}

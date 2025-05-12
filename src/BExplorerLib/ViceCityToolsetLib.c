@@ -19,13 +19,6 @@ B_API (schar *) SaveData_CommandInterpreterEx (uint Mode, uint OpCode, uint ParC
 	return SaveData_CommandInterpreter (&SD, Mode, OpCode, ParCode, Value);
 	}
 
-/* Оболочка функции сообщений об ошибках
-B_API (schar *) SaveData_ErrorPromptEx (sint ErrorCode)
-	{
-	return SaveData_ErrorPrompt (ErrorCode);
-	}
-*/
-
 // Оболочка для последнего сообщения функции-интерпретатора
 schar sdLastMessage[SD_MaxStrSize];
 B_API (schar *) SaveData_GetLastMessageEx ()
@@ -122,8 +115,8 @@ B_API (schar *) SaveData_GetToDoStatusEx (void)
 	return status;
 	}
 
-// Метод запроса версии библиотеки
+/*// Метод запроса версии библиотеки
 B_API (schar *) SaveData_GetLibVersionEx (void)
 	{
 	return B_VERSION_S;
-	}
+	}*/

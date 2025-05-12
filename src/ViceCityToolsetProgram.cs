@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -28,7 +29,11 @@ namespace RD_AAOW
 				return;
 
 			// Проверка наличия компонентов программы
-			if (!RDGenerics.CheckLibraries (ProgramDescription.AssemblyLibName, true))
+			if (!RDGenerics.CheckLibrariesExistence (ProgramDescription.AssemblyLibraries, true))
+				return;
+
+			if (!RDGenerics.CheckLibraryVersion (ProgramDescription.AssemblyLibraries[0][0],
+				ProgramDescription.AssemblyLibraries[0][1]))
 				return;
 
 			// Отображение справки и запроса на принятие Политики
@@ -88,6 +93,14 @@ namespace RD_AAOW
 			}
 		private static string gtavcSavesDirectory = Environment.GetFolderPath (Environment.SpecialFolder.MyDocuments) +
 			"\\GTA Vice City User Files";
+
+		/*/// <summary>
+		/// Метод возвращает версию библиотеки. Позволяет избегать рассогласования
+		/// протоколов взаимодействия библиотеки и приложения
+		/// </summary>
+		/// <returns>Версия библиотеки в строковом представлении</returns>
+		[DllImport (ProgramDescription.AssemblyLibName)]
+		private static extern IntPtr SaveData_GetLibVersionEx ();*/
 		}
 
 	/// <summary>
