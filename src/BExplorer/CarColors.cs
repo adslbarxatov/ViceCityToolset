@@ -32,7 +32,6 @@ namespace RD_AAOW
 		public CarColors (out int Error)
 			{
 			// Попытка открытия файла
-			/*FileStream FS = null;*/
 			FileStream FS;
 			try
 				{

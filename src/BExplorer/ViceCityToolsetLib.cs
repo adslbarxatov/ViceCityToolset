@@ -956,7 +956,6 @@ namespace RD_AAOW
 			string textFile = FileName + ".txt";
 
 			// Попытка инициализации
-			/*FileStream FI = null;*/
 			FileStream FI;
 			try
 				{
@@ -968,7 +967,6 @@ namespace RD_AAOW
 				}
 			StreamReader SR = new StreamReader (FI, RDGenerics.GetEncoding (RDEncodings.UTF8));
 
-			/*FileStream FO = null;*/
 			FileStream FO;
 			try
 				{
@@ -1015,26 +1013,6 @@ namespace RD_AAOW
 			// Успешно
 			return ResultCodes.SaveSuccess;
 			}
-
-		/*/// <summary>
-		/// Метод выполняет проверку методов на доступность и корректность взаимодействия с программой
-		/// </summary>
-		/// <returns>Возвращает номер метода, в котором произошёл сбой, или 0 в случае успеха. 
-		/// -1 означает несовпадение версий приложения и библиотеки</returns>
-		public static int Check ()
-			{
-			try
-				{
-				if (Marshal.PtrToStringAnsi (SaveData_GetLibVersionEx ()) != ProgramDescription.AssemblyLibVersion)
-					return -1;
-				}
-			catch
-				{
-				return 1;
-				}
-
-			return 0;
-			}*/
 
 		#endregion
 		}

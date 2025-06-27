@@ -36,7 +36,6 @@ namespace RD_AAOW
 			{
 			// Переменные
 			List<Point3D> points = [];
-			/*uint pointsCount = 0, trianglesCount = 0;*/
 			uint pointsCount, trianglesCount;
 			char[] separators = [' '];
 

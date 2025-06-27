@@ -63,7 +63,6 @@ namespace RD_AAOW
 		private void ConvertButton_Click (object sender, EventArgs e)
 			{
 			// Попытка открытия файла
-			/*FileStream FS = null;*/
 			FileStream FS;
 			try
 				{

@@ -228,11 +228,6 @@ namespace RD_AAOW
 		// Метод возвращает название транспорта по его идентификатору в файле handling.cfg
 		private static string GetVehicheNameByID (string ID)
 			{
-			/*switch (ID)
-				{
-				default:
-					return "—";
-				}*/
 			int idx = transportIDs.IndexOf (ID);
 			if (idx < 0)
 				return "—";

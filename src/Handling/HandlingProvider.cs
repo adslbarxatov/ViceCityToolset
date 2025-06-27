@@ -94,7 +94,6 @@ namespace RD_AAOW
 				}
 
 			// Попытка открытия файла
-			/*FileStream FS = null;*/
 			FileStream FS;
 			try
 				{
@@ -299,7 +298,6 @@ namespace RD_AAOW
 				return false;
 
 			// Попытка открытия файла
-			/*FileStream FS = null;*/
 			FileStream FS;
 			try
 				{

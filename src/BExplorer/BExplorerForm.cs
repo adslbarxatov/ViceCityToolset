@@ -56,18 +56,6 @@ namespace RD_AAOW
 		// Запуск формы
 		private void MainForm_Load (object sender, EventArgs e)
 			{
-			/*// Контроль корректности связи с библиотекой функций
-			if (BExplorerLib.Check () != 0)
-				{
-				RDInterface.MessageBox (RDMessageTypes.Error_Center,
-					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.MessageFormat_WrongVersion_Fmt),
-					ProgramDescription.AssemblyLibName));
-
-				error = -1;
-				this.Close ();
-				return;
-				}*/
-
 			// Проверка наличия файла цветовой схемы
 			cc = new CarColors (out error);
 			if (error != 0)
