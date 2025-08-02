@@ -1,5 +1,9 @@
 Vice city toolset: changes log
 
+Version 4.7.3:
+• Internal assemblies have been updated;
+• App will now reset the saved VC path if it doesn't contain 'carcols.dat' file
+
 Version 4.7.2:
 • Internal assemblies have been updated
 

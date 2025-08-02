@@ -70,7 +70,7 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_LoadFailure_Fmt),
 					OFName.Text));
 				return;
@@ -89,7 +89,7 @@ namespace RD_AAOW
 
 				if (dffr.ExtractedPoints.Count == 0)
 					{
-					RDInterface.MessageBox (RDMessageTypes.Warning_Center,
+					RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 						string.Format (RDLocale.GetText ("MakeCST_UnsupportedDFF"), OFName.Text));
 					return;
 					}
@@ -111,7 +111,7 @@ namespace RD_AAOW
 
 				if (qhoffr.ExtractedTriangles.Count == 0)
 					{
-					RDInterface.MessageBox (RDMessageTypes.Warning_Center,
+					RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 						string.Format (RDLocale.GetText ("MakeCST_UnsupportedQHull"), OFName.Text));
 					return;
 					}
@@ -163,13 +163,14 @@ namespace RD_AAOW
 			// Запись файла
 			if (!CSTWriter.WriteCST (SFName.Text, points, triangles))
 				{
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 					SFName.Text));
 				return;
 				}
 
-			RDInterface.LocalizedMessageBox (RDMessageTypes.Success_Center, "MakeCST_Success");
+			RDInterface.LocalizedMessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
+				"MakeCST_Success");
 			}
 		}
 	}

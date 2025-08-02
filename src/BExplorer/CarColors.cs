@@ -39,8 +39,11 @@ namespace RD_AAOW
 				}
 			catch
 				{
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
+				// Сброс заданной директории
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					string.Format (RDLocale.GetText ("CarColorsFileUnavailable"), colorsFile));
+				ViceCityToolsetProgram.GTAVCDirectory = "";
+
 				Error = -1;
 				return;
 				}

@@ -1,4 +1,3 @@
-_Changes for v 4.7.2_:
+_Changes for v 4.7.3_:
 - Internal assemblies have been updated;
-- Added support for new offline help provider;
-- The application has been migrated to `.NET 9.0` from `.NET Framework 4.8.1`
+- App will now reset the saved VC path if it doesn't contain `carcols.dat` file

@@ -224,7 +224,7 @@ namespace RD_AAOW
 					errText += RDLocale.GetText ("Result_LoadingErrorPrefix");
 				errText += RDLocale.GetText ("Result_" + errCode.ToString ());
 
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center, errText);
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText, errText);
 				SaveInfoLabel.Text = RDLocale.GetText ("SaveNotSpecified");
 
 				return;
@@ -245,7 +245,7 @@ namespace RD_AAOW
 			if (Result.StartsWith ('\x13'))
 				{
 				ResultCodes errCode = (ResultCodes)int.Parse (Result.Substring (1));
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					RDLocale.GetText ("Result_" + errCode.ToString ()));
 				return false;
 				}
@@ -259,7 +259,7 @@ namespace RD_AAOW
 			ResultCodes result = BExplorerLib.SaveData_SetParameterValue (OpCode, ParCode, NewValue);
 
 			if (result != ResultCodes.OK)
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					RDLocale.GetText ("Result_" + result.ToString ()));
 			}
 
@@ -525,13 +525,14 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.SaveSuccess)
 				{
-				RDInterface.MessageBox (RDMessageTypes.Success_Center,
+				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
 					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 				LoadParameters ();
 				}
 			else
 				{
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("SaveSavingError") +
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+					RDLocale.GetText ("SaveSavingError") +
 					RDLocale.GetText ("Result_" + res.ToString ()));
 				}
 			}
@@ -544,7 +545,8 @@ namespace RD_AAOW
 
 		private void MainForm_FormClosing (object sender, FormClosingEventArgs e)
 			{
-			e.Cancel = (error == 0) && (RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center,
+			e.Cancel = (error == 0) &&
+				(RDInterface.LocalizedMessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 				"ChangesSaved", RDLDefaultTexts.Button_Yes, RDLDefaultTexts.Button_No) ==
 				RDMessageButtons.ButtonTwo);
 
@@ -795,10 +797,11 @@ namespace RD_AAOW
 			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile (LoadableParameters.Stats, OStatsDialog.FileName);
 
 			if (res == ResultCodes.LoadSuccess)
-				RDInterface.MessageBox (RDMessageTypes.Success_Center,
+				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
 					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("StatsLoadingError") +
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+					RDLocale.GetText ("StatsLoadingError") +
 					RDLocale.GetText ("Result_" + res.ToString ()));
 			}
 
@@ -822,7 +825,8 @@ namespace RD_AAOW
 				{
 				if (res != ResultCodes.SaveSuccess)
 					{
-					RDInterface.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("StatsSavingError") +
+					RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+						RDLocale.GetText ("StatsSavingError") +
 						RDLocale.GetText ("Result_" + res.ToString ()));
 					return;
 					}
@@ -844,10 +848,11 @@ namespace RD_AAOW
 				}
 
 			if (res == ResultCodes.SaveSuccess)
-				RDInterface.MessageBox (RDMessageTypes.Success_Center,
+				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
 					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("StatsSavingError") +
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+					RDLocale.GetText ("StatsSavingError") +
 					RDLocale.GetText ("Result_" + res.ToString ()));
 			}
 
@@ -1322,10 +1327,11 @@ namespace RD_AAOW
 				OCGDialog.FileName);
 
 			if (res == ResultCodes.LoadSuccess)
-				RDInterface.MessageBox (RDMessageTypes.Success_Center,
+				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
 					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("CGLoadingError") +
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+					RDLocale.GetText ("CGLoadingError") +
 					RDLocale.GetText ("Result_" + res.ToString ()));
 
 			// Обновление загруженных данных сохранения
@@ -1359,19 +1365,19 @@ namespace RD_AAOW
 		private void DangerousReset_Click (object sender, EventArgs e)
 			{
 			// Контроль
-			if (RDInterface.LocalizedMessageBox (RDMessageTypes.Warning_Center, "DangerousResetMessage",
-				RDLDefaultTexts.Button_YesNoFocus, RDLDefaultTexts.Button_No) ==
-				RDMessageButtons.ButtonTwo)
+			if (RDInterface.LocalizedMessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+				"DangerousResetMessage", RDLDefaultTexts.Button_YesNoFocus,
+				RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonTwo)
 				return;
 
 			// Выполнение
 			ResultCodes res = BExplorerLib.SaveData_FixFile4 ();
 
 			if (res == ResultCodes.FileFixed)
-				RDInterface.MessageBox (RDMessageTypes.Success_Center,
+				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
 					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center,
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 				RDLocale.GetText ("Result_" + res.ToString ()));
 			}
 
@@ -1389,10 +1395,11 @@ namespace RD_AAOW
 			ResultCodes res = BExplorerLib.SaveData_LoadParametersFile (LoadableParameters.Garages, OGDialog.FileName);
 
 			if (res == ResultCodes.LoadSuccess)
-				RDInterface.MessageBox (RDMessageTypes.Success_Center,
+				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
 					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
 			else
-				RDInterface.MessageBox (RDMessageTypes.Warning_Center, RDLocale.GetText ("GRLoadingError") +
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+					RDLocale.GetText ("GRLoadingError") +
 					RDLocale.GetText ("Result_" + res.ToString ()));
 
 			// Обновление загруженных данных сохранения
