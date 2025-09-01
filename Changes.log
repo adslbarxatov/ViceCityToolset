@@ -1,11 +1,11 @@
 Vice city toolset: changes log
 
-Version 4.7.3:
+Version 4.7.4:
 • Internal assemblies have been updated;
-• App will now reset the saved VC path if it doesn't contain 'carcols.dat' file
+• XPUN / IOP update has been applied
 
-Version 4.7.2:
-• Internal assemblies have been updated
+Version 4.7.3:
+• App will now reset the saved VC path if it doesn't contain 'carcols.dat' file
 
 Version 4.7.1:
 • Added support for new offline help provider

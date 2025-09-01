@@ -1077,9 +1077,6 @@ namespace RD_AAOW
 		// Выход из раздела
 		private void ExitButton_Click (object sender, EventArgs e)
 			{
-			/*if (RDInterface.LocalizedMessageBox (RDMessageFlags.Question | RDMessageFlags.CenterText,
-				"HandlingForm_ExitMessage", RDLDefaultTexts.Button_YesNoFocus,
-				RDLDefaultTexts.Button_No) == RDMessageButtons.ButtonOne)*/
 			this.Close ();
 			}
 
