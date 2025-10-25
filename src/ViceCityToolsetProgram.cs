@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace RD_AAOW
@@ -57,6 +56,10 @@ namespace RD_AAOW
 
 					case "-c":
 						mode = StartupModes.CollisionConversion;
+						break;
+
+					case "-w":
+						mode = StartupModes.Weather;
 						break;
 					}
 				}
@@ -117,6 +120,11 @@ namespace RD_AAOW
 		/// <summary>
 		/// Преобразователь скриптов коллизий
 		/// </summary>
-		CollisionConversion
+		CollisionConversion, 
+
+		/// <summary>
+		/// Файл настроек погоды
+		/// </summary>
+		Weather,
 		}
 	}

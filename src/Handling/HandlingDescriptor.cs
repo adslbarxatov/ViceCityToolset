@@ -9,7 +9,7 @@ namespace RD_AAOW
 	public abstract class HandlingDescriptor
 		{
 		/// <summary>
-		/// Возвращает идентификатор транспортного средства согласно файлу default.ide 
+		/// Возвращает идентификатор транспортного средства согласно файлу default.ide
 		/// </summary>
 		public string VehicleIdentifier
 			{

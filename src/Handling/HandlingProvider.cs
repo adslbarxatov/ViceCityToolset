@@ -19,7 +19,12 @@ namespace RD_AAOW
 		private List<int> bikeIndexes = [];
 		private List<int> flyingIndexes = [];
 
-		private string handlingFile = ViceCityToolsetProgram.GTAVCDirectory + "\\data\\handling.cfg";
+		/// <summary>
+		/// Возвращает имя файла кофигурации, с которым работает данный провайдер
+		/// </summary>
+		public const string ConfigurationFileName = "handling.cfg";
+
+		private string handlingFile = ViceCityToolsetProgram.GTAVCDirectory + "\\data\\" + ConfigurationFileName;
 		private string handlingBackup = ViceCityToolsetProgram.GTAVCDirectory + "\\data\\handling.vctbak";
 
 		/// <summary>
@@ -104,7 +109,7 @@ namespace RD_AAOW
 				initStatus = InitStatuses.FileNotAvailable;
 				return;
 				}
-			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
+			StreamReader SR = new StreamReader (FS, RDGenerics.GetEncoding (RDEncodings.CP1251));
 
 			// Чтение файла
 			while (!SR.EndOfStream)
@@ -307,7 +312,7 @@ namespace RD_AAOW
 				{
 				return false;
 				}
-			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (RDEncodings.UTF8));
+			StreamWriter SW = new StreamWriter (FS, RDGenerics.GetEncoding (RDEncodings.CP1251));
 
 			// Запись
 			// Заголовок файла и основные дескрипторы

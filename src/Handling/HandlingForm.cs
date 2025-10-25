@@ -543,7 +543,8 @@ namespace RD_AAOW
 
 			if (!string.IsNullOrEmpty (res))
 				{
-				RDInterface.LocalizedMessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText, res);
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+					string.Format (RDLocale.GetText (res), HandlingProvider.ConfigurationFileName));
 				this.Close ();
 				return;
 				}
@@ -1067,11 +1068,11 @@ namespace RD_AAOW
 
 			// Сохранение
 			if (!hp.SaveHandlingData ())
-				RDInterface.LocalizedMessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
-					"HandlingForm_SaveFailure");
+				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
+					string.Format (RDLocale.GetText ("HandlingForm_SaveFailure"), HandlingProvider.ConfigurationFileName));
 			else
-				RDInterface.LocalizedMessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
-					"HandlingForm_SaveSuccess");
+				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
+					string.Format (RDLocale.GetText ("HandlingForm_SaveSuccess"), HandlingProvider.ConfigurationFileName), 1000);
 			}
 
 		// Выход из раздела

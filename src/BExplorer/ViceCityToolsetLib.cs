@@ -965,7 +965,7 @@ namespace RD_AAOW
 				{
 				return ResultCodes.CannotCreateStatsFile;
 				}
-			StreamReader SR = new StreamReader (FI, RDGenerics.GetEncoding (RDEncodings.UTF8));
+			StreamReader SR = new StreamReader (FI, RDGenerics.GetEncoding (RDEncodings.CP1251));
 
 			FileStream FO;
 			try
@@ -979,7 +979,7 @@ namespace RD_AAOW
 
 				return ResultCodes.CannotCreateStatsFile;
 				}
-			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (RDEncodings.UTF8));
+			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (RDEncodings.CP1251));
 
 			// Сборка комментариев
 			string comments;

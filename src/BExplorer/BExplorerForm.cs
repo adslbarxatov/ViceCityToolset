@@ -912,7 +912,7 @@ namespace RD_AAOW
 				{
 				return ResultCodes.CannotCreateGaragesFile;
 				}
-			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (RDEncodings.UTF8));
+			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (RDEncodings.CP1251));
 
 			// Запись заголовка
 			const string sp = ";";
@@ -1227,7 +1227,7 @@ namespace RD_AAOW
 				{
 				return ResultCodes.CannotCreateCGFile;
 				}
-			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (RDEncodings.UTF8));
+			StreamWriter SW = new StreamWriter (FO, RDGenerics.GetEncoding (RDEncodings.CP1251));
 
 			// Запись заголовка
 			const string sp = ";";

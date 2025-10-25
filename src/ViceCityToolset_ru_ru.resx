@@ -1309,25 +1309,25 @@
     <value>моторная лодка</value>
   </data>
   <data name="HandlingForm_BrokenDescriptor" xml:space="preserve">
-    <value>Одна или несколько строк в файле «handling.cfg» имеют некорректную структуру. Дальнейшая работа с файлом невозможна</value>
+    <value>Одна или несколько строк в файле «{0:S}» имеют некорректную структуру. Дальнейшая работа с файлом невозможна</value>
   </data>
   <data name="HandlingForm_FileIsEmpty" xml:space="preserve">
-    <value>В файле «handling.cfg» отсутствуют основные дескрипторы транспортных средств. Дальнейшая работа с файлом невозможна</value>
+    <value>В файле «{0:S}» отсутствуют основные дескрипторы транспортных средств. Дальнейшая работа с файлом невозможна</value>
   </data>
   <data name="HandlingForm_FileUnavailable" xml:space="preserve">
-    <value>Файл «handling.cfg» недоступен для загрузки. Убедитесь, что файл не занят другой программой, и повторите попытку</value>
+    <value>Файл «{0:S}» недоступен для загрузки. Убедитесь, что файл не занят другой программой, и повторите попытку</value>
   </data>
   <data name="HandlingForm_SaveFailure" xml:space="preserve">
-    <value>Не удалось сохранить файл «handling.cfg». Убедитесь, что файл не занят другой программой и повторите попытку</value>
+    <value>Не удалось сохранить файл «{0:S}». Убедитесь, что файл не занят другой программой и повторите попытку</value>
   </data>
   <data name="HandlingForm_ExitMessage" xml:space="preserve">
     <value>Все несохранённые изменения будут утеряны! Завершить работу с редактором?</value>
   </data>
   <data name="HandlingForm_FailedToCreateBackup" xml:space="preserve">
-    <value>Не удалось создать резервную копию файла «handling.cfg». Убедитесь, что каталог игры доступен для записи, и повторите попытку</value>
+    <value>Не удалось создать резервную копию файла «{0:S}». Убедитесь, что каталог игры доступен для записи, и повторите попытку</value>
   </data>
   <data name="HandlingForm_SaveSuccess" xml:space="preserve">
-    <value>Файл «handling.cfg» успешно обновлён</value>
+    <value>Файл «{0:S}» успешно обновлён</value>
   </data>
   <data name="HandlingForm" xml:space="preserve">
     <value>редактирование управления транспортом</value>
@@ -1544,5 +1544,92 @@
   </data>
   <data name="RegisterAssociations" xml:space="preserve">
     <value>Применить иконки для игровых файлов</value>
+  </data>
+  <data name="ViceCityToolsetForm_WeatherButton" xml:space="preserve">
+    <value>Изменить настройки погоды</value>
+  </data>
+  <data name="WeatherForm" xml:space="preserve">
+    <value>редактирование настроек погоды</value>
+  </data>
+  <data name="ViceCityToolsetForm_RunGTAVC" xml:space="preserve">
+    <value>Запустить GTA Vice city</value>
+  </data>
+  <data name="WeatherForm_WeatherLabel" xml:space="preserve">
+    <value>Погода:</value>
+  </data>
+  <data name="WeatherForm_TimeLabel" xml:space="preserve">
+    <value>Время:</value>
+  </data>
+  <data name="WeatherForm_StaticAmbience" xml:space="preserve">
+    <value>Освещение статичных объектов</value>
+  </data>
+  <data name="WeatherForm_DynamicAmbience" xml:space="preserve">
+    <value>Освещение подвижных объектов</value>
+  </data>
+  <data name="WeatherForm_StaticBlur" xml:space="preserve">
+    <value>Размытие на статичных объектах</value>
+  </data>
+  <data name="WeatherForm_DynamicBlur" xml:space="preserve">
+    <value>Размытие на подвижных объектах</value>
+  </data>
+  <data name="WeatherForm_DynamicDirect" xml:space="preserve">
+    <value>Эффект прямого света</value>
+  </data>
+  <data name="WeatherForm_Water" xml:space="preserve">
+    <value>Поверхность воды</value>
+  </data>
+  <data name="WeatherForm_SkyTop" xml:space="preserve">
+    <value>Верхняя часть неба</value>
+  </data>
+  <data name="WeatherForm_SkyBottom" xml:space="preserve">
+    <value>Нижняя часть неба</value>
+  </data>
+  <data name="WeatherForm_UpperCloudsTop" xml:space="preserve">
+    <value>Верх верхних облаков</value>
+  </data>
+  <data name="WeatherForm_UpperCloudsBottom" xml:space="preserve">
+    <value>Низ верхних облаков</value>
+  </data>
+  <data name="WeatherForm_SunCore" xml:space="preserve">
+    <value>Середина Солнца</value>
+  </data>
+  <data name="WeatherForm_SunCorona" xml:space="preserve">
+    <value>Солнечная корона</value>
+  </data>
+  <data name="WeatherForm_LowerClouds" xml:space="preserve">
+    <value>Нижние облака</value>
+  </data>
+  <data name="WeatherForm_BlurTrails" xml:space="preserve">
+    <value>Размытие и следы</value>
+  </data>
+  <data name="WeatherForm_SunSizeLabel" xml:space="preserve">
+    <value>Размер Солнца:</value>
+  </data>
+  <data name="WeatherForm_CoronaSizeLabel" xml:space="preserve">
+    <value>Размер короны Солнца:</value>
+  </data>
+  <data name="WeatherForm_CoronaBrightnessLabel" xml:space="preserve">
+    <value>Яркость короны (инверс.):</value>
+  </data>
+  <data name="WeatherForm_ShadowLabel" xml:space="preserve">
+    <value>Насыщенность теней:</value>
+  </data>
+  <data name="WeatherForm_EntityShadingLabel" xml:space="preserve">
+    <value>Шейдинг объектов:</value>
+  </data>
+  <data name="WeatherForm_PoleShadingLabel" xml:space="preserve">
+    <value>Шейдинг столбов:</value>
+  </data>
+  <data name="WeatherForm_FarClipLabel" xml:space="preserve">
+    <value>Дистанция:</value>
+  </data>
+  <data name="WeatherForm_FogStartLabel" xml:space="preserve">
+    <value>Начало тумана:</value>
+  </data>
+  <data name="WeatherForm_LightOnGroundLabel" xml:space="preserve">
+    <value>Осв. поверхности:</value>
+  </data>
+  <data name="WeatherForm_WaterAlphaLabel" xml:space="preserve">
+    <value>Непрозрачность воды:</value>
   </data>
 </root>

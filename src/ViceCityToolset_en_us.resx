@@ -1309,25 +1309,25 @@
     <value>boat</value>
   </data>
   <data name="HandlingForm_BrokenDescriptor" xml:space="preserve">
-    <value>One or more lines in the file “handling.cfg” have an invalid structure. Further work with the file is not possible</value>
+    <value>One or more lines in the file “{0:S}” have an invalid structure. Further work with the file is not possible</value>
   </data>
   <data name="HandlingForm_FileIsEmpty" xml:space="preserve">
-    <value>The “handling.cfg” file is missing basic vehicle descriptors. Further work with the file is not possible</value>
+    <value>The “{0:S}” file is missing basic vehicle descriptors. Further work with the file is not possible</value>
   </data>
   <data name="HandlingForm_FileUnavailable" xml:space="preserve">
-    <value>The file “handling.cfg” is not available for opening. Make sure the file is not in use by another application and try again</value>
+    <value>The file “{0:S}” is not available for opening. Make sure the file is not in use by another application and try again</value>
   </data>
   <data name="HandlingForm_SaveFailure" xml:space="preserve">
-    <value>Failed to save file “handling.cfg”. Make sure the file is not in use by another application and try again</value>
+    <value>Failed to save file “{0:S}”. Make sure the file is not in use by another application and try again</value>
   </data>
   <data name="HandlingForm_ExitMessage" xml:space="preserve">
     <value>All unsaved changes will be lost! Exit the editor?</value>
   </data>
   <data name="HandlingForm_FailedToCreateBackup" xml:space="preserve">
-    <value>Failed to create backup for file “handling.cfg”. Make sure that game directory is writable and try again</value>
+    <value>Failed to create backup for file “{0:S}”. Make sure that game directory is writable and try again</value>
   </data>
   <data name="HandlingForm_SaveSuccess" xml:space="preserve">
-    <value>File “handling.cfg” was successfully updated</value>
+    <value>File “{0:S}” was successfully updated</value>
   </data>
   <data name="HandlingForm" xml:space="preserve">
     <value>editing vehicles handling</value>
@@ -1544,5 +1544,92 @@
   </data>
   <data name="RegisterAssociations" xml:space="preserve">
     <value>Apply icons for game files</value>
+  </data>
+  <data name="ViceCityToolsetForm_WeatherButton" xml:space="preserve">
+    <value>Edit weather settings</value>
+  </data>
+  <data name="WeatherForm" xml:space="preserve">
+    <value>editing weather settings</value>
+  </data>
+  <data name="ViceCityToolsetForm_RunGTAVC" xml:space="preserve">
+    <value>Run GTA Vice city</value>
+  </data>
+  <data name="WeatherForm_WeatherLabel" xml:space="preserve">
+    <value>Weather:</value>
+  </data>
+  <data name="WeatherForm_TimeLabel" xml:space="preserve">
+    <value>Time:</value>
+  </data>
+  <data name="WeatherForm_StaticAmbience" xml:space="preserve">
+    <value>Lighting of static objects</value>
+  </data>
+  <data name="WeatherForm_DynamicAmbience" xml:space="preserve">
+    <value>Lighting of moving objects</value>
+  </data>
+  <data name="WeatherForm_StaticBlur" xml:space="preserve">
+    <value>Blur on static objects</value>
+  </data>
+  <data name="WeatherForm_DynamicBlur" xml:space="preserve">
+    <value>Blur on moving objects</value>
+  </data>
+  <data name="WeatherForm_DynamicDirect" xml:space="preserve">
+    <value>Direct light effect</value>
+  </data>
+  <data name="WeatherForm_Water" xml:space="preserve">
+    <value>Water surface</value>
+  </data>
+  <data name="WeatherForm_SkyTop" xml:space="preserve">
+    <value>Top side of the sky</value>
+  </data>
+  <data name="WeatherForm_SkyBottom" xml:space="preserve">
+    <value>Bottom side of the sky</value>
+  </data>
+  <data name="WeatherForm_UpperCloudsTop" xml:space="preserve">
+    <value>Top of upper clouds</value>
+  </data>
+  <data name="WeatherForm_UpperCloudsBottom" xml:space="preserve">
+    <value>Bottom of upper clouds</value>
+  </data>
+  <data name="WeatherForm_SunCore" xml:space="preserve">
+    <value>Sun core</value>
+  </data>
+  <data name="WeatherForm_SunCorona" xml:space="preserve">
+    <value>Sun corona</value>
+  </data>
+  <data name="WeatherForm_LowerClouds" xml:space="preserve">
+    <value>Lower clouds</value>
+  </data>
+  <data name="WeatherForm_BlurTrails" xml:space="preserve">
+    <value>Blur and trails</value>
+  </data>
+  <data name="WeatherForm_SunSizeLabel" xml:space="preserve">
+    <value>Size of Sun:</value>
+  </data>
+  <data name="WeatherForm_CoronaSizeLabel" xml:space="preserve">
+    <value>Size of Sun corona:</value>
+  </data>
+  <data name="WeatherForm_CoronaBrightnessLabel" xml:space="preserve">
+    <value>Corona brightness (rev.):</value>
+  </data>
+  <data name="WeatherForm_ShadowLabel" xml:space="preserve">
+    <value>Shadows intensity:</value>
+  </data>
+  <data name="WeatherForm_EntityShadingLabel" xml:space="preserve">
+    <value>Entity shading:</value>
+  </data>
+  <data name="WeatherForm_PoleShadingLabel" xml:space="preserve">
+    <value>Pole shading:</value>
+  </data>
+  <data name="WeatherForm_FarClipLabel" xml:space="preserve">
+    <value>Distance:</value>
+  </data>
+  <data name="WeatherForm_FogStartLabel" xml:space="preserve">
+    <value>Fog start:</value>
+  </data>
+  <data name="WeatherForm_LightOnGroundLabel" xml:space="preserve">
+    <value>Ground lighting:</value>
+  </data>
+  <data name="WeatherForm_WaterAlphaLabel" xml:space="preserve">
+    <value>Water opacity:</value>
   </data>
 </root>

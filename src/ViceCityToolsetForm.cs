@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -52,6 +53,10 @@ namespace RD_AAOW
 					SavesButton_Click (null, null);
 					break;
 
+				case StartupModes.Weather:
+					WeatherButton_Click (null, null);
+					break;
+
 				default:
 					return;
 				}
@@ -90,8 +95,9 @@ namespace RD_AAOW
 			if (!CheckDirectories ())
 				return;
 
-			BExplorerForm bef = new BExplorerForm ();
-			bef.Dispose ();
+			/*BExplorerForm bef = new BExplorerForm ();
+			bef.Dispose ();*/
+			_ = new BExplorerForm ();
 			}
 
 		private void HandlingButton_Click (object sender, EventArgs e)
@@ -99,14 +105,41 @@ namespace RD_AAOW
 			if (!CheckDirectories ())
 				return;
 
-			HandlingForm hf = new HandlingForm ();
-			hf.Dispose ();
+			/*HandlingForm hf = new HandlingForm ();
+			hf.Dispose ();*/
+			_ = new HandlingForm ();
 			}
 
 		private void CollisionButton_Click (object sender, EventArgs e)
 			{
-			MakeCSTForm mcstf = new MakeCSTForm ();
-			mcstf.Dispose ();
+			/*MakeCSTForm mcstf = new MakeCSTForm ();
+			mcstf.Dispose ();*/
+			_ = new MakeCSTForm ();
+			}
+
+		private void WeatherButton_Click (object sender, EventArgs e)
+			{
+			if (!CheckDirectories ())
+				return;
+
+			_ = new WeatherForm ();
+			}
+
+		private void RunGTAVCButton_Click (object sender, EventArgs e)
+			{
+			if (!CheckDirectories ())
+				return;
+
+			try
+				{
+				ProcessStartInfo psi = new ProcessStartInfo (ViceCityToolsetProgram.GTAVCDirectory + "\\GTA-VC.exe");
+				psi.UseShellExecute = true;
+				psi.Verb = "open";
+				psi.WorkingDirectory = ViceCityToolsetProgram.GTAVCDirectory;	// Почему-то критично
+
+				Process.Start (psi);
+				}
+			catch { }
 			}
 
 		// Обнаружение директорий GTA Vice city
