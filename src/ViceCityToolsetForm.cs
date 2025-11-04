@@ -57,6 +57,10 @@ namespace RD_AAOW
 					WeatherButton_Click (null, null);
 					break;
 
+				case StartupModes.Archive:
+					ArchiveButton_Click (null, null);
+					break;
+
 				default:
 					return;
 				}
@@ -95,8 +99,6 @@ namespace RD_AAOW
 			if (!CheckDirectories ())
 				return;
 
-			/*BExplorerForm bef = new BExplorerForm ();
-			bef.Dispose ();*/
 			_ = new BExplorerForm ();
 			}
 
@@ -123,6 +125,14 @@ namespace RD_AAOW
 				return;
 
 			_ = new WeatherForm ();
+			}
+
+		private void ArchiveButton_Click (object sender, EventArgs e)
+			{
+			if (!CheckDirectories ())
+				return;
+
+			_ = new ArchiveForm ();
 			}
 
 		private void RunGTAVCButton_Click (object sender, EventArgs e)

@@ -573,7 +573,7 @@
   <data name="FileTab_DangerousReset" xml:space="preserve">
     <value>С&amp;брос потенциально опасных параметров</value>
   </data>
-  <data name="FileTab_DefaultFileButton" xml:space="preserve">
+  <data name="BExplorerForm_DefaultFileButton" xml:space="preserve">
     <value>Открыть с&amp;тандартный файл</value>
   </data>
   <data name="FileTab_Label32" xml:space="preserve">
@@ -588,7 +588,7 @@
   <data name="FileTab_SaveFileButton" xml:space="preserve">
     <value>&amp;Сохранить файл...</value>
   </data>
-  <data name="FileTab_UpdateDefaultFileButton" xml:space="preserve">
+  <data name="BExplorerForm_UpdateDefaultFileButton" xml:space="preserve">
     <value>Об&amp;новить стандартный файл</value>
   </data>
   <data name="GDTab_Label20" xml:space="preserve">
@@ -1631,5 +1631,37 @@
   </data>
   <data name="WeatherForm_WaterAlphaLabel" xml:space="preserve">
     <value>Непрозрачность воды:</value>
+  </data>
+  <data name="ViceCityToolsetForm_ArchiveButton" xml:space="preserve">
+    <value>Изменить главный архив (IMG)</value>
+  </data>
+  <data name="ArchiveForm" xml:space="preserve">
+    <value>редактирование главного архива (IMG)</value>
+  </data>
+  <data name="ArchiveForm_ListLabel" xml:space="preserve">
+    <value>Список файлов архива (DIR / IMG):</value>
+  </data>
+  <data name="ArchiveForm_ExtractButton" xml:space="preserve">
+    <value>Извлечь</value>
+  </data>
+  <data name="IMGNamesLoading" xml:space="preserve">
+    <value>Загрузка архива...</value>
+  </data>
+  <data name="IMGArchiveError" xml:space="preserve">
+    <value>Пара IMG / DIR имеет неподдерживаемую версию, неожиданный размер или недоступна для редактирования</value>
+  </data>
+  <data name="ArchiveSFFilter" xml:space="preserve">
+    <value>Файл {0:S}</value>
+  </data>
+  <data name="IMGArchiveUpdate" xml:space="preserve">
+    <value>Обновление архива...</value>
+  </data>
+  <data name="ArchiveForm_FilterButton" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
+  <data name="AwaitingForEdition" xml:space="preserve">
+    <value>Файл был открыт для редактирования в приложении по умолчанию.
+
+Нажмите «Далее» по завершении редактирования или «Отмена» для прерывания обновления архива</value>
   </data>
 </root>

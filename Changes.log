@@ -1,5 +1,11 @@
 Vice city toolset: changes log
 
+Version 4.9:
+• Implemented tha ability to extract and replace files in the IMG / DIR archive pair.
+  Also you can now extract its files, open them for editing and put them back with
+  rebuilding in the single action;
+• Fixed some inconveniences in the interface of game saves
+
 Version 4.8:
 • Implemented the abitily to setup colors and parameters for all weathers in the game;
 • Added the ability to run the game from the tool;

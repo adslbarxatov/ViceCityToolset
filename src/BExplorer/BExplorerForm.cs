@@ -35,8 +35,8 @@ namespace RD_AAOW
 		// Расширение файлов сохранений
 		private const string savesExtension = ".b";
 
-		// Стандартный таймаут для сообщений
-		private const uint defaultTimeout = 1500;
+		/*// Стандартный таймаут для сообщений
+		private const uint defaultTimeout = 1500;*/
 
 		/// <summary>
 		/// Метод инициализирует форму редактирования файлов сохранений
@@ -191,6 +191,7 @@ namespace RD_AAOW
 
 			loading = false;
 			RDGenerics.LoadWindowDimensions (this);
+			MainTab.SelectedTab = DPTab;
 			}
 
 		// Выбор файла сохранения для загрузки
@@ -526,7 +527,7 @@ namespace RD_AAOW
 			if (res == ResultCodes.SaveSuccess)
 				{
 				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
-					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), 750);
 				LoadParameters ();
 				}
 			else
@@ -798,7 +799,7 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.LoadSuccess)
 				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
-					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), 750);
 			else
 				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					RDLocale.GetText ("StatsLoadingError") +
@@ -849,7 +850,7 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.SaveSuccess)
 				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
-					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), 750);
 			else
 				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					RDLocale.GetText ("StatsSavingError") +
@@ -1328,7 +1329,7 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.LoadSuccess)
 				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
-					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), 750);
 			else
 				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					RDLocale.GetText ("CGLoadingError") +
@@ -1375,7 +1376,7 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.FileFixed)
 				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
-					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), 1000);
 			else
 				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 				RDLocale.GetText ("Result_" + res.ToString ()));
@@ -1396,7 +1397,7 @@ namespace RD_AAOW
 
 			if (res == ResultCodes.LoadSuccess)
 				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
-					RDLocale.GetText ("Result_" + res.ToString ()), defaultTimeout);
+					RDLocale.GetText ("Result_" + res.ToString ()), 750);
 			else
 				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					RDLocale.GetText ("GRLoadingError") +
@@ -1529,6 +1530,7 @@ namespace RD_AAOW
 			SFDialog.Title = SStatsDialog.Title = RDLocale.GetText ("SFDialogTitle");
 
 			// Настройка контролов
+			RDLocale.SetControlsText (this);
 			RDLocale.SetControlsText (FileTab);
 			ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
 			RDLocale.SetControlsText (DPTab);

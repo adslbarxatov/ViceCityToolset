@@ -170,7 +170,7 @@ namespace RD_AAOW
 				}
 
 			RDInterface.LocalizedMessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
-				"MakeCST_Success");
+				"MakeCST_Success", 750);
 			}
 		}
 	}

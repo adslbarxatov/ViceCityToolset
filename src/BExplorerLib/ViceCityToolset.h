@@ -10,8 +10,8 @@
 
 #define B_API(t)	extern __declspec(dllexport) t
 
-#define B_VERSION			4,7,2,0
-#define B_VERSION_S			"4.7.2.0"
+#define B_VERSION			4,9,0,0
+#define B_VERSION_S			"4.9.0.0"
 #define B_PRODUCT			"Save files API for Vice city toolset"
 #define B_COMPANY			FDL_COMPANY
 
@@ -195,16 +195,6 @@ struct SaveData
 // • SD - структура сохранения
 sint SaveData_Load (schar *FilePath, struct SaveData *SD);
 //////////////////////////////////////////////////////////////////////
-
-/*
-//////////////////////////////////////////////////////////////////////
-// Функция, отвечающая за вывод сообщений об ошибках
-// Возвращает текст ошибки
-// • Error - любой поддерживаемый код ошибки (любой из описанных в
-// этом файле)
-schar *SaveData_ErrorPrompt (sint Error);
-//////////////////////////////////////////////////////////////////////
-*/
 
 //////////////////////////////////////////////////////////////////////
 // Следующая функция - командный интерпретатор. Возвращает сообщение с
@@ -435,3 +425,22 @@ sint SaveData_SaveCG (struct SaveData *SD, schar *FilePath);
 sint SaveData_LoadGarages (struct SaveData *SD, schar *FilePath);
 sint SaveData_SaveGarages (struct SaveData *SD, schar *FilePath);
 //////////////////////////////////////////////////////////////////////
+
+// Работа с архивом IMG / DIR
+union IMGItem
+	{
+	struct IMGItemSt
+		{
+		ulong Offset;
+		ulong Size;
+		uchar FileName[24];
+		} Str;
+
+	uchar Ptr[sizeof (struct IMGItemSt)];
+	};
+
+#define IMG_SECTOR_SIZE		0x800
+
+B_API (ulong) Archive_GetFilesListEx (schar *DIRPath, ulong *Metrics, uchar *Names);
+B_API (sint) Archive_ExtractFileEx (schar *IMGPath, schar *TargetFile, ulong Offset, ulong Size);
+B_API (sint) Archive_ReplaceFileEx (schar *IMGPath, schar *TargetFile);

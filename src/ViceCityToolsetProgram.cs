@@ -61,6 +61,10 @@ namespace RD_AAOW
 					case "-w":
 						mode = StartupModes.Weather;
 						break;
+
+					case "-a":
+						mode = StartupModes.Archive;
+						break;
 					}
 				}
 
@@ -126,5 +130,10 @@ namespace RD_AAOW
 		/// Файл настроек погоды
 		/// </summary>
 		Weather,
+
+		/// <summary>
+		/// Файл главного архива игры
+		/// </summary>
+		Archive,
 		}
 	}
