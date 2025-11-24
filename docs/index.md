@@ -1,5 +1,5 @@
 # Vice city toolset: user guide
-> **ƒ** &nbsp;RD AAOW FDL; 1.12.2023; 2:56
+> **ƒ** &nbsp;RD AAOW FDL; 25.11.2025; 0:01
 
 ---
 
@@ -14,8 +14,10 @@
 **Vice city toolset** – a set of modder tools for GTA Vice city that supports some useful functions
 and operations. Namely:
 
-- [Editing game saves](https://adslbarxatov.github.io/ViceCityToolset/saves)
-- [Editing vehicles handling](https://adslbarxatov.github.io/ViceCityToolset/handling)
+- [Editing the save files](https://adslbarxatov.github.io/ViceCityToolset/saves)
+- [Editing the vehicle handling](https://adslbarxatov.github.io/ViceCityToolset/handling)
+- [Editing the weather parameters](https://adslbarxatov.github.io/ViceCityToolset/weather)
+- [Editing the main game archive (IMG)](https://adslbarxatov.github.io/ViceCityToolset/archive)
 - [Converting models to collision scripts](https://adslbarxatov.github.io/ViceCityToolset/collision)
 
 > The application is under development now. Therefore, some parameters during usage of this application

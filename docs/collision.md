@@ -1,5 +1,5 @@
 # Models to CST convertor: user guide
-> **ƒ** &nbsp;RD AAOW FDL; 23.04.2023; 19:55
+> **ƒ** &nbsp;RD AAOW FDL; 25.11.2025; 0:04
 
 ---
 
@@ -14,4 +14,4 @@
 
 This is a tool for converting DFF models and QHullOFF objects to GTA Vice city collision scripts.
 Result scripts can be used for replacing low-definition collision files from the original
-game installation
+game. Recommended to be used in pair with the archive (IMG) editor
