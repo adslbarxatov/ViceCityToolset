@@ -1,5 +1,9 @@
 Vice city toolset: changes log
 
+Version 4.10:
+• App has been migrated to .NET 10;
+• Internal assemblies have been updated
+
 Version 4.9:
 • Implemented tha ability to extract and replace files in the IMG / DIR archive pair.
   Also you can now extract its files, open them for editing and put them back with

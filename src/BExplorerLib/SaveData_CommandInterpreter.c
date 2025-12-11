@@ -99,7 +99,7 @@ uint SD_PPS_CriminalPoints[] = {
 	if (Mode == 1)	\
 		{	\
 		if ((NewValue < MinValue) || (NewValue > MaxValue))	\
-			return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_ValueOutOfRange/*)*/;	\
+			return SD_INTRPR_ERR_ValueOutOfRange;	\
 		SD_Variable = NewValue;	\
 		}	\
 	if (Mode == 4)	\
@@ -121,7 +121,7 @@ uint SD_PPS_CriminalPoints[] = {
 		SD_Variable[StringLength] = '\x0';	\
 		}	\
 	if (Mode == 4)	\
-		return /*SaveData_ErrorPrompt (*/SD_INTRPR_ERR_OpCodeIsIncorrect/*)*/;	\
+		return SD_INTRPR_ERR_OpCodeIsIncorrect;	\
 	sprintf (res, "%s", SD_Variable);	\
 	SaveData_SetLastMessage (res);	\
 	return SD_OK;

@@ -107,15 +107,11 @@ namespace RD_AAOW
 			if (!CheckDirectories ())
 				return;
 
-			/*HandlingForm hf = new HandlingForm ();
-			hf.Dispose ();*/
 			_ = new HandlingForm ();
 			}
 
 		private void CollisionButton_Click (object sender, EventArgs e)
 			{
-			/*MakeCSTForm mcstf = new MakeCSTForm ();
-			mcstf.Dispose ();*/
 			_ = new MakeCSTForm ();
 			}
 

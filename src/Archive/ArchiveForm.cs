@@ -64,7 +64,6 @@ namespace RD_AAOW
 				}
 
 			// Готово, загрузка в интерфейс
-			/*RDInterface.RunWork (ReloadList, null, " ", RDRunWorkFlags.CaptionInTheMiddle);*/
 			FileNamesList.Items.AddRange (list.ToArray ());
 			FileNamesList.SelectedIndex = 0;
 			CountLabel.Text = items.Count.ToString ();
@@ -136,7 +135,6 @@ namespace RD_AAOW
 		private void ExtractButton_Click (object sender, EventArgs e)
 			{
 			// Контроль
-			/*selectedIndex = FileNamesList.SelectedIndex;*/
 			selectedIndex = list.IndexOf (FileNamesList.SelectedItem.ToString ());
 			if (selectedIndex < 0)
 				return;
@@ -182,7 +180,6 @@ namespace RD_AAOW
 		private void ReplaceButton_Click (object sender, EventArgs e)
 			{
 			// Контроль
-			/*selectedIndex = FileNamesList.SelectedIndex;*/
 			selectedIndex = list.IndexOf (FileNamesList.SelectedItem.ToString ());
 			if (selectedIndex < 0)
 				return;

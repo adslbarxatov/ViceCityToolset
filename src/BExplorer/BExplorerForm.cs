@@ -35,9 +35,6 @@ namespace RD_AAOW
 		// Расширение файлов сохранений
 		private const string savesExtension = ".b";
 
-		/*// Стандартный таймаут для сообщений
-		private const uint defaultTimeout = 1500;*/
-
 		/// <summary>
 		/// Метод инициализирует форму редактирования файлов сохранений
 		/// </summary>
