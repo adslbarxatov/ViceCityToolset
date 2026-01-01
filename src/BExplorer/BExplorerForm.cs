@@ -44,7 +44,7 @@ namespace RD_AAOW
 			InitializeComponent ();
 
 			Application.CurrentCulture = RDLocale.GetCulture (RDLanguages.en_us);
-			this.Text = ProgramDescription.AssemblyTitle + " – " + RDLocale.GetText (this.Name);
+			this.Text = ProgramDescription.AssemblyMainName + " – " + RDLocale.GetText (this.Name);
 
 			// Запуск
 			this.ShowDialog ();

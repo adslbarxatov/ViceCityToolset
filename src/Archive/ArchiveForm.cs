@@ -35,7 +35,8 @@ namespace RD_AAOW
 			InitializeComponent ();
 
 			// Настройка контролов
-			this.Text = ProgramDescription.AssemblyTitle + " – " + RDLocale.GetText (this.Name);
+			/*this.Text = ProgramDescription.AssemblyTitle + " – " + RDLocale.GetText (this.Name);*/
+			this.Text = ProgramDescription.AssemblyMainName + " – " + RDLocale.GetText (this.Name);
 			RDGenerics.LoadWindowDimensions (this);
 
 			ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);

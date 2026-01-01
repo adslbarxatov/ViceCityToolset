@@ -658,7 +658,7 @@ namespace RD_AAOW
 			// Запись
 			// Заголовок файла и основные дескрипторы
 			SW.WriteLine (CommentPrefix + "TIMECYC.DAT for GTA Vice City");
-			SW.WriteLine (CommentPrefix + "Updated by " + ProgramDescription.AssemblyTitle + ", " +
+			SW.WriteLine (CommentPrefix + "Updated by " + RDGenerics.DefaultAssemblyTitle + ", " +
 				DateTime.Now.ToString ("dd.MM.yyyy; HH.mm"));
 
 			// Запись по типам погоды

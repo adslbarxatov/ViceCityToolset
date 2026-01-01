@@ -18,7 +18,7 @@ namespace RD_AAOW
 		public WeatherForm ()
 			{
 			InitializeComponent ();
-			this.Text = ProgramDescription.AssemblyTitle + " – " + RDLocale.GetText (this.Name);
+			this.Text = ProgramDescription.AssemblyMainName + " – " + RDLocale.GetText (this.Name);
 
 			RDGenerics.LoadWindowDimensions (this);
 			this.ShowDialog ();

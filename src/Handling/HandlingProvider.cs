@@ -317,7 +317,7 @@ namespace RD_AAOW
 			// Запись
 			// Заголовок файла и основные дескрипторы
 			SW.WriteLine (CommentPrefix + "HANDLING.CFG for GTA Vice City");
-			SW.WriteLine (CommentPrefix + "Updated by " + ProgramDescription.AssemblyTitle + ", " +
+			SW.WriteLine (CommentPrefix + "Updated by " + RDGenerics.DefaultAssemblyTitle + ", " +
 				DateTime.Now.ToString ("dd.MM.yyyy; HH.mm"));
 			SW.WriteLine (CommentSymbol);
 			SW.WriteLine (CommentPrefix + GenericHandlingDescriptor.TableHeader);

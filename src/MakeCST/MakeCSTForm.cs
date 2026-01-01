@@ -19,7 +19,7 @@ namespace RD_AAOW
 			InitializeComponent ();
 
 			// Настройка контролов
-			this.Text = ProgramDescription.AssemblyTitle + " – " + RDLocale.GetText (this.Name);
+			this.Text = ProgramDescription.AssemblyMainName + " – " + RDLocale.GetText (this.Name);
 			RDGenerics.LoadWindowDimensions (this);
 
 			OFLabel.Text = OFDialog.Title = RDLocale.GetText ("MakeCSTForm_OFLabel");
