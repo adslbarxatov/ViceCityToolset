@@ -106,10 +106,14 @@ namespace RD_AAOW
 			PickX.Enabled = PickY.Enabled = PickZ.Enabled = PickRot.Enabled = !ViewOnly;
 			PickOK.Visible = !ViewOnly;
 
-			RDLocale.SetControlsText (this);
-			PickAbort.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Close);
-			PickOK.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Select);
-			this.Text = RDLocale.GetText ("CoordsPicker_Title");
+			/*RDLocale.SetControlsText (this);
+			PickAbort. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Close);
+			PickOK. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Select);*/
+			RDLocale.SetControlText (this.Name, Label01);
+			RDLocale.SetControlText (this.Name, Label04);
+			RDLocale.SetDefaultControlText (PickAbort, RDLDefaultTexts.Button_Close);
+			RDLocale.SetDefaultControlText (PickOK, RDLDefaultTexts.Button_Select);
+			this.Text =  RDLocale.GetText (this.Name + "_Title");
 
 			// Запуск
 			g = Graphics.FromHwnd (PictMap.Handle);

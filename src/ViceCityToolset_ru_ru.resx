@@ -576,9 +576,6 @@
   <data name="BExplorerForm_DefaultFileButton" xml:space="preserve">
     <value>Открыть с&amp;тандартный файл</value>
   </data>
-  <data name="FileTab_Label32" xml:space="preserve">
-    <value>№</value>
-  </data>
   <data name="FileTab_OpenFileButton" xml:space="preserve">
     <value>&amp;Открыть файл...</value>
   </data>
@@ -846,17 +843,11 @@
   <data name="bfile" xml:space="preserve">
     <value>Файл сохранения GTA Vice city</value>
   </data>
-  <data name="FileTab_RegisterButton" xml:space="preserve">
-    <value>&amp;Зарегистрировать ассоц. файлов</value>
-  </data>
   <data name="ViceCityToolsetForm_CollisionButton" xml:space="preserve">
     <value>Преобразовать скрипт коллизий</value>
   </data>
   <data name="ViceCityToolsetForm_HandlingButton" xml:space="preserve">
     <value>Редактировать параметры транспорта</value>
-  </data>
-  <data name="ViceCityToolsetForm_LanguageLabel" xml:space="preserve">
-    <value>Язык интерфейса:</value>
   </data>
   <data name="ViceCityToolsetForm_SavesButton" xml:space="preserve">
     <value>Редактировать файл сохранения</value>

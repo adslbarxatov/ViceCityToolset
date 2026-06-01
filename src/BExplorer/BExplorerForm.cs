@@ -214,7 +214,7 @@ namespace RD_AAOW
 			ResultCodes errCode;
 
 			// В случае ошибки вывести сообщение и прекратить исполнение программы
-			SetState (false);   // Блокировать заранее
+			SetState (false);	// Блокировать заранее
 			if ((errCode = BExplorerLib.SaveData_Load (OFDialog.FileName)) != ResultCodes.LoadSuccess)
 				{
 				string errText = RDLocale.GetText ("SaveLoadingError");
@@ -223,13 +223,14 @@ namespace RD_AAOW
 				errText += RDLocale.GetText ("Result_" + errCode.ToString ());
 
 				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText, errText);
-				SaveInfoLabel.Text = RDLocale.GetText ("SaveNotSpecified");
+				/*SaveInfoLabel. Text = RDLocale.GetText ("SaveNotSpecified");*/
+				RDLocale.SetControlText (SaveInfoLabel, "SaveNotSpecified");
 
 				return;
 				}
 
 			// В случае успеха
-			SaveInfoLabel.Text = RDLocale.GetText ("CurrentSave") + BExplorerLib.SaveData_SaveInfo;
+			SaveInfoLabel.Text =  RDLocale.GetText ("CurrentSave") + BExplorerLib.SaveData_SaveInfo;
 			SetState (true);
 
 			// Загрузка начальных параметров в поля формы
@@ -469,7 +470,7 @@ namespace RD_AAOW
 
 			// Загрузка списка парковок и выбор слота
 			cg = new CarGenerators ();
-			CGCountLabel.Text = RDLocale.GetText ("CGLoaded") + cg.ActiveGeneratorsCount.ToString ();
+			CGCountLabel.Text =  RDLocale.GetText ("CGLoaded") + cg.ActiveGeneratorsCount.ToString ();
 			CarGenList.Value = 1;
 			CarGenList_ValueChanged (null, null);
 
@@ -496,7 +497,7 @@ namespace RD_AAOW
 			{
 			// Запись данных генераторов авто
 			cg.SaveGenerators (!AbortSorting.Checked);
-			CGCountLabel.Text = RDLocale.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
+			CGCountLabel.Text =  RDLocale.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
 
 			// Отображение диалога
 			SFDialog.FileName = "";
@@ -507,7 +508,7 @@ namespace RD_AAOW
 			{
 			// Запись данных генераторов авто
 			cg.SaveGenerators (!AbortSorting.Checked);
-			CGCountLabel.Text = RDLocale.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
+			CGCountLabel.Text =  RDLocale.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
 
 			// Пробуем сохранить файл в стандартном расположении
 			SFDialog.FileName = ViceCityToolsetProgram.GTAVCSavesDirectory + "\\GTAVCsf" +
@@ -1341,7 +1342,7 @@ namespace RD_AAOW
 			{
 			// Запись параметров
 			cg.SaveGenerators (!AbortSorting.Checked);
-			CGCountLabel.Text = RDLocale.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
+			CGCountLabel.Text =  RDLocale.GetText ("CGSaved") + cg.ActiveGeneratorsCount.ToString ();
 
 			// Вызов окна
 			saveMode = SaveableParameters.Generators;
@@ -1527,34 +1528,109 @@ namespace RD_AAOW
 			SFDialog.Title = SStatsDialog.Title = RDLocale.GetText ("SFDialogTitle");
 
 			// Настройка контролов
-			RDLocale.SetControlsText (this);
-			RDLocale.SetControlsText (FileTab);
-			ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
-			RDLocale.SetControlsText (DPTab);
-			RDLocale.SetControlsText (PLTab);
-			RDLocale.SetControlsText (GRTab);
-			LoadGarages.Text = RDLocale.GetText ("LoadParameters");
-			SaveGarages.Text = RDLocale.GetText ("SaveParameters");
-			RDLocale.SetControlsText (PUTab);
-			RDLocale.SetControlsText (GDTab);
-			RDLocale.SetControlsText (CGTab);
-			LoadCG.Text = RDLocale.GetText ("LoadParameters");
-			SaveCG.Text = RDLocale.GetText ("SaveParameters");
-			RDLocale.SetControlsText (STTab);
+			/*RDLocale.SetControlsText (this);*/
+			RDLocale.SetControlText (this.Name, DefaultFileButton);
+			RDLocale.SetControlText (this.Name, UpdateDefaultFileButton);
 
-			FileTab.Text = RDLocale.GetText ("MainTab_FileTab");
-			DPTab.Text = RDLocale.GetText ("MainTab_DPTab");
-			PLTab.Text = RDLocale.GetText ("MainTab_PLTab");
-			GRTab.Text = RDLocale.GetText ("MainTab_GRTab");
-			PUTab.Text = RDLocale.GetText ("MainTab_PUTab");
-			GDTab.Text = RDLocale.GetText ("MainTab_GDTab");
-			CGTab.Text = RDLocale.GetText ("MainTab_CGTab");
-			STTab.Text = RDLocale.GetText ("MainTab_STTab");
+			/*RDLocale.SetControlsText (FileTab);
+			ExitButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);*/
+			RDLocale.SetControlText (MainTab.Name, FileTab);
+			RDLocale.SetControlText (FileTab.Name, DangerousReset);
+			RDLocale.SetControlText (FileTab.Name, OpenFileButton);
+			RDLocale.SetControlText (FileTab.Name, RecommendedSettings);
+			RDLocale.SetControlText (FileTab.Name, SaveFileButton);
+			RDLocale.SetDefaultControlText (ExitButton, RDLDefaultTexts.Button_Exit);
+
+			/*RDLocale.SetControlsText (DPTab);*/
+			RDLocale.SetControlText (MainTab.Name, DPTab);
+			RDLocale.SetControlText (DPTab.Name, Label01);
+			RDLocale.SetControlText (DPTab.Name, Label02);
+			RDLocale.SetControlText (DPTab.Name, Label03);
+			RDLocale.SetControlText (DPTab.Name, Label04);
+			RDLocale.SetControlText (DPTab.Name, Label05);
+			RDLocale.SetControlText (DPTab.Name, Label06);
+			RDLocale.SetControlText (DPTab.Name, SBB_CabsRadio);
+
+			/*RDLocale.SetControlsText (PLTab);*/
+			RDLocale.SetControlText (MainTab.Name, PLTab);
+			RDLocale.SetControlText (PLTab.Name, Label07);
+			RDLocale.SetControlText (PLTab.Name, Label08);
+			RDLocale.SetControlText (PLTab.Name, Label09);
+			RDLocale.SetControlText (PLTab.Name, Label10);
+			RDLocale.SetControlText (PLTab.Name, Label11);
+			RDLocale.SetControlText (PLTab.Name, Label12);
+			RDLocale.SetControlText (PLTab.Name, Label13);
+			RDLocale.SetControlText (PLTab.Name, PL_FastReload);
+			RDLocale.SetControlText (PLTab.Name, PL_Fireproof);
+			RDLocale.SetControlText (PLTab.Name, PL_InfRun);
+			RDLocale.SetControlText (PLTab.Name, ST_InfBullets);
+
+			/*RDLocale.SetControlsText (GRTab);
+			LoadGarages. Text = RDLocale.GetText ("LoadParameters");
+			SaveGarages. Text = RDLocale.GetText ("SaveParameters");*/
+			RDLocale.SetControlText (MainTab.Name, GRTab);
+			RDLocale.SetControlText (GRTab.Name, GR_BulletsProof);
+			RDLocale.SetControlText (GRTab.Name, GR_DamageProof);
+			RDLocale.SetControlText (GRTab.Name, GR_ExplProof);
+			RDLocale.SetControlText (GRTab.Name, GR_FireProof);
+			RDLocale.SetControlText (GRTab.Name, Label14);
+			RDLocale.SetControlText (GRTab.Name, Label15);
+			RDLocale.SetControlText (GRTab.Name, Label16);
+			RDLocale.SetControlText (GRTab.Name, Label17);
+			RDLocale.SetControlText (GRTab.Name, Label18);
+			RDLocale.SetControlText (LoadGarages, "LoadParameters");
+			RDLocale.SetControlText (SaveGarages, "SaveParameters");
+
+			/*RDLocale.SetControlsText (PUTab);*/
+			RDLocale.SetControlText (MainTab.Name, PUTab);
+			RDLocale.SetControlText (PUTab.Name, Label19);
+			RDLocale.SetControlText (PUTab.Name, PickupViewCoords);
+
+			/*RDLocale.SetControlsText (GDTab);*/
+			RDLocale.SetControlText (MainTab.Name, GDTab);
+			RDLocale.SetControlText (GDTab.Name, Label20);
+			RDLocale.SetControlText (GDTab.Name, Label21);
+			RDLocale.SetControlText (GDTab.Name, Label22);
+			RDLocale.SetControlText (GDTab.Name, Label23);
+
+			/*RDLocale.SetControlsText (CGTab);
+			LoadCG. Text = RDLocale.GetText ("LoadParameters");
+			SaveCG. Text = RDLocale.GetText ("SaveParameters");*/
+			RDLocale.SetControlText (MainTab.Name, CGTab);
+			RDLocale.SetControlText (CGTab.Name, AbortSorting);
+			RDLocale.SetControlText (CGTab.Name, CarGenGetCoords);
+			RDLocale.SetControlText (CGTab.Name, CG_AllowSpawn);
+			RDLocale.SetControlText (CGTab.Name, CG_ForceSpawn);
+			RDLocale.SetControlText (CGTab.Name, Label24);
+			RDLocale.SetControlText (CGTab.Name, Label25);
+			RDLocale.SetControlText (CGTab.Name, Label26);
+			RDLocale.SetControlText (CGTab.Name, Label27);
+			RDLocale.SetControlText (CGTab.Name, Label28);
+			RDLocale.SetControlText (CGTab.Name, Label29);
+			RDLocale.SetControlText (CGTab.Name, Label30);
+			RDLocale.SetControlText (LoadCG, "LoadParameters");
+			RDLocale.SetControlText (SaveCG, "SaveParameters");
+
+			/*RDLocale.SetControlsText (STTab);*/
+			RDLocale.SetControlText (MainTab.Name, STTab);
+			RDLocale.SetControlText (STTab.Name, Label31);
+			RDLocale.SetControlText (STTab.Name, LoadStats);
+			RDLocale.SetControlText (STTab.Name, SaveStats);
+
+			/*FileTab. Text = RDLocale.GetText ("MainTab_FileTab");
+			DPTab. Text = RDLocale.GetText ("MainTab_DPTab");
+			PLTab. Text = RDLocale.GetText ("MainTab_PLTab");
+			GRTab. Text = RDLocale.GetText ("MainTab_GRTab");
+			PUTab. Text = RDLocale.GetText ("MainTab_PUTab");
+			GDTab. Text = RDLocale.GetText ("MainTab_GDTab");
+			CGTab. Text = RDLocale.GetText ("MainTab_CGTab");
+			STTab. Text = RDLocale.GetText ("MainTab_STTab");*/
 
 			if (DPTab.Enabled)
-				SaveInfoLabel.Text = RDLocale.GetText ("CurrentSave") + BExplorerLib.SaveData_SaveInfo;
+				SaveInfoLabel.Text =  RDLocale.GetText ("CurrentSave") + BExplorerLib.SaveData_SaveInfo;
 			else
-				SaveInfoLabel.Text = RDLocale.GetText ("SaveNotSpecified");
+				/*SaveInfoLabel. Text = RDLocale.GetText ("SaveNotSpecified");*/
+				RDLocale.SetControlText (SaveInfoLabel, "SaveNotSpecified");
 			}
 		}
 	}

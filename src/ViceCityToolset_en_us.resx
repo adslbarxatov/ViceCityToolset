@@ -576,9 +576,6 @@
   <data name="BExplorerForm_DefaultFileButton" xml:space="preserve">
     <value>&amp;Load default file</value>
   </data>
-  <data name="FileTab_Label32" xml:space="preserve">
-    <value>#</value>
-  </data>
   <data name="FileTab_OpenFileButton" xml:space="preserve">
     <value>&amp;Open file...</value>
   </data>
@@ -846,17 +843,11 @@
   <data name="bfile" xml:space="preserve">
     <value>GTA Vice city save file</value>
   </data>
-  <data name="FileTab_RegisterButton" xml:space="preserve">
-    <value>Re&amp;gister file associations</value>
-  </data>
   <data name="ViceCityToolsetForm_CollisionButton" xml:space="preserve">
     <value>Convert model to collision script</value>
   </data>
   <data name="ViceCityToolsetForm_HandlingButton" xml:space="preserve">
     <value>Edit transport parameters</value>
-  </data>
-  <data name="ViceCityToolsetForm_LanguageLabel" xml:space="preserve">
-    <value>Interface language:</value>
   </data>
   <data name="ViceCityToolsetForm_SavesButton" xml:space="preserve">
     <value>Edit save file</value>

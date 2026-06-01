@@ -58,9 +58,37 @@ namespace RD_AAOW
 				}
 
 			// Загружено. Выполнение локализации
-			RDLocale.SetControlsText (this);
-			BExit.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
-			BSaveCfg.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save);
+			/*RDLocale.SetControlsText (this);
+			BExit. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
+			BSaveCfg. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save);*/
+			RDLocale.SetControlText (this.Name, BlurTrails);
+			RDLocale.SetControlText (this.Name, CoronaBrightnessLabel);
+			RDLocale.SetControlText (this.Name, CoronaSizeLabel);
+			RDLocale.SetControlText (this.Name, DynamicAmbience);
+			RDLocale.SetControlText (this.Name, DynamicBlur);
+			RDLocale.SetControlText (this.Name, DynamicDirect);
+			RDLocale.SetControlText (this.Name, EntityShadingLabel);
+			RDLocale.SetControlText (this.Name, FarClipLabel);
+			RDLocale.SetControlText (this.Name, FogStartLabel);
+			RDLocale.SetControlText (this.Name, LightOnGroundLabel);
+			RDLocale.SetControlText (this.Name, LowerClouds);
+			RDLocale.SetControlText (this.Name, PoleShadingLabel);
+			RDLocale.SetControlText (this.Name, ShadowLabel);
+			RDLocale.SetControlText (this.Name, SkyBottom);
+			RDLocale.SetControlText (this.Name, SkyTop);
+			RDLocale.SetControlText (this.Name, StaticAmbience);
+			RDLocale.SetControlText (this.Name, StaticBlur);
+			RDLocale.SetControlText (this.Name, SunCore);
+			RDLocale.SetControlText (this.Name, SunCorona);
+			RDLocale.SetControlText (this.Name, SunSizeLabel);
+			RDLocale.SetControlText (this.Name, TimeLabel);
+			RDLocale.SetControlText (this.Name, UpperCloudsBottom);
+			RDLocale.SetControlText (this.Name, UpperCloudsTop);
+			RDLocale.SetControlText (this.Name, Water);
+			RDLocale.SetControlText (this.Name, WaterAlphaLabel);
+			RDLocale.SetControlText (this.Name, WeatherLabel);
+			RDLocale.SetDefaultControlText (BExit, RDLDefaultTexts.Button_Exit);
+			RDLocale.SetDefaultControlText (BSaveCfg, RDLDefaultTexts.Button_Save);
 
 			WeatherCombo.Items.Add (RDLocale.GetText ("Weathers_" + ParametersValues.Weathers[1].Name));
 			WeatherCombo.Items.Add (RDLocale.GetText ("Weathers_" + ParametersValues.Weathers[2].Name));

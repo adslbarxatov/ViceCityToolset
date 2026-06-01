@@ -72,19 +72,28 @@ namespace RD_AAOW
 		// Локализация формы
 		private void LocalizeForm_Click (object sender, EventArgs e)
 			{
-			/*// Сохранение языка
-			RDLocale.CurrentLanguage = (RDLanguages)LanguageCombo.SelectedIndex;*/
 			// Выбор языка
 			if ((sender != null) && !RDInterface.MessageBox ())
 				return;
 
 			// Локализация
-			RDLocale.SetControlsText (this);
-			ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
+			/*RDLocale.SetControlsText (this);
+			ExitButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);*/
+			RDLocale.SetControlText (this.Name, ArchiveButton);
+			RDLocale.SetControlText (this.Name, CollisionButton);
+			RDLocale.SetControlText (this.Name, HandlingButton);
+			RDLocale.SetControlText (this.Name, RunGTAVC);
+			RDLocale.SetControlText (this.Name, SavesButton);
+			RDLocale.SetControlText (this.Name, WeatherButton);
+			RDLocale.SetDefaultControlText (ExitButton, RDLDefaultTexts.Button_Exit);
 			FBDialog.Description = RDLocale.GetText ("ViceCityToolsetForm_FBDialog");
-			AboutTheAppButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
-			RegisterAssociations.Text = RDLocale.GetText ("RegisterAssociations");
-			BLanguage.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguage);
+
+			/*AboutTheAppButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
+			RegisterAssociations. Text = RDLocale.GetText ("RegisterAssociations");
+			BLanguage. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguage);*/
+			RDLocale.SetDefaultControlText (AboutTheAppButton, RDLDefaultTexts.Control_AppAbout);
+			RDLocale.SetControlText (RegisterAssociations);
+			RDLocale.SetDefaultControlText (BLanguage, RDLDefaultTexts.Control_InterfaceLanguage);
 			}
 
 		// Закрытие окна

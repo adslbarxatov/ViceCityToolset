@@ -38,13 +38,20 @@ namespace RD_AAOW
 			this.Text = ProgramDescription.AssemblyMainName + " – " + RDLocale.GetText (this.Name);
 			RDGenerics.LoadWindowDimensions (this);
 
-			ExitButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
-			EditButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Edit);
-			ExtractButton.Text = RDLocale.GetText (this.Name + "_" + ExtractButton.Name);
-			ReplaceButton.Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Replace);
-			ListLabel.Text = RDLocale.GetText (this.Name + "_" + ListLabel.Name);
+			/*ExitButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
+			EditButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Edit);
+			ExtractButton. Text = RDLocale.GetText (this.Name + "_" + ExtractButton.Name);
+			ReplaceButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Replace);
+			ListLabel. Text = RDLocale.GetText (this.Name + "_" + ListLabel.Name);
 			FilterField.MaxLength = IMGItem.MaxFileNameLength;
-			FilterButton.Text = RDLocale.GetText (this.Name + "_" + FilterButton.Name);
+			FilterButton. Text = RDLocale.GetText (this.Name + "_" + FilterButton.Name);*/
+			RDLocale.SetDefaultControlText (ExitButton, RDLDefaultTexts.Button_Exit);
+			RDLocale.SetDefaultControlText (EditButton, RDLDefaultTexts.Button_Edit);
+			RDLocale.SetControlText (this.Name, ExtractButton);
+			RDLocale.SetDefaultControlText (ReplaceButton, RDLDefaultTexts.Button_Replace);
+			RDLocale.SetControlText (this.Name, ListLabel);
+			FilterField.MaxLength = IMGItem.MaxFileNameLength;
+			RDLocale.SetControlText (this.Name, FilterButton);
 
 			OFDialog.Title = ReplaceButton.Text;
 			SFDialog.Title = ExtractButton.Text;
