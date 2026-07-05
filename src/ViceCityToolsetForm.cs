@@ -25,15 +25,6 @@ namespace RD_AAOW
 			RDGenerics.LoadWindowDimensions (this);
 			mode = Mode;
 
-			/*LanguageCombo.Items.AddRange (RDLocale.LanguagesNames);
-			try
-				{
-				LanguageCombo.SelectedIndex = (int)RDLocale.CurrentLanguage;
-				}
-			catch
-				{
-				LanguageCombo.SelectedIndex = 0;
-				}*/
 			LocalizeForm_Click (null, null);
 			}
 
@@ -77,8 +68,6 @@ namespace RD_AAOW
 				return;
 
 			// Локализация
-			/*RDLocale.SetControlsText (this);
-			ExitButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);*/
 			RDLocale.SetControlText (this.Name, ArchiveButton);
 			RDLocale.SetControlText (this.Name, CollisionButton);
 			RDLocale.SetControlText (this.Name, HandlingButton);
@@ -88,9 +77,6 @@ namespace RD_AAOW
 			RDLocale.SetDefaultControlText (ExitButton, RDLDefaultTexts.Button_Exit);
 			FBDialog.Description = RDLocale.GetText ("ViceCityToolsetForm_FBDialog");
 
-			/*AboutTheAppButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_AppAbout);
-			RegisterAssociations. Text = RDLocale.GetText ("RegisterAssociations");
-			BLanguage. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Control_InterfaceLanguage);*/
 			RDLocale.SetDefaultControlText (AboutTheAppButton, RDLDefaultTexts.Control_AppAbout);
 			RDLocale.SetControlText (RegisterAssociations);
 			RDLocale.SetDefaultControlText (BLanguage, RDLDefaultTexts.Control_InterfaceLanguage);

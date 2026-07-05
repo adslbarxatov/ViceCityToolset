@@ -58,9 +58,6 @@ namespace RD_AAOW
 				}
 
 			// Загружено. Выполнение локализации
-			/*RDLocale.SetControlsText (this);
-			BExit. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
-			BSaveCfg. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Save);*/
 			RDLocale.SetControlText (this.Name, BlurTrails);
 			RDLocale.SetControlText (this.Name, CoronaBrightnessLabel);
 			RDLocale.SetControlText (this.Name, CoronaSizeLabel);

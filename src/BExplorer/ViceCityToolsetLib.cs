@@ -983,10 +983,6 @@ namespace RD_AAOW
 
 			// Сборка комментариев
 			string comments;
-			/*if (RDLocale.IsCurrentLanguageRuRu)
-				comments = RDGenerics.GetEncoding (RDEncodings.UTF8).GetString (ViceCityToolsetResources.StatsText_ru_ru);
-			else
-				comments = RDGenerics.GetEncoding (RDEncodings.UTF8).GetString (ViceCityToolsetResources.StatsText_en_us);*/
 			switch (RDLocale.CurrentLanguage)
 				{
 				case RDLanguages.ru_ru:

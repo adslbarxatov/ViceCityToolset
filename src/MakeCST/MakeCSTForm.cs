@@ -22,10 +22,6 @@ namespace RD_AAOW
 			this.Text = ProgramDescription.AssemblyMainName + " – " + RDLocale.GetText (this.Name);
 			RDGenerics.LoadWindowDimensions (this);
 
-			/*OFLabel.Text = OFDialog.Title = RDLocale.GetText ("MakeCSTForm_OFLabel");
-			SFLabel. Text = RDLocale.GetText ("MakeCSTForm_SFLabel");
-			ConvertButton. Text = RDLocale.GetText ("MakeCSTForm_ConvertButton");
-			ExitButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);*/
 			RDLocale.SetControlText (this.Name, OFLabel);
 			OFDialog.Title = OFLabel.Text;
 			RDLocale.SetControlText (this.Name, SFLabel);

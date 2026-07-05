@@ -38,13 +38,6 @@ namespace RD_AAOW
 			this.Text = ProgramDescription.AssemblyMainName + " – " + RDLocale.GetText (this.Name);
 			RDGenerics.LoadWindowDimensions (this);
 
-			/*ExitButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);
-			EditButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Edit);
-			ExtractButton. Text = RDLocale.GetText (this.Name + "_" + ExtractButton.Name);
-			ReplaceButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Replace);
-			ListLabel. Text = RDLocale.GetText (this.Name + "_" + ListLabel.Name);
-			FilterField.MaxLength = IMGItem.MaxFileNameLength;
-			FilterButton. Text = RDLocale.GetText (this.Name + "_" + FilterButton.Name);*/
 			RDLocale.SetDefaultControlText (ExitButton, RDLDefaultTexts.Button_Exit);
 			RDLocale.SetDefaultControlText (EditButton, RDLDefaultTexts.Button_Edit);
 			RDLocale.SetControlText (this.Name, ExtractButton);

@@ -223,7 +223,6 @@ namespace RD_AAOW
 				errText += RDLocale.GetText ("Result_" + errCode.ToString ());
 
 				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText, errText);
-				/*SaveInfoLabel. Text = RDLocale.GetText ("SaveNotSpecified");*/
 				RDLocale.SetControlText (SaveInfoLabel, "SaveNotSpecified");
 
 				return;
@@ -1528,12 +1527,9 @@ namespace RD_AAOW
 			SFDialog.Title = SStatsDialog.Title = RDLocale.GetText ("SFDialogTitle");
 
 			// Настройка контролов
-			/*RDLocale.SetControlsText (this);*/
 			RDLocale.SetControlText (this.Name, DefaultFileButton);
 			RDLocale.SetControlText (this.Name, UpdateDefaultFileButton);
 
-			/*RDLocale.SetControlsText (FileTab);
-			ExitButton. Text = RDLocale.GetDefaultText (RDLDefaultTexts.Button_Exit);*/
 			RDLocale.SetControlText (MainTab.Name, FileTab);
 			RDLocale.SetControlText (FileTab.Name, DangerousReset);
 			RDLocale.SetControlText (FileTab.Name, OpenFileButton);
@@ -1541,7 +1537,6 @@ namespace RD_AAOW
 			RDLocale.SetControlText (FileTab.Name, SaveFileButton);
 			RDLocale.SetDefaultControlText (ExitButton, RDLDefaultTexts.Button_Exit);
 
-			/*RDLocale.SetControlsText (DPTab);*/
 			RDLocale.SetControlText (MainTab.Name, DPTab);
 			RDLocale.SetControlText (DPTab.Name, Label01);
 			RDLocale.SetControlText (DPTab.Name, Label02);
@@ -1551,7 +1546,6 @@ namespace RD_AAOW
 			RDLocale.SetControlText (DPTab.Name, Label06);
 			RDLocale.SetControlText (DPTab.Name, SBB_CabsRadio);
 
-			/*RDLocale.SetControlsText (PLTab);*/
 			RDLocale.SetControlText (MainTab.Name, PLTab);
 			RDLocale.SetControlText (PLTab.Name, Label07);
 			RDLocale.SetControlText (PLTab.Name, Label08);
@@ -1565,9 +1559,6 @@ namespace RD_AAOW
 			RDLocale.SetControlText (PLTab.Name, PL_InfRun);
 			RDLocale.SetControlText (PLTab.Name, ST_InfBullets);
 
-			/*RDLocale.SetControlsText (GRTab);
-			LoadGarages. Text = RDLocale.GetText ("LoadParameters");
-			SaveGarages. Text = RDLocale.GetText ("SaveParameters");*/
 			RDLocale.SetControlText (MainTab.Name, GRTab);
 			RDLocale.SetControlText (GRTab.Name, GR_BulletsProof);
 			RDLocale.SetControlText (GRTab.Name, GR_DamageProof);
@@ -1581,21 +1572,16 @@ namespace RD_AAOW
 			RDLocale.SetControlText (LoadGarages, "LoadParameters");
 			RDLocale.SetControlText (SaveGarages, "SaveParameters");
 
-			/*RDLocale.SetControlsText (PUTab);*/
 			RDLocale.SetControlText (MainTab.Name, PUTab);
 			RDLocale.SetControlText (PUTab.Name, Label19);
 			RDLocale.SetControlText (PUTab.Name, PickupViewCoords);
 
-			/*RDLocale.SetControlsText (GDTab);*/
 			RDLocale.SetControlText (MainTab.Name, GDTab);
 			RDLocale.SetControlText (GDTab.Name, Label20);
 			RDLocale.SetControlText (GDTab.Name, Label21);
 			RDLocale.SetControlText (GDTab.Name, Label22);
 			RDLocale.SetControlText (GDTab.Name, Label23);
 
-			/*RDLocale.SetControlsText (CGTab);
-			LoadCG. Text = RDLocale.GetText ("LoadParameters");
-			SaveCG. Text = RDLocale.GetText ("SaveParameters");*/
 			RDLocale.SetControlText (MainTab.Name, CGTab);
 			RDLocale.SetControlText (CGTab.Name, AbortSorting);
 			RDLocale.SetControlText (CGTab.Name, CarGenGetCoords);
@@ -1611,25 +1597,14 @@ namespace RD_AAOW
 			RDLocale.SetControlText (LoadCG, "LoadParameters");
 			RDLocale.SetControlText (SaveCG, "SaveParameters");
 
-			/*RDLocale.SetControlsText (STTab);*/
 			RDLocale.SetControlText (MainTab.Name, STTab);
 			RDLocale.SetControlText (STTab.Name, Label31);
 			RDLocale.SetControlText (STTab.Name, LoadStats);
 			RDLocale.SetControlText (STTab.Name, SaveStats);
 
-			/*FileTab. Text = RDLocale.GetText ("MainTab_FileTab");
-			DPTab. Text = RDLocale.GetText ("MainTab_DPTab");
-			PLTab. Text = RDLocale.GetText ("MainTab_PLTab");
-			GRTab. Text = RDLocale.GetText ("MainTab_GRTab");
-			PUTab. Text = RDLocale.GetText ("MainTab_PUTab");
-			GDTab. Text = RDLocale.GetText ("MainTab_GDTab");
-			CGTab. Text = RDLocale.GetText ("MainTab_CGTab");
-			STTab. Text = RDLocale.GetText ("MainTab_STTab");*/
-
 			if (DPTab.Enabled)
 				SaveInfoLabel.Text =  RDLocale.GetText ("CurrentSave") + BExplorerLib.SaveData_SaveInfo;
 			else
-				/*SaveInfoLabel. Text = RDLocale.GetText ("SaveNotSpecified");*/
 				RDLocale.SetControlText (SaveInfoLabel, "SaveNotSpecified");
 			}
 		}
