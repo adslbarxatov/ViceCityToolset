@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace RD_AAOW
 	{
 	/// <summary>
-	/// Класс описывает главную форму программы
+	/// Класс описывает форму управления главным архивом игровых ассетов
 	/// </summary>
 	public partial class ArchiveForm: Form
 		{
@@ -46,8 +46,8 @@ namespace RD_AAOW
 			FilterField.MaxLength = IMGItem.MaxFileNameLength;
 			RDLocale.SetControlText (this.Name, FilterButton);
 
-			OFDialog.Title = ReplaceButton.Text;
-			SFDialog.Title = ExtractButton.Text;
+			/*OFDialog. Title = ReplaceButton.Text;
+			SFDialog. Title = ExtractButton.Text;*/
 
 			// Запуск
 			this.ShowDialog ();
@@ -262,7 +262,7 @@ namespace RD_AAOW
 				return;
 
 			// Запуск на редактирование
-			OFDialog.FileName = SFDialog.FileName = RDGenerics.AppStartupPath + list[selectedIndex];
+			OFDialog.FileName = SFDialog.FileName = RDGenerics.StartupPath + list[selectedIndex];
 			SFDialog_FileOk (null, null);
 
 			RDGenerics.RunURL (OFDialog.FileName);

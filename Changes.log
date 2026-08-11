@@ -1,5 +1,11 @@
 Vice city toolset: changes log
 
+Version 5.0:
+• Implemented the ability to edit the color scheme for vehicles;
+• Removed support for old exchange formats;
+• New exchange format has been properly versioned;
+• Fixed some minor interface bugs
+
 Version 4.11:
 • Applied the updated GitHub markup for version numbers
 

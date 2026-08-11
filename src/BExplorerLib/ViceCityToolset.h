@@ -10,8 +10,8 @@
 
 #define B_API(t)	extern __declspec(dllexport) t
 
-#define B_VERSION			4,10,2,0
-#define B_VERSION_S			"4.10.2.0"
+#define B_VERSION			5,0,0,0
+#define B_VERSION_S			"5.0.0.0"
 #define B_PRODUCT			"Save files API for Vice city toolset"
 #define B_COMPANY			FDL_COMPANY
 
@@ -413,9 +413,16 @@ sint SaveData_Save (struct SaveData *SD, schar *FilePath);
 #define STATS_FILE_CODE			0x02
 #define CG_FILE_CODE			0x03
 
-#define FILE_SIGNATURE_VALID(code)	((fgetc (FI) == 'v') && (fgetc (FI) == 'c') && \
-									(fgetc (FI) == 't') && (fgetc (FI) == code))
-#define PUT_FILE_SIGNATURE(code)	fputc ('v', FO); fputc ('c', FO); fputc ('t', FO); fputc (code, FO);
+#define IF_FILE_SIGNATURE_INVALID(code)	int c[4];\
+						for (char i = 0; i < 4; i++)\
+						c[i] = fgetc (FI);\
+						if (!((c[0] == 'v') && (c[1] == 'c') && \
+						(c[2] == 't') && (c[3] == code)) && \
+						!((c[0] == '\x02') && (c[1] == '\x10') && \
+						(c[2] == '~') && (c[3] == code)))
+
+// Новая универсальная сигнатура
+#define PUT_FILE_SIGNATURE(code)	fputc ('\x02', FO); fputc ('\x10', FO); fputc ('~', FO); fputc (code, FO);
 
 void SaveData_SetLastMessage (schar *Message);
 sint SaveData_LoadStats (struct SaveData *SD, schar *FilePath);

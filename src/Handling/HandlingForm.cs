@@ -225,8 +225,12 @@ namespace RD_AAOW
 			"Zebra",
 			];
 
-		// Метод возвращает название транспорта по его идентификатору в файле handling.cfg
-		private static string GetVehicheNameByID (string ID)
+		/// <summary>
+		/// Метод возвращает название транспорта по его идентификатору в файле handling.cfg
+		/// </summary>
+		/// <param name="ID">Короткий идентификатор транспорта</param>
+		/// <returns>Возвращает полное имя или прочерк, если идентификатор не был найден</returns>
+		public static string GetVehicheNameByID (string ID)
 			{
 			int idx = transportIDs.IndexOf (ID);
 			if (idx < 0)
@@ -1165,10 +1169,14 @@ namespace RD_AAOW
 			// Сохранение
 			if (!hp.SaveHandlingData ())
 				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
-					string.Format (RDLocale.GetText ("HandlingForm_SaveFailure"), HandlingProvider.ConfigurationFileName));
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
+					HandlingProvider.ConfigurationFileName));
+			/*string.Format (RDLocale.GetText ("HandlingForm_ SaveFailure"), HandlingProvider.ConfigurationFileName));*/
 			else
 				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
-					string.Format (RDLocale.GetText ("HandlingForm_SaveSuccess"), HandlingProvider.ConfigurationFileName), 1000);
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveSuccess_Fmt),
+					HandlingProvider.ConfigurationFileName), 1000);
+			/*string.Format (RDLocale.GetText ("HandlingForm_SaveSuccess"), HandlingProvider.ConfigurationFileName), 1000);*/
 			}
 
 		// Выход из раздела

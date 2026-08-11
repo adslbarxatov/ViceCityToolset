@@ -27,23 +27,23 @@ union SD_Garages
 
 		// Структуры машин в гаражах
 		struct GarageCars
-				{
-				ulong GR_GC_ModelID;		// Модель авто
-				float GR_GC_X;				// Положение авто в гараже
-				float GR_GC_Y;
-				float GR_GC_Z;
-				float GR_GC_vX;				// Поворот авто
-				float GR_GC_vY;
-				float GR_GC_vZ;
-				ulong GR_GC_Immunity;		// Защита: b3 = damageproof, b2 = explosionproof, b1 = fireproof, b0 = bulletproof
-				uchar GR_GC_PrimaryColor;	// Цвета авто
-				uchar GR_GC_SecondaryColor;
-				uchar GR_GC_RadioStation;	// Текущая радостанция (0 - 9, 10 - выключено)
-				uchar GR_GC_Variation1;		// Конструктивные особенности
-				uchar GR_GC_Variation2;
-				uchar GR_GC_BombType;		// Тип мины (0 - нет, 1 - часовая, 2 - разгонная, 3 - радиоуправляемая, 4 - часовая включённая, 5 - разгонная включённая)
-				uint GR_GC_Unused01;
-				} GR_GC[SD_GR_GC_Count];
+			{
+			ulong GR_GC_ModelID;		// Модель авто
+			float GR_GC_X;				// Положение авто в гараже
+			float GR_GC_Y;
+			float GR_GC_Z;
+			float GR_GC_vX;				// Поворот авто
+			float GR_GC_vY;
+			float GR_GC_vZ;
+			ulong GR_GC_Immunity;		// Защита: b3 = damageproof, b2 = explosionproof, b1 = fireproof, b0 = bulletproof
+			uchar GR_GC_PrimaryColor;	// Цвета авто
+			uchar GR_GC_SecondaryColor;
+			uchar GR_GC_RadioStation;	// Текущая радостанция (0 - 9, 10 - выключено)
+			uchar GR_GC_Variation1;		// Конструктивные особенности
+			uchar GR_GC_Variation2;
+			uchar GR_GC_BombType;		// Тип мины (0 - нет, 1 - часовая, 2 - разгонная, 3 - радиоуправляемая, 4 - часовая включённая, 5 - разгонная включённая)
+			uint GR_GC_Unused01;
+			} GR_GC[SD_GR_GC_Count];
 
 		// Структура гаражей
 		struct GarageStructure

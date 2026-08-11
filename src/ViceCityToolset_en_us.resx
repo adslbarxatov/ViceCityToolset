@@ -264,20 +264,11 @@
   <data name="Garages_9" xml:space="preserve">
     <value>Human Condo, garage 3, item 2</value>
   </data>
-  <data name="OCGDialogFilter" xml:space="preserve">
-    <value>GTA VC car parks parameters files (*.bcg)|*.bcg|</value>
-  </data>
   <data name="OFDialogFilter" xml:space="preserve">
     <value>GTA VC save files (*{0:S})|*{0:S}</value>
   </data>
   <data name="OFDialogTitle" xml:space="preserve">
     <value>Select file</value>
-  </data>
-  <data name="OGDialogFilter" xml:space="preserve">
-    <value>GTA VC garages parameters files (*.bgr)|*.bgr|</value>
-  </data>
-  <data name="OStatsDialogFilter" xml:space="preserve">
-    <value>GTA VC stats files (*.bst)|*.bst|</value>
   </data>
   <data name="SaveCompleted" xml:space="preserve">
     <value>(game is fully completed)</value>
@@ -1308,17 +1299,11 @@
   <data name="HandlingForm_FileUnavailable" xml:space="preserve">
     <value>The file “{0:S}” is not available for opening. Make sure the file is not in use by another application and try again</value>
   </data>
-  <data name="HandlingForm_SaveFailure" xml:space="preserve">
-    <value>Failed to save file “{0:S}”. Make sure the file is not in use by another application and try again</value>
-  </data>
   <data name="HandlingForm_ExitMessage" xml:space="preserve">
     <value>All unsaved changes will be lost! Exit the editor?</value>
   </data>
   <data name="HandlingForm_FailedToCreateBackup" xml:space="preserve">
     <value>Failed to create backup for file “{0:S}”. Make sure that game directory is writable and try again</value>
-  </data>
-  <data name="HandlingForm_SaveSuccess" xml:space="preserve">
-    <value>File “{0:S}” was successfully updated</value>
   </data>
   <data name="HandlingForm" xml:space="preserve">
     <value>editing vehicles handling</value>
@@ -1654,5 +1639,45 @@
     <value>The file has been opened for edition in its default application.
 
 Click “Next” when you are finished or “Cancel” to abort the archive update </value>
+  </data>
+  <data name="ViceCityToolsetForm_ColorsButton" xml:space="preserve">
+    <value>Edit color scheme</value>
+  </data>
+  <data name="ColorsForm" xml:space="preserve">
+    <value>editing color scheme</value>
+  </data>
+  <data name="ColorsForm_ColorsLabel" xml:space="preserve">
+    <value>Available colors:</value>
+  </data>
+  <data name="DeleteColorMessage" xml:space="preserve">
+    <value>When deleting a color from the table, the app will reassign the deleted color to the zeroth color number and also shift all color numbers assigned to the vehicles so that they retain their actual colors.
+
+However, this reassignment does not apply to game save!
+
+Continue?</value>
+  </data>
+  <data name="ColorsForm_CarsLabel" xml:space="preserve">
+    <value>Color assignments:</value>
+  </data>
+  <data name="ColorsForm_VariantLabel" xml:space="preserve">
+    <value>variant</value>
+  </data>
+  <data name="ColorAddedMessage" xml:space="preserve">
+    <value>Added color #{0:D}: R={1:D}, G={2:D}, B={3:D}</value>
+  </data>
+  <data name="ColorUpdatedMessage" xml:space="preserve">
+    <value>Replaced color #{0:D}: R={1:D}, G={2:D}, B={3:D}</value>
+  </data>
+  <data name="ColorRemovedMessage" xml:space="preserve">
+    <value>Removed color #{0:D}</value>
+  </data>
+  <data name="VariantAddedMessage" xml:space="preserve">
+    <value>Added variant #{0:D} for model “{1:S}” with colors #{2:D} and #{3:D}</value>
+  </data>
+  <data name="VariantUpdatedMessage" xml:space="preserve">
+    <value>Replaced variant #{0:D} for model “{1:S}” by colors #{2:D} and #{3:D}</value>
+  </data>
+  <data name="VariantRemovedMessage" xml:space="preserve">
+    <value>Removed variant #{0:D} for model “{1:S}”</value>
   </data>
 </root>

@@ -18,7 +18,7 @@ namespace RD_AAOW
 		private int error;
 
 		// Экземпляр-загрузчик цветов авто
-		private CarColors cc;
+		private CarColors cc2;
 
 		// Экземпляр-обработчик списка парковок
 		private CarGenerators cg;
@@ -38,13 +38,15 @@ namespace RD_AAOW
 		/// <summary>
 		/// Метод инициализирует форму редактирования файлов сохранений
 		/// </summary>
-		public BExplorerForm ()
+		public BExplorerForm (CarColors Colors)
 			{
 			// Инициализация формы
 			InitializeComponent ();
 
 			Application.CurrentCulture = RDLocale.GetCulture (RDLanguages.en_us);
 			this.Text = ProgramDescription.AssemblyMainName + " – " + RDLocale.GetText (this.Name);
+
+			cc2 = Colors;
 
 			// Запуск
 			this.ShowDialog ();
@@ -53,13 +55,13 @@ namespace RD_AAOW
 		// Запуск формы
 		private void MainForm_Load (object sender, EventArgs e)
 			{
-			// Проверка наличия файла цветовой схемы
+			/*// Проверка наличия файла цветовой схемы
 			cc = new CarColors (out error);
 			if (error != 0)
 				{
 				this.Close ();
 				return;
-				}
+				}*/
 
 			// Загрузка ограничений и списков
 			loading = true;
@@ -114,8 +116,8 @@ namespace RD_AAOW
 			GR_CarModel.DataSource = ParametersValues.CarsForGarages;
 			GR_CarModel.DisplayMember = GR_CarModel.ValueMember = "Name";
 
-			GR_CarColor1.Maximum = cc.Colors.Count - 1;
-			GR_CarColor2.Maximum = cc.Colors.Count - 1;
+			GR_CarColor1.Maximum = cc2.ColorsCount - 1;
+			GR_CarColor2.Maximum = cc2.ColorsCount - 1;
 
 			GR_Radio.DataSource = ParametersValues.Radios;
 			GR_Radio.DisplayMember = GR_Radio.ValueMember = "Name";
@@ -163,9 +165,9 @@ namespace RD_AAOW
 			CG_Rotation.Minimum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
 				(UInt16)GeneratorsParCodes.CarAngle, false);
 
-			CG_CarColor1.Maximum = cc.Colors.Count - 1;
+			CG_CarColor1.Maximum = cc2.ColorsCount - 1;
 			CG_CarColor1.Minimum = -1;
-			CG_CarColor2.Maximum = cc.Colors.Count - 1;
+			CG_CarColor2.Maximum = cc2.ColorsCount - 1;
 			CG_CarColor2.Minimum = -1;
 
 			CG_AlarmProb.Maximum = (decimal)BExplorerLib.SaveData_GetParameterLimit (OpCodes.Generators_Base,
@@ -955,8 +957,8 @@ namespace RD_AAOW
 					(int)decimal.Parse (model)).Name + sp);
 
 				// Цвета
-				Color color1 = cc.Colors[(int)decimal.Parse (c1)];
-				Color color2 = cc.Colors[(int)decimal.Parse (c2)];
+				Color color1 = cc2.GetColor ((byte)decimal.Parse (c1));
+				Color color2 = cc2.GetColor ((byte)decimal.Parse (c2));
 				SW.Write (color1.R + " " + color1.G + " " + color1.B + sp +
 					color2.R + " " + color2.G + " " + color2.B + sp);
 
@@ -994,7 +996,7 @@ namespace RD_AAOW
 		// Изменены цвета авто
 		private void GR_CarColor1_ValueChanged (object sender, EventArgs e)
 			{
-			GDColorLabel1.ForeColor = cc.Colors[(int)GR_CarColor1.Value];
+			GDColorLabel1.ForeColor = cc2.GetColor ((byte)GR_CarColor1.Value);
 
 			if (loading)
 				return;
@@ -1005,7 +1007,7 @@ namespace RD_AAOW
 
 		private void GR_CarColor2_ValueChanged (object sender, EventArgs e)
 			{
-			GDColorLabel2.ForeColor = cc.Colors[(int)GR_CarColor2.Value];
+			GDColorLabel2.ForeColor = cc2.GetColor ((byte)GR_CarColor2.Value);
 
 			if (loading)
 				return;
@@ -1206,9 +1208,9 @@ namespace RD_AAOW
 
 			loading = false;
 
-			CGColorLabel1.ForeColor = (CG_CarColor1.Value >= 0) ? cc.Colors[(int)CG_CarColor1.Value] :
+			CGColorLabel1.ForeColor = (CG_CarColor1.Value >= 0) ? cc2.GetColor ((byte)CG_CarColor1.Value) :
 				Color.FromName ("ControlDark");
-			CGColorLabel2.ForeColor = (CG_CarColor2.Value >= 0) ? cc.Colors[(int)CG_CarColor2.Value] :
+			CGColorLabel2.ForeColor = (CG_CarColor2.Value >= 0) ? cc2.GetColor ((byte)CG_CarColor2.Value) :
 				Color.FromName ("ControlDark");
 			}
 
@@ -1255,9 +1257,9 @@ namespace RD_AAOW
 
 				// Цвета
 				bool color1b = cgd.Color1 >= 0;
-				Color color1 = color1b ? cc.Colors[cgd.Color1] : Color.Black;
+				Color color1 = color1b ? cc2.GetColor ((byte)cgd.Color1) : Color.Black;
 				bool color2b = cgd.Color2 >= 0;
-				Color color2 = color2b ? cc.Colors[cgd.Color2] : Color.Black;
+				Color color2 = color2b ? cc2.GetColor ((byte)cgd.Color2) : Color.Black;
 
 				SW.Write (color1.R + " " + color1.G + " " + color1.B + sp +
 					color2.R + " " + color2.G + " " + color2.B + sp);
@@ -1279,9 +1281,9 @@ namespace RD_AAOW
 		// Изменены настройки авто
 		private void CG_CarModel_SelectedIndexChanged (object sender, EventArgs e)
 			{
-			CGColorLabel1.ForeColor = (CG_CarColor1.Value >= 0) ? cc.Colors[(int)CG_CarColor1.Value] :
+			CGColorLabel1.ForeColor = (CG_CarColor1.Value >= 0) ? cc2.GetColor ((byte)CG_CarColor1.Value) :
 				Color.FromName ("ControlDark");
-			CGColorLabel2.ForeColor = (CG_CarColor2.Value >= 0) ? cc.Colors[(int)CG_CarColor2.Value] :
+			CGColorLabel2.ForeColor = (CG_CarColor2.Value >= 0) ? cc2.GetColor ((byte)CG_CarColor2.Value) :
 				Color.FromName ("ControlDark");
 
 			if (loading)
@@ -1515,16 +1517,16 @@ namespace RD_AAOW
 				savesExtension);
 
 			SStatsDialog.Filter = RDLocale.GetText ("GenericSettingsDialogFilter");
-			OStatsDialog.Filter = RDLocale.GetText ("OStatsDialogFilter") +
+			OStatsDialog.Filter = /*RDLocale.GetText ("OStatsDialogFilter") +*/
 				SStatsDialog.Filter;
-			OCGDialog.Filter = RDLocale.GetText ("OCGDialogFilter") +
+			OCGDialog.Filter = /*RDLocale.GetText ("OCGDialogFilter") +*/
 				SStatsDialog.Filter;
-			OGDialog.Filter = RDLocale.GetText ("OGDialogFilter") +
+			OGDialog.Filter = /*RDLocale.GetText ("OGDialogFilter") +*/
 				SStatsDialog.Filter;
 
-			OFDialog.Title = OStatsDialog.Title = OCGDialog.Title = OGDialog.Title =
+			/*OFDialog. Title = OStatsDialog. Title = OCGDialog. Title = OGDialog. Title =
 				RDLocale.GetText ("OFDialogTitle");
-			SFDialog.Title = SStatsDialog.Title = RDLocale.GetText ("SFDialogTitle");
+			SFDialog. Title = SStatsDialog. Title = RDLocale.GetText ("SFDialogTitle");*/
 
 			// Настройка контролов
 			RDLocale.SetControlText (this.Name, DefaultFileButton);

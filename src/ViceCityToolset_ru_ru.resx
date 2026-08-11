@@ -264,20 +264,11 @@
   <data name="Garages_9" xml:space="preserve">
     <value>Human Condo, гараж 3, позиция 2</value>
   </data>
-  <data name="OCGDialogFilter" xml:space="preserve">
-    <value>Файлы параметров парковок GTA VC (*.bcg)|*.bcg|</value>
-  </data>
   <data name="OFDialogFilter" xml:space="preserve">
     <value>Файлы сохранений GTA VC (*{0:S})|*{0:S}</value>
   </data>
   <data name="OFDialogTitle" xml:space="preserve">
     <value>Выберите файл</value>
-  </data>
-  <data name="OGDialogFilter" xml:space="preserve">
-    <value>Файлы параметров гаражей GTA VC (*.bgr)|*.bgr|</value>
-  </data>
-  <data name="OStatsDialogFilter" xml:space="preserve">
-    <value>Файлы статистики GTA VC (*.bst)|*.bst|</value>
   </data>
   <data name="SaveCompleted" xml:space="preserve">
     <value>(игра пройдена полностью)</value>
@@ -1308,17 +1299,11 @@
   <data name="HandlingForm_FileUnavailable" xml:space="preserve">
     <value>Файл «{0:S}» недоступен для загрузки. Убедитесь, что файл не занят другой программой, и повторите попытку</value>
   </data>
-  <data name="HandlingForm_SaveFailure" xml:space="preserve">
-    <value>Не удалось сохранить файл «{0:S}». Убедитесь, что файл не занят другой программой и повторите попытку</value>
-  </data>
   <data name="HandlingForm_ExitMessage" xml:space="preserve">
     <value>Все несохранённые изменения будут утеряны! Завершить работу с редактором?</value>
   </data>
   <data name="HandlingForm_FailedToCreateBackup" xml:space="preserve">
     <value>Не удалось создать резервную копию файла «{0:S}». Убедитесь, что каталог игры доступен для записи, и повторите попытку</value>
-  </data>
-  <data name="HandlingForm_SaveSuccess" xml:space="preserve">
-    <value>Файл «{0:S}» успешно обновлён</value>
   </data>
   <data name="HandlingForm" xml:space="preserve">
     <value>редактирование управления транспортом</value>
@@ -1654,5 +1639,45 @@
     <value>Файл был открыт для редактирования в приложении по умолчанию.
 
 Нажмите «Далее» по завершении редактирования или «Отмена» для прерывания обновления архива</value>
+  </data>
+  <data name="ViceCityToolsetForm_ColorsButton" xml:space="preserve">
+    <value>Редактировать цветовую схему</value>
+  </data>
+  <data name="ColorsForm" xml:space="preserve">
+    <value>редактирование цветовой схемы</value>
+  </data>
+  <data name="ColorsForm_ColorsLabel" xml:space="preserve">
+    <value>Доступные цвета:</value>
+  </data>
+  <data name="DeleteColorMessage" xml:space="preserve">
+    <value>При удалении цвета из таблицы приложение выполнит переназначение удалённого цвета на нулевой номер, а также сместит все номера цветов, назначенные автомобилям, так, чтобы они сохранили свои фактические цвета.
+
+Однако это переназначение не распространяется на сохранение игры!
+
+Продолжить?</value>
+  </data>
+  <data name="ColorsForm_CarsLabel" xml:space="preserve">
+    <value>Назначения цветов:</value>
+  </data>
+  <data name="ColorsForm_VariantLabel" xml:space="preserve">
+    <value>вариант</value>
+  </data>
+  <data name="ColorAddedMessage" xml:space="preserve">
+    <value>Добавлен цвет №{0:D}: R={1:D}, G={2:D}, B={3:D}</value>
+  </data>
+  <data name="ColorUpdatedMessage" xml:space="preserve">
+    <value>Заменён цвет №{0:D}: R={1:D}, G={2:D}, B={3:D}</value>
+  </data>
+  <data name="ColorRemovedMessage" xml:space="preserve">
+    <value>Удалён цвет №{0:D}</value>
+  </data>
+  <data name="VariantAddedMessage" xml:space="preserve">
+    <value>Добавлен вариант №{0:D} для модели «{1:S}» с цветами №{2:D} и №{3:D}</value>
+  </data>
+  <data name="VariantUpdatedMessage" xml:space="preserve">
+    <value>Заменён вариант №{0:D} для модели «{1:S}» цветами №{2:D} и №{3:D}</value>
+  </data>
+  <data name="VariantRemovedMessage" xml:space="preserve">
+    <value>Удалён вариант №{0:D} для модели «{1:S}»</value>
   </data>
 </root>

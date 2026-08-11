@@ -12,16 +12,17 @@ sint SaveData_LoadGarages (struct SaveData *SD, schar *FilePath)
 	FILE *FI;
 	struct GarageCars cg[SD_GR_GC_Count];
 	schar *cgp, *sdp;
-	long l;
+	/*long l;*/
 
 	// Попытка открытия файла
 	if ((FI = fopen (FilePath, "rb")) == NULL)
 		return SD_INTRPR_ERR_GaragesFileNotFound;
 
 	// Контроль нового формата
-	l = strlen (FilePath);
+	/*l = strlen (FilePath);
 	if (!((FilePath[l - 3] == 'b') && (FilePath[l - 2] == 'g') && (FilePath[l - 1] == 'r')) &&
-		!FILE_SIGNATURE_VALID (GARAGES_FILE_CODE))
+		!FILE_SIGNATURE_VALID (GARAGES_FILE_CODE))*/
+	IF_FILE_SIGNATURE_INVALID (GARAGES_FILE_CODE)
 		{
 		fclose (FI);
 		return SD_INTRPR_ERR_GaragesFileIsIncorrect;

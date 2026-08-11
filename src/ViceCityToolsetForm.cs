@@ -12,6 +12,7 @@ namespace RD_AAOW
 		{
 		// Переменные
 		private StartupModes mode;
+		private CarColors cc;
 
 		/// <summary>
 		/// Конструктор. Запускает главную форму
@@ -53,6 +54,10 @@ namespace RD_AAOW
 					ArchiveButton_Click (null, null);
 					break;
 
+				case StartupModes.Colors:
+					ColorsButton_Click (null, null);
+					break;
+
 				default:
 					return;
 				}
@@ -75,7 +80,8 @@ namespace RD_AAOW
 			RDLocale.SetControlText (this.Name, SavesButton);
 			RDLocale.SetControlText (this.Name, WeatherButton);
 			RDLocale.SetDefaultControlText (ExitButton, RDLDefaultTexts.Button_Exit);
-			FBDialog.Description = RDLocale.GetText ("ViceCityToolsetForm_FBDialog");
+			/*FBDialog. Description = RDLocale.GetText ("ViceCityToolsetForm_FBDialog");*/
+			RDLocale.SetControlText (this.Name, ColorsButton);
 
 			RDLocale.SetDefaultControlText (AboutTheAppButton, RDLDefaultTexts.Control_AppAbout);
 			RDLocale.SetControlText (RegisterAssociations);
@@ -99,7 +105,7 @@ namespace RD_AAOW
 			if (!CheckDirectories ())
 				return;
 
-			_ = new BExplorerForm ();
+			_ = new BExplorerForm (cc);
 			}
 
 		private void HandlingButton_Click (object sender, EventArgs e)
@@ -148,6 +154,14 @@ namespace RD_AAOW
 			catch { }
 			}
 
+		private void ColorsButton_Click (object sender, EventArgs e)
+			{
+			if (!CheckDirectories ())
+				return;
+
+			_ = new ColorsForm (cc);
+			}
+
 		// Обнаружение директорий GTA Vice city
 		private bool CheckDirectories ()
 			{
@@ -167,6 +181,19 @@ namespace RD_AAOW
 			if (!Directory.Exists (ViceCityToolsetProgram.GTAVCSavesDirectory))
 				return false;
 
+			// Проверка наличия файла цветовой схемы
+			if (cc == null)
+				{
+				int error;
+				cc = new CarColors (out error);
+				if (error != 0)
+					{
+					this.Close ();
+					return false;
+					}
+				}
+
+			// Успешно
 			return true;
 			}
 

@@ -120,10 +120,14 @@ namespace RD_AAOW
 			// Сохранение
 			if (!wp.SaveWeatherData ())
 				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
-					string.Format (RDLocale.GetText ("HandlingForm_SaveFailure"), WeatherProvider.ConfigurationFileName));
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
+					WeatherProvider.ConfigurationFileName));
+			/*string.Format (RDLocale.GetText ("HandlingForm_ SaveFailure"), WeatherProvider.ConfigurationFileName));*/
 			else
 				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
-					string.Format (RDLocale.GetText ("HandlingForm_SaveSuccess"), WeatherProvider.ConfigurationFileName), 1000);
+					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveSuccess_Fmt),
+					WeatherProvider.ConfigurationFileName), 1000);
+			/*string.Format (RDLocale.GetText ("HandlingForm_SaveSuccess"), WeatherProvider.ConfigurationFileName), 1000);*/
 			}
 
 		// Выбор строки таблицы

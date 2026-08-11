@@ -54,7 +54,7 @@ namespace RD_AAOW
 						mode = StartupModes.Handling;
 						break;
 
-					case "-c":
+					case "-l":
 						mode = StartupModes.CollisionConversion;
 						break;
 
@@ -64,6 +64,10 @@ namespace RD_AAOW
 
 					case "-a":
 						mode = StartupModes.Archive;
+						break;
+
+					case "-c":
+						mode = StartupModes.Colors;
 						break;
 					}
 				}
@@ -132,8 +136,13 @@ namespace RD_AAOW
 		Weather,
 
 		/// <summary>
-		/// Файл главного архива игры
+		/// Файл главного архива ассетов игры
 		/// </summary>
 		Archive,
+
+		/// <summary>
+		/// Файл цветовой схемы транспорта
+		/// </summary>
+		Colors,
 		}
 	}
