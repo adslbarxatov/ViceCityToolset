@@ -23,7 +23,6 @@ namespace RD_AAOW
 			RDGenerics.LoadWindowDimensions (this);
 
 			RDLocale.SetControlText (this.Name, OFLabel);
-			/*OFDialog. Title = OFLabel.Text;*/
 			RDLocale.SetControlText (this.Name, SFLabel);
 			RDLocale.SetControlText (this.Name, ConvertButton);
 			RDLocale.SetDefaultControlText (ExitButton, RDLDefaultTexts.Button_Exit);

@@ -80,7 +80,6 @@ namespace RD_AAOW
 			RDLocale.SetControlText (this.Name, SavesButton);
 			RDLocale.SetControlText (this.Name, WeatherButton);
 			RDLocale.SetDefaultControlText (ExitButton, RDLDefaultTexts.Button_Exit);
-			/*FBDialog. Description = RDLocale.GetText ("ViceCityToolsetForm_FBDialog");*/
 			RDLocale.SetControlText (this.Name, ColorsButton);
 
 			RDLocale.SetDefaultControlText (AboutTheAppButton, RDLDefaultTexts.Control_AppAbout);

@@ -55,14 +55,6 @@ namespace RD_AAOW
 		// Запуск формы
 		private void MainForm_Load (object sender, EventArgs e)
 			{
-			/*// Проверка наличия файла цветовой схемы
-			cc = new CarColors (out error);
-			if (error != 0)
-				{
-				this.Close ();
-				return;
-				}*/
-
 			// Загрузка ограничений и списков
 			loading = true;
 
@@ -1517,16 +1509,9 @@ namespace RD_AAOW
 				savesExtension);
 
 			SStatsDialog.Filter = RDLocale.GetText ("GenericSettingsDialogFilter");
-			OStatsDialog.Filter = /*RDLocale.GetText ("OStatsDialogFilter") +*/
-				SStatsDialog.Filter;
-			OCGDialog.Filter = /*RDLocale.GetText ("OCGDialogFilter") +*/
-				SStatsDialog.Filter;
-			OGDialog.Filter = /*RDLocale.GetText ("OGDialogFilter") +*/
-				SStatsDialog.Filter;
-
-			/*OFDialog. Title = OStatsDialog. Title = OCGDialog. Title = OGDialog. Title =
-				RDLocale.GetText ("OFDialogTitle");
-			SFDialog. Title = SStatsDialog. Title = RDLocale.GetText ("SFDialogTitle");*/
+			OStatsDialog.Filter = SStatsDialog.Filter;
+			OCGDialog.Filter = SStatsDialog.Filter;
+			OGDialog.Filter = SStatsDialog.Filter;
 
 			// Настройка контролов
 			RDLocale.SetControlText (this.Name, DefaultFileButton);

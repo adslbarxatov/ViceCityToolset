@@ -1171,12 +1171,10 @@ namespace RD_AAOW
 				RDInterface.MessageBox (RDMessageFlags.Warning | RDMessageFlags.CenterText,
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveFailure_Fmt),
 					HandlingProvider.ConfigurationFileName));
-			/*string.Format (RDLocale.GetText ("HandlingForm_ SaveFailure"), HandlingProvider.ConfigurationFileName));*/
 			else
 				RDInterface.MessageBox (RDMessageFlags.Success | RDMessageFlags.CenterText,
 					string.Format (RDLocale.GetDefaultText (RDLDefaultTexts.Message_SaveSuccess_Fmt),
 					HandlingProvider.ConfigurationFileName), 1000);
-			/*string.Format (RDLocale.GetText ("HandlingForm_SaveSuccess"), HandlingProvider.ConfigurationFileName), 1000);*/
 			}
 
 		// Выход из раздела

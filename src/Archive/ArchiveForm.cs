@@ -46,9 +46,6 @@ namespace RD_AAOW
 			FilterField.MaxLength = IMGItem.MaxFileNameLength;
 			RDLocale.SetControlText (this.Name, FilterButton);
 
-			/*OFDialog. Title = ReplaceButton.Text;
-			SFDialog. Title = ExtractButton.Text;*/
-
 			// Запуск
 			this.ShowDialog ();
 			}
